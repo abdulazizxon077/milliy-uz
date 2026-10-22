@@ -5,7 +5,18 @@ import {
   placeUpdateSchema,
   REPORT_STATUSES,
 } from '../schemas.js';
+import { parseOpeningHours } from '../../../shared/opening-hours.js';
 import { DEFAULT_SYSTEM_PROMPT } from '../services/chat.js';
+
+function badHours(places) {
+  return places.find((p) => p.openingHours && !parseOpeningHours(p.openingHours));
+}
+
+const hoursError = (reply, place) =>
+  reply.code(400).send({
+    error: 'bad_request',
+    message: `Ish vaqti formati tushunarsiz: "${place.openingHours}". Masalan: Mo-Fr 09:00-18:00; Sa 10:00-14:00`,
+  });
 
 const notFound = (reply) => reply.code(404).send({ error: 'not_found', message: 'Topilmadi' });
 
@@ -30,14 +41,17 @@ export default async function adminRoutes(app, { repos, chat }) {
   });
 
   app.post('/places', { schema: { body: placeCreateSchema } }, async (request, reply) => {
+    if (badHours([request.body])) return hoursError(reply, request.body);
     return reply.code(201).send(repos.places.create(request.body));
   });
 
   app.put(
     '/places/:id',
     { schema: { params: idParams, body: placeUpdateSchema } },
-    async (request, reply) =>
-      repos.places.update(request.params.id, request.body) ?? notFound(reply),
+    async (request, reply) => {
+      if (badHours([request.body])) return hoursError(reply, request.body);
+      return repos.places.update(request.params.id, request.body) ?? notFound(reply);
+    },
   );
 
   app.delete('/places/:id', { schema: { params: idParams } }, async (request, reply) => {
@@ -54,7 +68,9 @@ export default async function adminRoutes(app, { repos, chat }) {
   app.post(
     '/places/import',
     { schema: { body: placesImportSchema }, bodyLimit: 10 * 1024 * 1024 },
-    async (request) => {
+    async (request, reply) => {
+      const unreadable = badHours(request.body);
+      if (unreadable) return hoursError(reply, unreadable);
       const ids = request.body.map((p) => p.id).filter(Boolean);
       if (new Set(ids).size !== ids.length) {
         const err = new Error("Takrorlanuvchi ID'lar mavjud");

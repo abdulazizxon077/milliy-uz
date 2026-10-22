@@ -1,3 +1,5 @@
+import { DAY_NAMES, parseOpeningHours, scheduleStatus } from '../../../shared/opening-hours.js';
+
 const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
 /** Escapes a value for safe interpolation into HTML text or quoted attributes. */
@@ -18,6 +20,7 @@ const toRad = (deg) => (deg * Math.PI) / 180;
 
 /** Great-circle distance in kilometres. */
 export function distanceKm(from, to) {
+  if (!from || !to) return NaN;
   const dLat = toRad(to.lat - from.lat);
   const dLng = toRad(to.lng - from.lng);
   const a =
@@ -32,45 +35,56 @@ export function formatDistance(km) {
   return `${km.toFixed(1)} km`;
 }
 
-function toMinutes(value, fallback) {
-  const match = /^(\d{1,2}):(\d{2})$/.exec(value ?? '');
-  if (!match) return fallback;
-  return Number(match[1]) * 60 + Number(match[2]);
+const scheduleCache = new Map();
+
+/** Parsed weekly schedule for a place, or null when the hours are unknown. */
+export function placeSchedule(place) {
+  const text = place?.openingHours ?? '';
+  if (!text) return null;
+  if (!scheduleCache.has(text)) scheduleCache.set(text, parseOpeningHours(text));
+  return scheduleCache.get(text);
+}
+
+function opensLabel(status) {
+  const time = status.opensAt;
+  if (status.opensDay === 0) return `Yopiq · ${time} da ochiladi`;
+  if (status.opensDay === 1) return `Yopiq · ertaga ${time} da`;
+  return `Yopiq · ${DAY_NAMES[status.opensWeekday]} ${time} da`;
 }
 
 /**
- * Opening status for a place at the given moment. Handles 24/7 places,
- * a 24:00 closing time and schedules that run past midnight (e.g. 18:00–02:00).
+ * Opening status for a place at the given moment, read from its OpenStreetMap
+ * style opening hours. Places without published hours report `unknown`.
  */
 export function getOpenStatus(place, now = new Date()) {
-  if (place.is247) return { isOpen: true, label: '24/7 Ochiq', cssClass: 'badge-open' };
-
-  const openTime = place.openTime || '08:00';
-  const closeTime = place.closeTime || '22:00';
-  const open = toMinutes(openTime, 8 * 60);
-  const close = toMinutes(closeTime, 22 * 60);
-  const current = now.getHours() * 60 + now.getMinutes();
-
-  const isOpen =
-    open === close
-      ? true
-      : open < close
-        ? current >= open && current < close
-        : current >= open || current < close;
-
-  if (!isOpen) {
-    return { isOpen: false, label: `Yopiq (${openTime} da ochiladi)`, cssClass: 'badge-closed' };
+  const schedule = placeSchedule(place);
+  if (!schedule) {
+    return {
+      isOpen: false,
+      unknown: true,
+      label: "Ish vaqti ko'rsatilmagan",
+      cssClass: 'badge-unknown',
+    };
   }
-  const minutesLeft = open === close ? Infinity : (close - current + 24 * 60) % (24 * 60);
-  if (minutesLeft <= CLOSING_SOON_MINUTES) {
+  const status = scheduleStatus(schedule, now);
+  if (status.always) return { isOpen: true, label: '24/7 ochiq', cssClass: 'badge-open' };
+  if (!status.open) {
+    return {
+      isOpen: false,
+      label: status.opensAt === null || status.opensAt === undefined ? 'Yopiq' : opensLabel(status),
+      cssClass: 'badge-closed',
+    };
+  }
+  const { closesAt } = status;
+  if (status.closesIn <= CLOSING_SOON_MINUTES) {
     return {
       isOpen: true,
       closingSoon: true,
-      label: `Tez orada yopiladi (${closeTime})`,
+      label: `Tez orada yopiladi (${closesAt})`,
       cssClass: 'badge-closing',
     };
   }
-  return { isOpen: true, label: `Ochiq (${closeTime} gacha)`, cssClass: 'badge-open' };
+  return { isOpen: true, label: `Ochiq · ${closesAt} gacha`, cssClass: 'badge-open' };
 }
 
 export const CLOSING_SOON_MINUTES = 60;
@@ -98,12 +112,7 @@ export function clockTime(date = new Date()) {
   return `${String(date.getHours()).padStart(2, '0')}:${String(date.getMinutes()).padStart(2, '0')}`;
 }
 
-export const FALLBACK_IMAGE =
-  'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80';
-
-export const PLACEHOLDER_IMAGE = '/place-placeholder.svg';
-
-/** Only https images are rendered; anything else falls back to a neutral photo. */
+/** Only https images are rendered; anything else gets the category placeholder. */
 export function safeImageUrl(url) {
-  return typeof url === 'string' && url.startsWith('https://') ? url : FALLBACK_IMAGE;
+  return typeof url === 'string' && url.startsWith('https://') ? url : null;
 }

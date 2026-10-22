@@ -10,7 +10,6 @@ test('admin works through reported information', async ({ page, request }) => {
   });
   expect(created.status()).toBe(201);
 
-  await page.goto('/');
   await loginAsAdmin(page);
   await expect(page.locator('#admin-reports-badge')).toBeVisible();
   await tab(page, 'reports').click();
@@ -26,12 +25,14 @@ test('admin works through reported information', async ({ page, request }) => {
   await row.getByRole('button', { name: /tahrirlash/ }).click();
   await expect(page.locator('#admin-edit-modal')).toBeVisible();
   await expect(page.locator('#edit-p-name')).toHaveValue(place.name);
-  await page.locator('#edit-p-workdays').fill('Har kuni');
-  await page.locator('#edit-p-247').check();
+  await page.locator('#edit-p-hours').fill('bugun ochiq');
+  await page.locator('#admin-edit-place-form button[type=submit]').click();
+  expect(await page.locator('#edit-p-hours').evaluate((el) => el.validity.valid)).toBe(false);
+  await page.locator('#edit-p-hours').fill('24/7');
   await page.locator('#admin-edit-place-form button[type=submit]').click();
   await expect(toast(page)).toContainText('Obyekt saqlandi');
   const updated = await (await request.get(`/api/places/${place.id}`)).json();
-  expect(updated).toMatchObject({ workDays: 'Har kuni', is247: true });
+  expect(updated).toMatchObject({ openingHours: '24/7', phone: place.phone });
   expect(updated.experienceText).toBe(place.experienceText);
 
   await row.getByRole('button', { name: 'Hal qilindi' }).click();
@@ -54,7 +55,6 @@ test('admin can hide and republish a review', async ({ page, request }) => {
   });
   expect(post.status()).toBe(201);
 
-  await page.goto('/');
   await loginAsAdmin(page);
   await tab(page, 'reviews').click();
   const row = page
@@ -76,7 +76,6 @@ test('admin can hide and republish a review', async ({ page, request }) => {
 });
 
 test('catalog export and import round-trip', async ({ page }, testInfo) => {
-  await page.goto('/');
   await loginAsAdmin(page);
   await tab(page, 'places').click();
 

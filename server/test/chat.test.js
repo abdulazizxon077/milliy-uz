@@ -68,7 +68,7 @@ describe('POST /api/chat', () => {
   });
 
   it('proxies to the configured provider with catalog context', async () => {
-    const complete = vi.fn(async () => 'Chilonzordagi AvtoPro servisiga murojaat qiling.');
+    const complete = vi.fn(async () => 'Chorsu bozoriga boring.');
     app = await createTestApp({
       chat: { provider: 'gemini', model: 'x', configured: true, complete },
     });
@@ -78,8 +78,8 @@ describe('POST /api/chat', () => {
       payload: { message: 'usta kerak' },
     });
     expect(res.statusCode).toBe(200);
-    expect(res.json().reply).toContain('AvtoPro');
-    expect(complete.mock.calls[0][0].system).toContain('AvtoPro Yunusobod');
+    expect(res.json().reply).toContain('Chorsu');
+    expect(complete.mock.calls[0][0].system).toContain('Chorsu bozori');
   });
 
   it('maps provider errors to 502', async () => {

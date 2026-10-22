@@ -24,11 +24,23 @@ describe('public places API', () => {
   });
 
   it('returns a place with its published reviews', async () => {
-    const res = await app.inject('/api/places/auto-pro-chilonzor');
+    await app.inject({
+      method: 'POST',
+      url: '/api/places/chorsu-bozori-toshkent/reviews',
+      payload: { author: 'Dilnoza', rating: 5, comment: 'Ziravorlar juda yaxshi.' },
+    });
+    const res = await app.inject('/api/places/chorsu-bozori-toshkent');
     expect(res.statusCode).toBe(200);
     const place = res.json();
-    expect(place.name).toBe('AvtoPro Yunusobod & Chilonzor Servis');
-    expect(place.reviews.map((r) => r.author)).toEqual(['Davron Karimov', 'Azizbek Qodirov']);
+    expect(place.name).toBe('Chorsu bozori');
+    expect(place.source).toMatch(/^OpenStreetMap (node|way|relation)\/\d+$/);
+    expect(place.reviews.map((r) => r.author)).toEqual(['Dilnoza']);
+    expect(place).toMatchObject({ rating: 5, reviewsCount: 1 });
+  });
+
+  it('starts every catalog place without ratings or invented reviews', async () => {
+    const places = (await app.inject('/api/places')).json();
+    expect(places.every((p) => p.rating === 0 && p.reviewsCount === 0)).toBe(true);
   });
 
   it('returns 404 for unknown places', async () => {
@@ -48,17 +60,18 @@ describe('public places API', () => {
     const { place, review } = res.json();
     expect(review.status).toBe('published');
     expect(place.reviewsCount).toBe(before.reviewsCount + 1);
-    expect(place.rating).toBeLessThanOrEqual(before.rating);
+    expect(before).toMatchObject({ rating: 0, reviewsCount: 0 });
+    expect(place.rating).toBe(1);
   });
 
   it('stores review text verbatim and never as markup', async () => {
     const comment = "<img src=x onerror=alert(1)> zo'r";
     await app.inject({
       method: 'POST',
-      url: '/api/places/auto-pro-chilonzor/reviews',
+      url: '/api/places/chorsu-bozori-toshkent/reviews',
       payload: { author: 'Hacker', rating: 5, comment },
     });
-    const place = (await app.inject('/api/places/auto-pro-chilonzor')).json();
+    const place = (await app.inject('/api/places/chorsu-bozori-toshkent')).json();
     expect(place.reviews[0].comment).toBe(comment);
   });
 
@@ -71,7 +84,7 @@ describe('public places API', () => {
   ])('rejects invalid review %j', async (payload) => {
     const res = await app.inject({
       method: 'POST',
-      url: '/api/places/auto-pro-chilonzor/reviews',
+      url: '/api/places/chorsu-bozori-toshkent/reviews',
       payload,
     });
     expect(res.statusCode).toBe(400);
@@ -81,7 +94,7 @@ describe('public places API', () => {
     const send = () =>
       app.inject({
         method: 'POST',
-        url: '/api/places/auto-pro-chilonzor/reviews',
+        url: '/api/places/chorsu-bozori-toshkent/reviews',
         payload: { author: 'Ali', rating: 5, comment: 'yaxshi' },
       });
     for (let i = 0; i < 5; i++) expect((await send()).statusCode).toBe(201);

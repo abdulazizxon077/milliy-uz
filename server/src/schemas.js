@@ -3,6 +3,13 @@ import { CATEGORY_IDS, REGION_IDS, REPORT_REASON_IDS } from '../../shared/catalo
 const text = (maxLength, minLength = 0) => ({ type: 'string', minLength, maxLength });
 const time = { type: 'string', pattern: '^(([01]\\d|2[0-3]):[0-5]\\d|24:00)$' };
 const phone = { type: 'string', pattern: '^[+0-9 ()-]{2,32}$' };
+const optionalPhone = { anyOf: [phone, { type: 'string', maxLength: 0 }] };
+const httpsUrl = {
+  anyOf: [
+    { type: 'string', maxLength: 0 },
+    { type: 'string', maxLength: 500, pattern: '^https?://[^\\s]+$' },
+  ],
+};
 
 const placeProperties = {
   name: text(160, 2),
@@ -15,8 +22,8 @@ const placeProperties = {
   experienceYears: { type: 'integer', minimum: 0, maximum: 200 },
   experienceText: text(160),
   chiefSpecialist: text(200),
-  phone,
-  secondaryPhone: { anyOf: [phone, { type: 'string', maxLength: 0 }] },
+  phone: optionalPhone,
+  secondaryPhone: optionalPhone,
   // Uzbekistan bounding box with a small margin.
   lat: { type: 'number', minimum: 37, maximum: 46 },
   lng: { type: 'number', minimum: 55, maximum: 74 },
@@ -38,6 +45,12 @@ const placeProperties = {
   },
   features: { type: 'array', maxItems: 30, items: text(160, 1) },
   workDays: text(160),
+  // OpenStreetMap opening_hours syntax, e.g. "Mo-Fr 09:00-18:00; Sa 10:00-14:00".
+  openingHours: text(300),
+  website: httpsUrl,
+  imageCredit: text(300),
+  imageSource: httpsUrl,
+  source: text(160),
   image: {
     anyOf: [
       { type: 'string', maxLength: 0 },
@@ -51,7 +64,7 @@ const placeId = { type: 'string', pattern: '^[a-z0-9][a-z0-9-]{0,79}$' };
 export const placeCreateSchema = {
   type: 'object',
   additionalProperties: false,
-  required: ['name', 'category', 'region', 'phone', 'lat', 'lng'],
+  required: ['name', 'category', 'region', 'lat', 'lng'],
   properties: placeProperties,
 };
 

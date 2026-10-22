@@ -52,7 +52,7 @@ describe('admin auth', () => {
     for (const [method, url] of [
       ['GET', '/api/admin/stats'],
       ['POST', '/api/admin/places'],
-      ['DELETE', '/api/admin/places/auto-pro-chilonzor'],
+      ['DELETE', '/api/admin/places/chorsu-bozori-toshkent'],
       ['GET', '/api/admin/reviews'],
       ['GET', '/api/admin/places/export'],
     ]) {
@@ -86,14 +86,24 @@ describe('admin API', () => {
     expect(created.statusCode).toBe(201);
     const { id, categoryName } = created.json();
     expect(id).toMatch(/^test-ustaxona-/);
-    expect(categoryName).toBe('Avto Ustaxona');
+    expect(categoryName).toBe('Avtoservis');
 
     const updated = await req({
       method: 'PUT',
       url: `/api/admin/places/${id}`,
-      payload: { rating: 4.2 },
+      payload: { openingHours: 'Mo-Fr 09:00-18:00; Sa 10:00-14:00', website: 'https://example.uz' },
     });
-    expect(updated.json().rating).toBe(4.2);
+    expect(updated.json()).toMatchObject({
+      openingHours: 'Mo-Fr 09:00-18:00; Sa 10:00-14:00',
+      website: 'https://example.uz',
+    });
+
+    const unreadable = await req({
+      method: 'PUT',
+      url: `/api/admin/places/${id}`,
+      payload: { openingHours: 'har kuni ertalabdan' },
+    });
+    expect(unreadable.statusCode).toBe(400);
 
     expect((await req({ method: 'DELETE', url: `/api/admin/places/${id}` })).statusCode).toBe(204);
     expect((await app.inject(`/api/places/${id}`)).statusCode).toBe(404);
@@ -140,7 +150,7 @@ describe('admin API', () => {
   });
 
   it('hides and deletes reviews while keeping ratings consistent', async () => {
-    const placeUrl = '/api/places/auto-pro-chilonzor';
+    const placeUrl = '/api/places/chorsu-bozori-toshkent';
     const before = (await app.inject(placeUrl)).json();
     const { review } = (
       await app.inject({

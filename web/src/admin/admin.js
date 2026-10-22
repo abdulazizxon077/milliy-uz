@@ -1,6 +1,9 @@
 import { CATEGORIES, categoryName, REPORT_REASONS } from '../../../shared/catalog.js';
 import { api } from '../api.js';
-import { escapeHtml, safeImageUrl, FALLBACK_IMAGE } from '../lib/format.js';
+import { escapeHtml } from '../lib/format.js';
+import { placeThumbHtml } from '../ui/place-media.js';
+import { parseOpeningHours } from '../../../shared/opening-hours.js';
+import { COUNTRY_VIEW } from '../../../shared/catalog.js';
 import { notify, state } from '../state.js';
 import { refreshIcons } from '../ui/icons.js';
 import { closeModal, openModal } from '../ui/modal.js';
@@ -24,10 +27,54 @@ async function reloadPlaces() {
   renderPlacesTable();
 }
 
+let onExit = () => {};
+
+/**
+ * The sign-in dialog only exists in the page while /admin is open, so browsers
+ * and password managers never see a password field on the public pages.
+ */
+function mountLogin() {
+  if ($('admin-login-modal')) return;
+  const template = $('admin-login-template');
+  if (!template) return;
+  document.body.append(template.content.cloneNode(true));
+  refreshIcons();
+  $('admin-login-form').addEventListener('submit', login);
+  $('close-admin-login-modal').addEventListener('click', () => exitAdmin());
+  $('admin-login-modal').addEventListener('click', (e) => {
+    if (e.target.id === 'admin-login-modal') exitAdmin();
+  });
+}
+
+function unmountLogin() {
+  const modal = $('admin-login-modal');
+  if (!modal) return;
+  closeModal('admin-login-modal');
+  modal.remove();
+}
+
+function showLogin() {
+  mountLogin();
+  $('admin-login-error').classList.add('hidden');
+  openModal('admin-login-modal');
+  $('admin-username')?.focus();
+}
+
+/** Leaves the admin area: closes every admin dialog and returns to the site. */
+export function exitAdmin() {
+  closeModal('admin-edit-modal');
+  closeModal('admin-dashboard-modal');
+  unmountLogin();
+  onExit();
+}
+
+export const isLoginOpen = () =>
+  Boolean($('admin-login-modal')) && !$('admin-login-modal').classList.contains('hidden');
+
 function handleError(err) {
   if (err?.status === 401) {
     closeModal('admin-dashboard-modal');
-    openModal('admin-login-modal');
+    showLogin();
     showToast('Sessiya tugadi, qayta kiring');
     return;
   }
@@ -41,22 +88,20 @@ export async function openAdmin() {
     const me = await api.me();
     showDashboard(me.username);
   } catch {
-    $('admin-login-error').classList.add('hidden');
-    openModal('admin-login-modal');
-    $('admin-username')?.focus();
+    showLogin();
   }
 }
 
 function showDashboard(username) {
   $('admin-user-name').textContent = username;
   $('admin-user-initials').textContent = username.slice(0, 2).toUpperCase();
-  closeModal('admin-login-modal');
+  unmountLogin();
   openModal('admin-dashboard-modal');
   switchTab(activeTab);
 }
 
 export function closeAdmin() {
-  closeModal('admin-dashboard-modal');
+  exitAdmin();
 }
 
 async function login(event) {
@@ -161,12 +206,12 @@ function renderPlacesTable() {
           (p) => `
     <tr>
       <td><div class="flex items-center gap-3">
-        <img src="${escapeHtml(safeImageUrl(p.image))}" alt="" loading="lazy" decoding="async" width="40" height="40" class="w-10 h-10 rounded-lg object-cover" />
+        ${placeThumbHtml(p, 40)}
         <div class="min-w-0"><p class="font-bold text-white truncate max-w-[220px]">${escapeHtml(p.name)}</p><p class="text-[10px] text-[#64748b] truncate max-w-[220px]">${escapeHtml(p.address)}</p></div>
       </div></td>
       <td><span class="text-[10px] font-bold px-2 py-1 rounded-full bg-[#183a2d] text-[#b4f73a]">${escapeHtml(categoryName(p.category))}</span></td>
-      <td><p class="text-white">${escapeHtml(p.chiefSpecialist)}</p><p class="text-[10px] text-[#64748b]">${escapeHtml(p.experienceYears)} yil</p></td>
-      <td class="whitespace-nowrap">${escapeHtml(p.phone)}</td>
+      <td class="text-[10px] text-[#94a3b8] max-w-[180px] truncate">${escapeHtml(p.openingHours || '—')}</td>
+      <td class="whitespace-nowrap">${escapeHtml(p.phone || '—')}</td>
       <td class="text-[10px] text-[#94a3b8] whitespace-nowrap">${Number(p.lat).toFixed(4)}, ${Number(p.lng).toFixed(4)}</td>
       <td><span class="admin-badge-active">Faol</span></td>
       <td><div class="flex gap-1.5">
@@ -190,19 +235,21 @@ function openEditor(place) {
   field('name').value = place?.name ?? '';
   field('cat').value = place?.category ?? 'auto';
   field('region').value = place?.region ?? 'tashkent';
-  field('phone').value = place?.phone ?? '+998 ';
+  field('phone').value = place?.phone ?? '';
+  field('website').value = place?.website ?? '';
+  field('hours').value = place?.openingHours ?? '';
+  field('image-credit').value = place?.imageCredit ?? '';
+  field('image-source').value = place?.imageSource ?? '';
+  field('source').value = place?.source ?? '';
   field('master').value = place?.chiefSpecialist ?? '';
-  field('exp').value = place?.experienceYears ?? 5;
+  field('exp').value = place?.experienceYears ?? 0;
   field('sub').value = place?.subCategory ?? '';
-  field('address').value = place?.address ?? 'Toshkent shahri';
+  field('address').value = place?.address ?? '';
   field('landmark').value = place?.landmark ?? '';
   field('phone2').value = place?.secondaryPhone ?? '';
-  field('workdays').value = place?.workDays ?? 'Dushanba - Shanba';
-  field('open').value = place?.openTime ?? '09:00';
-  field('close').value = place?.closeTime === '24:00' ? '00:00' : (place?.closeTime ?? '18:00');
-  field('247').checked = Boolean(place?.is247);
-  field('lat').value = (place?.lat ?? state.userLocation.lat).toFixed(6);
-  field('lng').value = (place?.lng ?? state.userLocation.lng).toFixed(6);
+  const at = place ?? state.userLocation ?? COUNTRY_VIEW;
+  field('lat').value = at.lat.toFixed(6);
+  field('lng').value = at.lng.toFixed(6);
   field('price').value = place?.priceRange ?? '';
   field('image').value = place?.image ?? '';
   openModal('admin-edit-modal');
@@ -221,27 +268,32 @@ function readForm() {
     experienceYears: years,
     // Keep a hand-written experience note unless the number of years changed.
     experienceText:
-      original && original.experienceYears === years && original.experienceText
-        ? original.experienceText
-        : `${years} yillik professional tajriba`,
+      original && original.experienceYears === years ? (original.experienceText ?? '') : '',
     subCategory: field('sub').value.trim(),
     address: field('address').value.trim(),
     landmark: field('landmark').value.trim(),
     secondaryPhone: field('phone2').value.trim(),
-    workDays: field('workdays').value.trim() || 'Dushanba - Shanba',
-    openTime: field('open').value,
-    closeTime: field('close').value,
-    is247: field('247').checked,
+    openingHours: field('hours').value.trim(),
+    website: field('website').value.trim(),
     lat: Number(field('lat').value),
     lng: Number(field('lng').value),
-    priceRange: field('price').value.trim() || 'Kelishilgan narxda',
-    image: field('image').value.trim() || FALLBACK_IMAGE,
+    priceRange: field('price').value.trim(),
+    image: field('image').value.trim(),
+    imageCredit: field('image-credit').value.trim(),
+    imageSource: field('image-source').value.trim(),
+    source: field('source').value.trim(),
   };
 }
 
 async function savePlace(event) {
   event.preventDefault();
   const form = event.target;
+  const hours = field('hours');
+  hours.setCustomValidity(
+    hours.value.trim() && !parseOpeningHours(hours.value)
+      ? "Ish vaqtini tushunib bo'lmadi. Namuna: Mo-Fr 09:00-18:00; Sa 10:00-14:00"
+      : '',
+  );
   if (!form.reportValidity()) return;
   const data = readForm();
   try {
@@ -249,7 +301,7 @@ async function savePlace(event) {
     else
       await api.admin.createPlace({
         ...data,
-        rating: 5,
+        rating: 0,
         reviewsCount: 0,
         features: [],
         pricingDetails: [],
@@ -533,7 +585,8 @@ export function adminAction(name, el) {
   return true;
 }
 
-export function initAdmin() {
+export function initAdmin({ onLeave } = {}) {
+  if (onLeave) onExit = onLeave;
   const catFilter = $('admin-category-filter');
   if (catFilter && catFilter.options.length <= 1) {
     catFilter.insertAdjacentHTML(
@@ -543,11 +596,9 @@ export function initAdmin() {
       ).join(''),
     );
   }
-  $('secret-admin-trigger')?.addEventListener('click', openAdmin);
-  $('admin-login-form')?.addEventListener('submit', login);
-  $('close-admin-login-modal')?.addEventListener('click', () => closeModal('admin-login-modal'));
   $('admin-logout-btn')?.addEventListener('click', logout);
   $('admin-edit-place-form')?.addEventListener('submit', savePlace);
+  $('edit-p-hours')?.addEventListener('input', (e) => e.target.setCustomValidity(''));
   $('admin-search-input')?.addEventListener('input', renderPlacesTable);
   catFilter?.addEventListener('change', renderPlacesTable);
   $('admin-reports-filter')?.addEventListener('change', loadReports);

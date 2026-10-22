@@ -3,16 +3,31 @@
  */
 
 export const CATEGORIES = [
-  { id: 'auto', name: 'Avto Ustaxona', desc: 'Mator, Xodovoy, Gaz', icon: 'wrench' },
-  { id: 'gas', name: 'Zapravka & EV', desc: 'Metan 220 bar, TokBor', icon: 'fuel' },
-  { id: 'medical', name: 'Shifoxona & Dori', desc: 'Davlat, Xususiy, 103', icon: 'stethoscope' },
-  { id: 'police', name: 'Militsiya 102', desc: 'IIB, Prokuratura, YHXX', icon: 'shield-alert' },
-  { id: 'gov', name: 'Davlat Xizmatlari', desc: 'DXM, FHDYo, E-imzo', icon: 'landmark' },
-  { id: 'food', name: 'Choyxona & Osh', desc: 'Milliy taomlar, Kafelar', icon: 'utensils' },
-  { id: 'market', name: 'Savdo & Bozor', desc: 'Chorsu, Gipermarketlar', icon: 'shopping-bag' },
-  { id: 'edu', name: "Ta'lim & OTM", desc: 'Universitet, IT kurslar', icon: 'graduation-cap' },
-  { id: 'sport', name: 'Sport & Fitnes', desc: 'Basseyn, Trenajyor', icon: 'dumbbell' },
-  { id: 'parks', name: 'Parklar & Hordiq', desc: "Xiyobon, Muzey, Ko'l", icon: 'trees' },
+  { id: 'auto', name: 'Avtoservis', desc: "Ustaxona va texnik xizmat ko'rsatish", icon: 'wrench' },
+  { id: 'gas', name: "Yoqilg'i & EV", desc: 'Zapravka va elektromobil zaryadlash', icon: 'fuel' },
+  { id: 'medical', name: 'Tibbiyot', desc: 'Shifoxona va klinikalar', icon: 'stethoscope' },
+  {
+    id: 'police',
+    name: 'Huquq-tartibot',
+    desc: 'Ichki ishlar organi, prokuratura',
+    icon: 'shield-alert',
+  },
+  {
+    id: 'gov',
+    name: 'Davlat idoralari',
+    desc: "Hokimlik, pochta, FVV bo'limlari",
+    icon: 'landmark',
+  },
+  { id: 'food', name: 'Ovqatlanish', desc: 'Restoran, choyxona va kafelar', icon: 'utensils' },
+  {
+    id: 'market',
+    name: 'Savdo & Bozor',
+    desc: 'Bozor, savdo markazi, supermarket',
+    icon: 'shopping-bag',
+  },
+  { id: 'edu', name: "Ta'lim", desc: "Universitet va oliy ta'lim", icon: 'graduation-cap' },
+  { id: 'sport', name: 'Sport', desc: 'Stadion, sport majmuasi, fitnes', icon: 'dumbbell' },
+  { id: 'parks', name: 'Park & Muzey', desc: 'Xiyobon, park va muzeylar', icon: 'trees' },
 ];
 
 export const CATEGORY_IDS = CATEGORIES.map((c) => c.id);

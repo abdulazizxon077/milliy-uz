@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
 import { createTestApp, login } from './helpers.js';
 
-const PLACE = 'auto-pro-chilonzor';
+const PLACE = 'chorsu-bozori-toshkent';
 
 describe('information reports', () => {
   let app;

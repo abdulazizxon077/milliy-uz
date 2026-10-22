@@ -3,691 +3,768 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>MILLIY.UZ — O'zbekiston xizmatlar katalogi</title>
+    <title>MILLIY.UZ — O'zbekiston joylari katalogi</title>
     <meta
       name="description"
-      content="Ustaxonalar, shifoxonalar, zapravkalar, DXM, ta'lim va sport obyektlari. Hudud, masofa va telefon bilan milliy katalog."
+      content="O'zbekiston bo'ylab shifoxonalar, davlat idoralari, zapravkalar, bozorlar, muzeylar va boshqa joylar: manzil, ish vaqti, telefon va xarita. Ma'lumotlar OpenStreetMap ochiq bazasidan."
     />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="MILLIY.UZ" />
-    <meta property="og:title" content="MILLIY.UZ — O'zbekiston xizmatlar katalogi" />
+    <meta property="og:locale" content="uz_UZ" />
+    <meta property="og:title" content="MILLIY.UZ — O'zbekiston joylari katalogi" />
     <meta
       property="og:description"
-      content="Ustaxonalar, shifoxonalar, zapravkalar, DXM, ta'lim va sport obyektlari. Hudud, masofa va telefon bilan milliy katalog."
+      content="O'zbekiston bo'ylab shifoxonalar, davlat idoralari, zapravkalar, bozorlar, muzeylar va boshqa joylar: manzil, ish vaqti, telefon va xarita. Ma'lumotlar OpenStreetMap ochiq bazasidan."
     />
+    <meta property="og:image" content="/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
     <meta name="theme-color" content="#071510" />
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
     <link rel="manifest" href="/manifest.webmanifest" />
     <script type="module" src="/src/main.js"></script>
   </head>
   <body class="selection:bg-[#b4f73a] selection:text-[#071510]">
-    <!-- ========================================================
-       1. PUBLIC HEADER / NAVIGATION
-       ======================================================== -->
-    <header class="sticky top-0 z-40 glass-nav px-4 lg:px-12 py-3.5 transition-all">
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
-        <!-- Brand Logo -->
-        <a href="#hero-section" class="flex items-center gap-3 cursor-pointer text-decoration-none">
-          <div
+    <a href="#main-content" class="skip-link">Asosiy mazmunga o'tish</a>
+
+    <header class="sticky top-0 z-40 glass-nav px-4 lg:px-12 py-3">
+      <div class="max-w-7xl mx-auto flex items-center justify-between gap-4">
+        <a
+          href="/"
+          data-nav-home
+          class="flex items-center gap-3"
+          aria-label="MILLIY.UZ bosh sahifa"
+        >
+          <span
             class="w-10 h-10 rounded-2xl bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-[#b4f73a] shadow-lg shadow-[#b4f73a]/10"
           >
-            <i data-lucide="layers" class="w-5 h-5"></i>
-          </div>
-          <div>
+            <i data-lucide="map-pin" class="w-5 h-5"></i>
+          </span>
+          <span>
             <span
-              class="text-xl font-extrabold tracking-wider text-white uppercase font-['Plus_Jakarta_Sans']"
+              class="block text-xl font-extrabold tracking-wider text-white uppercase leading-none"
             >
               MILLIY<span class="text-[#b4f73a]">.UZ</span>
             </span>
-            <span class="block text-[10px] tracking-widest text-[#94a3b8] uppercase font-bold"
-              >Milliy katalog</span
+            <span class="block text-[10px] tracking-widest text-[#94a3b8] uppercase font-bold mt-1"
+              >O'zbekiston joylari</span
             >
-          </div>
+          </span>
         </a>
 
-        <!-- Smooth Scroll Navigation Pills -->
         <nav
           aria-label="Bo'limlar"
-          class="hidden md:flex items-center gap-1 bg-[#091b14] border border-[#183a2d] p-1.5 rounded-full shadow-inner"
+          class="hidden md:flex items-center gap-1 bg-[#091b14] border border-[#183a2d] p-1.5 rounded-full"
         >
-          <a href="#hero-section" data-scroll-to="hero-section" class="nav-pill active">
-            <i data-lucide="home" class="w-4 h-4"></i>
-            <span>Asosiy</span>
-          </a>
-          <a href="#categories-section" data-scroll-to="categories-section" class="nav-pill">
-            <i data-lucide="grid" class="w-4 h-4"></i>
-            <span>Sohalar</span>
-          </a>
-          <a href="#catalog-section" data-scroll-to="catalog-section" class="nav-pill">
+          <a href="/#catalog-section" data-scroll-to="catalog-section" class="nav-pill">
             <i data-lucide="layout-grid" class="w-4 h-4"></i>
             <span>Katalog</span>
           </a>
-          <a href="#map-section" data-scroll-to="map-section" class="nav-pill">
+          <a href="/#map-section" data-scroll-to="map-section" class="nav-pill">
             <i data-lucide="map" class="w-4 h-4"></i>
             <span>Xarita</span>
           </a>
-          <a href="#ai-section" data-scroll-to="ai-section" class="nav-pill">
+          <a href="/#ai-section" data-scroll-to="ai-section" class="nav-pill">
             <i data-lucide="messages-square" class="w-4 h-4"></i>
             <span>Konsultant</span>
           </a>
+          <a href="/haqida" data-nav-page="haqida" class="nav-pill">
+            <i data-lucide="info" class="w-4 h-4"></i>
+            <span>Loyiha haqida</span>
+          </a>
         </nav>
 
-        <!-- Right Actions: Bookmarks & AI Quick Trigger -->
-        <div class="flex items-center gap-3">
-          <!-- Bookmarks Button -->
+        <div class="flex items-center gap-2">
           <button
             id="open-bookmarks-btn"
-            class="w-10 h-10 rounded-full bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-white hover:text-[#b4f73a] hover:border-[#b4f73a] transition-all relative"
+            type="button"
+            class="icon-btn relative"
             title="Saqlangan joylar"
             aria-label="Saqlangan joylar"
           >
             <i data-lucide="bookmark" class="w-4 h-4"></i>
             <span
               id="bookmarks-count-pill"
-              class="hidden absolute -top-1 -right-1 w-4 h-4 bg-[#b4f73a] text-[#071510] text-[10px] font-black rounded-full flex items-center justify-center"
+              class="hidden absolute -top-1 -right-1 min-w-4 h-4 px-1 bg-[#b4f73a] text-[#071510] text-[10px] font-black rounded-full flex items-center justify-center"
               >0</span
             >
           </button>
-
-          <button
-            data-action="scroll-to"
-            data-target="ai-section"
-            class="w-10 h-10 rounded-full bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-white hover:text-[#b4f73a] hover:border-[#b4f73a] transition-colors"
-            title="Konsultant"
-            aria-label="Konsultant"
-          >
-            <i data-lucide="messages-square" class="w-4 h-4"></i>
-          </button>
-
-          <!-- Region Indicator -->
-          <div
-            class="px-3 py-1.5 rounded-full bg-[#183a2d] border border-[#265945] text-white font-bold text-xs flex items-center gap-1.5"
-          >
-            <i data-lucide="globe" class="w-3.5 h-3.5 text-emerald-400"></i>
-            <span>UZ</span>
-          </div>
+          <a href="tel:112" class="sos-pill" title="Yagona favqulodda xizmat">
+            <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+            <span>112</span>
+          </a>
         </div>
       </div>
     </header>
 
-    <!-- Mobil pastki navigatsiya -->
     <nav id="mobile-nav" class="mobile-nav md:hidden" aria-label="Bo'limlar">
-      <a href="#hero-section" data-scroll-to="hero-section" class="mobile-nav-item active">
+      <a href="/#hero-section" data-scroll-to="hero-section" class="mobile-nav-item">
         <i data-lucide="home" class="w-5 h-5"></i>
         <span>Asosiy</span>
       </a>
-      <a href="#categories-section" data-scroll-to="categories-section" class="mobile-nav-item">
-        <i data-lucide="grid" class="w-5 h-5"></i>
-        <span>Sohalar</span>
-      </a>
-      <a href="#catalog-section" data-scroll-to="catalog-section" class="mobile-nav-item">
+      <a href="/#catalog-section" data-scroll-to="catalog-section" class="mobile-nav-item">
         <i data-lucide="layout-grid" class="w-5 h-5"></i>
         <span>Katalog</span>
       </a>
-      <a href="#map-section" data-scroll-to="map-section" class="mobile-nav-item">
+      <a href="/#map-section" data-scroll-to="map-section" class="mobile-nav-item">
         <i data-lucide="map" class="w-5 h-5"></i>
         <span>Xarita</span>
       </a>
-      <a href="#ai-section" data-scroll-to="ai-section" class="mobile-nav-item">
+      <a href="/#ai-section" data-scroll-to="ai-section" class="mobile-nav-item">
         <i data-lucide="messages-square" class="w-5 h-5"></i>
         <span>Konsultant</span>
       </a>
+      <a href="/haqida" data-nav-page="haqida" class="mobile-nav-item">
+        <i data-lucide="info" class="w-5 h-5"></i>
+        <span>Haqida</span>
+      </a>
     </nav>
 
-    <!-- ========================================================
-       2. ASOSIY KONTENT SOHASI (UZLUKSIZ OQIM)
-       ======================================================== -->
-    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-16">
-      <div
-        id="offline-banner"
-        class="hidden rounded-2xl p-3 border border-amber-500/40 bg-amber-950/40 text-amber-200 text-xs font-semibold"
-        role="status"
-      >
-        Internet aloqasi yo'q. Shoshilinch raqamlar quyida doim ishlaydi.
-      </div>
-
-      <!-- ==================== 0. SHOSHILINCH TEZKOR ALOQA (SOS) ==================== -->
-      <div
-        id="emergency-sos-bar"
-        class="rounded-2xl p-3 border border-[#183a2d] bg-[#071912]/90 backdrop-blur-md flex flex-wrap items-center justify-between gap-3 shadow-lg"
-      >
-        <div class="flex items-center gap-2 px-2 text-xs font-bold text-white">
-          <div class="w-2.5 h-2.5 rounded-full bg-red-500 animate-pulse"></div>
-          <span class="text-[#cbd5e1]">Tezkor Yordam & Ishonch Raqamlari:</span>
-        </div>
-        <div class="flex items-center flex-wrap gap-2 text-xs font-bold">
-          <a href="tel:101" class="sos-btn" title="Yong'in xavfsizligi xizmati">
-            <i data-lucide="flame" class="w-3.5 h-3.5 text-orange-400"></i>
-            <span>101</span>
-            <span class="text-[10px] text-[#94a3b8] font-medium hidden sm:inline">Yong'in</span>
-          </a>
-          <a href="tel:102" class="sos-btn" title="Ichki ishlar / Militsiya">
-            <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-blue-400"></i>
-            <span>102</span>
-            <span class="text-[10px] text-[#94a3b8] font-medium hidden sm:inline">Militsiya</span>
-          </a>
-          <a href="tel:103" class="sos-btn" title="Tez tibbiy yordam">
-            <i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-red-400"></i>
-            <span>103</span>
-            <span class="text-[10px] text-[#94a3b8] font-medium hidden sm:inline">Tez Yordam</span>
-          </a>
-          <a href="tel:104" class="sos-btn" title="Gaz avariya dispetcherlik xizmati">
-            <i data-lucide="fuel" class="w-3.5 h-3.5 text-yellow-400"></i>
-            <span>104</span>
-            <span class="text-[10px] text-[#94a3b8] font-medium hidden sm:inline">Gaz Avariya</span>
-          </a>
-          <a
-            href="tel:1050"
-            class="sos-btn"
-            title="Favqulodda vaziyatlar vazirligi qutqaruv xizmati"
-          >
-            <i data-lucide="life-buoy" class="w-3.5 h-3.5 text-emerald-400"></i>
-            <span>1050</span>
-            <span class="text-[10px] text-[#94a3b8] font-medium hidden sm:inline"
-              >FVV Qutqaruv</span
-            >
-          </a>
-          <a href="tel:112" class="sos-btn" title="Yagona favqulodda xizmat">
-            <i data-lucide="phone-call" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
-            <span>112</span>
-            <span class="text-[10px] text-[#94a3b8] font-medium hidden sm:inline">Yagona 112</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- ==================== 1. HERO SECTION ==================== -->
-      <section id="hero-section" class="scroll-mt-24">
+    <main id="main-content" class="max-w-7xl mx-auto px-4 lg:px-8 py-6" tabindex="-1">
+      <div id="home-view" class="space-y-16">
         <div
-          class="relative rounded-[32px] overflow-hidden glass-panel border border-[#183a2d] p-8 lg:p-14 bg-gradient-to-br from-[#0d261c] via-[#071510] to-[#040e0a]"
+          id="offline-banner"
+          class="hidden rounded-2xl p-3 border border-amber-500/40 bg-amber-950/40 text-amber-200 text-xs font-semibold"
+          role="status"
         >
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            <div class="lg:col-span-7 space-y-6">
-              <div class="badge-platform">O'ZBEKISTON MILLIY PLATFORMASI</div>
+          Internet aloqasi yo'q. Oxirgi saqlangan katalog ko'rsatilmoqda; favqulodda raqamlar doim
+          ishlaydi.
+        </div>
 
-              <h1
-                class="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-[1.15]"
-              >
-                O'zingizga kerak bo'lgan<br />
-                <span class="text-[#b4f73a]">soha va xodimlarni</span><br />
-                tanlang
-              </h1>
-
-              <p class="text-base sm:text-lg text-[#94a3b8] max-w-xl font-normal leading-relaxed">
-                Shifokor, usta, DXM, zapravka va o'quv markazlari bitta katalogda: telefon, manzil,
-                ish vaqti va xarita.
-              </p>
-
-              <div class="flex flex-wrap items-center gap-4 pt-2">
-                <button data-action="scroll-to" data-target="catalog-section" class="neon-btn">
-                  <span>Katalogni ochish</span>
-                  <i data-lucide="arrow-down" class="w-4 h-4"></i>
-                </button>
-
-                <button data-action="scroll-to" data-target="ai-section" class="neon-btn-secondary">
-                  <i data-lucide="messages-square" class="w-4 h-4"></i>
-                  <span>Konsultantdan so'rash</span>
-                </button>
-              </div>
-
-              <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-[#183a2d]/60">
-                <div class="flex items-center gap-2 text-xs text-[#cbd5e1]">
-                  <i data-lucide="map-pin" class="w-4 h-4 text-emerald-400"></i>
-                  <span class="font-medium">14 ta hudud</span>
-                </div>
-                <div class="flex items-center gap-2 text-xs text-[#cbd5e1]">
-                  <i data-lucide="briefcase" class="w-4 h-4 text-[#b4f73a]"></i>
-                  <span class="font-medium">10 ta soha</span>
-                </div>
-                <div class="flex items-center gap-2 text-xs text-[#cbd5e1]">
-                  <i data-lucide="navigation" class="w-4 h-4 text-emerald-400"></i>
-                  <span class="font-medium">Marshrut</span>
-                </div>
-                <div class="flex items-center gap-2 text-xs text-[#cbd5e1]">
-                  <i data-lucide="phone" class="w-4 h-4 text-[#e2b170]"></i>
-                  <span class="font-medium">To'g'ridan-to'g'ri aloqa</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- O'ng tomon: Kasb egalari jamoasi vitrinasi -->
-            <div class="lg:col-span-5 relative flex items-center justify-center">
-              <div class="relative z-10 w-full max-w-sm glass-panel p-6 border border-[#183a2d]">
-                <div class="flex items-center justify-between mb-4">
-                  <span
-                    class="text-[11px] font-bold uppercase tracking-wider text-[#b4f73a] bg-[#102d20] px-3 py-1 rounded-full border border-[#1b3b2f]"
-                  >
-                    10 soha
-                  </span>
-                  <span class="text-xs font-semibold text-[#94a3b8]">14 ta hudud</span>
-                </div>
-
-                <div class="hero-mosaic mb-4">
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="auto"
-                  >
-                    <i data-lucide="wrench" class="w-5 h-5"></i>
-                    <span>Ustalar</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="medical"
-                  >
-                    <i data-lucide="stethoscope" class="w-5 h-5"></i>
-                    <span>Tibbiyot</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="gov"
-                  >
-                    <i data-lucide="landmark" class="w-5 h-5"></i>
-                    <span>DXM</span>
-                  </button>
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="gas"
-                  >
-                    <i data-lucide="fuel" class="w-5 h-5"></i>
-                    <span>Zapravka</span>
-                  </button>
-                </div>
-
-                <h3 class="font-extrabold text-lg text-white mb-1">Mutaxassis va tashkilotlar</h3>
-                <p class="text-xs text-[#94a3b8] mb-4 leading-relaxed">
-                  Tajriba, telefon, ish vaqti va marshrut bir kartochkada.
+        <section id="hero-section" class="scroll-mt-24">
+          <div
+            class="hero-panel relative rounded-[32px] overflow-hidden border border-[#183a2d] p-6 sm:p-10 lg:p-14"
+          >
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center relative z-10">
+              <div class="lg:col-span-7 space-y-6">
+                <p class="badge-platform">Ochiq ma'lumotlarga asoslangan katalog</p>
+                <h1
+                  class="text-3xl sm:text-4xl lg:text-[52px] font-black tracking-tight text-white leading-[1.1]"
+                >
+                  O'zbekiston bo'ylab<br />
+                  <span class="text-[#b4f73a]">kerakli joyni</span> tez toping
+                </h1>
+                <p class="text-base sm:text-lg text-[#94a3b8] max-w-xl leading-relaxed">
+                  Shifoxona, davlat idorasi, zapravka, bozor, muzey va boshqa joylar — manzil, ish
+                  vaqti, telefon va xarita bir joyda.
                 </p>
 
-                <div class="grid grid-cols-2 gap-2">
-                  <button
-                    data-action="scroll-to"
-                    data-target="categories-section"
-                    class="py-2.5 bg-[#0f271e] hover:bg-[#183a2d] border border-[#183a2d] rounded-xl text-xs font-bold text-center text-white flex items-center justify-center gap-1.5 transition-all"
-                  >
-                    <i data-lucide="grid" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
-                    Sohalar
+                <form id="hero-search-form" role="search" class="hero-search" autocomplete="off">
+                  <label for="hero-search-input" class="sr-only">Joy qidirish</label>
+                  <i data-lucide="search" class="w-5 h-5 text-[#64748b] shrink-0"></i>
+                  <input
+                    id="hero-search-input"
+                    name="hero-query"
+                    type="search"
+                    autocomplete="off"
+                    enterkeyhint="search"
+                    spellcheck="false"
+                    placeholder="Masalan: Chorsu, shifoxona, Samarqand..."
+                    class="flex-1 min-w-0 bg-transparent text-sm sm:text-base text-white placeholder-[#64748b] outline-none"
+                  />
+                  <button type="submit" class="neon-btn py-2.5 px-5 text-sm">
+                    <span>Qidirish</span>
                   </button>
-                  <button
-                    data-action="scroll-to"
-                    data-target="catalog-section"
-                    class="py-2.5 bg-[#b4f73a] hover:bg-[#c4fa58] rounded-xl text-xs font-black text-[#071510] text-center flex items-center justify-center gap-1.5 transition-all"
-                  >
-                    <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
-                    Ro'yxat
-                  </button>
+                </form>
+
+                <dl class="grid grid-cols-3 gap-3 pt-2 max-w-lg">
+                  <div class="hero-stat">
+                    <dt>Joylar</dt>
+                    <dd id="hero-stat-places">—</dd>
+                  </div>
+                  <div class="hero-stat">
+                    <dt>Hududlar</dt>
+                    <dd id="hero-stat-regions">—</dd>
+                  </div>
+                  <div class="hero-stat">
+                    <dt>Hozir ochiq</dt>
+                    <dd id="hero-stat-open">—</dd>
+                  </div>
+                </dl>
+              </div>
+
+              <div class="lg:col-span-5">
+                <div class="glass-panel p-5 sm:p-6 border border-[#183a2d] max-w-md mx-auto">
+                  <div class="flex items-center justify-between mb-4">
+                    <h2 class="font-extrabold text-white text-base">Tezkor tanlov</h2>
+                    <span class="text-[11px] text-[#94a3b8] font-semibold">Bir bosishda</span>
+                  </div>
+                  <div class="hero-mosaic">
+                    <button
+                      type="button"
+                      class="hero-tile"
+                      data-action="select-category"
+                      data-category="medical"
+                    >
+                      <i data-lucide="stethoscope" class="w-5 h-5"></i>
+                      <span>Tibbiyot</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="hero-tile"
+                      data-action="select-category"
+                      data-category="gov"
+                    >
+                      <i data-lucide="landmark" class="w-5 h-5"></i>
+                      <span>Davlat idoralari</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="hero-tile"
+                      data-action="select-category"
+                      data-category="gas"
+                    >
+                      <i data-lucide="fuel" class="w-5 h-5"></i>
+                      <span>Yoqilg'i</span>
+                    </button>
+                    <button
+                      type="button"
+                      class="hero-tile"
+                      data-action="select-category"
+                      data-category="market"
+                    >
+                      <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                      <span>Bozorlar</span>
+                    </button>
+                  </div>
+                  <div class="mt-4 rounded-2xl border border-[#183a2d] bg-[#071510] p-4">
+                    <p class="text-[10px] font-bold uppercase tracking-wider text-[#b4f73a]">
+                      Favqulodda raqamlar
+                    </p>
+                    <div class="mt-3 grid grid-cols-3 gap-2 text-xs font-bold">
+                      <a href="tel:101" class="sos-btn" title="Yong'in xavfsizligi xizmati"
+                        ><i data-lucide="flame" class="w-3.5 h-3.5 text-orange-400"></i>101</a
+                      >
+                      <a href="tel:102" class="sos-btn" title="Ichki ishlar organlari"
+                        ><i data-lucide="shield-alert" class="w-3.5 h-3.5 text-blue-400"></i>102</a
+                      >
+                      <a href="tel:103" class="sos-btn" title="Tez tibbiy yordam"
+                        ><i data-lucide="heart-pulse" class="w-3.5 h-3.5 text-red-400"></i>103</a
+                      >
+                      <a href="tel:104" class="sos-btn" title="Gaz avariya xizmati"
+                        ><i data-lucide="flame-kindling" class="w-3.5 h-3.5 text-yellow-400"></i
+                        >104</a
+                      >
+                      <a href="tel:1050" class="sos-btn" title="FVV qutqaruv xizmati"
+                        ><i data-lucide="life-buoy" class="w-3.5 h-3.5 text-emerald-400"></i>1050</a
+                      >
+                      <a href="tel:112" class="sos-btn" title="Yagona favqulodda xizmat"
+                        ><i data-lucide="phone-call" class="w-3.5 h-3.5 text-[#b4f73a]"></i>112</a
+                      >
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      <!-- ==================== 2. BARCHA SOHALAR VA KATALOGLAR ==================== -->
-      <section id="categories-section" class="scroll-mt-24 space-y-6">
-        <div class="flex items-center justify-between">
-          <div>
-            <h2 class="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight">
-              Katalog Bo'yicha Qidiruv
-            </h2>
-            <p class="text-xs sm:text-sm text-[#94a3b8] mt-1">
-              O'zbekistonda mavjud barcha 10 ta asosiy soha va xizmatlar to'plami
+        <section
+          id="categories-section"
+          class="scroll-mt-24 space-y-6"
+          aria-labelledby="categories-title"
+        >
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Sohalar</p>
+              <h2 id="categories-title" class="section-title">Nima qidiryapsiz?</h2>
+            </div>
+            <p class="section-lead">
+              Har bir sohada tanlangan hudud va filtrlar bo'yicha nechta joy borligi ko'rsatiladi.
             </p>
           </div>
-        </div>
-
-        <!-- BARCHA 10 TA SOHA EKRANNING O'ZIDA -->
-        <div id="all-categories-grid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4">
-          <!-- JS orqali to'ldiriladi -->
-        </div>
-      </section>
-
-      <!-- ==================== 3. KATALOG VA QIDIRUV ==================== -->
-      <section id="catalog-section" class="scroll-mt-24 space-y-6">
-        <div class="glass-panel p-6 space-y-5">
-          <div class="flex items-center justify-between border-b border-[#183a2d] pb-4">
-            <div class="flex items-center gap-2">
-              <i data-lucide="filter" class="w-5 h-5 text-[#b4f73a]"></i>
-              <h3 class="font-extrabold text-white text-base sm:text-lg">
-                Xizmatlar va Obyektlar Ro'yxati
-              </h3>
-            </div>
-            <div
-              id="places-count-badge"
-              class="text-xs font-bold text-[#b4f73a] bg-[#102d20] border border-[#1b3b2f] px-3.5 py-1 rounded-full"
-            >
-              Natijalar...
-            </div>
+          <div
+            id="all-categories-grid"
+            class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4"
+          >
+            <div class="skeleton h-36 rounded-3xl"></div>
+            <div class="skeleton h-36 rounded-3xl"></div>
+            <div class="skeleton h-36 rounded-3xl"></div>
+            <div class="skeleton h-36 rounded-3xl"></div>
+            <div class="skeleton h-36 rounded-3xl"></div>
           </div>
+        </section>
 
-          <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
-            <div class="md:col-span-6 relative">
-              <i
-                data-lucide="search"
-                class="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2"
-              ></i>
-              <input
-                id="catalog-search-input"
-                type="text"
-                placeholder="Ustaxona, shifoxona, mutaxassis ismi yoki manzil..."
-                class="w-full bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-2xl py-3 pl-11 pr-4 text-sm text-white placeholder-[#64748b] outline-none transition-colors"
-              />
-            </div>
-
-            <div class="md:col-span-3">
-              <select
-                id="catalog-region-select"
-                class="w-full bg-[#071510] border border-[#183a2d] text-white text-xs font-semibold rounded-2xl p-3 outline-none cursor-pointer focus:border-[#b4f73a]"
-              >
-                <option value="all_uz">Butun O'zbekiston (14 ta hudud)</option>
-                <option value="tashkent" selected>Toshkent shahri</option>
-                <option value="samarkand">Samarqand viloyati</option>
-                <option value="fergana">Farg'ona viloyati</option>
-                <option value="andijan">Andijon viloyati</option>
-                <option value="namangan">Namangan viloyati</option>
-                <option value="bukhara">Buxoro viloyati</option>
-                <option value="qashqadaryo">Qashqadaryo viloyati</option>
-                <option value="surxondaryo">Surxondaryo viloyati</option>
-                <option value="navoiy">Navoiy viloyati</option>
-                <option value="xorazm">Xorazm viloyati</option>
-                <option value="jizzax">Jizzax viloyati</option>
-                <option value="sirdaryo">Sirdaryo viloyati</option>
-                <option value="karakalpak">Qoraqalpog'iston Resp.</option>
-              </select>
-            </div>
-
-            <div class="md:col-span-3">
-              <select
-                id="catalog-sort-select"
-                class="w-full bg-[#071510] border border-[#183a2d] text-white text-xs font-semibold rounded-2xl p-3 outline-none cursor-pointer focus:border-[#b4f73a]"
-              >
-                <option value="distance">Eng yaqin masofa bo'yicha</option>
-                <option value="rating">Eng yuqori reyting bo'yicha</option>
-                <option value="experience">Eng ko'p ish tajribasi bo'yicha</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="flex flex-wrap items-center gap-5 text-xs text-[#cbd5e1]">
-            <label class="flex items-center gap-2 cursor-pointer select-none hover:text-white">
-              <input
-                id="filter-open-now"
-                type="checkbox"
-                class="w-4 h-4 rounded accent-[#b4f73a] bg-[#071510] border-[#183a2d]"
-              />
-              <span>Faqat hozir ochiq bo'lganlar (24/7)</span>
-            </label>
-
-            <label class="flex items-center gap-2 cursor-pointer select-none hover:text-white">
-              <input
-                id="filter-guaranteed"
-                type="checkbox"
-                class="w-4 h-4 rounded accent-[#b4f73a] bg-[#071510] border-[#183a2d]"
-              />
-              <span>Kafolat beriladigan xizmatlar</span>
-            </label>
-
-            <button
-              type="button"
-              data-action="select-category"
-              data-category="all"
-              class="text-[#b4f73a] hover:underline font-bold ml-auto"
-            >
-              Barcha toifalarni ko'rsatish
-            </button>
-          </div>
-        </div>
-
-        <div id="places-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          <!-- JS orqali to'ldiriladi -->
-        </div>
-      </section>
-
-      <!-- ==================== 4. XARITA VA NAVIGATSIYA ==================== -->
-      <section id="map-section" class="scroll-mt-24 space-y-4">
-        <div class="glass-panel p-4 flex flex-wrap items-center justify-between gap-3">
-          <div class="flex items-center gap-2.5 text-xs">
-            <span class="w-2.5 h-2.5 rounded-full bg-[#b4f73a]"></span>
-            <span class="font-bold text-white">Sizning joylashuvingiz:</span>
-            <span class="text-[#94a3b8]">Toshkent, Chilonzor (GPS orqali eng yaqin joylar)</span>
-          </div>
-
-          <div class="flex items-center gap-2">
-            <button
-              id="btn-locate-me"
-              class="px-3.5 py-1.5 rounded-xl bg-[#0f271e] hover:bg-[#183a2d] border border-[#183a2d] text-white text-xs font-semibold flex items-center gap-1.5 transition-all"
-            >
-              <i data-lucide="crosshair" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
-              <span>Mening joyimga qaytish</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="relative glass-panel rounded-3xl overflow-hidden border border-[#183a2d]">
-          <div id="leaflet-map-container" class="w-full h-[550px] z-10"></div>
-        </div>
-      </section>
-
-      <section id="ai-section" class="scroll-mt-24">
-        <div
-          class="glass-panel max-w-4xl mx-auto rounded-3xl overflow-hidden border border-[#183a2d] flex flex-col h-[560px]"
+        <section
+          id="catalog-section"
+          class="scroll-mt-24 space-y-6"
+          aria-labelledby="catalog-title"
         >
-          <div
-            class="p-4 sm:p-5 border-b border-[#183a2d] bg-[#0c231a] flex items-center justify-between shrink-0"
-          >
-            <div class="flex items-center gap-3">
-              <div
-                class="w-10 h-10 rounded-2xl bg-[#0f271e] border border-[#183a2d] text-[#b4f73a] flex items-center justify-center"
-              >
-                <i data-lucide="messages-square" class="w-5 h-5"></i>
-              </div>
+          <div class="glass-panel p-5 sm:p-6 space-y-5">
+            <div
+              class="flex flex-wrap items-center justify-between gap-3 border-b border-[#183a2d] pb-4"
+            >
               <div>
-                <h3 class="font-bold text-white text-base">Katalog konsultanti</h3>
-                <p class="text-xs text-[#94a3b8]">Usta, shifoxona, zapravka va DXM qidiruvi</p>
+                <p class="section-kicker">Katalog</p>
+                <h2 id="catalog-title" class="text-lg sm:text-xl font-extrabold text-white">
+                  Joylar ro'yxati
+                </h2>
+              </div>
+              <p
+                id="places-count-badge"
+                class="text-xs font-bold text-[#b4f73a] bg-[#102d20] border border-[#1b3b2f] px-3.5 py-1 rounded-full"
+                role="status"
+                aria-live="polite"
+              >
+                Yuklanmoqda...
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-3">
+              <div class="md:col-span-6 relative">
+                <label for="catalog-search-input" class="sr-only">Katalogdan qidirish</label>
+                <i
+                  data-lucide="search"
+                  class="w-4 h-4 text-[#64748b] absolute left-4 top-1/2 -translate-y-1/2"
+                ></i>
+                <input
+                  id="catalog-search-input"
+                  name="catalog-query"
+                  type="search"
+                  autocomplete="off"
+                  enterkeyhint="search"
+                  spellcheck="false"
+                  placeholder="Nomi, turi yoki manzili bo'yicha qidiring..."
+                  class="field pl-11"
+                />
+              </div>
+              <div class="md:col-span-3">
+                <label for="catalog-region-select" class="sr-only">Hudud</label>
+                <select
+                  id="catalog-region-select"
+                  name="region"
+                  class="field text-xs font-semibold cursor-pointer"
+                >
+                  <option value="all_uz" selected>Butun O'zbekiston</option>
+                  <option value="tashkent">Toshkent shahri</option>
+                  <option value="andijan">Andijon viloyati</option>
+                  <option value="bukhara">Buxoro viloyati</option>
+                  <option value="fergana">Farg'ona viloyati</option>
+                  <option value="jizzax">Jizzax viloyati</option>
+                  <option value="xorazm">Xorazm viloyati</option>
+                  <option value="namangan">Namangan viloyati</option>
+                  <option value="navoiy">Navoiy viloyati</option>
+                  <option value="qashqadaryo">Qashqadaryo viloyati</option>
+                  <option value="samarkand">Samarqand viloyati</option>
+                  <option value="sirdaryo">Sirdaryo viloyati</option>
+                  <option value="surxondaryo">Surxondaryo viloyati</option>
+                  <option value="karakalpak">Qoraqalpog'iston Respublikasi</option>
+                </select>
+              </div>
+              <div class="md:col-span-3">
+                <label for="catalog-sort-select" class="sr-only">Saralash</label>
+                <select
+                  id="catalog-sort-select"
+                  name="sort"
+                  class="field text-xs font-semibold cursor-pointer"
+                >
+                  <option value="distance">Eng yaqin (joylashuv bo'yicha)</option>
+                  <option value="name">Nomi bo'yicha (A–Z)</option>
+                  <option value="rating">Foydalanuvchi bahosi bo'yicha</option>
+                </select>
               </div>
             </div>
-            <span
-              class="text-xs bg-[#102d20] border border-[#183a2d] px-3 py-1 rounded-full text-[#94a3b8] font-semibold"
-            >
-              Qabul ochiq
-            </span>
-          </div>
 
-          <div id="ai-chat-messages" class="flex-1 p-5 overflow-y-auto space-y-4 min-h-0">
-            <div class="flex justify-start mb-4">
-              <div
-                class="max-w-[85%] sm:max-w-[75%] bg-[#0f271e] border border-[#183a2d] text-[#cbd5e1] p-4 rounded-2xl rounded-tl-sm text-xs sm:text-sm"
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-3 text-xs text-[#cbd5e1]">
+              <label class="toggle">
+                <input id="filter-open-now" name="open-now" type="checkbox" />
+                <span>Hozir ochiq</span>
+              </label>
+              <label class="toggle">
+                <input id="filter-with-phone" name="with-phone" type="checkbox" />
+                <span>Telefon raqami bor</span>
+              </label>
+              <button
+                id="catalog-reset-btn"
+                type="button"
+                data-action="reset-filters"
+                class="hidden text-[#b4f73a] hover:underline font-bold sm:ml-auto inline-flex items-center gap-1.5"
               >
-                <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-[#183a2d]">
-                  <div
-                    class="w-5 h-5 rounded-full bg-[#102d20] border border-[#1b3b2f] text-[#b4f73a] text-[10px] font-black flex items-center justify-center"
-                  >
-                    MU
-                  </div>
-                  <span class="font-bold text-xs text-white">Konsultant</span>
-                </div>
-                <p class="leading-relaxed">
-                  Assalomu alaykum. Milliy.uz katalogidan obyekt topishga yordam beraman.
-                </p>
-                <p class="mt-2 text-xs text-[#94a3b8]">
-                  Masalan: eng yaqin usta, 24/7 dorixona yoki Chilonzordagi DXM.
-                </p>
-              </div>
+                <i data-lucide="rotate-ccw" class="w-3.5 h-3.5"></i>
+                Filtrlarni tozalash
+              </button>
             </div>
           </div>
 
           <div
-            class="px-5 py-2 bg-[#091b14] border-t border-[#183a2d] flex items-center gap-2 overflow-x-auto text-xs no-scrollbar shrink-0"
+            id="places-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5"
+            aria-busy="true"
           >
-            <button
-              data-action="ask"
-              data-prompt="Assalomu alaykum! Qandaysiz?"
-              class="whitespace-nowrap px-3 py-1.5 rounded-full bg-[#0d221a] hover:bg-[#183a2d] border border-[#183a2d] text-[#cbd5e1] flex items-center gap-1.5 transition-all"
-            >
-              Salomlashish
-            </button>
-            <button
-              data-action="ask"
-              data-prompt="Matorim buzildi, hozir ochiq eng yaqin usta bormi?"
-              class="whitespace-nowrap px-3 py-1.5 rounded-full bg-[#0d221a] hover:bg-[#183a2d] border border-[#183a2d] text-[#cbd5e1] flex items-center gap-1.5 transition-all"
-            >
-              <i data-lucide="wrench" class="w-3 h-3 text-[#b4f73a]"></i>
-              Mator usta kerak
-            </button>
-            <button
-              data-action="ask"
-              data-prompt="Hozir ochiq eng yaqin Metan zapravkani topib ber"
-              class="whitespace-nowrap px-3 py-1.5 rounded-full bg-[#0d221a] hover:bg-[#183a2d] border border-[#183a2d] text-[#cbd5e1] flex items-center gap-1.5 transition-all"
-            >
-              <i data-lucide="fuel" class="w-3 h-3 text-emerald-400"></i>
-              Metan zapravka (220 bar)
-            </button>
-            <button
-              data-action="ask"
-              data-prompt="24/7 navbatchi dorixona qayerda?"
-              class="whitespace-nowrap px-3 py-1.5 rounded-full bg-[#0d221a] hover:bg-[#183a2d] border border-[#183a2d] text-[#cbd5e1] flex items-center gap-1.5 transition-all"
-            >
-              <i data-lucide="stethoscope" class="w-3 h-3 text-[#e2b170]"></i>
-              24/7 Dorixona
-            </button>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
+            <div class="skeleton-card"></div>
           </div>
-
-          <div class="p-4 bg-[#0c231a] border-t border-[#183a2d] flex items-center gap-3 shrink-0">
-            <input
-              id="ai-user-input"
-              type="text"
-              placeholder="Nima kerakligini yozing yoki mikrofondan ayting: usta, dorixona, DXM..."
-              class="flex-1 bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-2xl py-3 px-4 text-xs sm:text-sm text-white placeholder-[#64748b] outline-none transition-colors"
-            />
+          <div class="flex justify-center">
             <button
-              id="ai-mic-btn"
+              id="places-more-btn"
               type="button"
-              aria-label="Ovozli qidiruv"
-              class="w-11 h-11 rounded-2xl bg-[#071510] hover:bg-[#102d20] border border-[#183a2d] hover:border-[#b4f73a] flex items-center justify-center text-[#94a3b8] hover:text-[#b4f73a] transition-all shrink-0"
-              title="Ovozli qidiruv (Mikrofon)"
+              data-action="show-more"
+              class="hidden neon-btn-secondary px-6 py-3 text-sm"
             >
-              <i data-lucide="mic" class="w-4 h-4"></i>
-            </button>
-            <button id="ai-send-btn" class="neon-btn py-3 px-6 text-xs sm:text-sm">
-              <span>Yuborish</span>
-              <i data-lucide="send" class="w-4 h-4"></i>
+              <span>Yana ko'rsatish</span>
+              <i data-lucide="chevron-down" class="w-4 h-4"></i>
             </button>
           </div>
-        </div>
-      </section>
+        </section>
+
+        <section id="map-section" class="scroll-mt-24 space-y-4" aria-labelledby="map-title">
+          <div class="section-head">
+            <div>
+              <p class="section-kicker">Xarita</p>
+              <h2 id="map-title" class="section-title">Joylar xaritada</h2>
+            </div>
+            <p id="map-count" class="section-lead" role="status">
+              Ro'yxatdagi joylar xaritada ko'rsatiladi.
+            </p>
+          </div>
+          <div class="glass-panel p-3 sm:p-4 flex flex-wrap items-center justify-between gap-3">
+            <p class="flex items-center gap-2.5 text-xs">
+              <span id="user-location-dot" class="w-2.5 h-2.5 rounded-full bg-[#64748b]"></span>
+              <span id="user-location-label" class="text-[#94a3b8]"
+                >Joylashuvingiz aniqlanmagan — masofa ko'rsatilmaydi.</span
+              >
+            </p>
+            <div class="flex flex-wrap items-center gap-2">
+              <button id="btn-map-fit" type="button" class="chip-btn">
+                <i data-lucide="maximize" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
+                <span>Hammasini ko'rsatish</span>
+              </button>
+              <button id="btn-map-style" type="button" class="chip-btn" aria-pressed="true">
+                <i data-lucide="moon" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
+                <span>Tungi xarita</span>
+              </button>
+              <button id="btn-locate-me" type="button" class="chip-btn">
+                <i data-lucide="crosshair" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
+                <span>Joylashuvimni aniqlash</span>
+              </button>
+            </div>
+          </div>
+          <div class="relative glass-panel rounded-3xl overflow-hidden border border-[#183a2d]">
+            <div
+              id="leaflet-map-container"
+              class="w-full h-[420px] sm:h-[560px] z-10 map-dark"
+              aria-label="Joylar xaritasi"
+            ></div>
+          </div>
+        </section>
+
+        <section id="ai-section" class="scroll-mt-24" aria-labelledby="chat-title">
+          <div
+            class="glass-panel max-w-4xl mx-auto rounded-3xl overflow-hidden border border-[#183a2d] flex flex-col h-[560px]"
+          >
+            <div
+              class="p-4 sm:p-5 border-b border-[#183a2d] bg-[#0c231a] flex items-center justify-between gap-3 shrink-0"
+            >
+              <div class="flex items-center gap-3">
+                <span
+                  class="w-10 h-10 rounded-2xl bg-[#0f271e] border border-[#183a2d] text-[#b4f73a] flex items-center justify-center"
+                >
+                  <i data-lucide="messages-square" class="w-5 h-5"></i>
+                </span>
+                <div>
+                  <h2 id="chat-title" class="font-bold text-white text-base">
+                    Katalog konsultanti
+                  </h2>
+                  <p class="text-xs text-[#94a3b8]">
+                    Savolingizni yozing — katalogdan mos joylarni topaman
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              id="ai-chat-messages"
+              class="flex-1 p-5 overflow-y-auto space-y-4 min-h-0"
+              aria-live="polite"
+            >
+              <div class="flex justify-start mb-4">
+                <div
+                  class="max-w-[85%] sm:max-w-[75%] bg-[#0f271e] border border-[#183a2d] text-[#cbd5e1] p-4 rounded-2xl rounded-tl-sm text-xs sm:text-sm"
+                >
+                  <div class="flex items-center gap-2 mb-2 pb-1.5 border-b border-[#183a2d]">
+                    <span
+                      class="w-5 h-5 rounded-full bg-[#102d20] border border-[#1b3b2f] text-[#b4f73a] text-[10px] font-black flex items-center justify-center"
+                      >MU</span
+                    >
+                    <span class="font-bold text-xs text-white">Konsultant</span>
+                  </div>
+                  <p class="leading-relaxed">
+                    Assalomu alaykum! Katalogdan kerakli joyni topishga yordam beraman.
+                  </p>
+                  <p class="mt-2 text-xs text-[#94a3b8]">
+                    Masalan: «Samarqanddagi muzeylar» yoki «Toshkentda hozir ochiq shifoxona».
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="px-5 py-2 bg-[#091b14] border-t border-[#183a2d] flex items-center gap-2 overflow-x-auto text-xs no-scrollbar shrink-0"
+            >
+              <button
+                type="button"
+                data-action="ask"
+                data-prompt="Toshkentda shifoxona kerak"
+                class="chip"
+              >
+                <i data-lucide="stethoscope" class="w-3 h-3 text-[#e2b170]"></i>Toshkentdagi
+                shifoxonalar
+              </button>
+              <button
+                type="button"
+                data-action="ask"
+                data-prompt="Samarqanddagi muzeylar"
+                class="chip"
+              >
+                <i data-lucide="trees" class="w-3 h-3 text-emerald-400"></i>Samarqand muzeylari
+              </button>
+              <button
+                type="button"
+                data-action="ask"
+                data-prompt="Eng yaqin zapravka qayerda?"
+                class="chip"
+              >
+                <i data-lucide="fuel" class="w-3 h-3 text-[#b4f73a]"></i>Yaqin zapravka
+              </button>
+              <button
+                type="button"
+                data-action="ask"
+                data-prompt="Buxorodagi bozorlar"
+                class="chip"
+              >
+                <i data-lucide="shopping-bag" class="w-3 h-3 text-[#b4f73a]"></i>Buxoro bozorlari
+              </button>
+            </div>
+
+            <form
+              id="ai-chat-form"
+              class="p-4 bg-[#0c231a] border-t border-[#183a2d] flex items-center gap-3 shrink-0"
+              autocomplete="off"
+            >
+              <label for="ai-user-input" class="sr-only">Konsultantga xabar</label>
+              <input
+                id="ai-user-input"
+                name="chat-message"
+                type="text"
+                autocomplete="off"
+                autocapitalize="sentences"
+                enterkeyhint="send"
+                maxlength="500"
+                placeholder="Nima kerakligini yozing: shifoxona, bozor, DXM..."
+                class="field flex-1 min-w-0"
+              />
+              <button
+                id="ai-mic-btn"
+                type="button"
+                aria-label="Ovozli qidiruv"
+                title="Ovozli qidiruv"
+                class="w-11 h-11 rounded-2xl bg-[#071510] hover:bg-[#102d20] border border-[#183a2d] hover:border-[#b4f73a] flex items-center justify-center text-[#94a3b8] hover:text-[#b4f73a] transition-all shrink-0"
+              >
+                <i data-lucide="mic" class="w-4 h-4"></i>
+              </button>
+              <button
+                id="ai-send-btn"
+                type="submit"
+                class="neon-btn py-3 px-4 sm:px-6 text-xs sm:text-sm"
+                aria-label="Yuborish"
+              >
+                <span class="hidden sm:inline">Yuborish</span>
+                <i data-lucide="send" class="w-4 h-4"></i>
+              </button>
+            </form>
+          </div>
+        </section>
+      </div>
+
+      <div id="page-view" class="hidden"></div>
     </main>
 
-    <!-- ========================================================
-       3. FOOTER VA SIRLI ADMIN TRIGGER
-       ======================================================== -->
-    <footer class="border-t border-[#183a2d] py-10 px-4 mt-20 bg-[#040c09]">
+    <footer class="site-footer border-t border-[#183a2d] mt-20 bg-[#040c09]">
       <div
-        class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748b]"
+        class="max-w-7xl mx-auto px-4 lg:px-8 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4 text-xs text-[#94a3b8]"
       >
-        <div class="flex items-center gap-3">
-          <span class="font-extrabold text-white uppercase font-['Plus_Jakarta_Sans']">
-            MILLIY<span class="text-[#b4f73a]">.UZ</span>
-          </span>
-          <span>O'zbekiston xizmatlar katalogi</span>
-        </div>
-
-        <div class="flex items-center gap-6">
-          <span>© 2026 Barcha huquqlar himoyalangan.</span>
-
-          <button
-            type="button"
-            id="secret-admin-trigger"
-            class="secret-admin-trigger text-[11px] text-[#64748b] hover:text-[#b4f73a] flex items-center gap-1.5"
-            title="Tizim boshqaruvi"
-            aria-label="Tizim boshqaruvi"
+        <div class="space-y-3 lg:col-span-1">
+          <a
+            href="/"
+            data-nav-home
+            class="text-lg font-extrabold text-white uppercase tracking-wider"
           >
-            <i data-lucide="lock" class="w-3.5 h-3.5"></i>
-            <span>Admin Portal</span>
-          </button>
+            MILLIY<span class="text-[#b4f73a]">.UZ</span>
+          </a>
+          <p class="leading-relaxed">
+            O'zbekiston bo'ylab foydali joylarning ochiq katalogi. Ma'lumotlar OpenStreetMap
+            hamjamiyati to'plagan ochiq bazadan olinadi va moderator tomonidan yangilanadi.
+          </p>
+        </div>
+        <nav aria-label="Sayt sahifalari" class="space-y-3">
+          <h2 class="footer-title">Sahifalar</h2>
+          <ul class="space-y-2">
+            <li>
+              <a href="/#catalog-section" data-scroll-to="catalog-section" class="footer-link"
+                >Katalog</a
+              >
+            </li>
+            <li>
+              <a href="/#map-section" data-scroll-to="map-section" class="footer-link">Xarita</a>
+            </li>
+            <li><a href="/haqida" data-nav-page="haqida" class="footer-link">Loyiha haqida</a></li>
+            <li><a href="/aloqa" data-nav-page="aloqa" class="footer-link">Aloqa</a></li>
+            <li>
+              <a href="/maxfiylik" data-nav-page="maxfiylik" class="footer-link"
+                >Maxfiylik siyosati</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <div class="space-y-3">
+          <h2 class="footer-title">Favqulodda raqamlar</h2>
+          <ul class="grid grid-cols-2 gap-2">
+            <li>
+              <a href="tel:101" class="footer-link"><b class="text-white">101</b> Yong'in</a>
+            </li>
+            <li>
+              <a href="tel:102" class="footer-link"><b class="text-white">102</b> Militsiya</a>
+            </li>
+            <li>
+              <a href="tel:103" class="footer-link"><b class="text-white">103</b> Tez yordam</a>
+            </li>
+            <li>
+              <a href="tel:104" class="footer-link"><b class="text-white">104</b> Gaz avariya</a>
+            </li>
+            <li>
+              <a href="tel:1050" class="footer-link"><b class="text-white">1050</b> Qutqaruv</a>
+            </li>
+            <li>
+              <a href="tel:112" class="footer-link"><b class="text-white">112</b> Yagona xizmat</a>
+            </li>
+          </ul>
+        </div>
+        <div class="space-y-3">
+          <h2 class="footer-title">Ma'lumot manbalari</h2>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="https://www.openstreetmap.org/copyright"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+                >© OpenStreetMap hissachilari (ODbL)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://www.wikidata.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+                >Wikidata (CC0)</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://commons.wikimedia.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="footer-link"
+                >Wikimedia Commons — rasmlar mualliflari ko'rsatilgan</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-[#183a2d]">
+        <div
+          class="max-w-7xl mx-auto px-4 lg:px-8 py-5 flex flex-col sm:flex-row gap-2 justify-between text-[11px] text-[#64748b]"
+        >
+          <span>© 2026 MILLIY.UZ</span>
+          <span
+            >Ma'lumotlar tanishish uchun. Muhim ishdan oldin tashkilotning o'zi bilan
+            tasdiqlang.</span
+          >
         </div>
       </div>
     </footer>
 
-    <!-- ========================================================
-       4. ADMIN LOGIN MODAL
-       ======================================================== -->
-    <div
-      id="admin-login-modal"
-      role="dialog"
-      aria-modal="true"
-      aria-label="Admin paneliga kirish"
-      class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4"
-    >
+    <template id="admin-login-template">
       <div
-        class="glass-panel w-full max-w-md p-6 sm:p-8 rounded-3xl border border-[#183a2d] relative shadow-2xl"
+        id="admin-login-modal"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Admin paneliga kirish"
+        class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4"
       >
-        <button
-          id="close-admin-login-modal"
-          type="button"
-          aria-label="Yopish"
-          class="absolute top-5 right-5 text-[#94a3b8] hover:text-white"
+        <div
+          class="glass-panel w-full max-w-md p-6 sm:p-8 rounded-3xl border border-[#183a2d] relative shadow-2xl"
         >
-          <i data-lucide="x" class="w-5 h-5"></i>
-        </button>
-
-        <div class="text-center mb-6">
-          <div
-            class="w-12 h-12 rounded-2xl bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-[#b4f73a] mx-auto mb-3 shadow-lg shadow-[#b4f73a]/10"
+          <button
+            id="close-admin-login-modal"
+            type="button"
+            aria-label="Yopish"
+            class="absolute top-5 right-5 text-[#94a3b8] hover:text-white"
           >
-            <i data-lucide="shield" class="w-6 h-6"></i>
+            <i data-lucide="x" class="w-5 h-5"></i>
+          </button>
+
+          <div class="text-center mb-6">
+            <div
+              class="w-12 h-12 rounded-2xl bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-[#b4f73a] mx-auto mb-3 shadow-lg shadow-[#b4f73a]/10"
+            >
+              <i data-lucide="shield" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-xl font-bold text-white">Boshqaruv paneli</h3>
+            <p class="text-xs text-[#94a3b8] mt-1">Faqat moderatorlar uchun</p>
           </div>
-          <h3 class="text-xl font-bold text-white">Yopiq Tizim Boshqaruvi</h3>
-          <p class="text-xs text-[#94a3b8] mt-1">
-            Admin panelga kirish uchun maxsus ruxsat talab qilinadi
-          </p>
+
+          <form id="admin-login-form" class="space-y-4 text-xs">
+            <div>
+              <label for="admin-username" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Login:</label
+              >
+              <input
+                id="admin-username"
+                name="username"
+                type="text"
+                required
+                autocomplete="username"
+                placeholder="Login"
+                class="w-full bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="admin-password" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Parol:</label
+              >
+              <input
+                id="admin-password"
+                name="password"
+                type="password"
+                required
+                autocomplete="current-password"
+                placeholder="Parol"
+                class="w-full bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-xl p-3 text-white outline-none"
+              />
+              <p
+                id="admin-login-error"
+                class="hidden text-[11px] text-red-400 mt-1"
+                role="alert"
+              ></p>
+            </div>
+
+            <div class="pt-2">
+              <button type="submit" class="w-full neon-btn py-3 text-xs">
+                <span>Kirish</span>
+                <i data-lucide="log-in" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </form>
         </div>
-
-        <form id="admin-login-form" class="space-y-4 text-xs">
-          <div>
-            <label for="admin-username" class="block text-[#94a3b8] mb-1 font-semibold"
-              >Login:</label
-            >
-            <input
-              id="admin-username"
-              type="text"
-              required
-              autocomplete="username"
-              placeholder="Login"
-              class="w-full bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-xl p-3 text-white outline-none"
-            />
-          </div>
-
-          <div>
-            <label for="admin-password" class="block text-[#94a3b8] mb-1 font-semibold"
-              >Parol:</label
-            >
-            <input
-              id="admin-password"
-              type="password"
-              required
-              autocomplete="current-password"
-              placeholder="Parol"
-              class="w-full bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-xl p-3 text-white outline-none"
-            />
-            <p id="admin-login-error" class="hidden text-[11px] text-red-400 mt-1" role="alert"></p>
-          </div>
-
-          <div class="pt-2">
-            <button type="submit" class="w-full neon-btn py-3 text-xs">
-              <span>Tizimga Kirish</span>
-              <i data-lucide="log-in" class="w-4 h-4"></i>
-            </button>
-          </div>
-        </form>
       </div>
-    </div>
+    </template>
 
     <!-- ========================================================
        5. REAL ENTERPRISE FULLSCREEN ADMIN DASHBOARD CONSOLE
@@ -910,6 +987,7 @@
                   <input
                     type="file"
                     id="admin-import-json-file"
+                    name="admin-import-json-file"
                     accept=".json,application/json"
                     class="sr-only"
                   />
@@ -930,6 +1008,8 @@
                 ></i>
                 <input
                   id="admin-search-input"
+                  name="admin-search-input"
+                  autocomplete="off"
                   type="text"
                   placeholder="Tashkilot nomi, telefon, usta yoki manzil..."
                   class="w-full bg-[#071510] border border-[#183a2d] focus:border-[#b4f73a] rounded-xl py-2 pl-9 pr-3 text-xs text-white placeholder-[#64748b] outline-none"
@@ -938,6 +1018,7 @@
 
               <select
                 id="admin-category-filter"
+                name="admin-category-filter"
                 class="bg-[#071510] border border-[#183a2d] text-white text-xs rounded-xl px-3 py-2 outline-none"
               >
                 <option value="all">Barcha Sohalar</option>
@@ -962,7 +1043,7 @@
                     <tr>
                       <th>Obyekt Nomi & Manzil</th>
                       <th>Soha / Kategoriya</th>
-                      <th>Mas'ul Mutaxassis</th>
+                      <th>Ish vaqti</th>
                       <th>Telefon</th>
                       <th>Geolokatsiya (Lat/Lng)</th>
                       <th>Holat</th>
@@ -1009,6 +1090,7 @@
                 Holat:
                 <select
                   id="admin-reports-filter"
+                  name="admin-reports-filter"
                   class="bg-[#071510] border border-[#183a2d] rounded-xl px-3 py-2 text-white outline-none"
                 >
                   <option value="open">Ochiq</option>
@@ -1071,6 +1153,8 @@
                   >
                   <textarea
                     id="admin-ai-system-prompt"
+                    name="admin-ai-system-prompt"
+                    autocomplete="off"
                     rows="6"
                     maxlength="4000"
                     class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-xs text-white outline-none focus:border-[#b4f73a]"
@@ -1110,6 +1194,8 @@
                   <div class="flex gap-2">
                     <input
                       id="admin-ai-test-input"
+                      name="admin-ai-test-input"
+                      autocomplete="off"
                       type="text"
                       placeholder="Sinov so'rovi"
                       class="flex-1 bg-[#071510] border border-[#183a2d] rounded-xl p-2.5 text-xs text-white outline-none focus:border-[#b4f73a]"
@@ -1168,6 +1254,8 @@
             >
             <input
               id="edit-p-name"
+              name="edit-p-name"
+              autocomplete="off"
               required
               minlength="2"
               maxlength="160"
@@ -1183,6 +1271,7 @@
               >
               <select
                 id="edit-p-cat"
+                name="edit-p-cat"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
               >
                 <option value="auto">Avto Ustaxona</option>
@@ -1204,6 +1293,7 @@
               >
               <select
                 id="edit-p-region"
+                name="edit-p-region"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
               >
                 <option value="tashkent">Toshkent shahri</option>
@@ -1224,11 +1314,12 @@
 
             <div>
               <label for="edit-p-phone" class="block text-[#94a3b8] mb-1 font-semibold"
-                >Telefon raqam</label
+                >Telefon raqam (ixtiyoriy)</label
               >
               <input
                 id="edit-p-phone"
-                required
+                name="edit-p-phone"
+                autocomplete="off"
                 type="tel"
                 pattern="[+0-9 ()\-]{2,32}"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
@@ -1243,55 +1334,46 @@
               >
               <input
                 id="edit-p-phone2"
+                name="edit-p-phone2"
+                autocomplete="off"
                 type="tel"
                 pattern="[+0-9 ()\-]{2,32}"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
               />
             </div>
             <div>
-              <label for="edit-p-workdays" class="block text-[#94a3b8] mb-1 font-semibold"
-                >Ish kunlari</label
+              <label for="edit-p-website" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Veb-sayt (ixtiyoriy)</label
               >
               <input
-                id="edit-p-workdays"
-                type="text"
-                maxlength="80"
-                placeholder="Dushanba - Shanba"
+                id="edit-p-website"
+                name="edit-p-website"
+                type="url"
+                maxlength="300"
+                autocomplete="off"
+                placeholder="https://..."
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
               />
             </div>
           </div>
 
-          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 items-end">
-            <div>
-              <label for="edit-p-open" class="block text-[#94a3b8] mb-1 font-semibold"
-                >Ochilish vaqti</label
-              >
-              <input
-                id="edit-p-open"
-                type="time"
-                required
-                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
-              />
-            </div>
-            <div>
-              <label for="edit-p-close" class="block text-[#94a3b8] mb-1 font-semibold"
-                >Yopilish vaqti</label
-              >
-              <input
-                id="edit-p-close"
-                type="time"
-                required
-                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
-              />
-            </div>
-            <label
-              for="edit-p-247"
-              class="col-span-2 sm:col-span-1 flex items-center gap-2 rounded-xl border border-[#183a2d] bg-[#071510] p-3 text-white font-semibold"
+          <div>
+            <label for="edit-p-hours" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Ish vaqti (OpenStreetMap formatida, ixtiyoriy)</label
             >
-              <input id="edit-p-247" type="checkbox" class="accent-[#b4f73a] w-4 h-4" />
-              24/7 ishlaydi
-            </label>
+            <input
+              id="edit-p-hours"
+              name="edit-p-hours"
+              type="text"
+              maxlength="200"
+              autocomplete="off"
+              spellcheck="false"
+              placeholder="Mo-Fr 09:00-18:00; Sa 09:00-13:00 yoki 24/7"
+              class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+            />
+            <p id="edit-p-hours-hint" class="text-[11px] text-[#64748b] mt-1">
+              Bo'sh qoldirilsa, saytda «Ish vaqti ko'rsatilmagan» deb chiqadi.
+            </p>
           </div>
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -1301,6 +1383,8 @@
               >
               <input
                 id="edit-p-master"
+                name="edit-p-master"
+                autocomplete="off"
                 type="text"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
               />
@@ -1311,6 +1395,8 @@
               >
               <input
                 id="edit-p-exp"
+                name="edit-p-exp"
+                autocomplete="off"
                 type="number"
                 min="0"
                 max="200"
@@ -1325,6 +1411,8 @@
             >
             <input
               id="edit-p-sub"
+              name="edit-p-sub"
+              autocomplete="off"
               type="text"
               class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
             />
@@ -1336,6 +1424,8 @@
             >
             <input
               id="edit-p-address"
+              name="edit-p-address"
+              autocomplete="off"
               type="text"
               class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
             />
@@ -1347,6 +1437,8 @@
             >
             <input
               id="edit-p-landmark"
+              name="edit-p-landmark"
+              autocomplete="off"
               type="text"
               maxlength="200"
               class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
@@ -1360,6 +1452,8 @@
               >
               <input
                 id="edit-p-lat"
+                name="edit-p-lat"
+                autocomplete="off"
                 required
                 type="number"
                 step="any"
@@ -1374,6 +1468,8 @@
               >
               <input
                 id="edit-p-lng"
+                name="edit-p-lng"
+                autocomplete="off"
                 required
                 type="number"
                 step="any"
@@ -1390,6 +1486,8 @@
             >
             <input
               id="edit-p-price"
+              name="edit-p-price"
+              autocomplete="off"
               type="text"
               placeholder="Masalan: 50 000 – 400 000 UZS"
               class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
@@ -1402,9 +1500,58 @@
             >
             <input
               id="edit-p-image"
+              name="edit-p-image"
+              autocomplete="off"
               type="url"
               pattern="https://.*"
-              placeholder="https://images.unsplash.com/..."
+              placeholder="https://upload.wikimedia.org/..."
+              class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+            />
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="edit-p-image-credit" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Rasm muallifi va litsenziyasi</label
+              >
+              <input
+                id="edit-p-image-credit"
+                name="edit-p-image-credit"
+                type="text"
+                maxlength="300"
+                autocomplete="off"
+                placeholder="Muallif, CC BY-SA 4.0"
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <div>
+              <label for="edit-p-image-source" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Rasm manbasi (URL)</label
+              >
+              <input
+                id="edit-p-image-source"
+                name="edit-p-image-source"
+                type="url"
+                pattern="https://.*"
+                maxlength="500"
+                autocomplete="off"
+                placeholder="https://commons.wikimedia.org/wiki/File:..."
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+          </div>
+
+          <div>
+            <label for="edit-p-source" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Ma'lumot manbasi</label
+            >
+            <input
+              id="edit-p-source"
+              name="edit-p-source"
+              type="text"
+              maxlength="160"
+              autocomplete="off"
+              placeholder="OpenStreetMap node/123456"
               class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
             />
           </div>

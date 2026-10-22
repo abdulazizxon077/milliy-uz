@@ -80,7 +80,7 @@ export default async function publicRoutes(app, { repos, chat, db }) {
       if (!chat.configured) {
         return reply
           .code(503)
-          .send({ error: 'chat_unavailable', message: 'AI xizmati sozlanmagan' });
+          .send({ error: 'chat_unavailable', message: 'Konsultant xizmati sozlanmagan' });
       }
       const prompt = repos.settings.get('chat.systemPrompt', DEFAULT_SYSTEM_PROMPT);
       const system = `${prompt}\n\nKatalog:\n${buildCatalogContext(repos.places.list())}`;
@@ -89,7 +89,9 @@ export default async function publicRoutes(app, { repos, chat, db }) {
         return { reply: answer };
       } catch (err) {
         request.log.warn({ err }, 'chat provider request failed');
-        return reply.code(502).send({ error: 'chat_failed', message: 'AI xizmati javob bermadi' });
+        return reply
+          .code(502)
+          .send({ error: 'chat_failed', message: 'Konsultant xizmati javob bermadi' });
       }
     },
   );

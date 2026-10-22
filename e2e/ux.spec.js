@@ -66,11 +66,15 @@ test('the last catalog is shown when the API is unreachable', async ({ page }) =
   await expect(page.locator('#places-grid article')).toHaveCount(count);
 });
 
-test('broken photos fall back to a placeholder', async ({ page }) => {
-  await page.route('https://images.unsplash.com/**', (route) => route.abort());
+test('broken photos fall back to the category placeholder', async ({ page }) => {
+  await page.route('https://upload.wikimedia.org/**', (route) => route.abort());
   await page.goto('/');
-  const img = page.locator('#places-grid article img').first();
-  await expect(img).toHaveAttribute('src', '/place-placeholder.svg');
+  const card = page.locator('#places-grid article:has(.place-photo)').first();
+  const id = await card.locator('[data-action="open-detail"]').first().getAttribute('data-id');
+  const sameCard = page.locator(`#places-grid article:has([data-id="${id}"])`);
+  await sameCard.scrollIntoViewIfNeeded();
+  await expect(sameCard.locator('.place-photo')).toHaveCount(0);
+  await expect(sameCard.locator('.place-placeholder')).toBeVisible();
 });
 
 test('missing static files return 404 instead of the app', async ({ request }) => {

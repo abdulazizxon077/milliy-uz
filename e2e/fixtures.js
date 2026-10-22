@@ -20,11 +20,11 @@ export { expect };
 
 export async function firstPlace(request) {
   const places = await (await request.get('/api/places')).json();
-  return places[0];
+  return places.find((p) => p.phone) ?? places[0];
 }
 
 export async function loginAsAdmin(page) {
-  await page.locator('#secret-admin-trigger').click();
+  await page.goto('/admin');
   await page.locator('#admin-username').fill(E2E_ADMIN.username);
   await page.locator('#admin-password').fill(E2E_ADMIN.password);
   await page.locator('#admin-login-form button[type=submit]').click();

@@ -1,13 +1,13 @@
 import { DEFAULT_FILTERS } from './lib/catalog.js';
 import { loadBookmarks } from './lib/bookmarks.js';
-import { REGIONS } from '../../shared/catalog.js';
-
-const tashkent = REGIONS.find((r) => r.id === 'tashkent').center;
 
 export const state = {
   places: [],
   filters: { ...DEFAULT_FILTERS },
-  userLocation: { ...tashkent, address: 'Toshkent shahri markazi' },
+  /** Set once the browser shares a position; distances stay hidden until then. */
+  userLocation: null,
+  /** How many catalog cards are rendered; grows with "show more". */
+  visibleCount: 24,
   bookmarks: loadBookmarks(),
   serverChat: true,
 };
