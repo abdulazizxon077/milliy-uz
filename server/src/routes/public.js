@@ -89,7 +89,9 @@ export default async function publicRoutes(app, { repos, chat, db }) {
         return { reply: answer };
       } catch (err) {
         request.log.warn({ err }, 'chat provider request failed');
-        return reply.code(502).send({ error: 'chat_failed', message: 'Konsultant xizmati javob bermadi' });
+        return reply
+          .code(502)
+          .send({ error: 'chat_failed', message: 'Konsultant xizmati javob bermadi' });
       }
     },
   );
