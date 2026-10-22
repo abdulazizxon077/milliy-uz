@@ -92,12 +92,14 @@ export async function buildApp({ config, db, chat, logger = true }) {
     await app.register(fastifyStatic, {
       root: config.staticDir,
       wildcard: false,
-      setHeaders(res, filePath) {
+      cacheControl: false,
+      // @fastify/static passes the Fastify reply here.
+      setHeaders(reply, filePath) {
         const name = path.basename(filePath);
         if (filePath.includes(`${path.sep}assets${path.sep}`)) {
-          res.setHeader('cache-control', 'public, max-age=31536000, immutable');
+          reply.header('cache-control', 'public, max-age=31536000, immutable');
         } else if (name === 'index.html' || name === 'sw.js') {
-          res.setHeader('cache-control', 'no-cache');
+          reply.header('cache-control', 'no-cache');
         }
       },
     });
