@@ -78,6 +78,8 @@ export function clockTime(date = new Date()) {
 export const FALLBACK_IMAGE =
   'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80';
 
+export const PLACEHOLDER_IMAGE = '/place-placeholder.svg';
+
 /** Only https images are rendered; anything else falls back to a neutral photo. */
 export function safeImageUrl(url) {
   return typeof url === 'string' && url.startsWith('https://') ? url : FALLBACK_IMAGE;

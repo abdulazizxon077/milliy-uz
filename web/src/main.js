@@ -9,7 +9,8 @@ import './styles.css';
 
 import { adminAction, closeAdmin, initAdmin } from './admin/admin.js';
 import { api } from './api.js';
-import { debounce } from './lib/format.js';
+import { debounce, PLACEHOLDER_IMAGE } from './lib/format.js';
+import { loadSnapshot, saveSnapshot } from './lib/offline-catalog.js';
 import { findPlace, notify, onChange, state } from './state.js';
 import { toggleBookmark, updateBookmarkUi } from './ui/bookmarks-view.js';
 import { renderCategories, renderPlaces } from './ui/catalog-view.js';
@@ -182,6 +183,21 @@ function bindModals() {
   });
 }
 
+/** Swaps broken place photos (dead links, offline) for a local placeholder. */
+function bindImageFallback() {
+  document.addEventListener(
+    'error',
+    (event) => {
+      const img = event.target;
+      if (!(img instanceof HTMLImageElement) || img.closest('.leaflet-container')) return;
+      if (img.dataset.fallback) return;
+      img.dataset.fallback = 'true';
+      img.src = PLACEHOLDER_IMAGE;
+    },
+    true,
+  );
+}
+
 function bindConnectivity() {
   const banner = $('offline-banner');
   const update = () => banner?.classList.toggle('hidden', navigator.onLine);
@@ -198,9 +214,17 @@ function openFromHash() {
 async function loadPlaces() {
   try {
     state.places = await api.places();
+    saveSnapshot(state.places);
   } catch {
-    showToast("Ma'lumotlarni yuklab bo'lmadi. Internet aloqasini tekshiring", 4000);
-    state.places = [];
+    const snapshot = loadSnapshot();
+    if (snapshot?.places.length) {
+      state.places = snapshot.places;
+      const day = new Date(snapshot.savedAt).toLocaleDateString('uz-UZ');
+      showToast(`Aloqa yo'q: ${day} holatidagi saqlangan katalog ko'rsatilmoqda`, 5000);
+    } else {
+      state.places = [];
+      showToast("Ma'lumotlarni yuklab bo'lmadi. Internet aloqasini tekshiring", 4000);
+    }
   }
   notify();
   openFromHash();
@@ -220,6 +244,7 @@ function init() {
   bindChat();
   bindModals();
   bindConnectivity();
+  bindImageFallback();
   initAdmin();
   initMap($('leaflet-map-container'), { openDetail });
   onChange(render);

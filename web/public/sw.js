@@ -1,18 +1,30 @@
 /*
- * Offline support: the app shell is cached so the page (including the SOS
- * emergency numbers, which are plain tel: links) still opens without a network.
- * API responses are never cached, so catalog data is always fresh.
+ * Offline support: the app shell and its build assets are cached so the page
+ * (including the SOS emergency numbers, which are plain tel: links) opens
+ * without a network. API responses are never cached here; the app keeps its
+ * own snapshot of the last catalog it received.
  */
-const CACHE = 'milliy-shell-v1';
-const SHELL = ['/', '/index.html', '/manifest.webmanifest', '/icon.svg', '/icon-192.png'];
+const CACHE = 'milliy-shell-v2';
+const STATIC = ['/manifest.webmanifest', '/icon.svg', '/icon-192.png', '/place-placeholder.svg'];
+const ASSET_RE = /\/assets\/[^"')\s]+/g;
+
+/** Caches index.html plus every script, stylesheet and woff2 font it pulls in. */
+async function precache() {
+  const cache = await caches.open(CACHE);
+  const page = await fetch('/index.html', { cache: 'no-cache' });
+  if (!page.ok) throw new Error(`index.html: ${page.status}`);
+  const html = await page.clone().text();
+  const assets = new Set(html.match(ASSET_RE) ?? []);
+  for (const href of [...assets].filter((a) => a.endsWith('.css'))) {
+    const css = await fetch(href).then((r) => r.text());
+    for (const ref of css.match(ASSET_RE) ?? []) if (ref.endsWith('.woff2')) assets.add(ref);
+  }
+  await cache.put('/index.html', page);
+  await cache.addAll([...STATIC, ...assets]);
+}
 
 self.addEventListener('install', (event) => {
-  event.waitUntil(
-    caches
-      .open(CACHE)
-      .then((cache) => cache.addAll(SHELL))
-      .then(() => self.skipWaiting()),
-  );
+  event.waitUntil(precache().then(() => self.skipWaiting()));
 });
 
 self.addEventListener('activate', (event) => {
@@ -34,13 +46,15 @@ self.addEventListener('fetch', (event) => {
   )
     return;
 
-  // Navigations: network first, fall back to the cached shell.
+  // Navigations (/, /joy/<id>, …): network first, fall back to the cached shell.
   if (request.mode === 'navigate') {
     event.respondWith(
       fetch(request)
         .then((res) => {
-          const copy = res.clone();
-          caches.open(CACHE).then((cache) => cache.put('/index.html', copy));
+          if (res.ok && res.headers.get('content-type')?.includes('text/html')) {
+            const copy = res.clone();
+            caches.open(CACHE).then((cache) => cache.put('/index.html', copy));
+          }
           return res;
         })
         .catch(() => caches.match('/index.html')),
