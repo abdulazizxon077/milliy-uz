@@ -69,7 +69,14 @@ export async function buildApp({ config, db, chat, logger = true }) {
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
   });
 
-  await app.register(rateLimit, { global: true, max: 300, timeWindow: '1 minute' });
+  // Only the API is throttled: a single page view pulls dozens of hashed assets
+  // and fonts, which would otherwise exhaust the budget for a normal visitor.
+  await app.register(rateLimit, {
+    global: true,
+    max: 300,
+    timeWindow: '1 minute',
+    allowList: (request) => !request.url.startsWith('/api/'),
+  });
   await app.register(authPlugin, { auth: config.auth });
 
   app.setErrorHandler((err, request, reply) => {

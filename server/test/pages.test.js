@@ -46,6 +46,7 @@ describe('place pages', () => {
   beforeAll(async () => {
     dir = fs.mkdtempSync(path.join(os.tmpdir(), 'milliy-static-'));
     fs.writeFileSync(path.join(dir, 'index.html'), TEMPLATE);
+    fs.writeFileSync(path.join(dir, 'app.css'), 'body{}');
     app = await createTestApp({ overrides: { staticDir: dir } });
   });
   afterAll(async () => {
@@ -78,5 +79,13 @@ describe('place pages', () => {
     const res = await app.inject('/assets/missing-abc123.js');
     expect(res.statusCode).toBe(404);
     expect(res.headers['content-type']).toContain('application/json');
+  });
+
+  it('does not count static files against the API rate limit', async () => {
+    for (let i = 0; i < 320; i += 1) {
+      const res = await app.inject('/app.css');
+      expect(res.statusCode).toBe(200);
+    }
+    expect((await app.inject('/api/health')).statusCode).toBe(200);
   });
 });
