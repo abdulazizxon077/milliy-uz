@@ -469,6 +469,9 @@ body {
   overflow: hidden;
   color: var(--text-primary);
 }
+.admin-fullscreen.hidden {
+  display: none;
+}
 
 .admin-sidebar {
   width: 270px;
