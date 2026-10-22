@@ -11,6 +11,7 @@ import { adminAction, closeAdmin, initAdmin } from './admin/admin.js';
 import { api } from './api.js';
 import { debounce, PLACEHOLDER_IMAGE } from './lib/format.js';
 import { loadSnapshot, saveSnapshot } from './lib/offline-catalog.js';
+import { parsePlaceRoute, placePath } from './lib/routes.js';
 import { findPlace, notify, onChange, state } from './state.js';
 import { toggleBookmark, updateBookmarkUi } from './ui/bookmarks-view.js';
 import { renderCategories, renderPlaces } from './ui/catalog-view.js';
@@ -18,6 +19,9 @@ import { initVoice, sendMessage } from './ui/chat-view.js';
 import {
   closeDetail,
   openDetail,
+  submitReport,
+  syncReportHint,
+  toggleReportForm,
   sharePlace,
   submitReview,
   syncDetailBookmark,
@@ -94,6 +98,7 @@ const actions = {
     syncDetailBookmark();
   },
   'share-place': (el) => sharePlace(el.dataset.id),
+  'toggle-report': () => toggleReportForm(),
   'close-bookmarks': () => closeModal('bookmarks-drawer'),
 };
 
@@ -121,7 +126,14 @@ function bindDelegation() {
     if (event.target.id === 'detail-review-form') {
       event.preventDefault();
       submitReview(event.target);
+    } else if (event.target.id === 'detail-report-form') {
+      event.preventDefault();
+      submitReport(event.target);
     }
+  });
+
+  document.addEventListener('change', (event) => {
+    if (event.target.id === 'report-reason') syncReportHint();
   });
 
   document.addEventListener('keydown', trapFocus);
@@ -237,9 +249,23 @@ function bindConnectivity() {
   update();
 }
 
-function openFromHash() {
-  const id = decodeURIComponent(location.hash.slice(1));
-  if (id && findPlace(id)) openDetail(id);
+/** Opens or closes the place dialog to match the address bar. */
+function applyRoute({ initial = false } = {}) {
+  const route = parsePlaceRoute(location);
+  if (route.kind === 'home') {
+    if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
+    return;
+  }
+  if (route.id && findPlace(route.id)) {
+    if (route.kind === 'legacy') history.replaceState(null, '', placePath(route.id));
+    openDetail(route.id, { fromHistory: true });
+    return;
+  }
+  if (route.kind === 'place') {
+    if (initial || !isOpen('place-detail-modal')) showToast("Joy topilmadi yoki o'chirilgan", 4000);
+    if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
+    history.replaceState(null, '', `/${location.search}`);
+  }
 }
 
 async function loadPlaces() {
@@ -258,7 +284,7 @@ async function loadPlaces() {
     }
   }
   notify();
-  openFromHash();
+  applyRoute({ initial: true });
 }
 
 function registerServiceWorker() {
@@ -281,7 +307,8 @@ function init() {
   initMap($('leaflet-map-container'), { openDetail });
   onChange(render);
   render();
-  window.addEventListener('hashchange', openFromHash);
+  window.addEventListener('popstate', () => applyRoute());
+  window.addEventListener('hashchange', () => applyRoute());
   loadPlaces();
   registerServiceWorker();
 }

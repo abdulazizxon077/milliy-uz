@@ -4,7 +4,7 @@
  * without a network. API responses are never cached here; the app keeps its
  * own snapshot of the last catalog it received.
  */
-const CACHE = 'milliy-shell-v2';
+const CACHE = 'milliy-shell-v3';
 const STATIC = ['/manifest.webmanifest', '/icon.svg', '/icon-192.png', '/place-placeholder.svg'];
 const ASSET_RE = /\/assets\/[^"')\s]+/g;
 
@@ -51,7 +51,12 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(request)
         .then((res) => {
-          if (res.ok && res.headers.get('content-type')?.includes('text/html')) {
+          // Only the plain shell is stored; /joy/<id> pages carry place-specific tags.
+          if (
+            url.pathname === '/' &&
+            res.ok &&
+            res.headers.get('content-type')?.includes('text/html')
+          ) {
             const copy = res.clone();
             caches.open(CACHE).then((cache) => cache.put('/index.html', copy));
           }
