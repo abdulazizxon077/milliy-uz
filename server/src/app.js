@@ -19,7 +19,8 @@ const CSP_DIRECTIVES = {
   scriptSrc: ["'self'"],
   // Leaflet positions tiles and markers through inline style attributes.
   styleSrc: ["'self'", "'unsafe-inline'"],
-  imgSrc: ["'self'", 'data:', 'https://images.unsplash.com', 'https://*.basemaps.cartocdn.com'],
+  // Place photos are admin-provided https URLs, so any https image host is allowed.
+  imgSrc: ["'self'", 'data:', 'https:'],
   fontSrc: ["'self'"],
   connectSrc: ["'self'"],
   manifestSrc: ["'self'"],
