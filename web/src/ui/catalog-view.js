@@ -48,20 +48,43 @@ export function renderCategories() {
 export function placeCardHtml(rawPlace) {
   const lang = state.lang;
   const place = getLocalizedPlace(rawPlace, lang);
-  const dist = formatDistance(distanceKm(state.userLocation, place), lang);
+  const showDist = Boolean(state.hasGpsLocation);
+  const dist = showDist ? formatDistance(distanceKm(state.userLocation, place), lang) : null;
   const status = getOpenStatus(place, new Date(), lang);
   const saved = state.bookmarks.includes(place.id);
   const id = escapeHtml(place.id);
   const catName = categoryName(place.category, lang);
   const bookmarkLabel = t('bookmarkSave', lang);
 
+  const isFree = Boolean(
+    place.isFree ||
+      String(place.priceRange || '').toLowerCase().includes('bepul') ||
+      String(place.priceRange || '').toLowerCase().includes('free') ||
+      String(place.priceRange || '').toLowerCase().includes('бесплатно'),
+  );
+  const priceBadgeClass = isFree
+    ? 'bg-emerald-500/20 text-emerald-400 border border-emerald-500/40'
+    : 'bg-amber-500/20 text-amber-300 border border-amber-500/40';
+  const priceBadgeText = isFree
+    ? lang === 'ru'
+      ? 'БЕСПЛАТНО'
+      : lang === 'en'
+      ? 'FREE'
+      : 'BEPUL'
+    : lang === 'ru'
+    ? 'ПЛАТНО'
+    : lang === 'en'
+    ? 'PAID'
+    : 'PULLIK';
+
   return `
   <article class="object-card glass-panel rounded-3xl overflow-hidden flex flex-col animate-fade-in">
     <div class="object-image-container relative h-44 cursor-pointer" data-action="open-detail" data-id="${id}">
       <img src="${escapeHtml(safeImageUrl(place.image))}" alt="${escapeHtml(place.name)}" loading="lazy" decoding="async" width="800" height="352" class="w-full h-full object-cover" />
-      <div class="absolute top-3 left-3 flex flex-wrap gap-1.5">
-        <span class="badge-distance text-[10px] font-bold px-2.5 py-1 rounded-full">${escapeHtml(dist)}</span>
+      <div class="absolute top-3 left-3 flex flex-wrap gap-1.5 items-center">
+        ${showDist ? `<span class="badge-distance text-[10px] font-bold px-2.5 py-1 rounded-full flex items-center gap-1"><i data-lucide="navigation" class="w-3 h-3 text-[#b4f73a]"></i>${escapeHtml(dist)}</span>` : ''}
         <span class="${status.cssClass} text-[10px] font-bold px-2.5 py-1 rounded-full">${escapeHtml(status.label)}</span>
+        <span class="${priceBadgeClass} text-[10px] font-black px-2 py-0.5 rounded-full">${priceBadgeText}</span>
       </div>
       <button type="button" class="bookmark-btn ${saved ? 'active' : ''} absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center" data-action="toggle-bookmark" data-id="${id}" aria-label="${escapeHtml(bookmarkLabel)}" aria-pressed="${saved}">
         <i data-lucide="bookmark" class="w-4 h-4"></i>
@@ -79,12 +102,18 @@ export function placeCardHtml(rawPlace) {
           <p class="text-[#94a3b8] truncate">${t('specialistLabel', lang)} <span class="text-white font-bold">${escapeHtml(place.chiefSpecialist)}</span></p>
           <p class="text-[#94a3b8]">${t('ratingLabel', lang)} <span class="text-[#b4f73a] font-bold" data-rating="${escapeHtml(place.rating)}">★ ${escapeHtml(place.rating)}</span> (${escapeHtml(place.reviewsCount)})</p>
         </div>
-        <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3">
-          <p class="text-[#94a3b8]">${t('pricesLabel', lang)}</p>
-          <p class="text-white font-bold mt-1">${escapeHtml(place.priceRange)}</p>
+        <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3 flex flex-col justify-between">
+          <div>
+            <p class="text-[#94a3b8]">${t('pricesLabel', lang)}</p>
+            <p class="text-white font-bold mt-0.5 text-xs">${escapeHtml(place.priceRange)}</p>
+          </div>
+          <p class="text-[10px] text-emerald-400 font-semibold mt-1 flex items-center gap-1">
+            <i data-lucide="clock" class="w-3 h-3"></i>
+            <span>${escapeHtml(place.is247 ? "24/7 Tunu-kun" : `${place.openTime} - ${place.closeTime}`)}</span>
+          </p>
         </div>
       </div>
-      <p class="text-[11px] text-[#94a3b8] flex items-start gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 shrink-0 mt-0.5"></i>${escapeHtml(place.address)}</p>
+      <p class="text-[11px] text-[#94a3b8] flex items-start gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 shrink-0 mt-0.5 text-emerald-400"></i>${escapeHtml(place.address)}</p>
       <div class="grid grid-cols-2 gap-2 mt-auto">
         <a href="${escapeHtml(telHref(place.phone))}" class="neon-btn rounded-2xl py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>${t('callBtn', lang)}</a>
         <a href="${escapeHtml(directionsUrl(place))}" target="_blank" rel="noopener noreferrer" class="neon-btn-secondary rounded-2xl py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"><i data-lucide="navigation" class="w-3.5 h-3.5"></i>${t('routeBtn', lang)}</a>

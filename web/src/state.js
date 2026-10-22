@@ -9,6 +9,8 @@ export const state = {
   places: [],
   filters: { ...DEFAULT_FILTERS },
   userLocation: { ...tashkent, address: 'Toshkent shahri markazi' },
+  hasGpsLocation: false,
+  selectedCategoryPending: null,
   bookmarks: loadBookmarks(),
   serverChat: true,
   lang: getInitialLanguage(),

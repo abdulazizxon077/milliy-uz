@@ -7,6 +7,7 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import './styles.css';
 
+import { REGIONS_I18N } from '../../shared/catalog.js';
 import { adminAction, closeAdmin, initAdmin } from './admin/admin.js';
 import { api } from './api.js';
 import { DEFAULT_PLACES } from './lib/default-places.js';
@@ -33,7 +34,9 @@ import { applyI18nToDom } from './ui/i18n-view.js';
 import { refreshIcons } from './ui/icons.js';
 import { flyTo, flyToRegion, initMap, renderMarkers, updateUserMarker } from './ui/map-view.js';
 import { closeModal, isOpen, openModal, trapFocus } from './ui/modal.js';
+import { handleRegionPick, openRegionPicker } from './ui/region-modal.js';
 import { showToast } from './ui/toast.js';
+import { highlightMapRegion, renderUzbekistanMap } from './ui/uzbekistan-map.js';
 
 const $ = (id) => document.getElementById(id);
 
@@ -81,15 +84,29 @@ function render() {
   renderMarkers(visible);
   updateBookmarkUi();
   refreshCurrentDetail();
+
+  // Sync active region pill on hero section
+  const heroPill = $('hero-active-region-pill');
+  if (heroPill) {
+    const regName = REGIONS_I18N[state.filters.region]?.[state.lang] || state.filters.region;
+    heroPill.textContent = regName;
+  }
+  highlightMapRegion(state.filters.region);
+
   refreshIcons();
 }
 
 const actions = {
   'scroll-to': (el) => scrollToSection(el.dataset.target),
   'select-category': (el) => {
-    state.filters.category = el.dataset.category || 'all';
-    notify();
-    scrollToSection('catalog-section');
+    // Mandatory region picker when clicking any category (User requirement 10, Image 2)
+    openRegionPicker(el.dataset.category || 'all');
+  },
+  'pick-region-and-close': (el) => {
+    handleRegionPick(el.dataset.region);
+  },
+  'close-region-modal': () => {
+    closeModal('region-select-modal');
   },
   'set-lang': (el) => {
     const lang = el.dataset.lang;
@@ -171,6 +188,11 @@ function bindFilters() {
   );
   $('catalog-region-select')?.addEventListener('change', (e) => {
     state.filters.region = e.target.value;
+    highlightMapRegion(e.target.value);
+    const heroPill = $('hero-active-region-pill');
+    if (heroPill) {
+      heroPill.textContent = REGIONS_I18N[e.target.value]?.[state.lang] || e.target.value;
+    }
     notify();
     flyToRegion(e.target.value);
   });
@@ -198,11 +220,24 @@ function bindLocate() {
     showToast(t('locatingToast', lang));
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
+        state.hasGpsLocation = true;
         state.userLocation = {
           lat: coords.latitude,
           lng: coords.longitude,
           address: lang === 'ru' ? 'Точка по GPS' : lang === 'en' ? 'Current GPS point' : "GPS bo'yicha joriy nuqta",
         };
+        const dot = $('user-location-dot');
+        if (dot) {
+          dot.className = 'w-2.5 h-2.5 rounded-full bg-[#b4f73a] animate-ping';
+        }
+        const lbl = $('user-location-label');
+        if (lbl) {
+          lbl.textContent = lang === 'ru'
+            ? `GPS активен (${coords.latitude.toFixed(3)}, ${coords.longitude.toFixed(3)}) - точные расстояния`
+            : lang === 'en'
+            ? `GPS active (${coords.latitude.toFixed(3)}, ${coords.longitude.toFixed(3)}) - exact distances`
+            : `GPS faol (${coords.latitude.toFixed(3)}, ${coords.longitude.toFixed(3)}) - aniq masofalar`;
+        }
         updateUserMarker();
         notify();
         flyTo(coords.latitude, coords.longitude, 14);
@@ -229,6 +264,10 @@ function bindModals() {
   $('close-detail-modal')?.addEventListener('click', closeDetail);
   $('place-detail-modal')?.addEventListener('click', (e) => {
     if (e.target.id === 'place-detail-modal') closeDetail();
+  });
+  $('close-region-modal')?.addEventListener('click', () => closeModal('region-select-modal'));
+  $('region-select-modal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'region-select-modal') closeModal('region-select-modal');
   });
   $('open-bookmarks-btn')?.addEventListener('click', () => {
     updateBookmarkUi();
@@ -317,6 +356,25 @@ function init() {
   bindScrollSpy();
   initAdmin();
   initMap($('leaflet-map-container'), { openDetail });
+  
+  // Interactive Uzbekistan SVG Vector Map (Image 1 requirement)
+  renderUzbekistanMap($('hero-uz-map-container'), {
+    onSelectRegion: (regId) => {
+      state.filters.region = regId;
+      const select = $('catalog-region-select');
+      if (select) select.value = regId;
+      const heroPill = $('hero-active-region-pill');
+      if (heroPill) {
+        heroPill.textContent = REGIONS_I18N[regId]?.[state.lang] || regId;
+      }
+      notify();
+      flyToRegion(regId);
+      scrollToSection('catalog-section');
+      const regName = REGIONS_I18N[regId]?.[state.lang] || regId;
+      showToast(`${regName}: ${t('catalogHeading', state.lang)}`);
+    },
+  });
+
   onChange(render);
   render();
   window.addEventListener('popstate', () => applyRoute());

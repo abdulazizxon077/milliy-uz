@@ -52,6 +52,30 @@ describe('answerLocally', () => {
     expect(answerLocally('qayerda', places).kind).toBe('text');
   });
 
+  it('answers casual slang and greetings like hoy nima gap', () => {
+    const res = answerLocally('hoy nima gap', places);
+    expect(res.kind).toBe('text');
+    expect(res.text).toMatch(/Vaalaykum assalom/);
+  });
+
+  it('answers bot identity inquiries', () => {
+    const res = answerLocally('sen kimsan nima qila olasan', places);
+    expect(res.kind).toBe('text');
+    expect(res.text).toContain('Milliy.uz');
+  });
+
+  it('answers domain troubleshooting like engine overheating', () => {
+    const res = answerLocally('mator qizib ketdi nima qilay', places);
+    expect(res.kind).toBe('text');
+    expect(res.text).toContain('Dvigatel qizib ketganda');
+  });
+
+  it('answers open-ended general questions with intelligent universal response', () => {
+    const res = answerLocally('ertaga qanday ob-havo bo\'ladi', places);
+    expect(res.kind).toBe('text');
+    expect(res.text).toContain('Savolingiz uchun rahmat');
+  });
+
   it('asks for clarification otherwise', () => {
     expect(answerLocally('nimadir', places).text).toMatch(/^Aniqroq yozing/);
     expect(answerLocally('что-то непонятное', places).text).toMatch(/^Уточните запрос/);
