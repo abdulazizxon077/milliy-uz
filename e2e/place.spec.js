@@ -17,7 +17,7 @@ test('opening a place gives it its own address and title', async ({ page, reques
   await page.goBack();
   await expect(detail(page)).toBeHidden();
   await expect(page).toHaveURL('/');
-  await expect(page).toHaveTitle(/O'zbekiston xizmatlar katalogi/);
+  await expect(page).toHaveTitle(/O'zbekiston joylari katalogi/);
 
   await page.goForward();
   await expect(detail(page)).toBeVisible();
