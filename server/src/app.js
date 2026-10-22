@@ -51,11 +51,13 @@ export async function buildApp({ config, db, chat, logger = true }) {
     contentSecurityPolicy: {
       directives: {
         ...CSP_DIRECTIVES,
-        upgradeInsecureRequests: config.isProduction ? [] : null,
+        // Only force HTTPS when the deployment actually serves it; on plain HTTP
+        // (LAN, docker on localhost) these would break every asset request.
+        upgradeInsecureRequests: config.auth.secureCookie ? [] : null,
       },
     },
     crossOriginEmbedderPolicy: false,
-    hsts: config.isProduction,
+    hsts: config.auth.secureCookie,
   });
 
   await app.register(cors, {

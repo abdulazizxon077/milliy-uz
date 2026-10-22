@@ -78,7 +78,7 @@ To'liq ro'yxat `.env.example` faylida. Full list in `.env.example`.
 | `PORT`, `HOST`                                         |                 | Tinglash manzili / listen address              |
 | `CORS_ORIGIN`                                          |                 | Ruxsat etilgan originlar (vergul bilan)        |
 | `TRUST_PROXY`                                          |                 | Reverse proxy ortida `true`                    |
-| `COOKIE_SECURE`                                        |                 | Prod'da standart `true` (HTTPS kerak)          |
+| `COOKIE_SECURE`                                        |                 | Prod'da `true` (HTTPS); HTTP uchun `false`      |
 | `SESSION_TTL_SECONDS`                                  |                 | Sessiya muddati / session lifetime             |
 | `SERVE_STATIC`                                         |                 | `dist/` ni xizmat qilish (prod'da `true`)      |
 | `LOG_LEVEL`                                            |                 | Pino log darajasi                              |
