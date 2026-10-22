@@ -1,23 +1,31 @@
-import { CATEGORIES, categoryName } from '../../../shared/catalog.js';
+import { CATEGORIES, categoryDesc, categoryName } from '../../../shared/catalog.js';
 import { countByCategory, filterPlaces } from '../lib/catalog.js';
 import {
   directionsUrl,
   distanceKm,
   escapeHtml,
   formatDistance,
+  getLocalizedPlace,
   getOpenStatus,
   safeImageUrl,
   telHref,
 } from '../lib/format.js';
+import { t } from '../lib/i18n.js';
 import { state } from '../state.js';
 import { refreshIcons } from './icons.js';
 
 export function renderCategories() {
   const grid = document.getElementById('all-categories-grid');
   if (!grid) return;
+  const lang = state.lang;
   const counts = countByCategory(state.places, state.filters);
+  const viewText = t('categoryViewLink', lang);
+  const countSuffix = t('categoryCountSuffix', lang);
+
   grid.innerHTML = CATEGORIES.map((c) => {
     const count = counts[c.id] ?? 0;
+    const name = categoryName(c.id, lang);
+    const desc = categoryDesc(c.id, lang);
     return `
     <button type="button" class="category-card glass-panel rounded-3xl p-5 text-left flex flex-col gap-3 ${
       state.filters.category === c.id ? 'border-[#b4f73a]' : ''
@@ -26,22 +34,27 @@ export function renderCategories() {
         <i data-lucide="${escapeHtml(c.icon)}" class="w-5 h-5 text-[#b4f73a]"></i>
       </div>
       <div>
-        <h3 class="text-sm font-extrabold text-white">${escapeHtml(c.name)}</h3>
-        <p class="text-[11px] text-[#94a3b8] mt-1">${escapeHtml(c.desc)}</p>
+        <h3 class="text-sm font-extrabold text-white">${escapeHtml(name)}</h3>
+        <p class="text-[11px] text-[#94a3b8] mt-1">${escapeHtml(desc)}</p>
       </div>
       <span class="mt-auto flex items-center justify-between text-[11px] font-bold">
-        <span class="text-[#b4f73a]">Ko'rish →</span>
-        <span class="category-count ${count ? 'text-white' : 'text-[#64748b]'}" data-category-count="${escapeHtml(c.id)}">${count} ta joy</span>
+        <span class="text-[#b4f73a]">${escapeHtml(viewText)}</span>
+        <span class="category-count ${count ? 'text-white' : 'text-[#64748b]'}" data-category-count="${escapeHtml(c.id)}">${count} ${escapeHtml(countSuffix)}</span>
       </span>
     </button>`;
   }).join('');
 }
 
-export function placeCardHtml(place) {
-  const dist = formatDistance(distanceKm(state.userLocation, place));
-  const status = getOpenStatus(place);
+export function placeCardHtml(rawPlace) {
+  const lang = state.lang;
+  const place = getLocalizedPlace(rawPlace, lang);
+  const dist = formatDistance(distanceKm(state.userLocation, place), lang);
+  const status = getOpenStatus(place, new Date(), lang);
   const saved = state.bookmarks.includes(place.id);
   const id = escapeHtml(place.id);
+  const catName = categoryName(place.category, lang);
+  const bookmarkLabel = t('bookmarkSave', lang);
+
   return `
   <article class="object-card glass-panel rounded-3xl overflow-hidden flex flex-col animate-fade-in">
     <div class="object-image-container relative h-44 cursor-pointer" data-action="open-detail" data-id="${id}">
@@ -50,10 +63,10 @@ export function placeCardHtml(place) {
         <span class="badge-distance text-[10px] font-bold px-2.5 py-1 rounded-full">${escapeHtml(dist)}</span>
         <span class="${status.cssClass} text-[10px] font-bold px-2.5 py-1 rounded-full">${escapeHtml(status.label)}</span>
       </div>
-      <button type="button" class="bookmark-btn ${saved ? 'active' : ''} absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center" data-action="toggle-bookmark" data-id="${id}" aria-label="Saqlash" aria-pressed="${saved}">
+      <button type="button" class="bookmark-btn ${saved ? 'active' : ''} absolute top-3 right-3 w-9 h-9 rounded-full flex items-center justify-center" data-action="toggle-bookmark" data-id="${id}" aria-label="${escapeHtml(bookmarkLabel)}" aria-pressed="${saved}">
         <i data-lucide="bookmark" class="w-4 h-4"></i>
       </button>
-      <span class="absolute bottom-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-black/60 text-white">${escapeHtml(categoryName(place.category))}</span>
+      <span class="absolute bottom-3 left-3 text-[10px] font-bold px-2.5 py-1 rounded-full bg-black/60 text-white">${escapeHtml(catName)}</span>
     </div>
     <div class="p-5 flex flex-col gap-3 flex-1">
       <div>
@@ -62,19 +75,19 @@ export function placeCardHtml(place) {
       </div>
       <div class="grid grid-cols-2 gap-2 text-[11px]">
         <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3 space-y-1">
-          <p class="text-[#94a3b8]">Tajriba: <span class="text-white font-bold">${escapeHtml(place.experienceYears)} yil</span></p>
-          <p class="text-[#94a3b8] truncate">Mutaxassis: <span class="text-white font-bold">${escapeHtml(place.chiefSpecialist)}</span></p>
-          <p class="text-[#94a3b8]">Reyting: <span class="text-[#b4f73a] font-bold" data-rating="${escapeHtml(place.rating)}">★ ${escapeHtml(place.rating)}</span> (${escapeHtml(place.reviewsCount)})</p>
+          <p class="text-[#94a3b8]">${t('experienceLabel', lang)} <span class="text-white font-bold">${escapeHtml(place.experienceYears)} ${t('yearsSuffix', lang)}</span></p>
+          <p class="text-[#94a3b8] truncate">${t('specialistLabel', lang)} <span class="text-white font-bold">${escapeHtml(place.chiefSpecialist)}</span></p>
+          <p class="text-[#94a3b8]">${t('ratingLabel', lang)} <span class="text-[#b4f73a] font-bold" data-rating="${escapeHtml(place.rating)}">★ ${escapeHtml(place.rating)}</span> (${escapeHtml(place.reviewsCount)})</p>
         </div>
         <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3">
-          <p class="text-[#94a3b8]">Narxlar</p>
+          <p class="text-[#94a3b8]">${t('pricesLabel', lang)}</p>
           <p class="text-white font-bold mt-1">${escapeHtml(place.priceRange)}</p>
         </div>
       </div>
       <p class="text-[11px] text-[#94a3b8] flex items-start gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 shrink-0 mt-0.5"></i>${escapeHtml(place.address)}</p>
       <div class="grid grid-cols-2 gap-2 mt-auto">
-        <a href="${escapeHtml(telHref(place.phone))}" class="neon-btn rounded-2xl py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>Qo'ng'iroq</a>
-        <a href="${escapeHtml(directionsUrl(place))}" target="_blank" rel="noopener noreferrer" class="neon-btn-secondary rounded-2xl py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"><i data-lucide="navigation" class="w-3.5 h-3.5"></i>Marshrut</a>
+        <a href="${escapeHtml(telHref(place.phone))}" class="neon-btn rounded-2xl py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5"></i>${t('callBtn', lang)}</a>
+        <a href="${escapeHtml(directionsUrl(place))}" target="_blank" rel="noopener noreferrer" class="neon-btn-secondary rounded-2xl py-2.5 text-xs font-bold flex items-center justify-center gap-1.5"><i data-lucide="navigation" class="w-3.5 h-3.5"></i>${t('routeBtn', lang)}</a>
       </div>
     </div>
   </article>`;
@@ -85,10 +98,11 @@ export function renderPlaces() {
   const badge = document.getElementById('places-count-badge');
   if (!grid) return [];
   const list = filterPlaces(state.places, state.filters, state.userLocation);
-  if (badge) badge.textContent = `${list.length} ta natija topildi`;
+  const lang = state.lang;
+  if (badge) badge.textContent = t('resultsFound', lang, { count: list.length });
   grid.innerHTML = list.length
     ? list.map(placeCardHtml).join('')
-    : `<div class="col-span-full glass-panel rounded-3xl p-10 text-center text-sm text-[#94a3b8]">Ushbu parametrlar bo'yicha ma'lumot topilmadi</div>`;
+    : `<div class="col-span-full glass-panel rounded-3xl p-10 text-center text-sm text-[#94a3b8]">${escapeHtml(t('noResults', lang))}</div>`;
   refreshIcons();
   return list;
 }

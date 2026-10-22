@@ -1,7 +1,8 @@
 import L from './leaflet.js';
 import 'leaflet.markercluster';
 import { categoryName, COUNTRY_VIEW, REGION_ZOOM, REGIONS } from '../../../shared/catalog.js';
-import { distanceKm, formatDistance } from '../lib/format.js';
+import { distanceKm, formatDistance, getLocalizedPlace } from '../lib/format.js';
+import { t } from '../lib/i18n.js';
 import { state } from '../state.js';
 
 let map;
@@ -30,18 +31,20 @@ function el(tag, className, text) {
   return node;
 }
 
-function placePopup(place) {
+function placePopup(rawPlace) {
+  const lang = state.lang;
+  const place = getLocalizedPlace(rawPlace, lang);
   const root = el('div', 'map-popup');
   root.append(
     el('p', 'map-popup-title', place.name),
     el(
       'p',
       'map-popup-meta',
-      `${categoryName(place.category)} • ${formatDistance(distanceKm(state.userLocation, place))}`,
+      `${categoryName(place.category, lang)} • ${formatDistance(distanceKm(state.userLocation, place), lang)}`,
     ),
     el('p', 'map-popup-meta', place.chiefSpecialist),
   );
-  const button = el('button', 'map-popup-btn', "Batafsil ma'lumot");
+  const button = el('button', 'map-popup-btn', t('assistantDetailsBtn', lang));
   button.type = 'button';
   button.addEventListener('click', () => onOpenDetail(place.id));
   root.append(button);
@@ -49,9 +52,10 @@ function placePopup(place) {
 }
 
 function userPopup() {
+  const lang = state.lang;
   const root = el('div', 'map-popup');
   root.append(
-    el('p', 'map-popup-title', 'Sizning joylashuvingiz'),
+    el('p', 'map-popup-title', t('yourLocation', lang)),
     el('p', 'map-popup-meta', state.userLocation.address),
   );
   return root;
@@ -98,34 +102,30 @@ export function renderMarkers(places) {
   if (!map) return;
   cluster.clearLayers();
   routeLine?.remove();
-  routeLine = null;
-  cluster.addLayers(
-    places.map((place) =>
-      L.marker([place.lat, place.lng], { icon: placeIcon, title: place.name })
-        .bindPopup(() => placePopup(place))
-        .on('click', () => drawGuide(place)),
-    ),
-  );
+  for (const place of places) {
+    const marker = L.marker([place.lat, place.lng], { icon: placeIcon }).bindPopup(() =>
+      placePopup(place),
+    );
+    marker.on('click', () => drawGuide(place));
+    cluster.addLayer(marker);
+  }
 }
 
 export function updateUserMarker() {
-  userMarker?.setLatLng([state.userLocation.lat, state.userLocation.lng]);
+  if (!userMarker) return;
+  userMarker.setLatLng([state.userLocation.lat, state.userLocation.lng]);
+  userMarker.setPopupContent(userPopup);
 }
 
-export function flyTo(lat, lng, zoom) {
+export function flyTo(lat, lng, zoom = 14) {
   map?.flyTo([lat, lng], zoom, { duration: 1.2 });
 }
 
-export function flyToRegion(regionId) {
-  if (regionId === 'all_uz') {
+export function flyToRegion(id) {
+  if (id === 'all_uz') {
     flyTo(COUNTRY_VIEW.lat, COUNTRY_VIEW.lng, COUNTRY_VIEW.zoom);
     return;
   }
-  const region = REGIONS.find((r) => r.id === regionId);
-  if (region) flyTo(region.center.lat, region.center.lng, REGION_ZOOM);
-}
-
-export function focusPlace(place) {
-  if (!map) return;
-  map.flyTo([place.lat, place.lng], 16, { duration: 1 });
+  const hit = REGIONS.find((r) => r.id === id);
+  if (hit) flyTo(hit.center.lat, hit.center.lng, REGION_ZOOM);
 }

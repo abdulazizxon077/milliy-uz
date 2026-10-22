@@ -1,5 +1,6 @@
 import { answerLocally } from '../lib/assistant.js';
-import { clockTime, directionsUrl, distanceKm, escapeHtml, formatDistance } from '../lib/format.js';
+import { clockTime, directionsUrl, distanceKm, escapeHtml, formatDistance, getLocalizedPlace } from '../lib/format.js';
+import { t } from '../lib/i18n.js';
 import { api } from '../api.js';
 import { state } from '../state.js';
 import { refreshIcons } from './icons.js';
@@ -11,6 +12,7 @@ let busy = false;
 
 function append(html) {
   const box = messages();
+  if (!box) return;
   box.insertAdjacentHTML('beforeend', html);
   box.scrollTop = box.scrollHeight;
   refreshIcons();
@@ -27,47 +29,52 @@ function userBubble(text) {
 }
 
 function botBubble(innerHtml) {
+  const lang = state.lang;
   append(`
   <div class="flex gap-3 animate-fade-in">
     <div class="w-8 h-8 shrink-0 rounded-full bg-[#183a2d] text-[#b4f73a] text-[10px] font-extrabold flex items-center justify-center">MU</div>
     <div class="max-w-[85%] glass-panel rounded-3xl rounded-tl-md px-4 py-3 text-sm text-[#e2e8f0] space-y-3">
-      <p class="text-[10px] font-bold text-[#b4f73a] uppercase tracking-wider">Konsultant · ${clockTime()}</p>
+      <p class="text-[10px] font-bold text-[#b4f73a] uppercase tracking-wider">${escapeHtml(t('assistantWelcomeName', lang))} · ${clockTime()}</p>
       ${innerHtml}
     </div>
   </div>`);
 }
 
-function placeSuggestion(place) {
-  const dist = formatDistance(distanceKm(state.userLocation, place));
+function placeSuggestion(rawPlace) {
+  const lang = state.lang;
+  const place = getLocalizedPlace(rawPlace, lang);
+  const dist = formatDistance(distanceKm(state.userLocation, place), lang);
   return `
   <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3 space-y-1.5 text-xs">
     <div class="flex justify-between gap-2"><p class="font-extrabold text-white">${escapeHtml(place.name)}</p><span class="text-[#b4f73a] font-bold shrink-0">${escapeHtml(dist)}</span></div>
     <p class="text-[#94a3b8]">${escapeHtml(place.subCategory)}</p>
-    <p class="text-[#94a3b8]">Mutaxassis: <span class="text-white">${escapeHtml(place.experienceText || `${place.experienceYears} yil`)}</span></p>
-    <p class="text-[#94a3b8]">Narxlar: <span class="text-white">${escapeHtml(place.priceRange)}</span></p>
+    <p class="text-[#94a3b8]">${t('specialistLabel', lang)} <span class="text-white">${escapeHtml(place.experienceText || `${place.experienceYears} ${t('yearsSuffix', lang)}`)}</span></p>
+    <p class="text-[#94a3b8]">${t('pricesLabel', lang)}: <span class="text-white">${escapeHtml(place.priceRange)}</span></p>
     <div class="flex gap-2 pt-1">
-      <button type="button" class="neon-btn rounded-xl px-3 py-1.5 text-[11px] font-bold" data-action="open-detail" data-id="${escapeHtml(place.id)}">Batafsil</button>
+      <button type="button" class="neon-btn rounded-xl px-3 py-1.5 text-[11px] font-bold" data-action="open-detail" data-id="${escapeHtml(place.id)}">${escapeHtml(t('assistantDetailsBtn', lang))}</button>
       <a href="${escapeHtml(directionsUrl(place))}" target="_blank" rel="noopener noreferrer" class="neon-btn-secondary rounded-xl px-3 py-1.5 text-[11px] font-bold">Google Maps</a>
     </div>
   </div>`;
 }
 
 function showTyping() {
+  const lang = state.lang;
   append(`
   <div id="ai-typing" class="flex gap-3 items-center text-xs text-[#94a3b8]">
-    <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span> Qidirilmoqda...
+    <span class="typing-dot"></span><span class="typing-dot"></span><span class="typing-dot"></span> ${escapeHtml(t('assistantTyping', lang))}
   </div>`);
 }
 
 const hideTyping = () => document.getElementById('ai-typing')?.remove();
 
 function replyLocally(text) {
-  const answer = answerLocally(text, state.places);
+  const lang = state.lang;
+  const answer = answerLocally(text, state.places, 2, lang);
   if (answer.kind === 'text') {
     botBubble(`<p>${escapeHtml(answer.text)}</p>`);
   } else if (!answer.places.length) {
     botBubble(
-      `<p>${escapeHtml(answer.intro)}</p><p class="text-[#94a3b8]">Hozircha mos joy topilmadi.</p>`,
+      `<p>${escapeHtml(answer.intro)}</p><p class="text-[#94a3b8]">${escapeHtml(t('assistantNoMatch', lang))}</p>`,
     );
   } else {
     botBubble(`<p>${escapeHtml(answer.intro)}</p>${answer.places.map(placeSuggestion).join('')}`);
@@ -91,45 +98,59 @@ export async function sendMessage(raw) {
         botBubble(`<p class="whitespace-pre-wrap break-words">${escapeHtml(reply)}</p>`);
         return;
       } catch (err) {
-        // 503 means no provider is configured: stop asking the server this session.
         if (err.status === 503) state.serverChat = false;
         if (err.status === 429) showToast("Juda ko'p so'rov. Birozdan so'ng urinib ko'ring");
       }
     }
     hideTyping();
     replyLocally(text);
+  } catch (err) {
+    hideTyping();
+    showToast(err.message || 'Xatolik yuz berdi');
   } finally {
     busy = false;
   }
 }
 
 export function initVoice(onResult) {
-  const button = document.getElementById('ai-mic-btn');
-  const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-  if (!button) return;
-  button.addEventListener('click', () => {
-    if (!Recognition) {
-      showToast(
-        "Brauzeringiz ovozli qidiruvni qo'llab-quvvatlamaydi (Google Chrome tavsiya etiladi)",
-        3500,
-      );
+  const btn = document.getElementById('ai-mic-btn');
+  const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!btn) return;
+  if (!SpeechRec) {
+    btn.style.display = 'none';
+    return;
+  }
+  const rec = new SpeechRec();
+  rec.lang = state.lang === 'ru' ? 'ru-RU' : state.lang === 'en' ? 'en-US' : 'uz-UZ';
+  rec.continuous = false;
+  let listening = false;
+
+  rec.onresult = (e) => {
+    const text = e.results[0]?.[0]?.transcript;
+    if (text) onResult(text);
+  };
+  rec.onend = () => {
+    listening = false;
+    btn.classList.remove('mic-active');
+  };
+  rec.onerror = () => {
+    listening = false;
+    btn.classList.remove('mic-active');
+    showToast("Ovozni aniqlab bo'lmadi");
+  };
+
+  btn.addEventListener('click', () => {
+    if (listening) {
+      rec.stop();
       return;
     }
-    const recognition = new Recognition();
-    recognition.lang = 'uz-UZ';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-    recognition.onstart = () => {
-      button.classList.add('mic-listening');
-      showToast('Gapiring... Sizni tinglayapman');
-    };
-    recognition.onresult = (event) => {
-      const transcript = event.results[0][0].transcript;
-      showToast(`Ovoz aniqlandi: "${transcript}"`);
-      onResult(transcript);
-    };
-    recognition.onerror = () => showToast("Ovozni aniqlab bo'lmadi, qaytadan urinib ko'ring");
-    recognition.onend = () => button.classList.remove('mic-listening');
-    recognition.start();
+    try {
+      rec.lang = state.lang === 'ru' ? 'ru-RU' : state.lang === 'en' ? 'en-US' : 'uz-UZ';
+      rec.start();
+      listening = true;
+      btn.classList.add('mic-active');
+    } catch {
+      showToast("Mikrofonni ishga tushirib bo'lmadi");
+    }
   });
 }

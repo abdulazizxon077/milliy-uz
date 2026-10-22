@@ -18,18 +18,26 @@ const toRad = (deg) => (deg * Math.PI) / 180;
 
 /** Great-circle distance in kilometres. */
 export function distanceKm(from, to) {
-  const dLat = toRad(to.lat - from.lat);
-  const dLng = toRad(to.lng - from.lng);
+  if (!from || !to) return 0;
+  const fromLat = Number(from.lat);
+  const fromLng = Number(from.lng);
+  const toLat = Number(to.lat);
+  const toLng = Number(to.lng);
+  if (!Number.isFinite(fromLat) || !Number.isFinite(toLat)) return 0;
+  const dLat = toRad(toLat - fromLat);
+  const dLng = toRad(toLng - fromLng);
   const a =
     Math.sin(dLat / 2) ** 2 +
-    Math.cos(toRad(from.lat)) * Math.cos(toRad(to.lat)) * Math.sin(dLng / 2) ** 2;
+    Math.cos(toRad(fromLat)) * Math.cos(toRad(toLat)) * Math.sin(dLng / 2) ** 2;
   return EARTH_RADIUS_KM * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 }
 
-export function formatDistance(km) {
+export function formatDistance(km, lang = 'uz') {
   if (!Number.isFinite(km)) return '';
-  if (km < 1) return `${Math.round(km * 1000)} m`;
-  return `${km.toFixed(1)} km`;
+  const unitM = lang === 'ru' ? 'м' : 'm';
+  const unitKm = lang === 'ru' ? 'км' : 'km';
+  if (km < 1) return `${Math.round(km * 1000)} ${unitM}`;
+  return `${km.toFixed(1)} ${unitKm}`;
 }
 
 function toMinutes(value, fallback) {
@@ -42,11 +50,15 @@ function toMinutes(value, fallback) {
  * Opening status for a place at the given moment. Handles 24/7 places,
  * a 24:00 closing time and schedules that run past midnight (e.g. 18:00–02:00).
  */
-export function getOpenStatus(place, now = new Date()) {
-  if (place.is247) return { isOpen: true, label: '24/7 Ochiq', cssClass: 'badge-open' };
+export function getOpenStatus(place, now = new Date(), lang = 'uz') {
+  const is247 = Boolean(place?.is247);
+  if (is247) {
+    const label = lang === 'ru' ? '24/7 Открыто' : lang === 'en' ? 'Open 24/7' : '24/7 Ochiq';
+    return { isOpen: true, label, cssClass: 'badge-open' };
+  }
 
-  const openTime = place.openTime || '08:00';
-  const closeTime = place.closeTime || '22:00';
+  const openTime = place?.openTime || '08:00';
+  const closeTime = place?.closeTime || '22:00';
   const open = toMinutes(openTime, 8 * 60);
   const close = toMinutes(closeTime, 22 * 60);
   const current = now.getHours() * 60 + now.getMinutes();
@@ -59,18 +71,29 @@ export function getOpenStatus(place, now = new Date()) {
         : current >= open || current < close;
 
   if (!isOpen) {
-    return { isOpen: false, label: `Yopiq (${openTime} da ochiladi)`, cssClass: 'badge-closed' };
+    let label = `Yopiq (${openTime} da ochiladi)`;
+    if (lang === 'ru') label = `Закрыто (откроется в ${openTime})`;
+    else if (lang === 'en') label = `Closed (opens at ${openTime})`;
+    return { isOpen: false, label, cssClass: 'badge-closed' };
   }
+
   const minutesLeft = open === close ? Infinity : (close - current + 24 * 60) % (24 * 60);
   if (minutesLeft <= CLOSING_SOON_MINUTES) {
+    let label = `Tez orada yopiladi (${closeTime})`;
+    if (lang === 'ru') label = `Скоро закроется (${closeTime})`;
+    else if (lang === 'en') label = `Closing soon (${closeTime})`;
     return {
       isOpen: true,
       closingSoon: true,
-      label: `Tez orada yopiladi (${closeTime})`,
+      label,
       cssClass: 'badge-closing',
     };
   }
-  return { isOpen: true, label: `Ochiq (${closeTime} gacha)`, cssClass: 'badge-open' };
+
+  let label = `Ochiq (${closeTime} gacha)`;
+  if (lang === 'ru') label = `Открыто (до ${closeTime})`;
+  else if (lang === 'en') label = `Open (until ${closeTime})`;
+  return { isOpen: true, label, cssClass: 'badge-open' };
 }
 
 export const CLOSING_SOON_MINUTES = 60;
@@ -106,4 +129,22 @@ export const PLACEHOLDER_IMAGE = '/place-placeholder.svg';
 /** Only https images are rendered; anything else falls back to a neutral photo. */
 export function safeImageUrl(url) {
   return typeof url === 'string' && url.startsWith('https://') ? url : FALLBACK_IMAGE;
+}
+
+/** Returns a localized projection of the place object based on active language. */
+export function getLocalizedPlace(place, lang = 'uz') {
+  if (!place) return place;
+  if (lang === 'uz') return place;
+  return {
+    ...place,
+    name: place[`name_${lang}`] || place.name,
+    subCategory: place[`subCategory_${lang}`] || place.subCategory,
+    address: place[`address_${lang}`] || place.address,
+    landmark: place[`landmark_${lang}`] || place.landmark,
+    workDays: place[`workDays_${lang}`] || place.workDays,
+    experienceText: place[`experienceText_${lang}`] || place.experienceText,
+    chiefSpecialist: place[`chiefSpecialist_${lang}`] || place.chiefSpecialist,
+    features: place[`features_${lang}`] || place.features,
+    pricingDetails: place[`pricingDetails_${lang}`] || place.pricingDetails,
+  };
 }

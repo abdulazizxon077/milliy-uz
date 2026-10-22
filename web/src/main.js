@@ -9,23 +9,27 @@ import './styles.css';
 
 import { adminAction, closeAdmin, initAdmin } from './admin/admin.js';
 import { api } from './api.js';
+import { DEFAULT_PLACES } from './lib/default-places.js';
 import { debounce, PLACEHOLDER_IMAGE } from './lib/format.js';
+import { t } from './lib/i18n.js';
 import { loadSnapshot, saveSnapshot } from './lib/offline-catalog.js';
 import { parsePlaceRoute, placePath } from './lib/routes.js';
-import { findPlace, notify, onChange, state } from './state.js';
+import { findPlace, notify, onChange, setLanguage, state } from './state.js';
 import { toggleBookmark, updateBookmarkUi } from './ui/bookmarks-view.js';
 import { renderCategories, renderPlaces } from './ui/catalog-view.js';
 import { initVoice, sendMessage } from './ui/chat-view.js';
 import {
   closeDetail,
   openDetail,
-  submitReport,
-  syncReportHint,
-  toggleReportForm,
+  refreshCurrentDetail,
   sharePlace,
+  submitReport,
   submitReview,
   syncDetailBookmark,
+  syncReportHint,
+  toggleReportForm,
 } from './ui/detail-view.js';
+import { applyI18nToDom } from './ui/i18n-view.js';
 import { refreshIcons } from './ui/icons.js';
 import { flyTo, flyToRegion, initMap, renderMarkers, updateUserMarker } from './ui/map-view.js';
 import { closeModal, isOpen, openModal, trapFocus } from './ui/modal.js';
@@ -71,10 +75,12 @@ function bindScrollSpy() {
 }
 
 function render() {
+  applyI18nToDom(state.lang);
   renderCategories();
   const visible = renderPlaces();
   renderMarkers(visible);
   updateBookmarkUi();
+  refreshCurrentDetail();
   refreshIcons();
 }
 
@@ -84,6 +90,13 @@ const actions = {
     state.filters.category = el.dataset.category || 'all';
     notify();
     scrollToSection('catalog-section');
+  },
+  'set-lang': (el) => {
+    const lang = el.dataset.lang;
+    if (lang && lang !== state.lang) {
+      setLanguage(lang);
+      showToast(t('langSwitched', lang));
+    }
   },
   ask: (el) => {
     scrollToSection('ai-section');
@@ -177,24 +190,25 @@ function bindFilters() {
 
 function bindLocate() {
   $('btn-locate-me')?.addEventListener('click', () => {
+    const lang = state.lang;
     if (!navigator.geolocation) {
-      showToast("Brauzeringiz geolokatsiyani qo'llab-quvvatlamaydi");
+      showToast(lang === 'ru' ? 'Браузер не поддерживает геолокацию' : lang === 'en' ? 'Geolocation not supported by browser' : "Brauzeringiz geolokatsiyani qo'llab-quvvatlamaydi");
       return;
     }
-    showToast('Joylashuv aniqlanmoqda...');
+    showToast(t('locatingToast', lang));
     navigator.geolocation.getCurrentPosition(
       ({ coords }) => {
         state.userLocation = {
           lat: coords.latitude,
           lng: coords.longitude,
-          address: "GPS bo'yicha joriy nuqta",
+          address: lang === 'ru' ? 'Точка по GPS' : lang === 'en' ? 'Current GPS point' : "GPS bo'yicha joriy nuqta",
         };
         updateUserMarker();
         notify();
         flyTo(coords.latitude, coords.longitude, 14);
-        showToast('Joylashuv aniqlandi');
+        showToast(t('locatedSuccess', lang));
       },
-      () => showToast("Joylashuvni aniqlab bo'lmadi"),
+      () => showToast(t('locatedFailed', lang)),
       { enableHighAccuracy: true, timeout: 8000 },
     );
   });
@@ -262,7 +276,7 @@ function applyRoute({ initial = false } = {}) {
     return;
   }
   if (route.kind === 'place') {
-    if (initial || !isOpen('place-detail-modal')) showToast("Joy topilmadi yoki o'chirilgan", 4000);
+    if (initial || !isOpen('place-detail-modal')) showToast(state.lang === 'ru' ? 'Объект не найден' : state.lang === 'en' ? 'Place not found' : "Joy topilmadi yoki o'chirilgan", 4000);
     if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
     history.replaceState(null, '', `/${location.search}`);
   }
@@ -274,13 +288,11 @@ async function loadPlaces() {
     saveSnapshot(state.places);
   } catch {
     const snapshot = loadSnapshot();
-    if (snapshot?.places.length) {
+    if (snapshot?.places?.length) {
       state.places = snapshot.places;
-      const day = new Date(snapshot.savedAt).toLocaleDateString('uz-UZ');
-      showToast(`Aloqa yo'q: ${day} holatidagi saqlangan katalog ko'rsatilmoqda`, 5000);
     } else {
-      state.places = [];
-      showToast("Ma'lumotlarni yuklab bo'lmadi. Internet aloqasini tekshiring", 4000);
+      state.places = DEFAULT_PLACES;
+      saveSnapshot(DEFAULT_PLACES);
     }
   }
   notify();

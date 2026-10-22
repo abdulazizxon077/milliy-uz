@@ -73,8 +73,19 @@
           </a>
         </nav>
 
-        <!-- Right Actions: Bookmarks & AI Quick Trigger -->
-        <div class="flex items-center gap-3">
+        <!-- Right Actions: Language Selector, Bookmarks & AI Quick Trigger -->
+        <div class="flex items-center gap-2 sm:gap-3">
+          <!-- 3-Language Selector Pill -->
+          <div
+            id="lang-selector-pill"
+            class="flex items-center bg-[#091b14] border border-[#183a2d] p-1 rounded-full shadow-inner"
+            role="group"
+            aria-label="Tilni tanlash / Выбор языка / Select Language"
+          >
+            <button type="button" data-action="set-lang" data-lang="uz" class="lang-btn active" title="O'zbekcha">O'Z</button>
+            <button type="button" data-action="set-lang" data-lang="ru" class="lang-btn" title="Русский">РУ</button>
+            <button type="button" data-action="set-lang" data-lang="en" class="lang-btn" title="English">EN</button>
+          </div>
           <!-- Bookmarks Button -->
           <button
             id="open-bookmarks-btn"
