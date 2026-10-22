@@ -33,6 +33,39 @@ function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
+const NAV_SECTIONS = [
+  'hero-section',
+  'categories-section',
+  'catalog-section',
+  'map-section',
+  'ai-section',
+];
+
+function setActiveSection(id) {
+  document.querySelectorAll('.nav-pill, .mobile-nav-item').forEach((link) => {
+    const active = link.dataset.scrollTo === id;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+
+/** Highlights the nav entry for whichever section is crossing the middle of the screen. */
+function bindScrollSpy() {
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const hit = entries.find((e) => e.isIntersecting);
+      if (hit) setActiveSection(hit.target.id);
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  for (const id of NAV_SECTIONS) {
+    const section = document.getElementById(id);
+    if (section) observer.observe(section);
+  }
+}
+
 function render() {
   renderCategories();
   const visible = renderPlaces();
@@ -70,9 +103,7 @@ function bindDelegation() {
     if (scrollLink) {
       event.preventDefault();
       scrollToSection(scrollLink.dataset.scrollTo);
-      document
-        .querySelectorAll('.nav-pill')
-        .forEach((p) => p.classList.toggle('active', p === scrollLink));
+      setActiveSection(scrollLink.dataset.scrollTo);
       return;
     }
     const el = event.target.closest('[data-action]');
@@ -245,6 +276,7 @@ function init() {
   bindModals();
   bindConnectivity();
   bindImageFallback();
+  bindScrollSpy();
   initAdmin();
   initMap($('leaflet-map-container'), { openDetail });
   onChange(render);

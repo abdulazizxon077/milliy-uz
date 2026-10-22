@@ -41,6 +41,7 @@
 
         <!-- Smooth Scroll Navigation Pills -->
         <nav
+          aria-label="Bo'limlar"
           class="hidden md:flex items-center gap-1 bg-[#091b14] border border-[#183a2d] p-1.5 rounded-full shadow-inner"
         >
           <a href="#hero-section" data-scroll-to="hero-section" class="nav-pill active">
@@ -102,6 +103,30 @@
         </div>
       </div>
     </header>
+
+    <!-- Mobil pastki navigatsiya -->
+    <nav id="mobile-nav" class="mobile-nav md:hidden" aria-label="Bo'limlar">
+      <a href="#hero-section" data-scroll-to="hero-section" class="mobile-nav-item active">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>Asosiy</span>
+      </a>
+      <a href="#categories-section" data-scroll-to="categories-section" class="mobile-nav-item">
+        <i data-lucide="grid" class="w-5 h-5"></i>
+        <span>Sohalar</span>
+      </a>
+      <a href="#catalog-section" data-scroll-to="catalog-section" class="mobile-nav-item">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span>Katalog</span>
+      </a>
+      <a href="#map-section" data-scroll-to="map-section" class="mobile-nav-item">
+        <i data-lucide="map" class="w-5 h-5"></i>
+        <span>Xarita</span>
+      </a>
+      <a href="#ai-section" data-scroll-to="ai-section" class="mobile-nav-item">
+        <i data-lucide="messages-square" class="w-5 h-5"></i>
+        <span>Konsultant</span>
+      </a>
+    </nav>
 
     <!-- ========================================================
        2. ASOSIY KONTENT SOHASI (UZLUKSIZ OQIM)
