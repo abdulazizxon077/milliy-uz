@@ -41,3 +41,14 @@ export const REGION_ZOOM = 13;
 export function categoryName(id) {
   return CATEGORIES.find((c) => c.id === id)?.name ?? 'Boshqa';
 }
+
+/** Reasons a visitor can pick when reporting outdated or wrong information. */
+export const REPORT_REASONS = [
+  { id: 'phone', name: "Telefon raqami noto'g'ri" },
+  { id: 'hours', name: "Ish vaqti noto'g'ri" },
+  { id: 'location', name: "Manzil yoki xaritadagi joy noto'g'ri" },
+  { id: 'closed', name: 'Tashkilot yopilgan' },
+  { id: 'other', name: 'Boshqa' },
+];
+
+export const REPORT_REASON_IDS = REPORT_REASONS.map((r) => r.id);

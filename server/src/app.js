@@ -7,6 +7,7 @@ import rateLimit from '@fastify/rate-limit';
 import fastifyStatic from '@fastify/static';
 import authPlugin from './plugins/auth.js';
 import { createPlacesRepository } from './repositories/places.js';
+import { createReportsRepository } from './repositories/reports.js';
 import { createReviewsRepository } from './repositories/reviews.js';
 import { createSettingsRepository } from './repositories/settings.js';
 import adminRoutes from './routes/admin.js';
@@ -43,6 +44,7 @@ export async function buildApp({ config, db, chat, logger = true }) {
   const repos = {
     places: createPlacesRepository(db),
     reviews: createReviewsRepository(db),
+    reports: createReportsRepository(db),
     settings: createSettingsRepository(db),
   };
   chat ??= createChatService(config.ai);

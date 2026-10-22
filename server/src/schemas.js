@@ -1,4 +1,4 @@
-import { CATEGORY_IDS, REGION_IDS } from '../../shared/catalog.js';
+import { CATEGORY_IDS, REGION_IDS, REPORT_REASON_IDS } from '../../shared/catalog.js';
 
 const text = (maxLength, minLength = 0) => ({ type: 'string', minLength, maxLength });
 const time = { type: 'string', pattern: '^(([01]\\d|2[0-3]):[0-5]\\d|24:00)$' };
@@ -72,6 +72,19 @@ export const reviewCreateSchema = {
     comment: text(1000, 3),
   },
 };
+
+export const reportCreateSchema = {
+  type: 'object',
+  additionalProperties: false,
+  required: ['reason'],
+  properties: {
+    reason: { type: 'string', enum: REPORT_REASON_IDS },
+    details: text(1000),
+    contact: text(120),
+  },
+};
+
+export const REPORT_STATUSES = ['open', 'resolved', 'dismissed'];
 
 export const placesImportSchema = {
   type: 'array',
