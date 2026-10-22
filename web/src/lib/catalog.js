@@ -46,3 +46,14 @@ export function filterPlaces(places, filters, userLocation, now = new Date()) {
   };
   return result.sort(sorters[f.sortBy] ?? sorters.distance);
 }
+
+/**
+ * Counts places per category under the current region, search and toggles,
+ * ignoring the selected category so every card shows what it would return.
+ */
+export function countByCategory(places, filters, now = new Date()) {
+  const counts = {};
+  const scoped = filterPlaces(places, { ...filters, category: 'all', sortBy: 'rating' }, null, now);
+  for (const place of scoped) counts[place.category] = (counts[place.category] ?? 0) + 1;
+  return counts;
+}

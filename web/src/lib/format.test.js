@@ -6,7 +6,9 @@ import {
   formatDistance,
   getOpenStatus,
   safeImageUrl,
+  telegramShareUrl,
   telHref,
+  yandexDirectionsUrl,
 } from './format.js';
 
 const at = (hh, mm = 0) => new Date(2026, 0, 1, hh, mm);
@@ -54,6 +56,28 @@ describe('getOpenStatus', () => {
     expect(getOpenStatus(night, at(12)).isOpen).toBe(false);
     expect(getOpenStatus({ openTime: '08:00', closeTime: '24:00' }, at(23, 59)).isOpen).toBe(true);
   });
+  it('warns during the last hour before closing', () => {
+    const place = { openTime: '09:00', closeTime: '18:00' };
+    expect(getOpenStatus(place, at(16, 59)).closingSoon).toBeUndefined();
+    const soon = getOpenStatus(place, at(17));
+    expect(soon).toMatchObject({ isOpen: true, closingSoon: true, cssClass: 'badge-closing' });
+    expect(soon.label).toBe('Tez orada yopiladi (18:00)');
+    expect(getOpenStatus(place, at(17, 59)).closingSoon).toBe(true);
+  });
+  it('handles closing soon across midnight', () => {
+    const night = { openTime: '18:00', closeTime: '00:30' };
+    expect(getOpenStatus(night, at(23, 45)).closingSoon).toBe(true);
+    expect(getOpenStatus(night, at(22)).closingSoon).toBeUndefined();
+    expect(getOpenStatus({ openTime: '08:00', closeTime: '24:00' }, at(23, 30)).closingSoon).toBe(
+      true,
+    );
+  });
+  it('never marks 24/7 or same open/close schedules as closing', () => {
+    expect(getOpenStatus({ is247: true }, at(23, 59)).closingSoon).toBeUndefined();
+    expect(getOpenStatus({ openTime: '00:00', closeTime: '00:00' }, at(23, 59)).closingSoon).toBe(
+      undefined,
+    );
+  });
   it('falls back to 08:00–22:00', () => {
     expect(getOpenStatus({}, at(7)).isOpen).toBe(false);
     expect(getOpenStatus({}, at(21)).isOpen).toBe(true);
@@ -65,6 +89,17 @@ describe('links', () => {
     expect(telHref('+998 (71) 200-00-00')).toBe('tel:+998712000000');
     expect(directionsUrl({ lat: '41.3', lng: 69.2 })).toBe(
       'https://www.google.com/maps/dir/?api=1&destination=41.3,69.2',
+    );
+  });
+  it('builds Yandex directions and Telegram share links', () => {
+    expect(yandexDirectionsUrl({ lat: 41.3, lng: '69.2' })).toBe(
+      'https://yandex.uz/maps/?rtext=~41.3,69.2&rtt=auto',
+    );
+    expect(telegramShareUrl('https://milliy.uz/joy/a-b', 'Shifo & Co')).toBe(
+      'https://t.me/share/url?url=https%3A%2F%2Fmilliy.uz%2Fjoy%2Fa-b&text=Shifo+%26+Co',
+    );
+    expect(telegramShareUrl('https://x.uz/')).toBe(
+      'https://t.me/share/url?url=https%3A%2F%2Fx.uz%2F',
     );
   });
   it('only renders https images', () => {

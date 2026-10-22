@@ -1,5 +1,5 @@
 import { CATEGORIES, categoryName } from '../../../shared/catalog.js';
-import { filterPlaces } from '../lib/catalog.js';
+import { countByCategory, filterPlaces } from '../lib/catalog.js';
 import {
   directionsUrl,
   distanceKm,
@@ -15,8 +15,10 @@ import { refreshIcons } from './icons.js';
 export function renderCategories() {
   const grid = document.getElementById('all-categories-grid');
   if (!grid) return;
-  grid.innerHTML = CATEGORIES.map(
-    (c) => `
+  const counts = countByCategory(state.places, state.filters);
+  grid.innerHTML = CATEGORIES.map((c) => {
+    const count = counts[c.id] ?? 0;
+    return `
     <button type="button" class="category-card glass-panel rounded-3xl p-5 text-left flex flex-col gap-3 ${
       state.filters.category === c.id ? 'border-[#b4f73a]' : ''
     }" data-action="select-category" data-category="${escapeHtml(c.id)}">
@@ -27,9 +29,12 @@ export function renderCategories() {
         <h3 class="text-sm font-extrabold text-white">${escapeHtml(c.name)}</h3>
         <p class="text-[11px] text-[#94a3b8] mt-1">${escapeHtml(c.desc)}</p>
       </div>
-      <span class="text-[11px] font-bold text-[#b4f73a] mt-auto">Ko'rish →</span>
-    </button>`,
-  ).join('');
+      <span class="mt-auto flex items-center justify-between text-[11px] font-bold">
+        <span class="text-[#b4f73a]">Ko'rish →</span>
+        <span class="category-count ${count ? 'text-white' : 'text-[#64748b]'}" data-category-count="${escapeHtml(c.id)}">${count} ta joy</span>
+      </span>
+    </button>`;
+  }).join('');
 }
 
 export function placeCardHtml(place) {
@@ -52,14 +57,14 @@ export function placeCardHtml(place) {
     </div>
     <div class="p-5 flex flex-col gap-3 flex-1">
       <div>
-        <h3 class="text-base font-extrabold text-white leading-snug cursor-pointer hover:text-[#b4f73a]" data-action="open-detail" data-id="${id}">${escapeHtml(place.name)}</h3>
+        <h3 class="text-base font-extrabold text-white leading-snug"><button type="button" class="text-left hover:text-[#b4f73a] focus-visible:text-[#b4f73a]" data-action="open-detail" data-id="${id}">${escapeHtml(place.name)}</button></h3>
         <p class="text-[11px] text-[#94a3b8] mt-1 line-clamp-2">${escapeHtml(place.subCategory)}</p>
       </div>
       <div class="grid grid-cols-2 gap-2 text-[11px]">
         <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3 space-y-1">
           <p class="text-[#94a3b8]">Tajriba: <span class="text-white font-bold">${escapeHtml(place.experienceYears)} yil</span></p>
           <p class="text-[#94a3b8] truncate">Mutaxassis: <span class="text-white font-bold">${escapeHtml(place.chiefSpecialist)}</span></p>
-          <p class="text-[#94a3b8]">Reyting: <span class="text-[#b4f73a] font-bold">★ ${escapeHtml(place.rating)}</span> (${escapeHtml(place.reviewsCount)})</p>
+          <p class="text-[#94a3b8]">Reyting: <span class="text-[#b4f73a] font-bold" data-rating="${escapeHtml(place.rating)}">★ ${escapeHtml(place.rating)}</span> (${escapeHtml(place.reviewsCount)})</p>
         </div>
         <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3">
           <p class="text-[#94a3b8]">Narxlar</p>

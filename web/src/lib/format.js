@@ -58,13 +58,36 @@ export function getOpenStatus(place, now = new Date()) {
         ? current >= open && current < close
         : current >= open || current < close;
 
-  return isOpen
-    ? { isOpen: true, label: `Ochiq (${closeTime} gacha)`, cssClass: 'badge-open' }
-    : { isOpen: false, label: `Yopiq (${openTime} da ochiladi)`, cssClass: 'badge-closed' };
+  if (!isOpen) {
+    return { isOpen: false, label: `Yopiq (${openTime} da ochiladi)`, cssClass: 'badge-closed' };
+  }
+  const minutesLeft = open === close ? Infinity : (close - current + 24 * 60) % (24 * 60);
+  if (minutesLeft <= CLOSING_SOON_MINUTES) {
+    return {
+      isOpen: true,
+      closingSoon: true,
+      label: `Tez orada yopiladi (${closeTime})`,
+      cssClass: 'badge-closing',
+    };
+  }
+  return { isOpen: true, label: `Ochiq (${closeTime} gacha)`, cssClass: 'badge-open' };
 }
+
+export const CLOSING_SOON_MINUTES = 60;
 
 export function directionsUrl(place) {
   return `https://www.google.com/maps/dir/?api=1&destination=${Number(place.lat)},${Number(place.lng)}`;
+}
+
+/** Yandex Maps is the more common navigator in Uzbekistan; this opens a driving route. */
+export function yandexDirectionsUrl(place) {
+  return `https://yandex.uz/maps/?rtext=~${Number(place.lat)},${Number(place.lng)}&rtt=auto`;
+}
+
+export function telegramShareUrl(url, text = '') {
+  const params = new URLSearchParams({ url });
+  if (text) params.set('text', text);
+  return `https://t.me/share/url?${params}`;
 }
 
 export function telHref(phone) {
@@ -77,6 +100,8 @@ export function clockTime(date = new Date()) {
 
 export const FALLBACK_IMAGE =
   'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=800&q=80';
+
+export const PLACEHOLDER_IMAGE = '/place-placeholder.svg';
 
 /** Only https images are rendered; anything else falls back to a neutral photo. */
 export function safeImageUrl(url) {

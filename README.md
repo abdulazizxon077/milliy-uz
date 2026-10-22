@@ -13,8 +13,15 @@ The interface is in Uzbek; developer documentation below is in both languages.
 
 - Kategoriya, hudud, reyting, "hozir ochiq" va qidiruv bo'yicha filtrlash.
   Filter by category, region, rating, "open now" and free-text search.
-- Leaflet xaritasi, klasterlangan markerlar, Google Maps orqali yo'nalish.
-  Leaflet map with clustered markers; directions open in Google Maps.
+- Leaflet xaritasi, klasterlangan markerlar, Google Maps va Yandex Maps orqali yo'nalish.
+  Leaflet map with clustered markers; directions open in Google Maps or Yandex Maps.
+- Har bir joy uchun alohida havola (`/joy/<id>`), ijtimoiy tarmoqlar uchun oldindan
+  ko'rish teglari, Telegram orqali ulashish. Every place has its own shareable URL with
+  link-preview tags; sharing via the system sheet, clipboard or Telegram.
+- "Tez orada yopiladi" belgisi va har bir kategoriyadagi joylar soni.
+  "Closing soon" badge and per-category place counts for the selected region.
+- Eskirgan ma'lumot haqida xabar berish; xabarlar admin panelda ko'rib chiqiladi.
+  Visitors can report outdated details; reports are triaged in the admin panel.
 - Foydalanuvchi sharhlari (server tomonda saqlanadi, moderatsiya qilinadi).
   Visitor reviews stored server-side with moderation.
 - Saqlangan joylar (brauzerda), PWA o'rnatish va offline qobiq.
@@ -23,8 +30,8 @@ The interface is in Uzbek; developer documentation below is in both languages.
   qidiruvi ishlaydi. Chat assistant via Gemini, OpenAI or DeepSeek, with a built-in
   catalog matcher as fallback.
 - Admin panel: joylarni qo'shish/tahrirlash/o'chirish, JSON import/eksport, sharhlar
-  moderatsiyasi, chat sozlamalari. Admin panel for place CRUD, JSON import/export, review
-  moderation and chat settings.
+  moderatsiyasi, ma'lumot xatolari, chat sozlamalari. Admin panel for place CRUD (including
+  opening hours), JSON import/export, review moderation, visitor reports and chat settings.
 
 ## Arxitektura / Architecture
 
@@ -78,7 +85,7 @@ To'liq ro'yxat `.env.example` faylida. Full list in `.env.example`.
 | `PORT`, `HOST`                                         |                 | Tinglash manzili / listen address              |
 | `CORS_ORIGIN`                                          |                 | Ruxsat etilgan originlar (vergul bilan)        |
 | `TRUST_PROXY`                                          |                 | Reverse proxy ortida `true`                    |
-| `COOKIE_SECURE`                                        |                 | Prod'da standart `true` (HTTPS kerak)          |
+| `COOKIE_SECURE`                                        |                 | Prod'da `true` (HTTPS); HTTP uchun `false`     |
 | `SESSION_TTL_SECONDS`                                  |                 | Sessiya muddati / session lifetime             |
 | `SERVE_STATIC`                                         |                 | `dist/` ni xizmat qilish (prod'da `true`)      |
 | `LOG_LEVEL`                                            |                 | Pino log darajasi                              |

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { filterPlaces } from './catalog.js';
+import { countByCategory, filterPlaces } from './catalog.js';
 
 const user = { lat: 41.3, lng: 69.24 };
 const noon = new Date(2026, 0, 1, 12);
@@ -78,5 +78,24 @@ describe('filterPlaces', () => {
       ids(filterPlaces(places, { region: 'all_uz', sortBy: 'experience' }, user, noon)),
     ).toEqual(['c', 'a', 'b']);
     expect(places).toEqual(copy);
+  });
+});
+
+describe('countByCategory', () => {
+  it('counts within the selected region and ignores the selected category', () => {
+    expect(countByCategory(places, { region: 'tashkent', category: 'auto' }, noon)).toEqual({
+      auto: 1,
+      medical: 1,
+    });
+    expect(countByCategory(places, { region: 'samarkand' }, noon)).toEqual({ food: 1 });
+  });
+
+  it('respects search and toggles', () => {
+    expect(countByCategory(places, { region: 'all_uz', query: 'dori' }, noon)).toEqual({
+      medical: 1,
+    });
+    expect(countByCategory(places, { region: 'tashkent', onlyGuaranteed: true }, noon)).toEqual({
+      auto: 1,
+    });
   });
 });

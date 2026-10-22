@@ -1,4 +1,4 @@
-import { CATEGORIES, categoryName } from '../../../shared/catalog.js';
+import { CATEGORIES, categoryName, REPORT_REASONS } from '../../../shared/catalog.js';
 import { api } from '../api.js';
 import { escapeHtml, safeImageUrl, FALLBACK_IMAGE } from '../lib/format.js';
 import { notify, state } from '../state.js';
@@ -10,6 +10,7 @@ const TAB_TITLES = {
   analytics: 'Umumiy Analitika',
   places: 'Kataloglar & Joylar Boshqaruvi',
   reviews: 'Sharhlar Moderatsiyasi',
+  reports: "Ma'lumot xatolari",
   ai: 'Qidiruv dvigateli',
 };
 
@@ -51,13 +52,11 @@ function showDashboard(username) {
   $('admin-user-initials').textContent = username.slice(0, 2).toUpperCase();
   closeModal('admin-login-modal');
   openModal('admin-dashboard-modal');
-  document.body.classList.add('overflow-hidden');
   switchTab(activeTab);
 }
 
 export function closeAdmin() {
   closeModal('admin-dashboard-modal');
-  document.body.classList.remove('overflow-hidden');
 }
 
 async function login(event) {
@@ -109,6 +108,7 @@ export function switchTab(tab) {
     analytics: loadStats,
     places: renderPlacesTable,
     reviews: loadReviews,
+    reports: loadReports,
     ai: loadChatSettings,
   };
   loaders[activeTab]();
@@ -125,6 +125,7 @@ async function loadStats() {
     $('admin-kpi-rating').textContent = stats.averageRating.toFixed(2);
     $('admin-kpi-reviews').textContent = stats.reviews;
     $('admin-kpi-hidden').textContent = stats.hiddenReviews;
+    setReportsBadge(stats.openReports);
     $('admin-stats-updated').textContent = `Yangilandi: ${new Date().toLocaleTimeString('uz-UZ')}`;
     $('admin-recent-reviews').innerHTML = reviews.length
       ? reviews
@@ -194,6 +195,12 @@ function openEditor(place) {
   field('exp').value = place?.experienceYears ?? 5;
   field('sub').value = place?.subCategory ?? '';
   field('address').value = place?.address ?? 'Toshkent shahri';
+  field('landmark').value = place?.landmark ?? '';
+  field('phone2').value = place?.secondaryPhone ?? '';
+  field('workdays').value = place?.workDays ?? 'Dushanba - Shanba';
+  field('open').value = place?.openTime ?? '09:00';
+  field('close').value = place?.closeTime === '24:00' ? '00:00' : (place?.closeTime ?? '18:00');
+  field('247').checked = Boolean(place?.is247);
   field('lat').value = (place?.lat ?? state.userLocation.lat).toFixed(6);
   field('lng').value = (place?.lng ?? state.userLocation.lng).toFixed(6);
   field('price').value = place?.priceRange ?? '';
@@ -204,6 +211,7 @@ function openEditor(place) {
 
 function readForm() {
   const years = Math.max(0, Math.min(200, Number.parseInt(field('exp').value, 10) || 0));
+  const original = editingId ? state.places.find((p) => p.id === editingId) : null;
   return {
     name: field('name').value.trim(),
     category: field('cat').value,
@@ -211,9 +219,19 @@ function readForm() {
     phone: field('phone').value.trim(),
     chiefSpecialist: field('master').value.trim(),
     experienceYears: years,
-    experienceText: `${years} yillik professional tajriba`,
+    // Keep a hand-written experience note unless the number of years changed.
+    experienceText:
+      original && original.experienceYears === years && original.experienceText
+        ? original.experienceText
+        : `${years} yillik professional tajriba`,
     subCategory: field('sub').value.trim(),
     address: field('address').value.trim(),
+    landmark: field('landmark').value.trim(),
+    secondaryPhone: field('phone2').value.trim(),
+    workDays: field('workdays').value.trim() || 'Dushanba - Shanba',
+    openTime: field('open').value,
+    closeTime: field('close').value,
+    is247: field('247').checked,
     lat: Number(field('lat').value),
     lng: Number(field('lng').value),
     priceRange: field('price').value.trim() || 'Kelishilgan narxda',
@@ -233,10 +251,6 @@ async function savePlace(event) {
         ...data,
         rating: 5,
         reviewsCount: 0,
-        openTime: '09:00',
-        closeTime: '18:00',
-        is247: false,
-        workDays: 'Dushanba - Shanba',
         features: [],
         pricingDetails: [],
       });
@@ -367,6 +381,92 @@ async function deleteReview(id) {
   }
 }
 
+/* ---------- Information reports ---------- */
+
+const REPORT_REASON_NAMES = Object.fromEntries(REPORT_REASONS.map((r) => [r.id, r.name]));
+const REPORT_STATUS_LABELS = {
+  open: { text: 'Ochiq', css: 'text-amber-400' },
+  resolved: { text: 'Hal qilingan', css: 'text-emerald-400' },
+  dismissed: { text: 'Rad etilgan', css: 'text-[#64748b]' },
+};
+
+function setReportsBadge(count) {
+  const badge = $('admin-reports-badge');
+  if (!badge) return;
+  badge.textContent = count > 99 ? '99+' : String(count);
+  badge.classList.toggle('hidden', !count);
+}
+
+async function refreshReportsBadge() {
+  try {
+    setReportsBadge((await api.admin.stats()).openReports);
+  } catch {
+    // The badge is a hint; the tab itself reports errors.
+  }
+}
+
+const reportButton = (id, status, label, icon) =>
+  `<button type="button" data-action="admin-report-status" data-id="${escapeHtml(id)}" data-status="${status}" class="rounded-lg px-2.5 py-1.5 bg-[#0f271e] border border-[#183a2d] text-[#cbd5e1] hover:text-[#b4f73a] hover:border-[#b4f73a] flex items-center gap-1 font-bold"><i data-lucide="${icon}" class="w-3.5 h-3.5"></i>${label}</button>`;
+
+function reportRow(r) {
+  const status = REPORT_STATUS_LABELS[r.status] ?? REPORT_STATUS_LABELS.open;
+  const when = new Date(r.createdAt).toLocaleString('uz-UZ', {
+    dateStyle: 'medium',
+    timeStyle: 'short',
+  });
+  const buttons =
+    r.status === 'open'
+      ? reportButton(r.id, 'resolved', 'Hal qilindi', 'check') +
+        reportButton(r.id, 'dismissed', 'Rad etish', 'x')
+      : reportButton(r.id, 'open', 'Qayta ochish', 'rotate-ccw');
+  return `
+  <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-4 text-xs space-y-2 ${r.status === 'open' ? '' : 'opacity-70'}" data-report-id="${escapeHtml(r.id)}">
+    <div class="flex flex-wrap justify-between gap-3">
+      <div class="min-w-0">
+        <p class="font-bold text-white">${escapeHtml(REPORT_REASON_NAMES[r.reason] ?? r.reason)} <span class="${status.css} text-[10px]">· ${status.text}</span></p>
+        <button type="button" data-action="admin-report-place" data-id="${escapeHtml(r.placeId)}" class="text-[11px] text-[#b4f73a] hover:underline text-left">${escapeHtml(r.placeName ?? r.placeId)} — tahrirlash</button>
+        <p class="text-[10px] text-[#64748b]">${escapeHtml(when)}${r.contact ? ` · Aloqa: ${escapeHtml(r.contact)}` : ''}</p>
+      </div>
+      <div class="flex flex-wrap gap-1.5 shrink-0 items-start">${buttons}</div>
+    </div>
+    ${r.details ? `<p class="text-[#cbd5e1] whitespace-pre-wrap break-words">${escapeHtml(r.details)}</p>` : ''}
+  </div>`;
+}
+
+async function loadReports() {
+  const box = $('admin-reports-list-container');
+  try {
+    const reports = await api.admin.reports($('admin-reports-filter')?.value || undefined);
+    box.innerHTML = reports.length
+      ? reports.map(reportRow).join('')
+      : `<p class="text-xs text-[#94a3b8]">Bu holatda xabarlar yo'q</p>`;
+    refreshIcons();
+  } catch (err) {
+    handleError(err);
+  }
+}
+
+async function setReportStatus(id, status) {
+  const messages = {
+    resolved: 'Xabar hal qilingan deb belgilandi',
+    dismissed: 'Xabar rad etildi',
+    open: 'Xabar qayta ochildi',
+  };
+  try {
+    await api.admin.setReportStatus(id, status);
+    showToast(messages[status]);
+    await Promise.all([loadReports(), refreshReportsBadge()]);
+  } catch (err) {
+    handleError(err);
+  }
+}
+
+function editReportedPlace(id) {
+  const place = state.places.find((p) => p.id === id);
+  if (place) openEditor(place);
+  else showToast('Joy katalogda topilmadi');
+}
+
 /* ---------- Chat settings ---------- */
 
 async function loadChatSettings() {
@@ -422,6 +522,8 @@ const actions = {
   'admin-delete-place': (el) => deletePlace(el.dataset.id),
   'admin-review-status': (el) => setReviewStatus(el.dataset.id, el.dataset.status),
   'admin-review-delete': (el) => deleteReview(el.dataset.id),
+  'admin-report-status': (el) => setReportStatus(el.dataset.id, el.dataset.status),
+  'admin-report-place': (el) => editReportedPlace(el.dataset.id),
 };
 
 export function adminAction(name, el) {
@@ -448,6 +550,7 @@ export function initAdmin() {
   $('admin-edit-place-form')?.addEventListener('submit', savePlace);
   $('admin-search-input')?.addEventListener('input', renderPlacesTable);
   catFilter?.addEventListener('change', renderPlacesTable);
+  $('admin-reports-filter')?.addEventListener('change', loadReports);
   $('admin-import-json-file')?.addEventListener('change', (e) => importPlaces(e.target));
   document.querySelectorAll('[data-admin-tab]').forEach((item) =>
     item.addEventListener('click', (event) => {

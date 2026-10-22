@@ -1,4 +1,10 @@
-import { idParams, placeCreateSchema, placesImportSchema, placeUpdateSchema } from '../schemas.js';
+import {
+  idParams,
+  placeCreateSchema,
+  placesImportSchema,
+  placeUpdateSchema,
+  REPORT_STATUSES,
+} from '../schemas.js';
 import { DEFAULT_SYSTEM_PROMPT } from '../services/chat.js';
 
 const notFound = (reply) => reply.code(404).send({ error: 'not_found', message: 'Topilmadi' });
@@ -17,6 +23,7 @@ export default async function adminRoutes(app, { repos, chat }) {
       places: places.length,
       reviews: repos.reviews.count(),
       hiddenReviews: repos.reviews.count('hidden'),
+      openReports: repos.reports.count('open'),
       averageRating: Math.round(avgRating * 100) / 100,
       byCategory,
     };
@@ -86,6 +93,36 @@ export default async function adminRoutes(app, { repos, chat }) {
     },
     async (request, reply) =>
       repos.reviews.setStatus(request.params.id, request.body.status) ?? notFound(reply),
+  );
+
+  app.get(
+    '/reports',
+    {
+      schema: {
+        querystring: {
+          type: 'object',
+          properties: { status: { type: 'string', enum: REPORT_STATUSES } },
+        },
+      },
+    },
+    async (request) => repos.reports.list({ status: request.query.status }),
+  );
+
+  app.patch(
+    '/reports/:id',
+    {
+      schema: {
+        params: idParams,
+        body: {
+          type: 'object',
+          additionalProperties: false,
+          required: ['status'],
+          properties: { status: { type: 'string', enum: REPORT_STATUSES } },
+        },
+      },
+    },
+    async (request, reply) =>
+      repos.reports.setStatus(request.params.id, request.body.status) ?? notFound(reply),
   );
 
   app.delete('/reviews/:id', { schema: { params: idParams } }, async (request, reply) => {

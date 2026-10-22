@@ -9,7 +9,9 @@ import './styles.css';
 
 import { adminAction, closeAdmin, initAdmin } from './admin/admin.js';
 import { api } from './api.js';
-import { debounce } from './lib/format.js';
+import { debounce, PLACEHOLDER_IMAGE } from './lib/format.js';
+import { loadSnapshot, saveSnapshot } from './lib/offline-catalog.js';
+import { parsePlaceRoute, placePath } from './lib/routes.js';
 import { findPlace, notify, onChange, state } from './state.js';
 import { toggleBookmark, updateBookmarkUi } from './ui/bookmarks-view.js';
 import { renderCategories, renderPlaces } from './ui/catalog-view.js';
@@ -17,19 +19,55 @@ import { initVoice, sendMessage } from './ui/chat-view.js';
 import {
   closeDetail,
   openDetail,
+  submitReport,
+  syncReportHint,
+  toggleReportForm,
   sharePlace,
   submitReview,
   syncDetailBookmark,
 } from './ui/detail-view.js';
 import { refreshIcons } from './ui/icons.js';
 import { flyTo, flyToRegion, initMap, renderMarkers, updateUserMarker } from './ui/map-view.js';
-import { closeModal, isOpen, openModal } from './ui/modal.js';
+import { closeModal, isOpen, openModal, trapFocus } from './ui/modal.js';
 import { showToast } from './ui/toast.js';
 
 const $ = (id) => document.getElementById(id);
 
 function scrollToSection(id) {
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+const NAV_SECTIONS = [
+  'hero-section',
+  'categories-section',
+  'catalog-section',
+  'map-section',
+  'ai-section',
+];
+
+function setActiveSection(id) {
+  document.querySelectorAll('.nav-pill, .mobile-nav-item').forEach((link) => {
+    const active = link.dataset.scrollTo === id;
+    link.classList.toggle('active', active);
+    if (active) link.setAttribute('aria-current', 'true');
+    else link.removeAttribute('aria-current');
+  });
+}
+
+/** Highlights the nav entry for whichever section is crossing the middle of the screen. */
+function bindScrollSpy() {
+  if (!('IntersectionObserver' in window)) return;
+  const observer = new IntersectionObserver(
+    (entries) => {
+      const hit = entries.find((e) => e.isIntersecting);
+      if (hit) setActiveSection(hit.target.id);
+    },
+    { rootMargin: '-45% 0px -50% 0px' },
+  );
+  for (const id of NAV_SECTIONS) {
+    const section = document.getElementById(id);
+    if (section) observer.observe(section);
+  }
 }
 
 function render() {
@@ -60,6 +98,7 @@ const actions = {
     syncDetailBookmark();
   },
   'share-place': (el) => sharePlace(el.dataset.id),
+  'toggle-report': () => toggleReportForm(),
   'close-bookmarks': () => closeModal('bookmarks-drawer'),
 };
 
@@ -69,9 +108,7 @@ function bindDelegation() {
     if (scrollLink) {
       event.preventDefault();
       scrollToSection(scrollLink.dataset.scrollTo);
-      document
-        .querySelectorAll('.nav-pill')
-        .forEach((p) => p.classList.toggle('active', p === scrollLink));
+      setActiveSection(scrollLink.dataset.scrollTo);
       return;
     }
     const el = event.target.closest('[data-action]');
@@ -89,9 +126,17 @@ function bindDelegation() {
     if (event.target.id === 'detail-review-form') {
       event.preventDefault();
       submitReview(event.target);
+    } else if (event.target.id === 'detail-report-form') {
+      event.preventDefault();
+      submitReport(event.target);
     }
   });
 
+  document.addEventListener('change', (event) => {
+    if (event.target.id === 'report-reason') syncReportHint();
+  });
+
+  document.addEventListener('keydown', trapFocus);
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     if (isOpen('admin-edit-modal')) closeModal('admin-edit-modal');
@@ -181,6 +226,21 @@ function bindModals() {
   });
 }
 
+/** Swaps broken place photos (dead links, offline) for a local placeholder. */
+function bindImageFallback() {
+  document.addEventListener(
+    'error',
+    (event) => {
+      const img = event.target;
+      if (!(img instanceof HTMLImageElement) || img.closest('.leaflet-container')) return;
+      if (img.dataset.fallback) return;
+      img.dataset.fallback = 'true';
+      img.src = PLACEHOLDER_IMAGE;
+    },
+    true,
+  );
+}
+
 function bindConnectivity() {
   const banner = $('offline-banner');
   const update = () => banner?.classList.toggle('hidden', navigator.onLine);
@@ -189,20 +249,42 @@ function bindConnectivity() {
   update();
 }
 
-function openFromHash() {
-  const id = decodeURIComponent(location.hash.slice(1));
-  if (id && findPlace(id)) openDetail(id);
+/** Opens or closes the place dialog to match the address bar. */
+function applyRoute({ initial = false } = {}) {
+  const route = parsePlaceRoute(location);
+  if (route.kind === 'home') {
+    if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
+    return;
+  }
+  if (route.id && findPlace(route.id)) {
+    if (route.kind === 'legacy') history.replaceState(null, '', placePath(route.id));
+    openDetail(route.id, { fromHistory: true });
+    return;
+  }
+  if (route.kind === 'place') {
+    if (initial || !isOpen('place-detail-modal')) showToast("Joy topilmadi yoki o'chirilgan", 4000);
+    if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
+    history.replaceState(null, '', `/${location.search}`);
+  }
 }
 
 async function loadPlaces() {
   try {
     state.places = await api.places();
+    saveSnapshot(state.places);
   } catch {
-    showToast("Ma'lumotlarni yuklab bo'lmadi. Internet aloqasini tekshiring", 4000);
-    state.places = [];
+    const snapshot = loadSnapshot();
+    if (snapshot?.places.length) {
+      state.places = snapshot.places;
+      const day = new Date(snapshot.savedAt).toLocaleDateString('uz-UZ');
+      showToast(`Aloqa yo'q: ${day} holatidagi saqlangan katalog ko'rsatilmoqda`, 5000);
+    } else {
+      state.places = [];
+      showToast("Ma'lumotlarni yuklab bo'lmadi. Internet aloqasini tekshiring", 4000);
+    }
   }
   notify();
-  openFromHash();
+  applyRoute({ initial: true });
 }
 
 function registerServiceWorker() {
@@ -219,11 +301,14 @@ function init() {
   bindChat();
   bindModals();
   bindConnectivity();
+  bindImageFallback();
+  bindScrollSpy();
   initAdmin();
   initMap($('leaflet-map-container'), { openDetail });
   onChange(render);
   render();
-  window.addEventListener('hashchange', openFromHash);
+  window.addEventListener('popstate', () => applyRoute());
+  window.addEventListener('hashchange', () => applyRoute());
   loadPlaces();
   registerServiceWorker();
 }

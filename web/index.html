@@ -8,6 +8,13 @@
       name="description"
       content="Ustaxonalar, shifoxonalar, zapravkalar, DXM, ta'lim va sport obyektlari. Hudud, masofa va telefon bilan milliy katalog."
     />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="MILLIY.UZ" />
+    <meta property="og:title" content="MILLIY.UZ — O'zbekiston xizmatlar katalogi" />
+    <meta
+      property="og:description"
+      content="Ustaxonalar, shifoxonalar, zapravkalar, DXM, ta'lim va sport obyektlari. Hudud, masofa va telefon bilan milliy katalog."
+    />
     <meta name="theme-color" content="#071510" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/icon-192.png" />
@@ -41,6 +48,7 @@
 
         <!-- Smooth Scroll Navigation Pills -->
         <nav
+          aria-label="Bo'limlar"
           class="hidden md:flex items-center gap-1 bg-[#091b14] border border-[#183a2d] p-1.5 rounded-full shadow-inner"
         >
           <a href="#hero-section" data-scroll-to="hero-section" class="nav-pill active">
@@ -72,6 +80,7 @@
             id="open-bookmarks-btn"
             class="w-10 h-10 rounded-full bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-white hover:text-[#b4f73a] hover:border-[#b4f73a] transition-all relative"
             title="Saqlangan joylar"
+            aria-label="Saqlangan joylar"
           >
             <i data-lucide="bookmark" class="w-4 h-4"></i>
             <span
@@ -86,6 +95,7 @@
             data-target="ai-section"
             class="w-10 h-10 rounded-full bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-white hover:text-[#b4f73a] hover:border-[#b4f73a] transition-colors"
             title="Konsultant"
+            aria-label="Konsultant"
           >
             <i data-lucide="messages-square" class="w-4 h-4"></i>
           </button>
@@ -100,6 +110,30 @@
         </div>
       </div>
     </header>
+
+    <!-- Mobil pastki navigatsiya -->
+    <nav id="mobile-nav" class="mobile-nav md:hidden" aria-label="Bo'limlar">
+      <a href="#hero-section" data-scroll-to="hero-section" class="mobile-nav-item active">
+        <i data-lucide="home" class="w-5 h-5"></i>
+        <span>Asosiy</span>
+      </a>
+      <a href="#categories-section" data-scroll-to="categories-section" class="mobile-nav-item">
+        <i data-lucide="grid" class="w-5 h-5"></i>
+        <span>Sohalar</span>
+      </a>
+      <a href="#catalog-section" data-scroll-to="catalog-section" class="mobile-nav-item">
+        <i data-lucide="layout-grid" class="w-5 h-5"></i>
+        <span>Katalog</span>
+      </a>
+      <a href="#map-section" data-scroll-to="map-section" class="mobile-nav-item">
+        <i data-lucide="map" class="w-5 h-5"></i>
+        <span>Xarita</span>
+      </a>
+      <a href="#ai-section" data-scroll-to="ai-section" class="mobile-nav-item">
+        <i data-lucide="messages-square" class="w-5 h-5"></i>
+        <span>Konsultant</span>
+      </a>
+    </nav>
 
     <!-- ========================================================
        2. ASOSIY KONTENT SOHASI (UZLUKSIZ OQIM)
@@ -572,6 +606,7 @@
             id="secret-admin-trigger"
             class="secret-admin-trigger text-[11px] text-[#64748b] hover:text-[#b4f73a] flex items-center gap-1.5"
             title="Tizim boshqaruvi"
+            aria-label="Tizim boshqaruvi"
           >
             <i data-lucide="lock" class="w-3.5 h-3.5"></i>
             <span>Admin Portal</span>
@@ -585,6 +620,9 @@
        ======================================================== -->
     <div
       id="admin-login-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Admin paneliga kirish"
       class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4"
     >
       <div
@@ -613,7 +651,9 @@
 
         <form id="admin-login-form" class="space-y-4 text-xs">
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Login:</label>
+            <label for="admin-username" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Login:</label
+            >
             <input
               id="admin-username"
               type="text"
@@ -625,7 +665,9 @@
           </div>
 
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Parol:</label>
+            <label for="admin-password" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Parol:</label
+            >
             <input
               id="admin-password"
               type="password"
@@ -651,7 +693,13 @@
        5. REAL ENTERPRISE FULLSCREEN ADMIN DASHBOARD CONSOLE
        (STRIPE / SUPABASE DASTURIY DARADJASIDAGI ASOSIY PANEL)
        ======================================================== -->
-    <div id="admin-dashboard-modal" class="admin-fullscreen hidden">
+    <div
+      id="admin-dashboard-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Boshqaruv paneli"
+      class="admin-fullscreen hidden"
+    >
       <!-- LEFT SIDEBAR -->
       <aside class="admin-sidebar">
         <div>
@@ -687,6 +735,15 @@
             <a href="#" data-admin-tab="reviews" class="admin-nav-item">
               <i data-lucide="message-square" class="w-4 h-4"></i>
               <span>Sharhlar Moderatsiyasi</span>
+            </a>
+            <a href="#" data-admin-tab="reports" class="admin-nav-item">
+              <i data-lucide="flag" class="w-4 h-4"></i>
+              <span>Ma'lumot xatolari</span>
+              <span
+                id="admin-reports-badge"
+                class="hidden ml-auto min-w-5 rounded-full bg-amber-400 px-1.5 text-center text-[10px] font-black text-[#071510]"
+                aria-label="Ochiq xabarlar soni"
+              ></span>
             </a>
             <a href="#" data-admin-tab="ai" class="admin-nav-item">
               <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
@@ -751,6 +808,7 @@
               data-action="admin-close"
               class="p-2 rounded-xl bg-[#0f271e] border border-[#183a2d] text-[#94a3b8] hover:text-white hover:border-[#b4f73a]"
               title="Saytga qaytish"
+              aria-label="Saytga qaytish"
             >
               <i data-lucide="x" class="w-4 h-4"></i>
             </button>
@@ -845,11 +903,16 @@
                   Eksport JSON
                 </button>
                 <label
-                  class="px-3.5 py-2 rounded-xl bg-[#0f271e] border border-[#183a2d] text-[#cbd5e1] hover:text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer"
+                  class="px-3.5 py-2 rounded-xl bg-[#0f271e] border border-[#183a2d] text-[#cbd5e1] hover:text-white text-xs font-bold flex items-center gap-1.5 transition-all cursor-pointer focus-within:border-[#b4f73a] focus-within:text-white"
                 >
                   <i data-lucide="upload" class="w-3.5 h-3.5"></i>
                   <span>Import JSON</span>
-                  <input type="file" id="admin-import-json-file" accept=".json" class="hidden" />
+                  <input
+                    type="file"
+                    id="admin-import-json-file"
+                    accept=".json,application/json"
+                    class="sr-only"
+                  />
                 </label>
                 <button data-action="admin-add-place" class="neon-btn py-2 px-4 text-xs">
                   <i data-lucide="plus" class="w-3.5 h-3.5"></i>
@@ -930,6 +993,35 @@
             </div>
           </div>
 
+          <!-- ================= TAB 5: INFORMATION REPORTS ================= -->
+          <div id="admin-view-reports" class="hidden space-y-6">
+            <div class="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <h2 class="text-xl font-extrabold text-white">Ma'lumot xatolari</h2>
+                <p class="text-xs text-[#94a3b8] mt-0.5">
+                  Foydalanuvchilar eskirgan yoki noto'g'ri ma'lumot haqida yuborgan xabarlar
+                </p>
+              </div>
+              <label
+                class="text-xs text-[#94a3b8] flex items-center gap-2"
+                for="admin-reports-filter"
+              >
+                Holat:
+                <select
+                  id="admin-reports-filter"
+                  class="bg-[#071510] border border-[#183a2d] rounded-xl px-3 py-2 text-white outline-none"
+                >
+                  <option value="open">Ochiq</option>
+                  <option value="resolved">Hal qilingan</option>
+                  <option value="dismissed">Rad etilgan</option>
+                  <option value="">Barchasi</option>
+                </select>
+              </label>
+            </div>
+
+            <div id="admin-reports-list-container" class="space-y-3"></div>
+          </div>
+
           <div id="admin-view-ai" class="hidden space-y-6">
             <div class="flex items-center justify-between">
               <div>
@@ -972,7 +1064,9 @@
                 </p>
 
                 <div>
-                  <label class="block text-[#94a3b8] mb-1 font-semibold text-xs"
+                  <label
+                    for="admin-ai-system-prompt"
+                    class="block text-[#94a3b8] mb-1 font-semibold text-xs"
                     >Operator ko'rsatmasi</label
                   >
                   <textarea
@@ -1041,13 +1135,18 @@
        ======================================================== -->
     <div
       id="admin-edit-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Obyektni tahrirlash"
       class="fixed inset-0 z-[110] bg-black/90 backdrop-blur-md hidden flex items-center justify-center p-4"
     >
       <div
         class="glass-panel w-full max-w-2xl p-6 sm:p-8 rounded-3xl border border-[#183a2d] relative max-h-[90vh] overflow-y-auto shadow-2xl"
       >
         <button
+          type="button"
           data-action="admin-close-edit"
+          aria-label="Yopish"
           class="absolute top-5 right-5 text-[#94a3b8] hover:text-white"
         >
           <i data-lucide="x" class="w-5 h-5"></i>
@@ -1064,7 +1163,9 @@
 
         <form id="admin-edit-place-form" class="space-y-4 text-xs">
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Tashkilot nomi *</label>
+            <label for="edit-p-name" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Tashkilot nomi *</label
+            >
             <input
               id="edit-p-name"
               required
@@ -1077,7 +1178,9 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold">Kategoriya</label>
+              <label for="edit-p-cat" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Kategoriya</label
+              >
               <select
                 id="edit-p-cat"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
@@ -1096,7 +1199,9 @@
             </div>
 
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold">Hudud (Viloyat)</label>
+              <label for="edit-p-region" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Hudud (Viloyat)</label
+              >
               <select
                 id="edit-p-region"
                 class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
@@ -1118,7 +1223,9 @@
             </div>
 
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold">Telefon raqam</label>
+              <label for="edit-p-phone" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Telefon raqam</label
+              >
               <input
                 id="edit-p-phone"
                 required
@@ -1131,7 +1238,65 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold"
+              <label for="edit-p-phone2" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Qo'shimcha telefon (ixtiyoriy)</label
+              >
+              <input
+                id="edit-p-phone2"
+                type="tel"
+                pattern="[+0-9 ()\-]{2,32}"
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <div>
+              <label for="edit-p-workdays" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Ish kunlari</label
+              >
+              <input
+                id="edit-p-workdays"
+                type="text"
+                maxlength="80"
+                placeholder="Dushanba - Shanba"
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 items-end">
+            <div>
+              <label for="edit-p-open" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Ochilish vaqti</label
+              >
+              <input
+                id="edit-p-open"
+                type="time"
+                required
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <div>
+              <label for="edit-p-close" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Yopilish vaqti</label
+              >
+              <input
+                id="edit-p-close"
+                type="time"
+                required
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <label
+              for="edit-p-247"
+              class="col-span-2 sm:col-span-1 flex items-center gap-2 rounded-xl border border-[#183a2d] bg-[#071510] p-3 text-white font-semibold"
+            >
+              <input id="edit-p-247" type="checkbox" class="accent-[#b4f73a] w-4 h-4" />
+              24/7 ishlaydi
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
+              <label for="edit-p-master" class="block text-[#94a3b8] mb-1 font-semibold"
                 >Mutaxassis / Bosh mas'ul</label
               >
               <input
@@ -1141,7 +1306,9 @@
               />
             </div>
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold">Tajriba (yillar)</label>
+              <label for="edit-p-exp" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Tajriba (yillar)</label
+              >
               <input
                 id="edit-p-exp"
                 type="number"
@@ -1153,7 +1320,9 @@
           </div>
 
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Qisqa tavsif</label>
+            <label for="edit-p-sub" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Qisqa tavsif</label
+            >
             <input
               id="edit-p-sub"
               type="text"
@@ -1162,7 +1331,9 @@
           </div>
 
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Aniq manzil</label>
+            <label for="edit-p-address" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Aniq manzil</label
+            >
             <input
               id="edit-p-address"
               type="text"
@@ -1170,9 +1341,21 @@
             />
           </div>
 
+          <div>
+            <label for="edit-p-landmark" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Mo'ljal (ixtiyoriy)</label
+            >
+            <input
+              id="edit-p-landmark"
+              type="text"
+              maxlength="200"
+              class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+            />
+          </div>
+
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold"
+              <label for="edit-p-lat" class="block text-[#94a3b8] mb-1 font-semibold"
                 >Geolokatsiya (Latitude - Kenglik)</label
               >
               <input
@@ -1186,7 +1369,7 @@
               />
             </div>
             <div>
-              <label class="block text-[#94a3b8] mb-1 font-semibold"
+              <label for="edit-p-lng" class="block text-[#94a3b8] mb-1 font-semibold"
                 >Geolokatsiya (Longitude - Uzunlik)</label
               >
               <input
@@ -1202,7 +1385,9 @@
           </div>
 
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Narxlar diapazoni</label>
+            <label for="edit-p-price" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Narxlar diapazoni</label
+            >
             <input
               id="edit-p-price"
               type="text"
@@ -1212,7 +1397,9 @@
           </div>
 
           <div>
-            <label class="block text-[#94a3b8] mb-1 font-semibold">Rasm havolasi (URL)</label>
+            <label for="edit-p-image" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Rasm havolasi (URL)</label
+            >
             <input
               id="edit-p-image"
               type="url"
@@ -1243,6 +1430,9 @@
        ======================================================== -->
     <div
       id="place-detail-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Joy haqida batafsil"
       class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden flex items-center justify-center p-4"
     >
       <div
@@ -1265,6 +1455,9 @@
        ======================================================== -->
     <div
       id="bookmarks-drawer"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Saqlangan joylar"
       class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex justify-end"
     >
       <div

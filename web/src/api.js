@@ -26,6 +26,7 @@ export const api = {
   places: () => request('GET', '/places'),
   place: (id) => request('GET', `/places/${enc(id)}`),
   addReview: (id, review) => request('POST', `/places/${enc(id)}/reviews`, review),
+  reportPlace: (id, report) => request('POST', `/places/${enc(id)}/reports`, report),
   chat: (message) => request('POST', '/chat', { message }),
 
   login: (username, password) => request('POST', '/auth/login', { username, password }),
@@ -42,6 +43,8 @@ export const api = {
     reviews: (status) => request('GET', `/admin/reviews${status ? `?status=${enc(status)}` : ''}`),
     setReviewStatus: (id, status) => request('PATCH', `/admin/reviews/${enc(id)}`, { status }),
     deleteReview: (id) => request('DELETE', `/admin/reviews/${enc(id)}`),
+    reports: (status) => request('GET', `/admin/reports${status ? `?status=${enc(status)}` : ''}`),
+    setReportStatus: (id, status) => request('PATCH', `/admin/reports/${enc(id)}`, { status }),
     chatSettings: () => request('GET', '/admin/settings/chat'),
     saveChatSettings: (systemPrompt) => request('PUT', '/admin/settings/chat', { systemPrompt }),
   },
