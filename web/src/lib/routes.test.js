@@ -24,4 +24,12 @@ describe('place routes', () => {
     expect(route('/', '#catalog-section')).toEqual({ kind: 'home', id: null });
     expect(route('/', '')).toEqual({ kind: 'home', id: null });
   });
+
+  it('recognises site pages, the admin entry and unknown paths', () => {
+    expect(route('/haqida')).toEqual({ kind: 'page', id: 'haqida' });
+    expect(route('/aloqa/')).toEqual({ kind: 'page', id: 'aloqa' });
+    expect(route('/maxfiylik')).toEqual({ kind: 'page', id: 'maxfiylik' });
+    expect(route('/admin')).toEqual({ kind: 'admin', id: null });
+    expect(route('/yoq-sahifa')).toEqual({ kind: 'missing', id: null });
+  });
 });

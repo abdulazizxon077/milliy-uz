@@ -28,4 +28,12 @@ describe('answerLocally', () => {
   it('asks for clarification otherwise', () => {
     expect(answerLocally('nimadir', places).text).toMatch(/^Aniqroq yozing/);
   });
+  it('narrows answers to a region named in the question', () => {
+    const list = [
+      { id: 'm1', category: 'parks', region: 'tashkent' },
+      { id: 'm2', category: 'parks', region: 'samarkand' },
+    ];
+    expect(answerLocally('Samarqanddagi muzeylar', list).places.map((p) => p.id)).toEqual(['m2']);
+    expect(answerLocally('muzey', list).places).toHaveLength(2);
+  });
 });

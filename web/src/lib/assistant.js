@@ -38,7 +38,43 @@ const INTENTS = [
     words: ['ovqat', 'osh', 'palov', 'choyxona', 'restoran'],
     intro: 'Choyxona va ovqatlanish joylari:',
   },
+  {
+    category: 'market',
+    words: ['bozor', 'savdo', 'supermarket', 'magazin', 'dokon', "do'kon"],
+    intro: 'Bozor va savdo markazlari:',
+  },
+  {
+    category: 'parks',
+    words: ['muzey', 'park', 'xiyobon', 'bog', 'sayr'],
+    intro: 'Park va muzeylar:',
+  },
+  {
+    category: 'edu',
+    words: ['universitet', 'institut', "o'qish", 'talim', "ta'lim", 'oliygoh'],
+    intro: "Oliy ta'lim muassasalari:",
+  },
+  {
+    category: 'sport',
+    words: ['sport', 'stadion', 'fitnes', 'zal', 'basseyn'],
+    intro: 'Sport majmualari:',
+  },
 ];
+
+const REGION_WORDS = {
+  tashkent: ['toshkent'],
+  samarkand: ['samarqand'],
+  bukhara: ['buxoro'],
+  fergana: ["farg'ona", 'fargona'],
+  andijan: ['andijon'],
+  namangan: ['namangan'],
+  qashqadaryo: ['qashqadaryo', 'qarshi'],
+  surxondaryo: ['surxondaryo', 'termiz'],
+  navoiy: ['navoiy'],
+  xorazm: ['xorazm', 'urganch', 'xiva'],
+  jizzax: ['jizzax'],
+  sirdaryo: ['sirdaryo', 'guliston'],
+  karakalpak: ["qoraqalpog'iston", 'nukus'],
+};
 
 function hasWord(text, word) {
   // Short tokens such as "ev" or "eri" must match whole words to avoid false hits.
@@ -51,7 +87,10 @@ function hasWord(text, word) {
  * @returns {{ kind: 'text', text: string } | { kind: 'places', intro: string, places: object[] }}
  */
 export function answerLocally(query, places, limit = 2) {
-  const q = query.toLowerCase().trim();
+  const q = query
+    .toLowerCase()
+    .replace(/[\u2018\u2019\u02bb\u02bc`]/g, "'")
+    .trim();
 
   if (GREETINGS.includes(q) || GREETING_PARTS.some((p) => q.includes(p))) {
     return {
@@ -70,9 +109,15 @@ export function answerLocally(query, places, limit = 2) {
   if (!intent) {
     return { kind: 'text', text: 'Aniqroq yozing: "mator usta", "24/7 dorixona" yoki "DXM".' };
   }
+  const region = Object.keys(REGION_WORDS).find((id) =>
+    REGION_WORDS[id].some((w) => q.includes(w)),
+  );
+  const matches = places.filter(
+    (p) => p.category === intent.category && (!region || p.region === region),
+  );
   return {
     kind: 'places',
     intro: intent.intro,
-    places: places.filter((p) => p.category === intent.category).slice(0, limit),
+    places: matches.slice(0, limit),
   };
 }
