@@ -736,6 +736,15 @@
               <i data-lucide="message-square" class="w-4 h-4"></i>
               <span>Sharhlar Moderatsiyasi</span>
             </a>
+            <a href="#" data-admin-tab="reports" class="admin-nav-item">
+              <i data-lucide="flag" class="w-4 h-4"></i>
+              <span>Ma'lumot xatolari</span>
+              <span
+                id="admin-reports-badge"
+                class="hidden ml-auto min-w-5 rounded-full bg-amber-400 px-1.5 text-center text-[10px] font-black text-[#071510]"
+                aria-label="Ochiq xabarlar soni"
+              ></span>
+            </a>
             <a href="#" data-admin-tab="ai" class="admin-nav-item">
               <i data-lucide="sliders-horizontal" class="w-4 h-4"></i>
               <span>Qidiruv dvigateli</span>
@@ -984,6 +993,35 @@
             </div>
           </div>
 
+          <!-- ================= TAB 5: INFORMATION REPORTS ================= -->
+          <div id="admin-view-reports" class="hidden space-y-6">
+            <div class="flex flex-wrap items-end justify-between gap-3">
+              <div>
+                <h2 class="text-xl font-extrabold text-white">Ma'lumot xatolari</h2>
+                <p class="text-xs text-[#94a3b8] mt-0.5">
+                  Foydalanuvchilar eskirgan yoki noto'g'ri ma'lumot haqida yuborgan xabarlar
+                </p>
+              </div>
+              <label
+                class="text-xs text-[#94a3b8] flex items-center gap-2"
+                for="admin-reports-filter"
+              >
+                Holat:
+                <select
+                  id="admin-reports-filter"
+                  class="bg-[#071510] border border-[#183a2d] rounded-xl px-3 py-2 text-white outline-none"
+                >
+                  <option value="open">Ochiq</option>
+                  <option value="resolved">Hal qilingan</option>
+                  <option value="dismissed">Rad etilgan</option>
+                  <option value="">Barchasi</option>
+                </select>
+              </label>
+            </div>
+
+            <div id="admin-reports-list-container" class="space-y-3"></div>
+          </div>
+
           <div id="admin-view-ai" class="hidden space-y-6">
             <div class="flex items-center justify-between">
               <div>
@@ -1200,6 +1238,64 @@
 
           <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
+              <label for="edit-p-phone2" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Qo'shimcha telefon (ixtiyoriy)</label
+              >
+              <input
+                id="edit-p-phone2"
+                type="tel"
+                pattern="[+0-9 ()\-]{2,32}"
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <div>
+              <label for="edit-p-workdays" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Ish kunlari</label
+              >
+              <input
+                id="edit-p-workdays"
+                type="text"
+                maxlength="80"
+                placeholder="Dushanba - Shanba"
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 items-end">
+            <div>
+              <label for="edit-p-open" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Ochilish vaqti</label
+              >
+              <input
+                id="edit-p-open"
+                type="time"
+                required
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <div>
+              <label for="edit-p-close" class="block text-[#94a3b8] mb-1 font-semibold"
+                >Yopilish vaqti</label
+              >
+              <input
+                id="edit-p-close"
+                type="time"
+                required
+                class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+              />
+            </div>
+            <label
+              for="edit-p-247"
+              class="col-span-2 sm:col-span-1 flex items-center gap-2 rounded-xl border border-[#183a2d] bg-[#071510] p-3 text-white font-semibold"
+            >
+              <input id="edit-p-247" type="checkbox" class="accent-[#b4f73a] w-4 h-4" />
+              24/7 ishlaydi
+            </label>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div>
               <label for="edit-p-master" class="block text-[#94a3b8] mb-1 font-semibold"
                 >Mutaxassis / Bosh mas'ul</label
               >
@@ -1241,6 +1337,18 @@
             <input
               id="edit-p-address"
               type="text"
+              class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
+            />
+          </div>
+
+          <div>
+            <label for="edit-p-landmark" class="block text-[#94a3b8] mb-1 font-semibold"
+              >Mo'ljal (ixtiyoriy)</label
+            >
+            <input
+              id="edit-p-landmark"
+              type="text"
+              maxlength="200"
               class="w-full bg-[#071510] border border-[#183a2d] rounded-xl p-3 text-white outline-none"
             />
           </div>
