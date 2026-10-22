@@ -12,8 +12,8 @@ export const seedPlaces = JSON.parse(
   fs.readFileSync(new URL('../seed/places.json', import.meta.url), 'utf8'),
 );
 
-export async function createTestApp({ chat, env = {} } = {}) {
-  const config = loadConfig({
+export async function createTestApp({ chat, env = {}, overrides = {} } = {}) {
+  const baseConfig = loadConfig({
     NODE_ENV: 'test',
     ADMIN_USERNAME: ADMIN.username,
     ADMIN_PASSWORD_HASH: passwordHash,
@@ -21,6 +21,7 @@ export async function createTestApp({ chat, env = {} } = {}) {
     DATABASE_PATH: ':memory:',
     ...env,
   });
+  const config = { ...baseConfig, ...overrides };
   const db = openDatabase(':memory:');
   migrate(db);
   createPlacesRepository(db).replaceAll(seedPlaces);

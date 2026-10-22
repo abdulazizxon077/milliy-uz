@@ -14,6 +14,7 @@ import adminRoutes from './routes/admin.js';
 import authRoutes from './routes/auth.js';
 import publicRoutes from './routes/public.js';
 import { createChatService } from './services/chat.js';
+import { renderPlacePage } from './services/page-meta.js';
 
 const CSP_DIRECTIVES = {
   defaultSrc: ["'self'"],
@@ -109,8 +110,23 @@ export async function buildApp({ config, db, chat, logger = true }) {
     });
   }
 
+  const indexFile = config.staticDir && path.join(config.staticDir, 'index.html');
+  if (indexFile && fs.existsSync(indexFile)) {
+    const indexHtml = fs.readFileSync(indexFile, 'utf8');
+    // Shareable place pages: the SPA opens the place, the server fills in preview tags.
+    app.get('/joy/:id', async (request, reply) => {
+      const place = repos.places.get(request.params.id);
+      reply.header('cache-control', 'no-cache').type('text/html; charset=utf-8');
+      if (!place) return reply.code(404).send(indexHtml);
+      return renderPlacePage(indexHtml, place);
+    });
+  }
+
   app.setNotFoundHandler((request, reply) => {
-    const wantsPage = request.method === 'GET' && !request.url.startsWith('/api/');
+    const pathname = request.url.split('?')[0];
+    // Missing files (/assets/x.js, /favicon.ico) get a real 404 instead of the page.
+    const wantsPage =
+      request.method === 'GET' && !pathname.startsWith('/api/') && !/\.[a-z0-9]+$/i.test(pathname);
     if (wantsPage && config.staticDir && reply.sendFile) {
       return reply.header('cache-control', 'no-cache').sendFile('index.html');
     }
