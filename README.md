@@ -1,99 +1,115 @@
-# Milliy.uz — O'zbekiston Milliy Xizmatlar & Ish O'rinlari Ekotizimi
+# Milliy.uz
 
-<div align="center">
+O'zbekiston bo'ylab xizmatlar katalogi: ustaxonalar, zapravkalar, shifoxonalar, davlat
+xizmatlari, choyxonalar, bozorlar, ta'lim, sport va dam olish maskanlari — xarita, sharhlar
+va chat yordamchisi bilan.
 
-![Milliy.uz Platform](https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1200&q=80)
-
-**O'zbekiston bo'ylab 10+ asosiy sohadagi korxonalar, ustaxonalar, tibbiyot, davlat muassasalari va mutaxassislarni birlashtiruvchi zamonaviy ekotizim.**
-
-[Xususiyatlar](#-asosiy-imkoniyatlar) • [Texnologiyalar](#-texnologik-stek) • [Ko'p Modelli AI](#-kop-modelli-ai-arxitekturasi) • [Tezkor Ishga Tushirish](#-tezkor-ishga-tushirish) • [Admin Portal](#-yashirin-administrator-portali)
-
-</div>
+A directory of services across Uzbekistan with a map, reviews and a chat assistant.
+The interface is in Uzbek; developer documentation below is in both languages.
 
 ---
 
-## 🌟 Loyiha Maqsadi
+## Imkoniyatlar / Features
 
-**Milliy.uz** platformasi O'zbekiston aholisiga har qanday vaziyatda eng yaqin, tasdiqlangan va professional xizmatlarni topish imkonini beradi. Platforma barcha ma'lumotlarni yagona xarita, real narxlar, mutaxassis tajribasi va sun'iy intellekt orqali tezkor tahlil qilib taqdim etadi.
+- Kategoriya, hudud, reyting, "hozir ochiq" va qidiruv bo'yicha filtrlash.
+  Filter by category, region, rating, "open now" and free-text search.
+- Leaflet xaritasi, klasterlangan markerlar, Google Maps orqali yo'nalish.
+  Leaflet map with clustered markers; directions open in Google Maps.
+- Foydalanuvchi sharhlari (server tomonda saqlanadi, moderatsiya qilinadi).
+  Visitor reviews stored server-side with moderation.
+- Saqlangan joylar (brauzerda), PWA o'rnatish va offline qobiq.
+  Bookmarks (local), installable PWA with an offline shell.
+- Chat yordamchisi: Gemini, OpenAI yoki DeepSeek orqali; kalit bo'lmasa ichki katalog
+  qidiruvi ishlaydi. Chat assistant via Gemini, OpenAI or DeepSeek, with a built-in
+  catalog matcher as fallback.
+- Admin panel: joylarni qo'shish/tahrirlash/o'chirish, JSON import/eksport, sharhlar
+  moderatsiyasi, chat sozlamalari. Admin panel for place CRUD, JSON import/export, review
+  moderation and chat settings.
 
----
+## Arxitektura / Architecture
 
-## 🚀 Asosiy Imkoniyatlar
+| Qism / Part | Texnologiya / Technology                                          |
+| ----------- | ----------------------------------------------------------------- |
+| Frontend    | Vite, ES modules, Tailwind CSS, Leaflet, Lucide (`web/`)          |
+| Backend     | Node.js 20, Fastify 5 (`server/`)                                 |
+| Ma'lumotlar | SQLite (better-sqlite3), migratsiyalar va seed skripti            |
+| Xavfsizlik  | bcrypt parol xeshi, httpOnly JWT cookie, CSP, rate limiting, CORS |
+| Testlar     | Vitest (unit/API), Playwright (e2e)                               |
 
-1. **10+ Asosiy Soha Kataloglari (Barchasi ekranda ochiq)**:
-   - 🔧 **Avtomobil & Ustaxona**: Mator, xodovoy, gaz uskunalari, avtoelektriklar.
-   - ⛽ **Zapravka & EV Stansiyalar**: Metan (220 bar), benzin (Ai-95/98), TokBor/Megawatt 120kW EV zaryadlash.
-   - 🏥 **Tibbiyot & Shoshilinch Yordam**: 24/7 shifoxonalar, markaziy dorixonalar, tez tibbiy yordam (103).
-   - 👮 **Militsiya & Huquq Tartibot**: IIO FMB (102), tuman prokuraturasi, favqulodda xizmatlar (101, 1050).
-   - 🏛️ **Davlat Xizmatlari**: Yagona darcha (DXM), Soliq inspeksiyasi, FHDYO, Pensiya jamg'armasi.
-   - 🍲 **Ovqatlanish & Choyxonalar**: Toshkent to'y oshi, milliy choyxonalar, oilaviy restoranlar.
-   - 🛒 **Bozorlar & Savdo**: Chorsu, Oloy bozori, supermarketlar tarmog'i.
-   - 📚 **Ta'lim & OTM**: Milliy va xalqaro universitetlar, zamonaviy IT akademiyalar.
-   - 🏋️ **Sport & Fitnes**: Olimpiya standartidagi basseynlar, professional trenajyor zallari.
-   - 🌳 **Parklar & Dam Olish**: Milliy bog'lar, xiyobonlar, oilaviy hordiq maskanlari.
+API kalitlari va admin ma'lumotlari faqat serverda saqlanadi; brauzerga hech qachon
+yuborilmaydi. API keys and admin credentials live only on the server.
 
-2. **Interaktiv Geopozitsiya & Xaritalar**:
-   - Leaflet.js va OpenStreetMap orqali eng yaqin nuqtalarni avtomatik hisoblash.
-   - Bitta bosish orqali to'g'ridan-to'g'ri **Google Maps** navigatsiyasini ochish.
+## Ishga tushirish / Getting started
 
-3. **Multi-AI Yordamchi Chati**:
-   - Google Gemini, OpenAI (ChatGPT), Anthropic Claude va DeepSeek bilan integratsiya qilingan.
-   - O'zbek tilida tabiiy, faktik va professional muloqot qiladi.
-   - Internet uzilganda ham platformaning ichki aqlli katalog filtri uzluksiz ishlaydi.
-
-4. **1 Million+ Foydalanuvchi Infratuzilmasi**:
-   - Enterprise darajasidagi Load Balancer, Nginx Klaster, Redis kesh va server salomatligi monitoringi.
-
----
-
-## 🎨 Dizayn Tizimi (Design System)
-
-- **Asosiy tema**: Hashamatli Dark Emerald (`#071510`, `#0D221A`, `#102d20`).
-- **Urg'u ranglar**: Electric Neon Lime (`#B4F73A`) va Warm Gold (`#E2B170`).
-- **Shrift (Typography)**: Faqat **Plus Jakarta Sans** (Google Fonts).
-- **Vektor grafika**: **Lucide Icons** (SVG). *Interfeysda bolalarcha emojilar yo'q, faqat senior darajadagi vektor piktogrammalar.*
-- **Yagona Oqim (Single Page Flow)**: Har qanday menyu bosilganda sahifa o'zgarmasdan pastga yoki tepaga silliq skroll bo'ladi.
-
----
-
-## 🤖 Ko'p Modelli AI va Jamoaviy Dasturlash
-
-Ushbu loyiha turli xil sun'iy intellekt agentlari (Antigravity, Cursor, Claude Code, Windsurf, Copilot, ChatGPT) bilan hamkorlikda ishlab chiqilgan.
-
-Loyihada quyidagi boshqaruv fayllari sozlangan:
-- `.cursorrules` — Cursor AI uchun qat'iy kodlash va dizayn qoidalari.
-- `CLAUDE.md` — Anthropic Claude Code terminali uchun to'liq arxitektura hujjati.
-- `PROJECT_CONTEXT.md` — ChatGPT va boshqa LLM larni loyihaga jalb qilish uchun qisqa kontekst.
-
----
-
-## 🔐 Yashirin Administrator Portali
-
-Sayt footer qismidagi maxfiy havoladan ochiladi:
-- **Kirish**: `admin` yoki shaxsiy administrator logini
-- **Xavfsizlik**: SHA-256 kriptografik xeshlash bilan himoyalangan. Parol ochiq kodda saqlanmaydi va admin panel ichidan istalgan vaqtda yangilanishi mumkin.
-- **Imkoniyatlar**: Barcha obyektlarni tahrirlash (CRUD), GPS koordinatalarni o'zgartirish, narxlarni yangilash, yangi xizmat qo'shish, Load Balancer ko'rsatkichlarini kuzatish va Multi-AI API kalitlarini boshqarish.
-
----
-
-## 💻 Tezkor Ishga Tushirish
-
-Loyihani kompyuterda ishga tushirish uchun qo'shimcha og'ir kutubxonalar (Node.js/npm) talab qilinmaydi. Yengil va tezkor:
+Talablar / Requirements: Node.js 20+.
 
 ```bash
-# Repozitoriyni klonlash
-git clone https://github.com/<username>/<repo-name>.git
-cd "Biznes Startup"
-
-# Mahalliy serverni ishga tushirish (Python orqali)
-python -m http.server 5173
-
-# Brauzerda ochish:
-# http://localhost:5173/
+npm ci
+cp .env.example .env
+npm run hash-password          # ADMIN_PASSWORD_HASH uchun / for ADMIN_PASSWORD_HASH
+npm run db:seed                # boshlang'ich ma'lumotlar / initial catalog
+npm run dev                    # API :3000 + Vite :5173
 ```
 
----
+Ishlab chiqarish / Production:
 
-## 📄 Litsenziya
+```bash
+npm run build
+NODE_ENV=production npm start  # dist/ ni ham xizmat qiladi / also serves dist/
+```
 
-MIT License. O'zbekiston Respublikasida biznes va xizmat ko'rsatish sohalarini raqamlashtirish uchun ochiq ekotizim.
+Docker:
+
+```bash
+cp .env.example .env           # sozlang / fill in secrets
+docker compose up -d --build
+```
+
+## Muhit o'zgaruvchilari / Environment variables
+
+To'liq ro'yxat `.env.example` faylida. Full list in `.env.example`.
+
+| O'zgaruvchi                                            | Majburiy (prod) | Tavsif / Description                           |
+| ------------------------------------------------------ | --------------- | ---------------------------------------------- |
+| `ADMIN_USERNAME`                                       | ha / yes        | Admin login                                    |
+| `ADMIN_PASSWORD_HASH`                                  | ha / yes        | bcrypt hash (`npm run hash-password`)          |
+| `JWT_SECRET`                                           | ha / yes        | ≥ 32 belgi / characters                        |
+| `DATABASE_PATH`                                        |                 | SQLite fayli / file (default `data/milliy.db`) |
+| `PORT`, `HOST`                                         |                 | Tinglash manzili / listen address              |
+| `CORS_ORIGIN`                                          |                 | Ruxsat etilgan originlar (vergul bilan)        |
+| `TRUST_PROXY`                                          |                 | Reverse proxy ortida `true`                    |
+| `COOKIE_SECURE`                                        |                 | Prod'da standart `true` (HTTPS kerak)          |
+| `SESSION_TTL_SECONDS`                                  |                 | Sessiya muddati / session lifetime             |
+| `SERVE_STATIC`                                         |                 | `dist/` ni xizmat qilish (prod'da `true`)      |
+| `LOG_LEVEL`                                            |                 | Pino log darajasi                              |
+| `AI_PROVIDER`                                          |                 | `none`, `gemini`, `openai`, `deepseek`         |
+| `AI_MODEL`, `AI_TIMEOUT_MS`                            |                 | Model nomi va timeout                          |
+| `GEMINI_API_KEY`, `OPENAI_API_KEY`, `DEEPSEEK_API_KEY` |                 | Tanlangan provayder kaliti                     |
+
+## Skriptlar / Scripts
+
+| Buyruq                 | Vazifa / Purpose                       |
+| ---------------------- | -------------------------------------- |
+| `npm run dev`          | API va frontend dev serverlari         |
+| `npm run build`        | Frontendni `dist/` ga yig'ish          |
+| `npm start`            | Serverni ishga tushirish               |
+| `npm run db:migrate`   | Migratsiyalarni qo'llash               |
+| `npm run db:seed`      | Bo'sh bazani to'ldirish (`-- --force`) |
+| `npm run lint`         | ESLint                                 |
+| `npm run format:check` | Prettier tekshiruvi                    |
+| `npm test`             | Unit va API testlari                   |
+| `npm run test:e2e`     | Playwright e2e (avval `npm run build`) |
+
+## Loyiha tuzilishi / Project layout
+
+```
+server/   Fastify API, SQLite, auth, chat providers, scripts
+web/      Vite frontend (index.html, src/, public/)
+shared/   Katalog ma'lumotlari va umumiy konstantalar / shared catalog data
+e2e/      Playwright testlari
+```
+
+## Xavfsizlik / Security
+
+Zaiflik topsangiz, iltimos, ochiq issue o'rniga loyiha egasiga to'g'ridan-to'g'ri yozing.
+Please report vulnerabilities privately to the maintainer rather than in a public issue.

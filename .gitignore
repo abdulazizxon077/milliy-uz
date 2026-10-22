@@ -1,14 +1,31 @@
-# OS generated files
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Local data
+data/
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Test artifacts
+coverage/
+playwright-report/
+test-results/
+
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.key
+
+# OS / editor
 .DS_Store
 Thumbs.db
 desktop.ini
-
-# Environment and sensitive keys
-.env
-.env.local
-*.key
-
-# Editor directories
 .vscode/
 .idea/
 *.swp

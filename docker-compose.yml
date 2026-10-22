@@ -1,0 +1,15 @@
+services:
+  app:
+    build: .
+    restart: unless-stopped
+    env_file: .env
+    environment:
+      NODE_ENV: production
+      DATABASE_PATH: /app/data/milliy.db
+    ports:
+      - '3000:3000'
+    volumes:
+      - milliy-data:/app/data
+
+volumes:
+  milliy-data:
