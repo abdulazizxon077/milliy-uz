@@ -29,6 +29,8 @@ The interface is in Uzbek; developer documentation below is in both languages.
 - Chat yordamchisi: Gemini, OpenAI yoki DeepSeek orqali; kalit bo'lmasa ichki katalog
   qidiruvi ishlaydi. Chat assistant via Gemini, OpenAI or DeepSeek, with a built-in
   catalog matcher as fallback.
+- Admin panel faqat `/admin` manzilida ochiladi (saytda havola yo'q). The admin panel is reached only at `/admin`.
+- Ma'lumotlar manbalari: OpenStreetMap (ODbL), Wikidata (CC0), Wikimedia Commons rasmlari — batafsil `server/seed/README.md`. Data sources are listed in `server/seed/README.md`.
 - Admin panel: joylarni qo'shish/tahrirlash/o'chirish, JSON import/eksport, sharhlar
   moderatsiyasi, ma'lumot xatolari, chat sozlamalari. Admin panel for place CRUD (including
   opening hours), JSON import/export, review moderation, visitor reports and chat settings.
