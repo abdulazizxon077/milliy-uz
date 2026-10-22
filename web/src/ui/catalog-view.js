@@ -52,7 +52,7 @@ export function placeCardHtml(place) {
     </div>
     <div class="p-5 flex flex-col gap-3 flex-1">
       <div>
-        <h3 class="text-base font-extrabold text-white leading-snug cursor-pointer hover:text-[#b4f73a]" data-action="open-detail" data-id="${id}">${escapeHtml(place.name)}</h3>
+        <h3 class="text-base font-extrabold text-white leading-snug"><button type="button" class="text-left hover:text-[#b4f73a] focus-visible:text-[#b4f73a]" data-action="open-detail" data-id="${id}">${escapeHtml(place.name)}</button></h3>
         <p class="text-[11px] text-[#94a3b8] mt-1 line-clamp-2">${escapeHtml(place.subCategory)}</p>
       </div>
       <div class="grid grid-cols-2 gap-2 text-[11px]">

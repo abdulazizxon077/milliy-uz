@@ -120,7 +120,9 @@ export async function openDetail(id) {
   openModal('place-detail-modal');
   try {
     const full = await api.place(id);
-    if (currentId === id) render(full);
+    // Only swap the reviews list so focus and any half-typed review survive.
+    const box = document.getElementById('detail-reviews');
+    if (currentId === id && box) box.innerHTML = reviewsHtml(full.reviews);
   } catch {
     const box = document.getElementById('detail-reviews');
     if (box) box.innerHTML = `<p class="text-xs text-[#94a3b8]">Sharhlarni yuklab bo'lmadi.</p>`;

@@ -51,13 +51,11 @@ function showDashboard(username) {
   $('admin-user-initials').textContent = username.slice(0, 2).toUpperCase();
   closeModal('admin-login-modal');
   openModal('admin-dashboard-modal');
-  document.body.classList.add('overflow-hidden');
   switchTab(activeTab);
 }
 
 export function closeAdmin() {
   closeModal('admin-dashboard-modal');
-  document.body.classList.remove('overflow-hidden');
 }
 
 async function login(event) {

@@ -23,7 +23,7 @@ import {
 } from './ui/detail-view.js';
 import { refreshIcons } from './ui/icons.js';
 import { flyTo, flyToRegion, initMap, renderMarkers, updateUserMarker } from './ui/map-view.js';
-import { closeModal, isOpen, openModal } from './ui/modal.js';
+import { closeModal, isOpen, openModal, trapFocus } from './ui/modal.js';
 import { showToast } from './ui/toast.js';
 
 const $ = (id) => document.getElementById(id);
@@ -92,6 +92,7 @@ function bindDelegation() {
     }
   });
 
+  document.addEventListener('keydown', trapFocus);
   document.addEventListener('keydown', (event) => {
     if (event.key !== 'Escape') return;
     if (isOpen('admin-edit-modal')) closeModal('admin-edit-modal');
