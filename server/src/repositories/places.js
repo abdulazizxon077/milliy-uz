@@ -1,5 +1,6 @@
 import { randomUUID } from 'node:crypto';
 import { categoryName } from '../../../shared/catalog.js';
+import { normalizeOpeningHours } from '../../../shared/opening-hours.js';
 
 const COLUMNS = {
   name: 'name',
@@ -26,6 +27,11 @@ const COLUMNS = {
   features: 'features',
   workDays: 'work_days',
   image: 'image',
+  openingHours: 'opening_hours',
+  website: 'website',
+  imageCredit: 'image_credit',
+  imageSource: 'image_source',
+  source: 'source',
 };
 
 const JSON_FIELDS = new Set(['pricingDetails', 'features']);
@@ -38,7 +44,7 @@ export function rowToPlace(row) {
     categoryName: row.category_name,
     subCategory: row.sub_category,
     region: row.region,
-    rating: Math.round(row.rating * 10) / 10,
+    rating: row.reviews_count > 0 ? Math.round(row.rating * 10) / 10 : 0,
     reviewsCount: row.reviews_count,
     experienceYears: row.experience_years,
     experienceText: row.experience_text,
@@ -47,16 +53,18 @@ export function rowToPlace(row) {
     secondaryPhone: row.secondary_phone,
     lat: row.lat,
     lng: row.lng,
-    openTime: row.open_time,
-    closeTime: row.close_time,
-    is247: Boolean(row.is_24_7),
+    openingHours: row.opening_hours,
+    is247: row.opening_hours === '24/7',
     address: row.address,
     landmark: row.landmark,
     priceRange: row.price_range,
     pricingDetails: JSON.parse(row.pricing_details),
     features: JSON.parse(row.features),
-    workDays: row.work_days,
     image: row.image,
+    imageCredit: row.image_credit,
+    imageSource: row.image_source,
+    website: row.website,
+    source: row.source,
   };
 }
 
@@ -73,7 +81,24 @@ export function rowToReview(row) {
   };
 }
 
-function toRow(data) {
+/**
+ * Older clients and import files send a single daily range; turn it into the
+ * opening_hours text that the catalog now reads.
+ */
+function withOpeningHours(data) {
+  if (data.openingHours !== undefined) {
+    return { ...data, openingHours: normalizeOpeningHours(data.openingHours) };
+  }
+  if (data.is247) return { ...data, openingHours: '24/7' };
+  if (data.openTime && data.closeTime) {
+    return { ...data, openingHours: `${data.openTime}-${data.closeTime}` };
+  }
+  if (data.is247 === false) return { ...data, openingHours: '' };
+  return data;
+}
+
+function toRow(input) {
+  const data = withOpeningHours(input);
   const row = {};
   for (const [key, column] of Object.entries(COLUMNS)) {
     if (data[key] === undefined) continue;
@@ -104,7 +129,7 @@ export function createPlacesRepository(db) {
   `);
 
   function insert(data) {
-    const row = toRow({ categoryName: categoryName(data.category), ...data });
+    const row = toRow({ categoryName: categoryName(data.category), rating: 0, ...data });
     row.id = data.id ?? slugify(data.name);
     const cols = Object.keys(row);
     db.prepare(

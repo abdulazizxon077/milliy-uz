@@ -55,12 +55,10 @@ describe('place pages', () => {
   });
 
   it('serves a place page with its own title', async () => {
-    const res = await app.inject('/joy/auto-pro-chilonzor');
+    const res = await app.inject('/joy/chorsu-bozori-toshkent');
     expect(res.statusCode).toBe(200);
     expect(res.headers['content-type']).toContain('text/html');
-    expect(res.body).toContain(
-      '<title>AvtoPro Yunusobod &amp; Chilonzor Servis — MILLIY.UZ</title>',
-    );
+    expect(res.body).toContain('<title>Chorsu bozori — MILLIY.UZ</title>');
   });
 
   it('still serves the app for unknown places, with a 404 status', async () => {
@@ -69,9 +67,28 @@ describe('place pages', () => {
     expect(res.body).toContain('<div id="app">');
   });
 
-  it('falls back to the app shell for other page routes', async () => {
-    const res = await app.inject('/some/page');
+  it('serves the standalone pages with their own titles', async () => {
+    for (const [url, title] of [
+      ['/haqida', 'Loyiha haqida'],
+      ['/aloqa', 'Aloqa'],
+      ['/maxfiylik', 'Maxfiylik siyosati'],
+    ]) {
+      const res = await app.inject(url);
+      expect(res.statusCode, url).toBe(200);
+      expect(res.body).toContain(`<title>${title} — MILLIY.UZ</title>`);
+    }
+  });
+
+  it('serves the admin page without letting search engines index it', async () => {
+    const res = await app.inject('/admin');
     expect(res.statusCode).toBe(200);
+    expect(res.body).toContain('<meta name="robots" content="noindex, nofollow" />');
+  });
+
+  it('answers unknown pages with the app shell and a 404 status', async () => {
+    const res = await app.inject('/some/page');
+    expect(res.statusCode).toBe(404);
+    expect(res.body).toContain('<title>Sahifa topilmadi — MILLIY.UZ</title>');
     expect(res.body).toContain('<div id="app">');
   });
 

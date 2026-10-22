@@ -1,1839 +1,2499 @@
 [
   {
-    "id": "auto-pro-chilonzor",
-    "name": "AvtoPro Yunusobod & Chilonzor Servis",
-    "category": "auto",
-    "categoryName": "Avtomobil & Ustaxona",
-    "subCategory": "Mator, Avtomat-karobka, Xodovoy va Kompyuter Diagnostikasi",
+    "id": "prokuratura-chilanzarskogo-rayona-toshkent",
+    "name": "Прокуратура Чиланзарского района",
+    "category": "police",
+    "subCategory": "Prokuratura",
     "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 384,
-    "experienceYears": 14,
-    "experienceText": "14 yillik professional tajriba",
-    "chiefSpecialist": "Farhod Rustamov (GM va Bosch sertifikatlari)",
-    "phone": "+998 90 911 22 33",
-    "secondaryPhone": "+998 71 277 44 55",
-    "lat": 41.2912,
-    "lng": 69.2115,
-    "openTime": "08:30",
-    "closeTime": "22:00",
-    "is247": false,
-    "address": "Toshkent sh., Chilonzor 9-mavze, 14A bino",
-    "landmark": "Chilonzor metrosidan 400m",
-    "priceRange": "40 000 – 600 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "To'liq kompyuter diagnostikasi",
-        "price": "50 000 UZS"
-      },
-      {
-        "service": "Mator moyi va filtrlarni almashtirish",
-        "price": "30 000 UZS"
-      },
-      {
-        "service": "Old va orqa xodovoy qismlar ta'miri",
-        "price": "120 000 UZS dan"
-      },
-      {
-        "service": "Avtomat karobka (AKPP) profilaktikasi",
-        "price": "250 000 UZS dan"
-      }
-    ],
+    "phone": "+998 71 277 91 62",
+    "secondaryPhone": "",
+    "lat": 41.281337,
+    "lng": 69.221711,
+    "openingHours": "Mo-Fr 09:00-13:00, 14:00-18:00",
+    "address": "Chilonzor 2 mavzesi, Chilonzor Tumani, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/102381398"
+  },
+  {
+    "id": "uvd-shayxantaxurskogo-rayona-toshkent",
+    "name": "УВД Шайхантахурского района",
+    "category": "police",
+    "subCategory": "Ichki ishlar organi",
+    "region": "tashkent",
+    "phone": "+998 71 288 32 00",
+    "secondaryPhone": "",
+    "lat": 41.304457,
+    "lng": 69.214052,
+    "openingHours": "",
+    "address": "Самарканд Дарбаза улица 60А, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/102782199"
+  },
+  {
+    "id": "moviy-gumbazlar-toshkent",
+    "name": "Moviy Gumbazlar",
+    "category": "food",
+    "subCategory": "Restoran",
+    "region": "tashkent",
+    "phone": "+998 71 256 27 27",
+    "secondaryPhone": "",
+    "lat": 41.306845,
+    "lng": 69.266951,
+    "openingHours": "Mo-Su 11:00-23:00",
+    "address": "Sharof Rashidov ko'chasi 77, Toshkent",
     "features": [
-      "Kafolatli xizmat (12 oy)",
-      "Asl ehtiyot qismlar ombori",
+      "Wi-Fi"
+    ],
+    "website": "http://www.golubiekupola.com",
+    "source": "OpenStreetMap way/141676147",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Blue_domes_cafe.jpg/960px-Blue_domes_cafe.jpg",
+    "imageCredit": "Panpanchik · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Blue_domes_cafe.jpg"
+  },
+  {
+    "id": "retro-milliy-toshkent",
+    "name": "Retro Milliy",
+    "category": "food",
+    "subCategory": "Restoran · turk oshxonasi, milliy taomlar",
+    "region": "tashkent",
+    "phone": "+998 71 269 30 05",
+    "secondaryPhone": "+998 91 191 30 05",
+    "lat": 41.310892,
+    "lng": 69.327875,
+    "openingHours": "Mo-Su 11:00-23:00",
+    "address": "Oltintepa ko'chasi 28, Toshkent",
+    "features": [
+      "Ochiq havoda o'tirish joylari"
+    ],
+    "website": "https://t.me/Retro_uzbot",
+    "source": "OpenStreetMap node/4732042922"
+  },
+  {
+    "id": "marinovalli-toshkent",
+    "name": "Marinovalli",
+    "category": "food",
+    "subCategory": "Restoran · xalqaro oshxona, italyan oshxonasi",
+    "region": "tashkent",
+    "phone": "+998 90 125 39 93",
+    "secondaryPhone": "",
+    "lat": 41.312201,
+    "lng": 69.316801,
+    "openingHours": "12:00-23:00",
+    "address": "улица Султанали Машхади 51, Toshkent",
+    "features": [],
+    "website": "https://biolinks.uz/marinovalli",
+    "source": "OpenStreetMap node/4800493624"
+  },
+  {
+    "id": "respublika-ixtisoslashtirilgan-nefrologiya-va-transplant-toshkent",
+    "name": "Respublika Ixtisoslashtirilgan Nefrologiya va Transplantatsiya Ilmiy Amaliy Markazi",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "tashkent",
+    "phone": "+998 71 224 96 59",
+    "secondaryPhone": "",
+    "lat": 41.361084,
+    "lng": 69.298169,
+    "openingHours": "24/7",
+    "address": "Янгишахар улица 9, Toshkent",
+    "features": [],
+    "website": "https://nefro.uz/",
+    "source": "OpenStreetMap node/6369863385"
+  },
+  {
+    "id": "tsentr-ponseti-toshkent",
+    "name": "Центр Понсети",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "tashkent",
+    "phone": "+998 97 752 57 82",
+    "secondaryPhone": "",
+    "lat": 41.367153,
+    "lng": 69.269552,
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "address": "Yunusobod 6 mavzesi 1, Toshkent",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "http://www.ponseti.uz",
+    "source": "OpenStreetMap node/9105353221"
+  },
+  {
+    "id": "izrailskiy-meditsinskiy-tsentr-reproduktivnoy-meditsini-toshkent",
+    "name": "Израильский медицинский центр репродуктивной медицины и семейного здоровья",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "tashkent",
+    "phone": "+998 55 502 43 43",
+    "secondaryPhone": "",
+    "lat": 41.318293,
+    "lng": 69.301852,
+    "openingHours": "Mo-Sa 08:30-18:00; Su 08:30-12:00",
+    "address": "ул. Тамары Ханум 3, Toshkent",
+    "features": [],
+    "website": "https://www.ivf.uz/",
+    "source": "OpenStreetMap node/12399549354"
+  },
+  {
+    "id": "ekobozor-toshkent",
+    "name": "Ekobozor",
+    "category": "market",
+    "subCategory": "Savdo markazi",
+    "region": "tashkent",
+    "phone": "+998 95 146 55 53",
+    "secondaryPhone": "",
+    "lat": 41.353513,
+    "lng": 69.351053,
+    "openingHours": "Mo-Su 08:00-23:00",
+    "address": "Temur Malik ko'chasi 3а, Toshkent",
+    "features": [
+      "Wi-Fi",
+      "Karta orqali to'lov",
+      "Click / Payme orqali to'lov"
+    ],
+    "website": "http://ecobozor.uz",
+    "source": "OpenStreetMap way/101345844"
+  },
+  {
+    "id": "mega-planet-toshkent",
+    "name": "Mega Planet",
+    "category": "market",
+    "subCategory": "Savdo markazi",
+    "region": "tashkent",
+    "phone": "+998 71 129 31 31",
+    "secondaryPhone": "",
+    "lat": 41.367239,
+    "lng": 69.290963,
+    "openingHours": "Mo-Su 08:00-23:00",
+    "address": "Ahmad Donish ko'chasi 2Б, Юнусабад 11 квартал, Toshkent",
+    "features": [
+      "Nogironlar aravachasi uchun qisman qulay",
+      "Wi-Fi"
+    ],
+    "website": "https://www.mega-planet.uz/",
+    "source": "OpenStreetMap way/103769526"
+  },
+  {
+    "id": "chorsu-bozori-toshkent",
+    "name": "Chorsu bozori",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "tashkent",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.326202,
+    "lng": 69.235732,
+    "openingHours": "",
+    "address": "Sakichmon ko'chasi 1/1, Shayhontohur Tumani, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/174498975",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/47/Chorsu_Market_general_view.jpg/960px-Chorsu_Market_general_view.jpg",
+    "imageCredit": "Theklan · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Chorsu_Market_general_view.jpg"
+  },
+  {
+    "id": "toshkent-politexnika-muzeyi-toshkent",
+    "name": "Toshkent politexnika muzeyi",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "tashkent",
+    "phone": "+998 71 232 34 30",
+    "secondaryPhone": "+998 71 232 34 08",
+    "lat": 41.307332,
+    "lng": 69.278467,
+    "openingHours": "10:00-18:00",
+    "address": "Amir Temur shoh ko'chasi 13, Toshkent",
+    "features": [],
+    "website": "https://politomuseum.uz/",
+    "source": "OpenStreetMap node/4149393593"
+  },
+  {
+    "id": "o-zbekiston-tarixi-davlat-muzeyi-toshkent",
+    "name": "O'zbekiston Tarixi Davlat Muzeyi",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "tashkent",
+    "phone": "+998 71 239 17 79",
+    "secondaryPhone": "",
+    "lat": 41.311828,
+    "lng": 69.269454,
+    "openingHours": "Tu-Su 10:00-18:00",
+    "address": "Sharof Rashidov ko'chasi 3, Toshkent",
+    "features": [],
+    "website": "https://www.history-museum.uz/",
+    "source": "OpenStreetMap way/31974956",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/History_Museum_%288145371419%29.jpg/960px-History_Museum_%288145371419%29.jpg",
+    "imageCredit": "David Stanley from Nanaimo, Canada · CC BY 2.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:History_Museum_(8145371419).jpg"
+  },
+  {
+    "id": "ozbekiston-tasviriy-sanat-galereyasi-toshkent",
+    "name": "Oʻzbekiston tasviriy sanʼat galereyasi",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "tashkent",
+    "phone": "+998 71 233 56 74",
+    "secondaryPhone": "",
+    "lat": 41.315588,
+    "lng": 69.271202,
+    "openingHours": "Tu-Sa 10:00-17:00",
+    "address": "Buyuk Turon ko'chasi 2, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/128164594"
+  },
+  {
+    "id": "cafe-asr-samarqand",
+    "name": "Cafe Asr",
+    "category": "food",
+    "subCategory": "Restoran · burgerlar, qahvaxona, tovuq taomlari, kabob, grill",
+    "region": "samarkand",
+    "phone": "+998 66 210 08 57",
+    "secondaryPhone": "",
+    "lat": 39.67753,
+    "lng": 66.929939,
+    "openingHours": "Mo-Su 09:00-23:00",
+    "address": "Beruniy ko'chasi, Samarqand",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "http://CafeASRBar@gmail.com",
+    "source": "OpenStreetMap node/4876429121"
+  },
+  {
+    "id": "shashlik-uz-samarqand",
+    "name": "Shashlik Uz",
+    "category": "food",
+    "subCategory": "Restoran · kabob, milliy taomlar",
+    "region": "samarkand",
+    "phone": "+998 90 502 11 11",
+    "secondaryPhone": "",
+    "lat": 39.674075,
+    "lng": 66.969878,
+    "openingHours": "10:00-23:00",
+    "address": "Ibn Sino ko'chasi 2, Samarqand",
+    "features": [
+      "Nogironlar aravachasi uchun qisman qulay",
+      "Wi-Fi",
+      "Ochiq havoda o'tirish joylari",
+      "Yetkazib berish",
+      "Olib ketish"
+    ],
+    "website": "https://t.me/shashlikuzbot",
+    "source": "OpenStreetMap node/7419391952"
+  },
+  {
+    "id": "bektemir-tumani-hokimligi-toshkent",
+    "name": "Bektemir tumani hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "tashkent",
+    "phone": "+998 71 295 02 46",
+    "secondaryPhone": "",
+    "lat": 41.234064,
+    "lng": 69.337798,
+    "openingHours": "Mo-Fr 09:00-13:00, 14:00-18:00",
+    "address": "Husan Boyqaro ko'chasi 2, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/142747421"
+  },
+  {
+    "id": "pochtovoe-otdelenie-o-29-toshkent",
+    "name": "Почтовое отделение № 29",
+    "category": "gov",
+    "subCategory": "Pochta bo'limi",
+    "region": "tashkent",
+    "phone": "+998 71 252 33 91",
+    "secondaryPhone": "",
+    "lat": 41.307474,
+    "lng": 69.26628,
+    "openingHours": "Mo-Sa 08:00-17:00",
+    "address": "Sharof Rashidov ko'chasi 40, Toshkent",
+    "features": [],
+    "website": "https://pochta.uz/",
+    "source": "OpenStreetMap node/1550797581"
+  },
+  {
+    "id": "far-flebo-servis-farg-ona",
+    "name": "Фар Флебо Сервис",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "fergana",
+    "phone": "+998 73 226 15 96",
+    "secondaryPhone": "",
+    "lat": 40.368634,
+    "lng": 71.790469,
+    "openingHours": "Mo-Sa 09:00-17:00",
+    "address": "Oybek 16, Farg'ona",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/4362223190"
+  },
+  {
+    "id": "innovatsion-medikal-servis-farg-ona",
+    "name": "Инновацион-медикал сервис",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "fergana",
+    "phone": "+998 73 244 93 93",
+    "secondaryPhone": "",
+    "lat": 40.382837,
+    "lng": 71.794724,
+    "openingHours": "Mo-Sa 08:00-18:00",
+    "address": "Yuksalish koʻchasi 104/a, Farg'ona",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/10208673217"
+  },
+  {
+    "id": "universal-metan-servis-farg-ona",
+    "name": "Универсал Метан Сервис",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "fergana",
+    "phone": "+998 99 990 81 81",
+    "secondaryPhone": "",
+    "lat": 40.422007,
+    "lng": 71.70871,
+    "openingHours": "24/7",
+    "address": "Al Fargoniy ko'chasi, Farg'ona",
+    "features": [
+      "Metan (CNG)"
+    ],
+    "website": "",
+    "source": "OpenStreetMap way/564987657"
+  },
+  {
+    "id": "full-oil-toshkent",
+    "name": "Full Oil",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "tashkent",
+    "phone": "+998 71 261 61 88",
+    "secondaryPhone": "",
+    "lat": 41.363098,
+    "lng": 69.380753,
+    "openingHours": "24/7",
+    "address": "Корамурт улица 2, Toshkent",
+    "features": [
+      "Benzin AI-91"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/1463942370"
+  },
+  {
+    "id": "lukoil-toshkent",
+    "name": "Lukoil",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "tashkent",
+    "phone": "+998 71 230 24 08",
+    "secondaryPhone": "",
+    "lat": 41.310756,
+    "lng": 69.346939,
+    "openingHours": "24/7",
+    "address": "Фонтанная улица, Tuzel (40 let Pobedy), Toshkent",
+    "features": [
+      "Wi-Fi",
+      "Benzin AI-92, AI-95",
+      "Dizel"
+    ],
+    "website": "",
+    "source": "OpenStreetMap way/566924050"
+  },
+  {
+    "id": "uzbekneftegaz-toshkent",
+    "name": "UzbekNefteGaz",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "tashkent",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.356344,
+    "lng": 69.34443,
+    "openingHours": "Su-Mo,We,Fr 09:00-20:00",
+    "address": "Корамурт улица, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/4303580895"
+  },
+  {
+    "id": "auto-gsm-uz-ustanovochniy-tsentr-toshkent",
+    "name": "Auto GSM.uz Установочный центр.",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "tashkent",
+    "phone": "+998 97 402 91 72",
+    "secondaryPhone": "",
+    "lat": 41.356569,
+    "lng": 69.344858,
+    "openingHours": "Tu-Su 10:00-22:00",
+    "address": "Корамурт улица, Toshkent",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "https://www.autogsm.gl.uz/",
+    "source": "OpenStreetMap node/4340695191"
+  },
+  {
+    "id": "katta-qani-avtoservis-toshkent",
+    "name": "Катта Қаъни Автосервис",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "tashkent",
+    "phone": "+998 95 142 72 79",
+    "secondaryPhone": "",
+    "lat": 41.272711,
+    "lng": 69.167926,
+    "openingHours": "Mo-Su 09:00-20:00",
+    "address": "Катта Канъи улица, Toshkent",
+    "features": [],
+    "website": "https://facebook.com/shodrazvaltashkent",
+    "source": "OpenStreetMap node/4727212689"
+  },
+  {
+    "id": "gloss-technology-detailing-solutions-toshkent",
+    "name": "Gloss Technology Detailing Solutions",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "tashkent",
+    "phone": "+998 94 418 11 11",
+    "secondaryPhone": "",
+    "lat": 41.254743,
+    "lng": 69.247114,
+    "openingHours": "Mo-Su 09:00-21:00",
+    "address": "Саватчи улица, Toshkent",
+    "features": [
+      "Wi-Fi",
+      "Konditsioner"
+    ],
+    "website": "https://www.gloss.uz/",
+    "source": "OpenStreetMap node/6229865908"
+  },
+  {
+    "id": "paxtakor-markaziy-stadioni-toshkent",
+    "name": "Paxtakor markaziy stadioni",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "tashkent",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.315467,
+    "lng": 69.260296,
+    "openingHours": "",
+    "address": "Sheriyat Bog'i ko'chasi, Shayhontohur Tumani, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/199296733",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Pakhtakor_Markaziy_Stadium.jpg/960px-Pakhtakor_Markaziy_Stadium.jpg",
+    "imageCredit": "Ekrem Canli · CC BY-SA 3.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Pakhtakor_Markaziy_Stadium.jpg"
+  },
+  {
+    "id": "milliy-stadion-bunyodkor-toshkent",
+    "name": "Milliy stadion (Bunyodkor)",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "tashkent",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.279852,
+    "lng": 69.212613,
+    "openingHours": "",
+    "address": "Bunyodkor shoh koʻchasi (dublyor), Chilonzor Tumani, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/173258737",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/20/National_Stadium_%28Uzbekistan%29%2C_Uzbekistan-Qatar%2C_10_June_2025.jpg/960px-National_Stadium_%28Uzbekistan%29%2C_Uzbekistan-Qatar%2C_10_June_2025.jpg",
+    "imageCredit": "Прикли · CC BY 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:National_Stadium_(Uzbekistan),_Uzbekistan-Qatar,_10_June_2025.jpg"
+  },
+  {
+    "id": "humo-arena-toshkent",
+    "name": "Humo Arena",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "tashkent",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.307874,
+    "lng": 69.251845,
+    "openingHours": "",
+    "address": "Кусак улица, Chilonzor Tumani, Toshkent",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/636288920",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f8/Humo_Arena_2019.jpg/960px-Humo_Arena_2019.jpg",
+    "imageCredit": "Mysportedit · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Humo_Arena_2019.jpg"
+  },
+  {
+    "id": "basseyn-delfin-navoiy",
+    "name": "бассейн Дельфин",
+    "category": "sport",
+    "subCategory": "Sport majmuasi",
+    "region": "navoiy",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.096725,
+    "lng": 65.377249,
+    "openingHours": "Mo-Su 09:00-19:00",
+    "address": "Tolstoy ko'chasi, Навоий Тумани, Navoiy",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/1238465713"
+  },
+  {
+    "id": "qaraqalpaqstan-respublikas-aijske-qars-guresiw-oray-nukus",
+    "name": "Qaraqalpaqstan Respublikası AIJSke qarsı gúresiw orayı",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "karakalpak",
+    "phone": "+998 61 223 84 23",
+    "secondaryPhone": "",
+    "lat": 42.448996,
+    "lng": 59.625297,
+    "openingHours": "Mo-Sa 09:00-17:00",
+    "address": "A. Dosnazarov gúzarı 15 А, Nukus",
+    "features": [],
+    "website": "https://qroits.uz/",
+    "source": "OpenStreetMap way/427063438"
+  },
+  {
+    "id": "ulugbek-rasadxonasi-samarqand",
+    "name": "Ulug’bek rasadxonasi",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "samarkand",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.675219,
+    "lng": 67.005532,
+    "openingHours": "Mo-Su 08:00-19:00",
+    "address": "Самаркандская кольцевая дорога, Samarqand",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/235763689"
+  },
+  {
+    "id": "real-metan-urganch",
+    "name": "Real Metan",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "xorazm",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.55676,
+    "lng": 60.598212,
+    "openingHours": "24/7",
+    "address": "улица Хамид Алимджан, Urganch",
+    "features": [
+      "Wi-Fi",
+      "Metan (CNG)"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/4674716393"
+  },
+  {
+    "id": "zapravka-metan-i-propan-samarqand",
+    "name": "Заправка Метан и Пропан",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "samarkand",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.701532,
+    "lng": 67.009286,
+    "openingHours": "24/7",
+    "address": "Samarqand xalqa yo'li, Samarqand",
+    "features": [
+      "Metan (CNG)",
+      "Propan (LPG)"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/5033044725"
+  },
+  {
+    "id": "mehmon-choyxonasi-qarshi",
+    "name": "Mehmon choyxonasi",
+    "category": "food",
+    "subCategory": "Restoran · milliy taomlar, yevropa oshxonasi, osiyo oshxonasi",
+    "region": "qashqadaryo",
+    "phone": "+998 75 225 00 05",
+    "secondaryPhone": "",
+    "lat": 38.848743,
+    "lng": 65.790683,
+    "openingHours": "Mo-Su 10:00-22:00",
+    "address": "Sharq ko‘chasi, Qarshi",
+    "features": [],
+    "website": "https://t.me/Mehmon_choyxonasi_Qarshi",
+    "source": "OpenStreetMap node/8693233420"
+  },
+  {
+    "id": "briz-kafe-termiz",
+    "name": "Briz kafe",
+    "category": "food",
+    "subCategory": "Restoran",
+    "region": "surxondaryo",
+    "phone": "+998 97 193 56 56",
+    "secondaryPhone": "",
+    "lat": 37.20071,
+    "lng": 67.301806,
+    "openingHours": "Mo-Sa 09:00-22:00; Su 09:00-22:00",
+    "address": "Amusohil mahallasi Gulshan 58b, Termiz",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/11947424992"
+  },
+  {
+    "id": "kuka-riku-chickenland-andijon",
+    "name": "Kuka-Riku Chickenland",
+    "category": "food",
+    "subCategory": "Restoran · burgerlar, tovuq taomlari",
+    "region": "andijan",
+    "phone": "+998 90 206 66 60",
+    "secondaryPhone": "",
+    "lat": 40.741904,
+    "lng": 72.325986,
+    "openingHours": "Mo-Su 10:00-22:00",
+    "address": "Amir Temur shoh ko'chasi 18/1, Andijon",
+    "features": [
+      "Wi-Fi",
+      "Yetkazib berish",
+      "Konditsioner"
+    ],
+    "website": "https://www.instagram.com/kuka_riku.uz",
+    "source": "OpenStreetMap way/1441952253"
+  },
+  {
+    "id": "sharshara-choyxonasi-andijon",
+    "name": "Шаршара Чойхонаси",
+    "category": "food",
+    "subCategory": "Restoran · milliy taomlar",
+    "region": "andijan",
+    "phone": "+998 90 528 30 00",
+    "secondaryPhone": "",
+    "lat": 40.778166,
+    "lng": 72.301552,
+    "openingHours": "Mo-Su 09:00-23:00",
+    "address": "O'zbekiston ko'chasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/4979602221"
+  },
+  {
+    "id": "navro-z-oil-andijon",
+    "name": "Navro'z Oil",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.801132,
+    "lng": 72.344927,
+    "openingHours": "Mo-Su 09:00-23:00",
+    "address": "Pirmuhamedov ko'chasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5175347325"
+  },
+  {
+    "id": "gone-qala-avtomobil-bozori-nukus",
+    "name": "\"Góne qala\" avtomobil bozori",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "karakalpak",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 42.452367,
+    "lng": 59.576562,
+    "openingHours": "Su 06:00-14:00",
+    "address": "Edige kóshesi 18/3, Góne qala, Nukus",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/740629956"
+  },
+  {
+    "id": "el-klassiko-buxara-restoran-buxoro",
+    "name": "ЭЛ КЛАССИКО БУХАРА РЕСТОРАН",
+    "category": "food",
+    "subCategory": "Restoran",
+    "region": "bukhara",
+    "phone": "+998 97 303 03 05",
+    "secondaryPhone": "",
+    "lat": 39.766887,
+    "lng": 64.4061,
+    "openingHours": "Mo-Su 10:00-23:00",
+    "address": "Жуйбор кўчаси, Eski Shahar, Buxoro",
+    "features": [],
+    "website": "http://el.classico.uz",
+    "source": "OpenStreetMap node/10909128505"
+  },
+  {
+    "id": "yaponamama-buxoro",
+    "name": "Yaponamama",
+    "category": "food",
+    "subCategory": "Restoran · yapon oshxonasi",
+    "region": "bukhara",
+    "phone": "+998 78 147 89 89",
+    "secondaryPhone": "+998 99 160 12 13",
+    "lat": 39.748022,
+    "lng": 64.423254,
+    "openingHours": "Mo-Su 12:00-23:00",
+    "address": "Alisher Navoiy shoh ko'chasi 16, 5A kichik nohiyasi, Buxoro",
+    "features": [],
+    "website": "https://yaponamama.uz",
+    "source": "OpenStreetMap node/11255093087"
+  },
+  {
+    "id": "tot-samiy-gastropub-farg-ona",
+    "name": "Tot Samiy Gastropub",
+    "category": "food",
+    "subCategory": "Restoran · italyan oshxonasi, rus oshxonasi, pitsa, xalqaro oshxona",
+    "region": "fergana",
+    "phone": "+998 94 551 67 83",
+    "secondaryPhone": "",
+    "lat": 40.370346,
+    "lng": 71.788154,
+    "openingHours": "Mo-Su 09:00-23:00",
+    "address": "Oybek ko‘chasi 14a, Farg'ona",
+    "features": [
+      "Wi-Fi",
+      "Yetkazib berish",
+      "Olib ketish"
+    ],
+    "website": "https://totsamiy.uz/",
+    "source": "OpenStreetMap way/390281926"
+  },
+  {
+    "id": "traktir-ostrov-sokrovish-farg-ona",
+    "name": "Трактир - Остров сокровищ",
+    "category": "food",
+    "subCategory": "Kafe · rus oshxonasi",
+    "region": "fergana",
+    "phone": "+998 90 406 89 99",
+    "secondaryPhone": "",
+    "lat": 40.386393,
+    "lng": 71.786551,
+    "openingHours": "Mo-Su 08:00-22:00",
+    "address": "Ma'rifat ko'chasi 43А, Farg'ona",
+    "features": [
+      "Wi-Fi (bepul)",
+      "Ochiq havoda o'tirish joylari"
+    ],
+    "website": "https://www.facebook.com/traktir.fergana/",
+    "source": "OpenStreetMap node/3937982335"
+  },
+  {
+    "id": "profmedservis-buxoro",
+    "name": "ПрофМедСервис",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "bukhara",
+    "phone": "+998 65 225 63 57",
+    "secondaryPhone": "",
+    "lat": 39.755506,
+    "lng": 64.436271,
+    "openingHours": "24/7",
+    "address": "Qayum Murtazoyev ko'chasi 2/1, Buxoro",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/7669239385"
+  },
+  {
+    "id": "buxoro-viloyat-yuqumli-kasalliklar-shifoxonasi-buxoro",
+    "name": "Buxoro viloyat yuqumli kasalliklar shifoxonasi",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "bukhara",
+    "phone": "+998 65 228 51 47",
+    "secondaryPhone": "",
+    "lat": 39.810686,
+    "lng": 64.428194,
+    "openingHours": "",
+    "address": "Gijduvon ko‘chasi 69, Buxoro",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/148483328"
+  },
+  {
+    "id": "metan-zapravka-buxoro",
+    "name": "Метан Заправка",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "bukhara",
+    "phone": "+998 99 700 77 99",
+    "secondaryPhone": "",
+    "lat": 39.755876,
+    "lng": 64.442902,
+    "openingHours": "24/7",
+    "address": "Sanoatchilar ko'chasi, Buxoro",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/8345471764"
+  },
+  {
+    "id": "magnit-farg-ona",
+    "name": "Magnit",
+    "category": "market",
+    "subCategory": "Supermarket",
+    "region": "fergana",
+    "phone": "+998 90 160 87 77",
+    "secondaryPhone": "",
+    "lat": 40.362065,
+    "lng": 71.846224,
+    "openingHours": "Mo-Su 08:00-23:00",
+    "address": "Abdulla Qodiriy ko'chasi 77 A, Farg'ona",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/4417333898"
+  },
+  {
+    "id": "korzinka-farg-ona",
+    "name": "Korzinka",
+    "category": "market",
+    "subCategory": "Supermarket",
+    "region": "fergana",
+    "phone": "+998 78 140 14 14",
+    "secondaryPhone": "",
+    "lat": 40.378251,
+    "lng": 71.776407,
+    "openingHours": "Mo-Su 08:00-24:00",
+    "address": "Mustaqillik shoh koʻchasi 50, Iftixor mahallasi, Farg'ona",
+    "features": [],
+    "website": "https://korzinka.uz",
+    "source": "OpenStreetMap node/12055184458"
+  },
+  {
+    "id": "tok-bor-navoiy",
+    "name": "Tok Bor",
+    "category": "gas",
+    "subCategory": "Elektromobil zaryadlash",
+    "region": "navoiy",
+    "phone": "+998 78 777 77 87",
+    "secondaryPhone": "",
+    "lat": 40.109471,
+    "lng": 65.383966,
+    "openingHours": "",
+    "address": "Mahmud Tarobiy ko'chasi, Навоий Тумани, Navoiy",
+    "features": [
+      "Elektromobil zaryadlash"
+    ],
+    "website": "https://tokbor.uz/",
+    "source": "OpenStreetMap node/11048333349"
+  },
+  {
+    "id": "sho-ro-metan-zaprafka-namangan",
+    "name": "Sho'ro Metan Zaprafka",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "namangan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.009423,
+    "lng": 71.725021,
+    "openingHours": "24/7",
+    "address": "Uychi ko'chasi, Namangan",
+    "features": [
+      "Metan (CNG)"
+    ],
+    "website": "",
+    "source": "OpenStreetMap way/1362817532"
+  },
+  {
+    "id": "toshkent-kimyo-texnologiya-instituti-toshkent",
+    "name": "Toshkent kimyo-texnologiya instituti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "tashkent",
+    "phone": "+998 71 244 79 20",
+    "secondaryPhone": "",
+    "lat": 41.3226,
+    "lng": 69.246408,
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "address": "Navoiy shoh ko'chasi 32, Toshkent",
+    "features": [],
+    "website": "https://tkti.uz/",
+    "source": "OpenStreetMap way/32133321"
+  },
+  {
+    "id": "toshkent-shahridagi-turin-politexnika-universiteti-toshkent",
+    "name": "Toshkent shahridagi Turin politexnika universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "tashkent",
+    "phone": "+998 71 203 07 77",
+    "secondaryPhone": "",
+    "lat": 41.351554,
+    "lng": 69.22199,
+    "openingHours": "Mo-Sa 08:30-20:00",
+    "address": "Kichik Halqa yo'li 17, Toshkent",
+    "features": [],
+    "website": "https://turin.uz/",
+    "source": "OpenStreetMap way/341828486"
+  },
+  {
+    "id": "toshkent-shahridagi-inha-universiteti-toshkent",
+    "name": "Toshkent shahridagi Inha universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "tashkent",
+    "phone": "+998 71 289 99 99",
+    "secondaryPhone": "",
+    "lat": 41.338229,
+    "lng": 69.335671,
+    "openingHours": "Mo-Sa 09:00-21:00",
+    "address": "Ziyolilar ko'chasi 9, Toshkent",
+    "features": [],
+    "website": "https://inha.uz/",
+    "source": "OpenStreetMap way/1507999905"
+  },
+  {
+    "id": "davlat-xizmatlari-markazi-buxoro-shahar-buxoro",
+    "name": "Davlat Xizmatlari Markazi Buxoro shahar",
+    "category": "gov",
+    "subCategory": "Davlat idorasi",
+    "region": "bukhara",
+    "phone": "+998 65 223 21 45",
+    "secondaryPhone": "",
+    "lat": 39.771392,
+    "lng": 64.440566,
+    "openingHours": "Mo-Fr 09:00-20:00",
+    "address": "Bahovaddin Naqshband ko'chasi 168, Buxoro",
+    "features": [],
+    "website": "https://davxizmat.uz/uz/menu/Buxoro-viloyati",
+    "source": "OpenStreetMap node/6723108786"
+  },
+  {
+    "id": "orlmed-lor-tsentr-samarqand",
+    "name": "ORLMED ЛОР центр",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "samarkand",
+    "phone": "+998 90 276 01 80",
+    "secondaryPhone": "",
+    "lat": 39.647563,
+    "lng": 66.919217,
+    "openingHours": "Mo-Su 08:00-22:00",
+    "address": "Amir Temur ko'chasi 162-a, Samarqand",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "https://www.orlmed.uz/",
+    "source": "OpenStreetMap node/5253520665"
+  },
+  {
+    "id": "obid-elektrik-samarqand",
+    "name": "Обид Электрик",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "samarkand",
+    "phone": "+998 90 504 44 42",
+    "secondaryPhone": "",
+    "lat": 39.667961,
+    "lng": 66.953054,
+    "openingHours": "24/7",
+    "address": "Курчатова 71, Samarqand",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5309848521"
+  },
+  {
+    "id": "fargona-viloyati-hokimligi-farg-ona",
+    "name": "Farg‘ona viloyati hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "fergana",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.379553,
+    "lng": 71.78995,
+    "openingHours": "",
+    "address": "Alisher Navoiy ko'chasi 15, Farg'ona",
+    "features": [],
+    "website": "http://ferghana.uz",
+    "source": "OpenStreetMap way/163590779"
+  },
+  {
+    "id": "5-otdelenie-vnutrennix-del-g-fergani-farg-ona",
+    "name": "5 отделение внутренних дел г.Ферганы",
+    "category": "police",
+    "subCategory": "Ichki ishlar organi",
+    "region": "fergana",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.366068,
+    "lng": 71.778902,
+    "openingHours": "24/7",
+    "address": "Fargʻona shahri aylanma avtomobil yoʻli, Nodirabegim mahallasi, Farg'ona",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/6700019887"
+  },
+  {
+    "id": "makon-savdo-markazi-samarqand",
+    "name": "Makon savdo markazi",
+    "category": "market",
+    "subCategory": "Savdo markazi",
+    "region": "samarkand",
+    "phone": "+998 94 487 77 77",
+    "secondaryPhone": "",
+    "lat": 39.655216,
+    "lng": 66.957092,
+    "openingHours": "Mo-Su 09:30-22:00",
+    "address": "Shohruh ko'chasi 17, Samarqand",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "http://makonmall.uz",
+    "source": "OpenStreetMap way/167293773"
+  },
+  {
+    "id": "siyob-bozori-samarqand",
+    "name": "Siyob bozori",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "samarkand",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.662428,
+    "lng": 66.980276,
+    "openingHours": "",
+    "address": "Islom Karimov ko'chasi, Samarqand",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/412943655",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Samarkand_naan_at_Siyob_Bazaar.jpg/960px-Samarkand_naan_at_Siyob_Bazaar.jpg",
+    "imageCredit": "Yoshi Canopus · CC BY-SA 3.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Samarkand_naan_at_Siyob_Bazaar.jpg"
+  },
+  {
+    "id": "qarshi-shahar-tugruq-kompleksi-qarshi",
+    "name": "Qarshi shahar tugʻruq kompleksi",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "qashqadaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 38.853426,
+    "lng": 65.792692,
+    "openingHours": "24/7",
+    "address": "Sharq ko‘chasi, Xo'jahayol mahallasi, Qarshi",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/435281121"
+  },
+  {
+    "id": "karim-fayz-medical-jizzax",
+    "name": "Karim Fayz Medical",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "jizzax",
+    "phone": "+998 98 561 44 44",
+    "secondaryPhone": "",
+    "lat": 40.121469,
+    "lng": 67.838002,
+    "openingHours": "Mo-Su 09:00-18:00",
+    "address": "To'qimachilar ko'chasi 2A, Jizzax",
+    "features": [],
+    "website": "http://www.karimfayz.uz",
+    "source": "OpenStreetMap way/301044394"
+  },
+  {
+    "id": "qoraqalpogiston-respublikasi-joqorgi-kengesi-nukus",
+    "name": "Qoraqalpogʻiston Respublikasi Joʻqorgʻi Kengesi",
+    "category": "gov",
+    "subCategory": "Davlat idorasi",
+    "region": "karakalpak",
+    "phone": "+998 61 222 97 84",
+    "secondaryPhone": "",
+    "lat": 42.460562,
+    "lng": 59.619089,
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "address": "I. Karimov gúzarı 112, Nukus",
+    "features": [],
+    "website": "https://joqargikenes.uz",
+    "source": "OpenStreetMap node/6853072421"
+  },
+  {
+    "id": "centr-plov-nukus",
+    "name": "Centr Plov",
+    "category": "food",
+    "subCategory": "Restoran · milliy taomlar",
+    "region": "karakalpak",
+    "phone": "+998 91 304 38 83",
+    "secondaryPhone": "+998 99 125 06 80",
+    "lat": 42.468835,
+    "lng": 59.594986,
+    "openingHours": "Mo-Su 12:00-22:00",
+    "address": "Xojeli gúzarı, Nukus",
+    "features": [],
+    "website": "https://instagram.com/plov_centre",
+    "source": "OpenStreetMap node/8189363618"
+  },
+  {
+    "id": "istambul-namangan",
+    "name": "Istambul",
+    "category": "food",
+    "subCategory": "Restoran · turk oshxonasi",
+    "region": "namangan",
+    "phone": "+998 95 303 08 88",
+    "secondaryPhone": "",
+    "lat": 41.00771,
+    "lng": 71.627352,
+    "openingHours": "Mo-Su 07:00-23:00",
+    "address": "Do`stlik shox ko`chasi 4a, Namangan",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/6160934285"
+  },
+  {
+    "id": "al-mashrik-namangan",
+    "name": "Ал-Машрик",
+    "category": "food",
+    "subCategory": "Restoran",
+    "region": "namangan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.9965,
+    "lng": 71.590897,
+    "openingHours": "08:00-23:00",
+    "address": "Islom Karimov koʻchasi, Toʻquvchi mahallasi, Namangan",
+    "features": [
+      "Nogironlar aravachasi uchun qulay"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/4237026518"
+  },
+  {
+    "id": "xorazm-viloyat-hokimligi-urganch",
+    "name": "Xorazm Viloyat hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "xorazm",
+    "phone": "+998 96 222 00 98",
+    "secondaryPhone": "",
+    "lat": 41.549358,
+    "lng": 60.63028,
+    "openingHours": "",
+    "address": "улица Ал-Хорезмий 23, Urganch",
+    "features": [],
+    "website": "https://www.xorazm.uz/",
+    "source": "OpenStreetMap way/276495379"
+  },
+  {
+    "id": "sto-rem-zona-avtoservis-gazoviy-buxoro",
+    "name": "СТО REM-zona автосервис Газовый",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "bukhara",
+    "phone": "+998 90 636 59 99",
+    "secondaryPhone": "",
+    "lat": 39.742034,
+    "lng": 64.435837,
+    "openingHours": "Mo-Sa 09:00-19:30",
+    "address": "Alpomish ko'chasi дом 6, Buxoro",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/6387544785"
+  },
+  {
+    "id": "tennisniy-kompleks-dilkusho-buxoro",
+    "name": "Теннисный комплекс Дилкушо",
+    "category": "sport",
+    "subCategory": "Sport majmuasi",
+    "region": "bukhara",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.784135,
+    "lng": 64.430122,
+    "openingHours": "08:00-18:00",
+    "address": "Cho'lpon ko'chasi, Buxoro",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/185447842"
+  },
+  {
+    "id": "dilkusho-bozorchasi-buxoro",
+    "name": "Dilkusho bozorchasi",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "bukhara",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.788889,
+    "lng": 64.442928,
+    "openingHours": "05:00-22:00",
+    "address": "Dilkusho ko'chasi, Buxoro",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5578362720"
+  },
+  {
+    "id": "korzinka-buxoro",
+    "name": "Korzinka",
+    "category": "market",
+    "subCategory": "Supermarket",
+    "region": "bukhara",
+    "phone": "+998 78 140 14 14",
+    "secondaryPhone": "",
+    "lat": 39.783218,
+    "lng": 64.412796,
+    "openingHours": "Mo-Su 08:00-22:00",
+    "address": "Abu Ali ibn Sino shox ko'chasi, Buxoro",
+    "features": [
       "Karta orqali to'lov"
     ],
-    "workDays": "Dushanba - Shanba (08:30 - 22:00)",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-1",
-        "author": "Davron Karimov",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "Malibu-2 mashinamning matorini yarim kunda sozlab berishdi. Haqiqiy ustalar ekan."
-      },
-      {
-        "id": "rev-2",
-        "author": "Azizbek Qodirov",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Narxlar shaffof, xizmat ko'rsatish a'lo darajada."
-      }
-    ]
+    "website": "https://korzinka.uz",
+    "source": "OpenStreetMap node/5872365187"
   },
   {
-    "id": "auto-gas-metan-express",
-    "name": "Express Gaz-Ballon & Metan Diagnostika",
-    "category": "auto",
-    "categoryName": "Avtomobil & Ustaxona",
-    "subCategory": "4-avlod Metan/Propan injektorlarini kalibratsiya qilish va attestatsiya",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 228,
-    "experienceYears": 9,
-    "experienceText": "9 yillik litsenziyalangan faoliyat",
-    "chiefSpecialist": "Jasur Saidov (Lovato & Stag mutaxassisi)",
-    "phone": "+998 97 744 55 66",
-    "secondaryPhone": "+998 90 318 00 11",
-    "lat": 41.2785,
-    "lng": 69.195,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Bunyodkor shoh ko'chasi 42",
-    "landmark": "Janubiy vokzal ko'prigi yaqinida",
-    "priceRange": "30 000 – 450 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Metan 4-avlod kompyuter sozlash",
-        "price": "35 000 UZS"
-      },
-      {
-        "service": "Gaz-ballon attestatsiyasi (hujjat bilan)",
-        "price": "90 000 UZS"
-      }
-    ],
-    "features": [
-      "24/7 Tunu-kun navbatchi",
-      "Davlat standartiga muvofiq sertifikat"
-    ],
-    "workDays": "Har kuni 24 soat uzluksiz",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-3",
-        "author": "Shuhrat",
-        "rating": 5,
-        "date": "Kecha",
-        "comment": "Kechasi soat 2 da gaz reduktorimni tuzatib berishdi, rahmat katta!"
-      }
-    ]
-  },
-  {
-    "id": "auto-samarkand-registon",
-    "name": "Samarqand Registon Master Servis",
-    "category": "auto",
-    "categoryName": "Avtomobil & Ustaxona",
-    "subCategory": "Koreya va Germaniya avtomobillari matori, elektronika va podveska",
-    "region": "samarkand",
-    "rating": 4.9,
-    "reviewsCount": 310,
-    "experienceYears": 16,
-    "experienceText": "16 yillik boy amaliy tajriba",
-    "chiefSpecialist": "Usta Ilhom Nurullayev",
-    "phone": "+998 66 233 45 45",
-    "secondaryPhone": "+998 91 555 12 34",
-    "lat": 39.661,
-    "lng": 66.945,
-    "openTime": "08:00",
-    "closeTime": "21:00",
-    "is247": false,
-    "address": "Samarqand sh., Dahbed ko'chasi 88",
-    "landmark": "Siyob bozoridan 1.5 km",
-    "priceRange": "50 000 – 800 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Mator kapremont",
-        "price": "600 000 UZS dan"
-      },
-      {
-        "service": "Xodovoy qismlarni almashtirish",
-        "price": "90 000 UZS"
-      },
-      {
-        "service": "Elektr tizimi va datchiklar",
-        "price": "70 000 UZS"
-      }
-    ],
-    "features": [
-      "Original ehtiyot qismlar",
-      "Kafolat taloni",
-      "Konditsioner zaryadlash"
-    ],
-    "workDays": "Dushanba - Shanba: 08:00 - 21:00",
-    "image": "https://images.unsplash.com/photo-1517524008697-84bbe3c3fd98?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-s1",
-        "author": "Mansur Temirov",
-        "rating": 5,
-        "date": "2 kun oldin",
-        "comment": "Samarqanddagi eng ishonchli ustaxona, mashina soatday ishlayapti."
-      }
-    ]
-  },
-  {
-    "id": "auto-fergana-vodiy-mator",
-    "name": "Farg'ona Vodiy Injektor & Mator Servis",
-    "category": "auto",
-    "categoryName": "Avtomobil & Ustaxona",
-    "subCategory": "Cobalt, Gentra, Tracker va Onix kompyuter diagnostikasi va mator tyuningu",
-    "region": "fergana",
-    "rating": 4.8,
-    "reviewsCount": 195,
-    "experienceYears": 11,
-    "experienceText": "11 yillik injektor mutaxassisi",
-    "chiefSpecialist": "Usta Doniyor Mamajonov",
-    "phone": "+998 73 244 11 22",
-    "secondaryPhone": "+998 90 555 44 33",
-    "lat": 40.389,
-    "lng": 71.789,
-    "openTime": "08:30",
-    "closeTime": "20:00",
-    "is247": false,
-    "address": "Farg'ona sh., Al-Farg'oniy shoh ko'chasi 112",
-    "landmark": "Markaziy stadion ro'parasida",
-    "priceRange": "40 000 – 500 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Injektor stendda tozalash",
-        "price": "60 000 UZS"
-      },
-      {
-        "service": "Proshivka (Euro-2/Evro-4)",
-        "price": "120 000 UZS"
-      }
-    ],
-    "features": [
-      "Ultrasonik injektor tozalash",
-      "Zamonaviy diagnostika stendi"
-    ],
-    "workDays": "Har kuni: 08:30 - 20:00",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-f1",
-        "author": "Bekzod",
-        "rating": 5,
-        "date": "5 kun oldin",
-        "comment": "Gentra tortishi ancha yaxshilandi, yoqilg'i sarfi kamaydi."
-      }
-    ]
-  },
-  {
-    "id": "auto-bukhara-karvon",
-    "name": "Buxoro Karvon Avtoelektrik & Konditsioner",
-    "category": "auto",
-    "categoryName": "Avtomobil & Ustaxona",
-    "subCategory": "Avtoelektrika, generator, starter va barcha turdagi avtomobil konditsionerlari",
-    "region": "bukhara",
-    "rating": 4.9,
-    "reviewsCount": 215,
-    "experienceYears": 13,
-    "experienceText": "13 yillik avtoelektr tajribasi",
-    "chiefSpecialist": "Usta Shavkat Jalilov",
-    "phone": "+998 65 221 77 88",
-    "secondaryPhone": "+998 93 633 22 11",
-    "lat": 39.768,
-    "lng": 64.435,
-    "openTime": "08:00",
-    "closeTime": "21:30",
-    "is247": false,
-    "address": "Buxoro sh., B. Naqshband ko'chasi 19",
-    "landmark": "Karvon bozoriga yaqin",
-    "priceRange": "35 000 – 400 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Konditsioner freon quyish (Fransiya)",
-        "price": "150 000 UZS"
-      },
-      {
-        "service": "Starter va generator ta'miri",
-        "price": "80 000 UZS"
-      }
-    ],
-    "features": [
-      "Avtomatik freon apparati",
-      "Elektron bloklar remonti"
-    ],
-    "workDays": "Har kuni: 08:00 - 21:30",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-b1",
-        "author": "Otabek",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Konditsioner muzdek ishlayapti, usta ishiga javob beradi."
-      }
-    ]
-  },
-  {
-    "id": "gas-ung-petro-tashkent",
-    "name": "UNG Petro Markaziy Ko'p Tarmoqli AYoQSH",
-    "category": "gas",
-    "categoryName": "Zapravka & EV",
-    "subCategory": "Ai-92, Ai-95, Ai-98, Metan (220 bar) va TokBor 120kW EV Tezkor zaryadlash",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 740,
-    "experienceYears": 18,
-    "experienceText": "18 yillik davlat sifat nazorati",
-    "chiefSpecialist": "Navbatchi dispetcher: Oybek Toirov",
-    "phone": "+998 71 200 01 23",
-    "secondaryPhone": "+998 90 999 01 23",
-    "lat": 41.325,
-    "lng": 69.245,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Amir Temur shoh ko'chasi 108",
-    "landmark": "Minor metrosidan 500m",
-    "priceRange": "Metan: 3 750 UZS | Ai-95: 13 000 UZS | EV: 2 100 UZS/kW",
-    "pricingDetails": [
-      {
-        "service": "CNG Metan gazi (220 bar barqaror bosim)",
-        "price": "3 750 UZS / m3"
-      },
-      {
-        "service": "Benzin Ai-95 Premium",
-        "price": "13 000 UZS / litr"
-      },
-      {
-        "service": "TokBor 120kW DC Fast Charge (GB/T & CCS2)",
-        "price": "2 100 UZS / kVt"
-      }
-    ],
-    "features": [
-      "24/7 Uzluksiz xizmat",
-      "Elektron bosim datchigi",
-      "Kofe va qulay do'kon",
-      "Shina damlash bepul"
-    ],
-    "workDays": "Har kuni 24 soat uzluksiz",
-    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-g1",
-        "author": "Sherzod",
-        "rating": 5,
-        "date": "Kecha",
-        "comment": "Metan bosimi ajoyib, 220 bar to'liq urib beradi. Navbat tez o'tadi."
-      }
-    ]
-  },
-  {
-    "id": "gas-avtogaz-metan-tokbor",
-    "name": "AvtoGaz 220 Bar & Megawatt EV Hub",
-    "category": "gas",
-    "categoryName": "Zapravka & EV",
-    "subCategory": "16 ta kolonkali tezkor metan to'ldirish va 160 kW o'ta tezkor elektro-zaryadlash",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 512,
-    "experienceYears": 10,
-    "experienceText": "10 yillik zamonaviy xizmat",
-    "chiefSpecialist": "Stansiya rahbari: Alisher Yusupov",
-    "phone": "+998 71 280 40 40",
-    "secondaryPhone": "+998 90 120 40 40",
-    "lat": 41.265,
-    "lng": 69.215,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Toshkent halqa avtomobil yo'li (THAY), 18-km",
-    "landmark": "Sergeli avtomobil bozori ro'parasida",
-    "priceRange": "Metan: 3 750 UZS | EV Zaryad: 2 000 UZS/kW",
-    "pricingDetails": [
-      {
-        "service": "CNG Metan yuqori tozalik darajasi",
-        "price": "3 750 UZS / m3"
-      },
-      {
-        "service": "160 kW DC Zaryadlash (20 daqiqada 80%)",
-        "price": "2 000 UZS / kVt"
-      }
-    ],
-    "features": [
-      "16 ta avtomobil bir vaqtda",
-      "Haydovchilar dam olish xonasi",
-      "Wi-Fi va kofe"
-    ],
-    "workDays": "Har kuni 24 soat ochiq",
-    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-g2",
-        "author": "Sanjar",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "BYD mashinamni 25 daqiqada to'liq zaryadlab oldim. Qulay va toza joy."
-      }
-    ]
-  },
-  {
-    "id": "gas-samarkand-afrosiyob",
-    "name": "Samarqand Afrosiyob Metan Gaz & Benzin",
-    "category": "gas",
-    "categoryName": "Zapravka & EV",
-    "subCategory": "Barqaror 220 bar kompressorli metan va import Ai-95 benzin",
-    "region": "samarkand",
-    "rating": 4.8,
-    "reviewsCount": 420,
-    "experienceYears": 12,
-    "experienceText": "12 yillik ishonchli ta'minot",
-    "chiefSpecialist": "Bosh muhandis: Akrom Vohidov",
-    "phone": "+998 66 235 90 90",
-    "secondaryPhone": "+998 91 540 90 90",
-    "lat": 39.675,
-    "lng": 66.98,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Samarqand sh., Gagarin ko'chasi 145",
-    "landmark": "Afrosiyob temiryo'l vokzaliga yaqin",
-    "priceRange": "Metan: 3 800 UZS | Ai-95: 13 200 UZS",
-    "pricingDetails": [
-      {
-        "service": "Metan gazi",
-        "price": "3 800 UZS / m3"
-      },
-      {
-        "service": "Ai-92 Benzin",
-        "price": "10 500 UZS / litr"
-      }
-    ],
-    "features": [
-      "24/7 Navbatchilik",
-      "Elektron to'lov Click / Payme"
-    ],
-    "workDays": "Har kuni 24 soat uzluksiz",
-    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-gs1",
-        "author": "Dilshod",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Yo'lda benzin tugayozgandi, sifatli Ai-95 quyishdi, mashina yengil tortdi."
-      }
-    ]
-  },
-  {
-    "id": "gas-andijan-vodiy-metan",
-    "name": "Andijon Vodiy Gaz & EV Supercharger",
-    "category": "gas",
-    "categoryName": "Zapravka & EV",
-    "subCategory": "Andijon-Farg'ona trassasidagi zamonaviy metan va EV zaryadlash majmuasi",
-    "region": "andijan",
-    "rating": 4.9,
-    "reviewsCount": 380,
-    "experienceYears": 8,
-    "experienceText": "8 yillik yuqori servis",
-    "chiefSpecialist": "Navbatchi usta: Zohidbek",
-    "phone": "+998 74 223 88 00",
-    "secondaryPhone": "+998 90 255 88 00",
-    "lat": 40.795,
-    "lng": 72.36,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Andijon sh., Bobur shoh ko'chasi 204",
-    "landmark": "Eski shahar aylanma yo'lida",
-    "priceRange": "Metan: 3 750 UZS | EV: 2 100 UZS/kW",
-    "pricingDetails": [
-      {
-        "service": "Metan 220 bar",
-        "price": "3 750 UZS"
-      },
-      {
-        "service": "120 kW TokBor Zaryadlash",
-        "price": "2 100 UZS / kVt"
-      }
-    ],
-    "features": [
-      "24/7 Kafolatlangan bosim",
-      "Avtomoyka xizmati yonida"
-    ],
-    "workDays": "Har kuni 24 soat",
-    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-ga1",
-        "author": "Nodirbek",
-        "rating": 5,
-        "date": "4 kun oldin",
-        "comment": "Vodiy bo'yicha eng yaxshi bosim beradigan zapravkalardan biri."
-      }
-    ]
-  },
-  {
-    "id": "med-16-shoshilinch-tashkent",
-    "name": "Respublika Shoshilinch Tez Tibbiy Yordam Ilmiy Markazi (16-Gorbolnitsa)",
-    "category": "medical",
-    "categoryName": "Shifoxona & Dori",
-    "subCategory": "24/7 Davlat Shoshilinch Xirurgiya, Travmatologiya, Reanimatsiya va Kardiologiya",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 1420,
-    "experienceYears": 42,
-    "experienceText": "42 yillik davlat akademik tibbiyot markazi",
-    "chiefSpecialist": "Bosh vrach: Prof. Davron Sobirov",
-    "phone": "+998 71 277 95 00",
-    "secondaryPhone": "+998 71 103",
-    "lat": 41.282,
-    "lng": 69.208,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Kichik halqa yo'li 2, Chilonzor tumani",
-    "landmark": "Farhod bozori ro'parasida",
-    "priceRange": "Shoshilinch tibbiy yordam — Davlat kafolati asosida BEPUL",
-    "pricingDetails": [
-      {
-        "service": "Shoshilinch qabul va birlamchi yordam",
-        "price": "Bepul (Davlat kafolati)"
-      },
-      {
-        "service": "Rentgen, EKG, UZI shoshilinch tekshiruv",
-        "price": "Bepul"
-      },
-      {
-        "service": "Shoshilinch jarrohlik amaliyoti",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "24/7 Tunu-kun navbatchi vrachlar",
-      "Vertolyot qo'nish maydonchasi",
-      "Zamonaviy MSKT va MRT",
-      "24/7 Dorixona"
-    ],
-    "workDays": "Har kuni 24 soat uzluksiz",
-    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-m1",
-        "author": "Gulnora Karimova",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Onamning qon bosimi oshib ketganda shifokorlar darhol yordam berishdi. O'z kasbining fidoiylari."
-      }
-    ]
-  },
-  {
-    "id": "med-oksimed-grand-tashkent",
-    "name": "Oksimed & Grand Med Ko'p Tarmoqli Xususiy Klinikasi",
-    "category": "medical",
-    "categoryName": "Shifoxona & Dori",
-    "subCategory": "Nemis uskunalari bilan laboratoriya, LOR, Pediatriya, Nevrologiya va Stomatologiya",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 680,
-    "experienceYears": 15,
-    "experienceText": "15 yillik xalqaro litsenziyalangan tajriba",
-    "chiefSpecialist": "Bosh shifokor: Nilufar Usmonova (Oliy toifali)",
-    "phone": "+998 71 200 88 99",
-    "secondaryPhone": "+998 90 321 88 99",
-    "lat": 41.318,
-    "lng": 69.278,
-    "openTime": "08:00",
-    "closeTime": "22:00",
-    "is247": false,
-    "address": "Mustaqillik shoh ko'chasi 59",
-    "landmark": "Hamid Olimjon metrosidan 200m",
-    "priceRange": "Qabul: 120 000 – 350 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Tor mutaxassis (Nevrolog/Kardiolog) ko'rigi",
-        "price": "140 000 UZS"
-      },
-      {
-        "service": "To'liq qon tahlili (Express 1 soatda)",
-        "price": "65 000 UZS"
-      },
-      {
-        "service": "Rangli doppler UZI",
-        "price": "110 000 UZS"
-      }
-    ],
-    "features": [
-      "Navbatsiz onlayn yozilish",
-      "Natijalar Telegram orqali yuboriladi",
-      "Bolalar maydonchasi"
-    ],
-    "workDays": "Dushanba - Shanba: 08:00 - 22:00",
-    "image": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-m2",
-        "author": "Jahongir",
-        "rating": 5,
-        "date": "2 kun oldin",
-        "comment": "Juda ozoda, xizmat madaniyati yuksak, tahlillarni 40 minutda berishdi."
-      }
-    ]
-  },
-  {
-    "id": "med-samarkand-shoshilinch",
-    "name": "Samarqand Viloyat Shoshilinch Tibbiy Yordam Markazi",
-    "category": "medical",
-    "categoryName": "Shifoxona & Dori",
-    "subCategory": "Viloyat bo'yicha markaziy shoshilinch xirurgiya, neyroxirurgiya va reanimatsiya",
-    "region": "samarkand",
-    "rating": 4.8,
-    "reviewsCount": 890,
-    "experienceYears": 35,
-    "experienceText": "35 yillik yetakchi viloyat markazi",
-    "chiefSpecialist": "Bosh shifokor: Dr. Erkin Qobilov",
-    "phone": "+998 66 233 03 03",
-    "secondaryPhone": "+998 66 103",
-    "lat": 39.645,
-    "lng": 66.932,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Samarqand sh., Ibn Sino ko'chasi 4",
-    "landmark": "Viloyat hokimligi yaqinida",
-    "priceRange": "Shoshilinch yordam — Bepul",
-    "pricingDetails": [
-      {
-        "service": "24/7 Shoshilinch qabul",
-        "price": "Bepul"
-      },
-      {
-        "service": "Kardiologiya va reanimatsiya",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "24/7 Shoshilinch yordam",
-      "Markaziy qon quyish bo'limi",
-      "MSKT tekshiruvi"
-    ],
-    "workDays": "Har kuni 24 soat",
-    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-ms1",
-        "author": "Farrux",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "Tez yordam chaqiruvimizga 8 daqiqada yetib kelishdi, minnatdormiz!"
-      }
-    ]
-  },
-  {
-    "id": "med-bukhara-ibn-sino",
-    "name": "Buxoro Ibn Sino Tibbiyot Majmuasi & 24/7 Dorixona",
-    "category": "medical",
-    "categoryName": "Shifoxona & Dori",
-    "subCategory": "Markaziy klinik shifoxona va barcha turdagi dori vositalari 24/7 navbatchi dorixonasi",
-    "region": "bukhara",
-    "rating": 4.9,
-    "reviewsCount": 540,
-    "experienceYears": 28,
-    "experienceText": "28 yillik viloyat flagmani",
-    "chiefSpecialist": "Bosh shifokor: Rustam Hamroyev",
-    "phone": "+998 65 224 44 03",
-    "secondaryPhone": "+998 65 103",
-    "lat": 39.782,
-    "lng": 64.415,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Buxoro sh., Navoiy shoh ko'chasi 52",
-    "landmark": "Markaziy istirohat bog'i yonida",
-    "priceRange": "Davlat kafolati asosida bepul | Dori-darmonlar arzonlashtirilgan narxda",
-    "pricingDetails": [
-      {
-        "service": "24/7 Shoshilinch tibbiy ko'rik",
-        "price": "Bepul"
-      },
-      {
-        "service": "24/7 Navbatchi dorixona xizmati",
-        "price": "Dorilar chek bo'yicha"
-      }
-    ],
-    "features": [
-      "24/7 Dorixona",
-      "Yangi tug'uruq bo'limi",
-      "Bolalar shifoxonasi"
-    ],
-    "workDays": "Har kuni 24 soat ochiq",
-    "image": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-mb1",
-        "author": "Shahlo",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Tungi soat 3 da kamyob dori kerak bo'lgandi, shu dorixonadan topdik."
-      }
-    ]
-  },
-  {
-    "id": "police-tashkent-iibb-102",
-    "name": "Toshkent Shahar IIBB Markaziy Boshqarmasi & 102 Call-Markazi",
-    "category": "police",
-    "categoryName": "Militsiya 102",
-    "subCategory": "Jamoat xavfsizligi, Patrul-post xizmati, Tergov va 102 tezkor aloqa tizimi",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 890,
-    "experienceYears": 32,
-    "experienceText": "Poytaxt jamoat osoyishtaligi posboni",
-    "chiefSpecialist": "Tezkor navbatchilik boshqarmasi boshlig'i",
-    "phone": "+998 71 232 30 40",
-    "secondaryPhone": "+998 71 102",
-    "lat": 41.311,
-    "lng": 69.279,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Yashnobod tumani, Sodiq Azimov ko'chasi 56",
-    "landmark": "Toshkent Tibbiyot Akademiyasi 1-klinikasi yaqinida",
-    "priceRange": "Davlat huquqiy xizmati — Bepul",
-    "pricingDetails": [
-      {
-        "service": "102 Tezkor favqulodda yordam brigadasi",
-        "price": "Bepul"
-      },
-      {
-        "service": "Fuqarolar arizalarini qabul qilish va tergov",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "24/7 Tezkor reaksiya guruhi",
-      "Videokuzatuv markazi",
-      "Yo'qolgan buyumlar stoli"
-    ],
-    "workDays": "Har kuni 24 soat uzluksiz navbatchilik",
-    "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-p1",
-        "author": "Bobur Mirzayev",
-        "rating": 5,
-        "date": "2 kun oldin",
-        "comment": "Yo'qolgan telefonimni kameralar orqali 2 soat ichida topib berishdi. Katta rahmat!"
-      }
-    ]
-  },
-  {
-    "id": "police-bosh-prokuratura",
-    "name": "O'zbekiston Respublikasi Bosh Prokuraturasi",
-    "category": "police",
-    "categoryName": "Militsiya 102",
-    "subCategory": "Qonuniylikni ta'minlash, fuqarolar murojaatlari va korrupsiyaga qarshi kurash",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 420,
-    "experienceYears": 33,
-    "experienceText": "Konstitutsiyaviy qonun nazorati organi",
-    "chiefSpecialist": "Murojaatlar bilan ishlash boshqarmasi mas'uli",
-    "phone": "+998 71 232 43 90",
-    "secondaryPhone": "+998 71 1007",
-    "lat": 41.309,
-    "lng": 69.273,
-    "openTime": "09:00",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Mirobod tumani, Yahyo G'ulomov ko'chasi 66",
-    "landmark": "Markaziy bank bosh binosiga yaqin",
-    "priceRange": "Rasmiy qabul — Bepul",
-    "pricingDetails": [
-      {
-        "service": "Fuqarolar murojaatlari va shikoyatlarini ko'rib chiqish",
-        "price": "Bepul"
-      },
-      {
-        "service": "1007 Ishonch telefoni orqali tezkor konsultatsiya",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "Elektron qabulxona",
-      "Ishonch telefoni 1007",
-      "Huquqiy maslahat"
-    ],
-    "workDays": "Dushanba - Juma: 09:00 - 18:00",
-    "image": "https://images.unsplash.com/photo-1589829545856-d10d557cf95f?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-pr1",
-        "author": "Anvar aka",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Arizamizni qonuniy ko'rib chiqib, ijobiy hal qilib berishdi."
-      }
-    ]
-  },
-  {
-    "id": "police-samarkand-iib",
-    "name": "Samarqand Viloyat IIB & Turizm Politsiyasi Boshqarmasi",
-    "category": "police",
-    "categoryName": "Militsiya 102",
-    "subCategory": "Viloyat huquq-tartibot, xavfsizlik va xorijiy sayyohlarga tezkor ko'mak",
-    "region": "samarkand",
-    "rating": 4.9,
-    "reviewsCount": 610,
-    "experienceYears": 30,
-    "experienceText": "30 yillik tajriba",
-    "chiefSpecialist": "Viloyat IIB navbatchilik qismi mas'uli",
-    "phone": "+998 66 233 11 02",
-    "secondaryPhone": "+998 66 102",
-    "lat": 39.658,
-    "lng": 66.965,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Samarqand sh., Mirzo Ulug'bek ko'chasi 24",
-    "landmark": "Registon maydoni xavfsizlik posti yonida",
-    "priceRange": "Davlat xizmati — Bepul",
-    "pricingDetails": [
-      {
-        "service": "102 Tezkor navbatchilik",
-        "price": "Bepul"
-      },
-      {
-        "service": "Turistlarga 5 tilda huquqiy yordam",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "Ingliz va rus tillarida xizmat",
-      "24/7 Patrul"
-    ],
-    "workDays": "Har kuni 24 soat",
-    "image": "https://images.unsplash.com/photo-1541872703-74c5e44368f9?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-ps1",
-        "author": "John D.",
-        "rating": 5,
-        "date": "5 kun oldin",
-        "comment": "Tourist police helped me recover my lost backpack in 30 minutes. Amazing service!"
-      }
-    ]
-  },
-  {
-    "id": "gov-dxm-chilonzor",
-    "name": "Chilonzor Tumani Davlat Xizmatlari Markazi (DXM) & FHDYO",
-    "category": "gov",
-    "categoryName": "Davlat Xizmatlari",
-    "subCategory": "Yagona Darcha, Tadbirkorlikni ro'yxatdan o'tkazish, ERI, Kadastr va Pasport xizmati",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 920,
-    "experienceYears": 7,
-    "experienceText": "Raqamli O'zbekiston etaloni",
-    "chiefSpecialist": "Markaz rahbari: Jamshid Karimov",
-    "phone": "+998 71 207 00 66",
-    "secondaryPhone": "+998 71 1148",
-    "lat": 41.275,
-    "lng": 69.205,
-    "openTime": "09:00",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Chilonzor tumani, 2-mavze, 41-uy",
-    "landmark": "Mirzo Ulug'bek metrosidan 600m",
-    "priceRange": "Davlat bojlari asosida (ERI olish va maslahat — Bepul)",
-    "pricingDetails": [
-      {
-        "service": "Elektron raqamli imzo (ERI) kaliti berish",
-        "price": "Bepul"
-      },
-      {
-        "service": "MCHJ / YaTT davlat ro'yxatidan o'tkazish",
-        "price": "1 BHM (375 000 UZS)"
-      },
-      {
-        "service": "Farzand tug'ilganlik guvohnomasi berish",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "Elektron navbat tizimi",
-      "Konditsionerli katta zal",
-      "Nogironlar uchun pandus",
-      "Bank kassasi ichkarida"
-    ],
-    "workDays": "Dushanba - Juma: 09:00 - 18:00",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-dx1",
-        "author": "Otabek",
-        "rating": 5,
-        "date": "Kecha",
-        "comment": "Yangi firma ochishga 15 minut ketdi. Xodimlar juda xushmuomala."
-      }
-    ]
-  },
-  {
-    "id": "gov-xalq-qabulxona",
-    "name": "O'zbekiston Respublikasi Prezidentining Xalq Qabulxonasi",
-    "category": "gov",
-    "categoryName": "Davlat Xizmatlari",
-    "subCategory": "Fuqarolar murojaatlari, ijtimoiy himoya va davlat organlari bilan bevosita muloqot",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 1150,
-    "experienceYears": 8,
-    "experienceText": "Xalq bilan ochiq muloqot markazi",
-    "chiefSpecialist": "Bosh qabul koordinatori: Z. Rahmonov",
-    "phone": "+998 71 239 82 82",
-    "secondaryPhone": "+998 71 1000",
-    "lat": 41.314,
-    "lng": 69.248,
-    "openTime": "09:00",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Shayxontohur tumani, Navoiy ko'chasi 30",
-    "landmark": "Alisher Navoiy haykali yonida",
-    "priceRange": "Barcha xizmatlar va arizalar — Bepul",
-    "pricingDetails": [
-      {
-        "service": "Prezident nomiga rasmiy murojaat topshirish",
-        "price": "Bepul"
-      },
-      {
-        "service": "Malakali huquqshunos qabuli",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "Elektron monitoring",
-      "Barcha viloyatlar bilan video-aloqa",
-      "Huquqiy yordam"
-    ],
-    "workDays": "Dushanba - Juma: 09:00 - 18:00",
-    "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-xq1",
-        "author": "Nodira opa",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "Ko'p yillik muammomiz bo'yicha amaliy yordam berishdi, minnatdormiz."
-      }
-    ]
-  },
-  {
-    "id": "gov-samarkand-dxm",
-    "name": "Samarqand Shahar Davlat Xizmatlari Markazi & Monomarkaz",
-    "category": "gov",
-    "categoryName": "Davlat Xizmatlari",
-    "subCategory": "Yagona darcha, haydovchilik guvohnomasini almashtirish va xorijga chiqish pasporti",
-    "region": "samarkand",
-    "rating": 4.8,
-    "reviewsCount": 670,
-    "experienceYears": 6,
-    "experienceText": "6 yillik zamonaviy xizmat",
-    "chiefSpecialist": "Markaz boshlig'i: M. Sharipov",
-    "phone": "+998 66 231 11 48",
-    "secondaryPhone": "+998 66 1148",
-    "lat": 39.663,
-    "lng": 66.958,
-    "openTime": "09:00",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Samarqand sh., Spitamen shoh ko'chasi 16",
-    "landmark": "Shahar hokimligi yonida",
-    "priceRange": "Davlat bojlari bo'yicha",
-    "pricingDetails": [
-      {
-        "service": "Haydovchilik guvohnomasini almashtirish",
-        "price": "0.7 BHM (262 500 UZS)"
-      },
-      {
-        "service": "Yangi namunadagi zagranpasport",
-        "price": "1.2 BHM"
-      }
-    ],
-    "features": [
-      "Tezkor biometrik kabina",
-      "Elektron navbat"
-    ],
-    "workDays": "Dushanba - Juma: 09:00 - 18:00",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-dxs1",
-        "author": "Kamron",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Prava almashtirish 10 daqiqada bitdi, qoyil!"
-      }
-    ]
-  },
-  {
-    "id": "food-besh-qozon-osh",
-    "name": "Besh Qozon (Markaziy O'zbekiston Osh Markazi)",
-    "category": "food",
-    "categoryName": "Choyxona & Osh",
-    "subCategory": "Toshkent to'y oshi, Choyxona palov, Qazi, Bedana tuxumi va Milliy salatlar",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 4200,
-    "experienceYears": 22,
-    "experienceText": "22 yillik milliy taomlar etaloni",
-    "chiefSpecialist": "Bosh Oshpaz: Usta Bahodir (Milliy oshpazlar gildiyasi)",
-    "phone": "+998 71 200 44 44",
-    "secondaryPhone": "+998 90 922 44 44",
-    "lat": 41.345,
-    "lng": 69.285,
-    "openTime": "10:30",
-    "closeTime": "23:00",
-    "is247": false,
-    "address": "Yunusobod tumani, Iftixor ko'chasi 1",
-    "landmark": "Toshkent Teleminorasi poyida",
-    "priceRange": "Osh porsiyasi: 38 000 – 65 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Toshkent to'y oshi (Devzira/Lazer guruch)",
-        "price": "42 000 UZS"
-      },
-      {
-        "service": "Maxsus Osh (Qo'y go'shti, qazi, bedana tuxum)",
-        "price": "58 000 UZS"
-      },
-      {
-        "service": "Achichuk salati va suzma",
-        "price": "14 000 UZS"
-      },
-      {
-        "service": "Ko'k choy va issiq tandir non",
-        "price": "8 000 UZS"
-      }
-    ],
-    "features": [
-      "1000 kishilik zal",
-      "Haqiqiy o'tin olovida pishiriladi",
-      "Oilaviy alohida xonalar",
-      "Tezkor yetkazib berish"
-    ],
-    "workDays": "Har kuni: 10:30 - 23:00 (Osh soat 11:30 da tayyor)",
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-f1",
-        "author": "Umidjon",
-        "rating": 5,
-        "date": "Kecha",
-        "comment": "O'zbekistondagi eng mazali to'y oshi! Go'shti erib ketadi, xizmat ko'rsatish juda tez."
-      }
-    ]
-  },
-  {
-    "id": "food-samarkand-registon-osh",
-    "name": "Samarqand Registon Osh Markazi",
-    "category": "food",
-    "categoryName": "Choyxona & Osh",
-    "subCategory": "Haqiqiy qat-qat Samarqandcha palov, no'xatli go'sht va tandir somsa",
-    "region": "samarkand",
-    "rating": 4.9,
-    "reviewsCount": 2100,
-    "experienceYears": 25,
-    "experienceText": "25 yillik Samarqand oshpazlik an'anasi",
-    "chiefSpecialist": "Usta Faxriddin Oshpaz",
-    "phone": "+998 66 235 70 70",
-    "secondaryPhone": "+998 91 550 70 70",
-    "lat": 39.654,
-    "lng": 66.971,
-    "openTime": "11:00",
-    "closeTime": "22:00",
-    "is247": false,
-    "address": "Samarqand sh., Panjakent ko'chasi 74",
-    "landmark": "Registon maydoniga 800 metr",
-    "priceRange": "35 000 – 60 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Samarqand palovi (Zog'ora yog'i, sariq sabzi)",
-        "price": "40 000 UZS"
-      },
-      {
-        "service": "Tandir go'sht (1 kg)",
-        "price": "160 000 UZS"
-      }
-    ],
-    "features": [
-      "Milliy supa va ayvonlar",
-      "Samarqand noni bilan tortiq qilinadi"
-    ],
-    "workDays": "Har kuni: 11:00 - 22:00",
-    "image": "https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-fs1",
-        "author": "Sardor",
-        "rating": 5,
-        "date": "2 kun oldin",
-        "comment": "Samarqand oshi boshqacha bo'ladi, sabzisi shirin, go'shti yumshoq."
-      }
-    ]
-  },
-  {
-    "id": "food-bukhara-labi-hovuz",
-    "name": "Buxoro Labi Hovuz Tarixiy Restorani & Choyxona",
-    "category": "food",
-    "categoryName": "Choyxona & Osh",
-    "subCategory": "XVI asr hovuzi bo'yidagi milliy taomlar, Buxoro oshi (Oshi sofi) va shashliklar",
-    "region": "bukhara",
-    "rating": 4.9,
-    "reviewsCount": 1850,
-    "experienceYears": 20,
-    "experienceText": "20 yillik mehmondo'stlik",
-    "chiefSpecialist": "Oshpaz: Usta Akbar Buxoriy",
-    "phone": "+998 65 224 10 20",
-    "secondaryPhone": "+998 93 680 10 20",
-    "lat": 39.773,
-    "lng": 64.42,
-    "openTime": "09:00",
-    "closeTime": "23:30",
-    "is247": false,
-    "address": "Buxoro sh., B. Naqshband ko'chasi, Labi Hovuz majmuasi",
-    "landmark": "Nodir Devonbegi madrasasi yonida",
-    "priceRange": "45 000 – 150 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Buxoro Oshi Sofi (Mis qozonda)",
-        "price": "45 000 UZS"
-      },
-      {
-        "service": "Gijduvon shashlik (1 siyx)",
-        "price": "22 000 UZS"
-      }
-    ],
-    "features": [
-      "Tarixiy obida manzarasi",
-      "Jonli milliy maqom musiqasi"
-    ],
-    "workDays": "Har kuni: 09:00 - 23:30",
-    "image": "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-fb1",
-        "author": "Elena",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "Unbelievable atmosphere next to the ancient pool. The shashlik was delicious!"
-      }
-    ]
-  },
-  {
-    "id": "market-chorsu-bozor",
-    "name": "Chorsu Tarixiy Markaziy Dehqon Bozori",
-    "category": "market",
-    "categoryName": "Savdo & Bozor",
-    "subCategory": "Quruq mevalar, Ziravorlar, Yangi go'sht va sut mahsulotlari, Milliy hunarmandchilik",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 5400,
-    "experienceYears": 120,
-    "experienceText": "Buyuk Ipak yo'lining tirik tarixi",
-    "chiefSpecialist": "Bozor Ma'muriyati & Veterinariya-Sanitariya Nazorati",
-    "phone": "+998 71 242 41 81",
-    "secondaryPhone": "+998 71 242 00 12",
-    "lat": 41.3275,
-    "lng": 69.234,
-    "openTime": "06:00",
-    "closeTime": "19:00",
-    "is247": false,
-    "address": "Shayxontohur tumani, Zarqaynar ko'chasi 48",
-    "landmark": "Chorsu metro bekati chiqishida",
-    "priceRange": "Ulgurji va chakana eng hamyonbop narxlar",
-    "pricingDetails": [
-      {
-        "service": "Samarqand mayizi va tog' yong'og'i",
-        "price": "Kelishilgan bozor narxida"
-      },
-      {
-        "service": "Yangi barra mol go'shti (sertifikatlangan)",
-        "price": "90 000 – 105 000 UZS / kg"
-      }
-    ],
-    "features": [
-      "Sharqona moviy gumbaz",
-      "Labaratoriya tekshiruvidan o'tgan sifat",
-      "Bankomatlar va valyuta ayirboshlash"
-    ],
-    "workDays": "Seshanba - Yakshanba: 06:00 - 19:00 (Dushanba sanitariya kuni)",
-    "image": "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-ch1",
-        "author": "Malika",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Quruq mevalar va tandir nonlarining hidi butun bozorga taralgan, narxlari shaharda eng arzoni."
-      }
-    ]
-  },
-  {
-    "id": "market-samarkand-siyob",
-    "name": "Samarqand Siyob Tarixiy Bozori",
-    "category": "market",
-    "categoryName": "Savdo & Bozor",
-    "subCategory": "Mashhur Samarqand nonlari, holva, qandolat, quruq meva va yangi meva-sabzavotlar",
-    "region": "samarkand",
-    "rating": 4.9,
-    "reviewsCount": 3800,
-    "experienceYears": 100,
-    "experienceText": "100 yillik mashhur bozor",
-    "chiefSpecialist": "Bozor ma'muriyati",
-    "phone": "+998 66 235 12 12",
-    "secondaryPhone": "+998 66 235 12 13",
-    "lat": 39.662,
-    "lng": 66.978,
-    "openTime": "06:30",
-    "closeTime": "19:00",
-    "is247": false,
-    "address": "Samarqand sh., Bibixonim ko'chasi 1",
-    "landmark": "Bibixonim masjidi ro'parasida",
-    "priceRange": "Bozor narxlarida (Samarqand noni 10 000 UZS dan)",
-    "pricingDetails": [
-      {
-        "service": "Katta Samarqand galust noni",
-        "price": "12 000 UZS"
-      },
-      {
-        "service": "Samarqand pista va holvasi",
-        "price": "35 000 UZS dan"
-      }
-    ],
-    "features": [
-      "Bibixonim me'moriy ansambli yonginasida",
-      "Samarqand nonlari qatori"
-    ],
-    "workDays": "Har kuni: 06:30 - 19:00",
-    "image": "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-msi1",
-        "author": "Anvar",
-        "rating": 5,
-        "date": "4 kun oldin",
-        "comment": "Samarqand nonlaridan olib Toshkentga jo'natdim, 3 kunda ham aynimaydi."
-      }
-    ]
-  },
-  {
-    "id": "edu-ozmu-universitet",
-    "name": "Mirzo Ulug'bek Nomidagi O'zbekiston Milliy Universiteti (O'zMU)",
-    "category": "edu",
-    "categoryName": "Ta'lim & OTM",
-    "subCategory": "Matematika, Fizika, Kimyo, Biologiya, Tarix, Xorijiy filologiya va IT fakultetlari",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 2100,
-    "experienceYears": 106,
-    "experienceText": "O'zbekistonning 106 yillik ilk bosh oliy ta'lim muassasasi",
-    "chiefSpecialist": "Qabul komissiyasi mas'ul kotibi",
-    "phone": "+998 71 246 02 24",
-    "secondaryPhone": "+998 71 227 12 24",
-    "lat": 41.352,
-    "lng": 69.204,
-    "openTime": "08:30",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Olmazor tumani, Talabalar shaharchasi, Universitet ko'chasi 4",
-    "landmark": "Beruniy metro bekati yaqinida",
-    "priceRange": "Davlat granti va Kontrakt asosida",
-    "pricingDetails": [
-      {
-        "service": "Bakalavriat (Davlat granti)",
-        "price": "Bepul (Grant asosida)"
-      },
-      {
-        "service": "Bakalavriat bazaviy to'lov-shartnoma",
-        "price": "Yillik standart kontrakt"
-      }
-    ],
-    "features": [
-      "Zamonaviy ilmiy laboratoriyalar",
-      "Xalqaro Erasmus+ dasturlari",
-      "Yotoqxona shaharchasi"
-    ],
-    "workDays": "Dushanba - Shanba: 08:30 - 18:00",
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-u1",
-        "author": "Jasurbek",
-        "rating": 5,
-        "date": "1 oy oldin",
-        "comment": "O'zbekistonning eng nufuzli ilmiy maktabi. Professor-o'qituvchilar bilimi juda chuqur."
-      }
-    ]
-  },
-  {
-    "id": "edu-pdp-academy",
-    "name": "PDP Academy & IT Ekotizimi",
-    "category": "edu",
-    "categoryName": "Ta'lim & OTM",
-    "subCategory": "Frontend, Backend (Java, Python, Go), Flutter, Kiberxavfsizlik va Sun'iy intellekt",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 980,
-    "experienceYears": 8,
-    "experienceText": "8 yillik xalqaro IT ta'lim ekotizimi",
-    "chiefSpecialist": "Bosh mentor: Odilbek Mirzayev",
-    "phone": "+998 78 777 47 47",
-    "secondaryPhone": "+998 90 999 47 47",
-    "lat": 41.299,
-    "lng": 69.224,
-    "openTime": "08:30",
-    "closeTime": "22:00",
-    "is247": false,
-    "address": "Zarqaynar ko'chasi 3A",
-    "landmark": "Chorsu maydoniga yaqin",
-    "priceRange": "Kurslar: 1 200 000 UZS dan",
-    "pricingDetails": [
-      {
-        "service": "Full-Stack dasturlash bootcamp",
-        "price": "1 400 000 UZS / oyiga"
-      },
-      {
-        "service": "AI & Data Science mutaxassisligi",
-        "price": "1 600 000 UZS / oyiga"
-      }
-    ],
-    "features": [
-      "24/7 Coworking zonasi",
-      "Ishga joylashish kafolati",
-      "Xalqaro sertifikat"
-    ],
-    "workDays": "Dushanba - Shanba: 08:30 - 22:00",
-    "image": "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-pdp1",
-        "author": "Sardor",
-        "rating": 5,
-        "date": "2 hafta oldin",
-        "comment": "PDP da o'qib 6 oyda Toshkentdagi IT kompaniyaga Junior dasturchi bo'lib kirdim."
-      }
-    ]
-  },
-  {
-    "id": "edu-milliy-kutubxona",
-    "name": "Alisher Navoiy Nomidagi O'zbekiston Milliy Kutubxonasi",
-    "category": "edu",
-    "categoryName": "Ta'lim & OTM",
-    "subCategory": "Elektron katalog, nodir qo'lyozmalar zali, ilmiy dissertatsiyalar va zamonaviy coworking",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 3200,
-    "experienceYears": 154,
-    "experienceText": "154 yillik ulkan ma'naviyat xazinasi",
-    "chiefSpecialist": "Ilmiy axborot xizmati boshlig'i",
-    "phone": "+998 71 239 86 58",
-    "secondaryPhone": "+998 71 232 83 94",
-    "lat": 41.3135,
-    "lng": 69.273,
-    "openTime": "08:00",
-    "closeTime": "21:00",
-    "is247": false,
-    "address": "Yunusobod tumani, Navoiy ko'chasi 1",
-    "landmark": "Mustaqillik maydoni ro'parasida",
-    "priceRange": "A'zolik kartasi — Yillik 25 000 UZS (O'qish zallari bepul)",
-    "pricingDetails": [
-      {
-        "service": "Kutubxona ID a'zolik kartasi (1 yil)",
-        "price": "25 000 UZS"
-      },
-      {
-        "service": "Elektron bazalar va Wi-Fi dan foydalanish",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "10 milliondan ortiq kitob fondi",
-      "Yuqori tezlikdagi Wi-Fi",
-      "Yumshoq kresloli sokin o'quv zallari"
-    ],
-    "workDays": "Dushanba - Shanba: 08:00 - 21:00",
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-k1",
-        "author": "Madinabonu",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "Toshkentdagi dars tayyorlash uchun eng qulay va sokin maskan."
-      }
-    ]
-  },
-  {
-    "id": "edu-samdu-samarkand",
-    "name": "Samarqand Davlat Universiteti (SamDU)",
-    "category": "edu",
-    "categoryName": "Ta'lim & OTM",
-    "subCategory": "Tarix, Raqamli texnologiyalar, Yuridik, Geografiya va Muhandislik fizikasi",
-    "region": "samarkand",
-    "rating": 4.8,
-    "reviewsCount": 1650,
-    "experienceYears": 97,
-    "experienceText": "Samarqandning bosh ilmiy markazi",
-    "chiefSpecialist": "Qabul boshqarmasi kotibiyati",
-    "phone": "+998 66 239 11 40",
-    "secondaryPhone": "+998 66 239 14 00",
-    "lat": 39.648,
-    "lng": 66.958,
-    "openTime": "08:30",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Samarqand sh., Universitet xiyoboni 15",
-    "landmark": "Universitet xiyoboni markazida",
-    "priceRange": "Davlat granti va Kontrakt",
-    "pricingDetails": [
-      {
-        "service": "Bakalavriat ta'lim dasturi",
-        "price": "Davlat standarti bo'yicha"
-      }
-    ],
-    "features": [
-      "Tarixiy bog' ichidagi kampus",
-      "Xalqaro almashinuv dasturlari"
-    ],
-    "workDays": "Dushanba - Shanba: 08:30 - 18:00",
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-es1",
-        "author": "Shoxrux",
-        "rating": 5,
-        "date": "1 oy oldin",
-        "comment": "Universitet xiyoboni juda go'zal, ta'lim sifati yildan yilga oshmoqda."
-      }
-    ]
-  },
-  {
-    "id": "sport-befit-pro",
-    "name": "BeFit Pro Sport & Wellness Majmuasi",
-    "category": "sport",
-    "categoryName": "Sport & Fitnes",
-    "subCategory": "Olimpiya 25m basseyni, Hammer Strength trenajyorlari, Crossfit va Spa",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 780,
-    "experienceYears": 7,
-    "experienceText": "7 yillik premium fitnes etaloni",
-    "chiefSpecialist": "Bosh murabbiy: Shavkat Mahmudov (Xalqaro toifadagi usta)",
-    "phone": "+998 71 200 00 55",
-    "secondaryPhone": "+998 90 123 55 66",
-    "lat": 41.314,
-    "lng": 69.262,
-    "openTime": "06:30",
-    "closeTime": "23:00",
-    "is247": false,
-    "address": "Yunusobod tumani, Osiyo ko'chasi 1",
-    "landmark": "Minor metrosi yonida",
-    "priceRange": "Abonement: 900 000 – 2 400 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "1 oylik limitsiz fitnes + basseyn abonementi",
-        "price": "1 200 000 UZS"
-      },
-      {
-        "service": "Individual murabbiy bilan 10 ta mashg'ulot",
-        "price": "800 000 UZS"
-      },
-      {
-        "service": "Fin saunasi va Spa muolajalari",
-        "price": "Abonement ichida bepul"
-      }
-    ],
-    "features": [
-      "25 metrlik filtrlangan iliq basseyn",
-      "Fin saunasi va hamam",
-      "Fitnes-bar va bepul sochiqlar"
-    ],
-    "workDays": "Dushanba - Shanba: 06:30 - 23:00 | Yakshanba: 08:00 - 22:00",
-    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-sp1",
-        "author": "Diyorbek",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Basseyni toza, suv harorati ideal darajada. Murabbiylar o'z ishining ustasi."
-      }
-    ]
-  },
-  {
-    "id": "sport-samarkand-dinamo",
-    "name": "Samarqand Dinamo Sport Majmuasi & Yengil Atletika",
-    "category": "sport",
-    "categoryName": "Sport & Fitnes",
-    "subCategory": "Futbol maydoni, yopiq trenajyor zali, dzyudo, boks va kurash to'garaklari",
-    "region": "samarkand",
-    "rating": 4.8,
-    "reviewsCount": 510,
-    "experienceYears": 40,
-    "experienceText": "40 yillik professional sport maktabi",
-    "chiefSpecialist": "Bosh murabbiy: Rustam aka",
-    "phone": "+998 66 233 20 40",
-    "secondaryPhone": "+998 91 520 20 40",
-    "lat": 39.66,
-    "lng": 66.952,
-    "openTime": "07:00",
-    "closeTime": "22:00",
-    "is247": false,
-    "address": "Samarqand sh., Mirzo Ulug'bek ko'chasi 45",
-    "landmark": "Dinamo stadioni yonida",
-    "priceRange": "Oylik to'garaklar: 250 000 – 500 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Trenajyor zali (1 oylik)",
-        "price": "300 000 UZS"
-      },
-      {
-        "service": "Boks va kikboksing bolalar to'garagi",
-        "price": "250 000 UZS"
-      }
-    ],
-    "features": [
-      "Professional ring",
-      "Dush va kiyinish xonalari",
-      "Tajribali sport ustalari"
-    ],
-    "workDays": "Har kuni: 07:00 - 22:00",
-    "image": "https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-sd1",
-        "author": "Vali",
-        "rating": 5,
-        "date": "2 hafta oldin",
-        "comment": "O'g'limni boksga berdim, murabbiy bolalarga juda e'tiborli."
-      }
-    ]
-  },
-  {
-    "id": "park-navoiy-milliy",
-    "name": "Alisher Navoiy Nomidagi Milliy Bog' & Ko'l",
+    "id": "fayzulla-xo-jayev-muzey-uyi-buxoro",
+    "name": "Fayzulla Xo'jayev muzey uyi",
     "category": "parks",
-    "categoryName": "Parklar & Hordiq",
-    "subCategory": "Markaziy ko'l, qayiqlar, tarixiy xiyobon, favvoralar va milliy san'at markazi",
-    "region": "tashkent",
-    "rating": 4.9,
-    "reviewsCount": 3800,
-    "experienceYears": 85,
-    "experienceText": "85 yillik tarixiy obod maskan",
-    "chiefSpecialist": "Park ma'muriyati & obodonlashtirish bo'limi",
-    "phone": "+998 71 245 10 20",
-    "secondaryPhone": "+998 71 245 10 21",
-    "lat": 41.303,
-    "lng": 69.241,
-    "openTime": "06:00",
-    "closeTime": "23:00",
-    "is247": false,
-    "address": "Chilonzor tumani, Furqat ko'chasi, Magic City yonida",
-    "landmark": "Milliy bog' metro bekati chiqishida",
-    "priceRange": "Park hududiga kirish — BEPUL",
-    "pricingDetails": [
-      {
-        "service": "Park hududiga sayr qilish",
-        "price": "Bepul"
-      },
-      {
-        "service": "Katta ko'lda katamaran/qayiqda sayr (30 daqiqa)",
-        "price": "40 000 UZS"
-      }
-    ],
-    "features": [
-      "Ko'l manzarasi va toza havo",
-      "Veloyo'lak va yugurish yo'lakchalari",
-      "Tarixiy madrasa va hunarmandlar rastasi"
-    ],
-    "workDays": "Har kuni: 06:00 - 23:00",
-    "image": "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-pk1",
-        "author": "Shaxnoza",
-        "rating": 5,
-        "date": "Kecha",
-        "comment": "Kechqurun oila bilan sayr qilishga poytaxtdagi eng chiroyli va osoyishta park."
-      }
-    ]
+    "subCategory": "Muzey",
+    "region": "bukhara",
+    "phone": "+998 65 224 41 88",
+    "secondaryPhone": "",
+    "lat": 39.769386,
+    "lng": 64.412765,
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "address": "Abdulla To'qay ko'chasi 70, Buxoro",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5099155399"
   },
   {
-    "id": "park-magic-city",
-    "name": "Magic City Oila va Bolalar Ko'ngilochar Majmuasi",
+    "id": "magoki-attori-masjidi-buxoro",
+    "name": "Magʻoki Attori masjidi",
     "category": "parks",
-    "categoryName": "Parklar & Hordiq",
-    "subCategory": "Yirik akvarium, musiqali ulkan favvora, xalqaro ko'chalar arxitekturasi va attraksionlar",
-    "region": "tashkent",
-    "rating": 4.8,
-    "reviewsCount": 4900,
-    "experienceYears": 4,
-    "experienceText": "Yangi avlod ko'ngilochar maskani",
-    "chiefSpecialist": "Magic City ma'muriyati",
-    "phone": "+998 71 202 77 99",
-    "secondaryPhone": "+998 90 900 77 99",
-    "lat": 41.306,
-    "lng": 69.247,
-    "openTime": "10:00",
-    "closeTime": "23:00",
-    "is247": false,
-    "address": "Yakkasaroy tumani, Bobur ko'chasi 174",
-    "landmark": "Milliy bog' ro'parasida",
-    "priceRange": "Parkka kirish bepul (Akvarium va attraksionlar alohida)",
-    "pricingDetails": [
-      {
-        "service": "Hududga kirish va favvora shousi",
-        "price": "Bepul"
-      },
-      {
-        "service": "Magic Aquarium chiptasi (katta yoshlilar)",
-        "price": "100 000 UZS"
-      }
-    ],
+    "subCategory": "Muzey",
+    "region": "bukhara",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.773176,
+    "lng": 64.418349,
+    "openingHours": "",
+    "address": "Gavkushon ko'chasi, Eski Shahar, Buxoro",
     "features": [
-      "Musiqali ulkan favvora",
-      "Dunyo shaharlari ko'chalari",
-      "Bolalar attraksionlari"
+      "Kirish bepul"
     ],
-    "workDays": "Har kuni: 10:00 - 23:00",
-    "image": "https://images.unsplash.com/photo-1513889961551-628c1e5e2ee9?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-pm1",
-        "author": "Rustam",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Bolalar bilan dam olishga ajoyib joy, favvora shousi kechqurun juda chiroyli."
-      }
-    ]
+    "website": "",
+    "source": "OpenStreetMap way/150076606",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/5b/Mag%CA%BBoki_attori_masjidi_%28%D0%9C%D0%B5%D1%87%D0%B5%D1%82%D1%8C_%D0%9C%D0%B0%D0%B3%D0%BE%D0%BA%D0%B8-%D0%90%D1%82%D1%82%D0%B0%D1%80%D0%B8%2C_%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0%2C_Magok-i-Attari_Mosque%29.jpg/960px-Mag%CA%BBoki_attori_masjidi_%28%D0%9C%D0%B5%D1%87%D0%B5%D1%82%D1%8C_%D0%9C%D0%B0%D0%B3%D0%BE%D0%BA%D0%B8-%D0%90%D1%82%D1%82%D0%B0%D1%80%D0%B8%2C_%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0%2C_Magok-i-Attari_Mosque%29.jpg",
+    "imageCredit": "Petar Milošević · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Mag%CA%BBoki_attori_masjidi_(%D0%9C%D0%B5%D1%87%D0%B5%D1%82%D1%8C_%D0%9C%D0%B0%D0%B3%D0%BE%D0%BA%D0%B8-%D0%90%D1%82%D1%82%D0%B0%D1%80%D0%B8,_%D0%91%D1%83%D1%85%D0%B0%D1%80%D0%B0,_Magok-i-Attari_Mosque).jpg"
   },
   {
-    "id": "park-samarkand-silk-road",
-    "name": "Silk Road Samarkand Boqiy Shahar Majmuasi",
+    "id": "i-v-savitskiy-nomidagi-qoraqalpogiston-davlat-sanat-muze-nukus",
+    "name": "I. V. Savitskiy nomidagi Qoraqalpogʻiston davlat sanʼat muzeyi",
     "category": "parks",
-    "categoryName": "Parklar & Hordiq",
-    "subCategory": "Qadimiy sharq shaharchasi, eshkak eshish kanali, milliy hunarmandchilik va teatr",
-    "region": "samarkand",
-    "rating": 4.9,
-    "reviewsCount": 2600,
-    "experienceYears": 3,
-    "experienceText": "Xalqaro turizm markazi",
-    "chiefSpecialist": "Turizm majmuasi rahbariyati",
-    "phone": "+998 66 240 00 00",
-    "secondaryPhone": "+998 91 500 00 00",
-    "lat": 39.658,
-    "lng": 67.075,
-    "openTime": "09:00",
-    "closeTime": "23:00",
-    "is247": false,
-    "address": "Samarqand viloyati, Konigil massivi",
-    "landmark": "Eshkak eshish kanali bo'yida",
-    "priceRange": "Kirish: 30 000 – 50 000 UZS (Bolalarga bepul)",
-    "pricingDetails": [
-      {
-        "service": "Boqiy shahar hududiga kirish",
-        "price": "30 000 UZS"
-      },
-      {
-        "service": "Kanal bo'ylab qayiqda sayohat",
-        "price": "50 000 UZS"
-      }
-    ],
-    "features": [
-      "Tarixiy qayta tiklangan qadimiy ustaxonalar",
-      "Sharqona chiroqlar shousi",
-      "5 yulduzli mehmonxonalar"
-    ],
-    "workDays": "Har kuni: 09:00 - 23:00",
-    "image": "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-pss1",
-        "author": "Olimjon",
-        "rating": 5,
-        "date": "4 kun oldin",
-        "comment": "Haqiqiy ertaklar olami! Samarqandga borgan har bir kishi albatta ko'rishi shart."
-      }
-    ]
-  },
-  {
-    "id": "food-namangan-chustiy",
-    "name": "Chustiy Milliy Taomlar & Osh Markazi",
-    "category": "food",
-    "categoryName": "Choyxona & Osh",
-    "subCategory": "Chust oshi, tandir somsa, milliy pichoqchilik san'ati va Namangan choyxonasi",
-    "region": "namangan",
-    "rating": 4.9,
-    "reviewsCount": 1420,
-    "experienceYears": 18,
-    "experienceText": "18 yillik Namangan oshpazlik san'ati",
-    "chiefSpecialist": "Usta Bahriddin Chustiy",
-    "phone": "+998 69 227 10 10",
-    "secondaryPhone": "+998 90 599 10 10",
-    "lat": 41.001,
-    "lng": 71.668,
-    "openTime": "10:00",
-    "closeTime": "22:30",
-    "is247": false,
-    "address": "Namangan sh., Bobur shoh ko'chasi 45",
-    "landmark": "Chortoq aylanma yo'li yaqinida",
-    "priceRange": "35 000 – 60 000 UZS",
-    "pricingDetails": [
-      {
-        "service": "Chust devzira oshi",
-        "price": "40 000 UZS"
-      },
-      {
-        "service": "Chust go'shtli tandir somsa",
-        "price": "10 000 UZS"
-      }
-    ],
-    "features": [
-      "Devzira guruchidan tayyorlanadi",
-      "Haqiqiy o'tin olovi"
-    ],
-    "workDays": "Har kuni: 10:00 - 22:30",
-    "image": "https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-nc1",
-        "author": "Zokirjon",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Chust oshi o'zgacha mazali, mehmondo'stlik a'lo darajada."
-      }
-    ]
-  },
-  {
-    "id": "med-qarshi-shoshilinch",
-    "name": "Qarshi Shoshilinch Tibbiy Yordam Markazi",
-    "category": "medical",
-    "categoryName": "Shifoxona & Dori",
-    "subCategory": "Qashqadaryo viloyati bo'yicha markaziy travmatologiya, reanimatsiya va shoshilinch yordam",
-    "region": "qashqadaryo",
-    "rating": 4.8,
-    "reviewsCount": 780,
-    "experienceYears": 26,
-    "experienceText": "26 yillik viloyat shoshilinch markazi",
-    "chiefSpecialist": "Bosh shifokor: S. Xurramov",
-    "phone": "+998 75 221 03 03",
-    "secondaryPhone": "+998 75 103",
-    "lat": 38.865,
-    "lng": 65.795,
-    "openTime": "00:00",
-    "closeTime": "24:00",
-    "is247": true,
-    "address": "Qarshi sh., Mustaqillik ko'chasi 12",
-    "landmark": "Viloyat ko'p tarmoqli tibbiyot markazi hududi",
-    "priceRange": "Shoshilinch tibbiy yordam — Bepul",
-    "pricingDetails": [
-      {
-        "service": "24/7 Shoshilinch tez tibbiy ko'rik",
-        "price": "Bepul"
-      }
-    ],
-    "features": [
-      "24/7 Navbatchilik",
-      "Zamonaviy laboratoriya"
-    ],
-    "workDays": "Har kuni 24 soat",
-    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-mq1",
-        "author": "Shohruh",
-        "rating": 5,
-        "date": "2 hafta oldin",
-        "comment": "Tezkor va professional xizmat uchun shifokorlarga rahmat."
-      }
-    ]
-  },
-  {
-    "id": "market-urganch-markaziy",
-    "name": "Urganch Markaziy Dehqon Bozori & Xorazm Hunarmandlari",
-    "category": "market",
-    "categoryName": "Savdo & Bozor",
-    "subCategory": "Xorazm qovunlari, guruch, quritilgan baliq, milliy to'nlar va sopol buyumlar",
-    "region": "xorazm",
-    "rating": 4.9,
-    "reviewsCount": 1650,
-    "experienceYears": 70,
-    "experienceText": "70 yillik qadimiy bozor",
-    "chiefSpecialist": "Bozor nazorat xizmati",
-    "phone": "+998 62 228 30 30",
-    "secondaryPhone": "+998 62 228 30 31",
-    "lat": 41.554,
-    "lng": 60.628,
-    "openTime": "06:30",
-    "closeTime": "19:00",
-    "is247": false,
-    "address": "Urganch sh., Al-Xorazmiy ko'chasi 110",
-    "landmark": "Markaziy istirohat bog'i yonida",
-    "priceRange": "Hamyonbop bozor narxlarida",
-    "pricingDetails": [
-      {
-        "service": "Xorazm shirin qovunlari",
-        "price": "Bozor narxida"
-      },
-      {
-        "service": "Xorazm guruchi (Lazer/Devzira)",
-        "price": "22 000 UZS / kg"
-      }
-    ],
-    "features": [
-      "Xorazm milliy hunarmandlik qatori",
-      "Katta meva-sabzavot rastalari"
-    ],
-    "workDays": "Har kuni: 06:30 - 19:00",
-    "image": "https://images.unsplash.com/photo-1533900298318-6b8da08a523e?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-mu1",
-        "author": "Komil",
-        "rating": 5,
-        "date": "3 kun oldin",
-        "comment": "Xorazm qovunlari va nonlari juda xushbo'y, narxlari ham arzon."
-      }
-    ]
-  },
-  {
-    "id": "edu-berdaq-nukus",
-    "name": "Berdaq Nomidagi Qoraqalpoq Davlat Universiteti",
-    "category": "edu",
-    "categoryName": "Ta'lim & OTM",
-    "subCategory": "Qoraqalpog'istonning bosh universiteti: Filologiya, Tabiiy fanlar, IT va Yuridik",
+    "subCategory": "Muzey",
     "region": "karakalpak",
-    "rating": 4.8,
-    "reviewsCount": 1280,
-    "experienceYears": 48,
-    "experienceText": "48 yillik ilmiy etalon",
-    "chiefSpecialist": "Universitet qabul bo'limi",
-    "phone": "+998 61 223 60 18",
-    "secondaryPhone": "+998 61 223 60 19",
-    "lat": 42.458,
-    "lng": 59.612,
-    "openTime": "08:30",
-    "closeTime": "18:00",
-    "is247": false,
-    "address": "Nukus sh., Ch. Abdirov ko'chasi 1",
-    "landmark": "Nukus shahar markazi",
-    "priceRange": "Davlat granti va Kontrakt",
-    "pricingDetails": [
-      {
-        "service": "Bakalavriat ta'lim dasturi",
-        "price": "Davlat standarti"
-      }
-    ],
+    "phone": "+998 61 222 25 56",
+    "secondaryPhone": "",
+    "lat": 42.465444,
+    "lng": 59.61306,
+    "openingHours": "Tu-We,Fr 09:00-18:00; Sa 10:00-17:00; Su 10:00-18:00; Th 09:00-19:00",
+    "address": "Jipek jolı kóshesi 5/2, Nukus",
     "features": [
-      "Orolbo'yi ekologik ilmiy markazi",
-      "Zamonaviy IT laboratoriya"
+      "Nogironlar aravachasi uchun qulay",
+      "Karta orqali to'lov"
     ],
-    "workDays": "Dushanba - Shanba: 08:30 - 18:00",
-    "image": "https://images.unsplash.com/photo-1521587760476-6c12a4b040da?auto=format&fit=crop&w=800&q=80",
-    "reviews": [
-      {
-        "id": "rev-eb1",
-        "author": "Aydos",
-        "rating": 5,
-        "date": "1 hafta oldin",
-        "comment": "Qoraqalpog'istonning eng nufuzli ilmiy maskani, sharoitlar ajoyib."
-      }
-    ]
+    "website": "http://museum.kr.uz",
+    "source": "OpenStreetMap way/884013231",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/89/The_Karakalpakstan_State_Museum_of_Art_named_after_I.V._Savitsky.jpg/960px-The_Karakalpakstan_State_Museum_of_Art_named_after_I.V._Savitsky.jpg",
+    "imageCredit": "Ayzadarich · CC0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:The_Karakalpakstan_State_Museum_of_Art_named_after_I.V._Savitsky.jpg"
+  },
+  {
+    "id": "byd-service-nukus",
+    "name": "BYD SERVICE",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "karakalpak",
+    "phone": "+998 99 317 18 95",
+    "secondaryPhone": "",
+    "lat": 42.448645,
+    "lng": 59.624732,
+    "openingHours": "",
+    "address": "I. Karimov gúzarı 16/3, Nukus",
+    "features": [],
+    "website": "https://www.instagram.com/byd_service_nukus",
+    "source": "OpenStreetMap node/12019985169"
+  },
+  {
+    "id": "qashqadaryo-viloyat-hokimligi-qarshi",
+    "name": "Qashqadaryo viloyat hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "qashqadaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 38.839565,
+    "lng": 65.794258,
+    "openingHours": "",
+    "address": "Mustaqillik ko'chasi 1, Qarshi",
+    "features": [],
+    "website": "http://www.qashqadaryo.uz",
+    "source": "OpenStreetMap way/242308131"
+  },
+  {
+    "id": "lechebno-diagnosticheskiy-tsentr-vagus-navoiy",
+    "name": "Лечебно диагностический центр VAGUS",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "navoiy",
+    "phone": "+998 79 226 03 28",
+    "secondaryPhone": "",
+    "lat": 40.118497,
+    "lng": 65.376118,
+    "openingHours": "Mo-Sa 09:00-18:00",
+    "address": "Me`morlar ko'chasi 35, Navoiy",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/9917596317"
+  },
+  {
+    "id": "sushi-house-navoiy",
+    "name": "Sushi House",
+    "category": "food",
+    "subCategory": "Restoran · sushi, yapon oshxonasi",
+    "region": "navoiy",
+    "phone": "+998 20 030 32 43",
+    "secondaryPhone": "",
+    "lat": 40.098686,
+    "lng": 65.377408,
+    "openingHours": "Mo-Su 10:00-23:00",
+    "address": "Islom Karimov shoh ko'chasi 70, Navoiy",
+    "features": [
+      "Ochiq havoda o'tirish joylari"
+    ],
+    "website": "https://sushi-house.uz/",
+    "source": "OpenStreetMap node/14201937809"
+  },
+  {
+    "id": "joybox-uz-navoiy",
+    "name": "JOYBOX.UZ",
+    "category": "market",
+    "subCategory": "Supermarket",
+    "region": "navoiy",
+    "phone": "+998 93 007 73 77",
+    "secondaryPhone": "",
+    "lat": 40.110511,
+    "lng": 65.378025,
+    "openingHours": "Mo-Su 09:00-23:00",
+    "address": "MARKAZ savdo markazi, Navoiy",
+    "features": [],
+    "website": "https://joybox.uz",
+    "source": "OpenStreetMap node/12397256340"
+  },
+  {
+    "id": "buxoro-davlat-universiteti-buxoro",
+    "name": "Buxoro davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "bukhara",
+    "phone": "+998 65 221 30 46",
+    "secondaryPhone": "",
+    "lat": 39.759973,
+    "lng": 64.420835,
+    "openingHours": "",
+    "address": "Muhammad Iqbol ko'chasi 11, Buxoro",
+    "features": [],
+    "website": "https://buxdu.uz/",
+    "source": "OpenStreetMap way/165293489",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d5/Buxdu.jpg/960px-Buxdu.jpg",
+    "imageCredit": "Buxdu · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Buxdu.jpg"
+  },
+  {
+    "id": "buxoro-davlat-texnika-universiteti-buxoro",
+    "name": "Buxoro davlat texnika universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "bukhara",
+    "phone": "+998 65 223 28 83",
+    "secondaryPhone": "",
+    "lat": 39.753417,
+    "lng": 64.419999,
+    "openingHours": "",
+    "address": "Qayum Murtazoyev ko'chasi 15, Buxoro",
+    "features": [],
+    "website": "https://bstu.uz/",
+    "source": "OpenStreetMap way/165278515"
+  },
+  {
+    "id": "shaffof-metan-nukus",
+    "name": "SHAFFOF metan",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "karakalpak",
+    "phone": "+998 90 570 74 64",
+    "secondaryPhone": "",
+    "lat": 42.430709,
+    "lng": 59.641036,
+    "openingHours": "24/7",
+    "address": "Нукусская малая кольцевая автодорога (НМКАД), Nukus",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/7249633781"
+  },
+  {
+    "id": "ayoqsh-jizzax",
+    "name": "AYOQSH",
+    "category": "gas",
+    "subCategory": "Yoqilg'i quyish shoxobchasi",
+    "region": "jizzax",
+    "phone": "+998 91 941 10 10",
+    "secondaryPhone": "",
+    "lat": 40.115733,
+    "lng": 67.840459,
+    "openingHours": "24/7",
+    "address": "To'qimachilar ko'chasi 1, Jizzax",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/228950723"
+  },
+  {
+    "id": "zhaxongir-usta-jizzax",
+    "name": "Жахонгир уста",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "jizzax",
+    "phone": "+998 93 829 77 11",
+    "secondaryPhone": "",
+    "lat": 40.115363,
+    "lng": 67.839578,
+    "openingHours": "",
+    "address": "To'qimachilar ko'chasi, Jizzax",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/7922156485"
+  },
+  {
+    "id": "sladkiy-mir-xalal-jizzax",
+    "name": "Сладкий Мир халал",
+    "category": "food",
+    "subCategory": "Kafe · qahvaxona",
+    "region": "jizzax",
+    "phone": "+998 72 222 55 88",
+    "secondaryPhone": "",
+    "lat": 40.10924,
+    "lng": 67.848135,
+    "openingHours": "Mo-Su 09:00-22:00",
+    "address": "Yangier ko'chasi 36, Ittifoq, Jizzax",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "https://t.me/joinchat/AAAAAE6u02IpnTzrjvUD2g",
+    "source": "OpenStreetMap node/5749904487"
+  },
+  {
+    "id": "orzu-kafe-jizzax",
+    "name": "Orzu kafe",
+    "category": "food",
+    "subCategory": "Restoran · rus oshxonasi, turk oshxonasi, kabob",
+    "region": "jizzax",
+    "phone": "+998 91 591 66 77",
+    "secondaryPhone": "",
+    "lat": 40.109451,
+    "lng": 67.846791,
+    "openingHours": "Mo-Su 10:00-22:00",
+    "address": "Qodirjon Imomov ko'chasi, Jizzax",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap way/228948967"
+  },
+  {
+    "id": "navoiy-shahar-hokimligi-navoiy",
+    "name": "Navoiy shahar hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "navoiy",
+    "phone": "+998 36 223 92 92",
+    "secondaryPhone": "",
+    "lat": 40.100241,
+    "lng": 65.363766,
+    "openingHours": "",
+    "address": "Amir Temur ko‘chasi 4, Navoiy",
+    "features": [],
+    "website": "https://navoiy.uz/",
+    "source": "OpenStreetMap way/175014080"
+  },
+  {
+    "id": "doktor-magnus-andijon",
+    "name": "Доктор Магнус",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "andijan",
+    "phone": "+998 93 413 00 40",
+    "secondaryPhone": "",
+    "lat": 40.749185,
+    "lng": 72.36045,
+    "openingHours": "24/7",
+    "address": "Bobur shoh ko'chasi 3г, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/6192735685"
+  },
+  {
+    "id": "markaziy-perenotal-markazi-andijon",
+    "name": "Markaziy Perenotal markazi",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "andijan",
+    "phone": "+998 91 484 05 05",
+    "secondaryPhone": "",
+    "lat": 40.749886,
+    "lng": 72.371097,
+    "openingHours": "24/7",
+    "address": "Mirpo'stin ko'chasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/377265164"
+  },
+  {
+    "id": "andijon-davlat-universiteti-andijon",
+    "name": "Andijon davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.790209,
+    "lng": 72.372453,
+    "openingHours": "Mo-Sa 08:00-18:00",
+    "address": "Universitet kо‘chasi 129, Andijon",
+    "features": [],
+    "website": "https://adu.uz/",
+    "source": "OpenStreetMap way/224649709"
+  },
+  {
+    "id": "andijon-davlat-texnika-instituti-andijon",
+    "name": "Andijon davlat texnika instituti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.774084,
+    "lng": 72.337898,
+    "openingHours": "Mo-Sa 08:00-18:00",
+    "address": "Bobur shoh ko'chasi 56, Andijon",
+    "features": [],
+    "website": "https://web.astiedu.uz/",
+    "source": "OpenStreetMap way/444698260"
+  },
+  {
+    "id": "yangi-bozor-savdo-majmuasi-andijon",
+    "name": "Yangi bozor savdo majmuasi",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.757201,
+    "lng": 72.353479,
+    "openingHours": "Mo-Su 08:00-18:00",
+    "address": "Bobur shoh ko'chasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/124437606"
+  },
+  {
+    "id": "xolis-savdo-markazi-andijon",
+    "name": "Xolis Savdo markazi",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.756077,
+    "lng": 72.353871,
+    "openingHours": "Mo-Su 08:00-18:00",
+    "address": "Bobur shoh ko'chasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/180742634"
+  },
+  {
+    "id": "andijon-viloyati-davlat-soliq-boshqarmasi-andijon",
+    "name": "Andijon viloyati Davlat soliq boshqarmasi",
+    "category": "gov",
+    "subCategory": "Davlat idorasi",
+    "region": "andijan",
+    "phone": "+998 74 223 95 23",
+    "secondaryPhone": "",
+    "lat": 40.787737,
+    "lng": 72.348547,
+    "openingHours": "Mo-Fr 09:00-13:00, 14:00-18:00",
+    "address": "Oltinkul ko'chasi 1, Andijon",
+    "features": [],
+    "website": "https://soliq.uz/",
+    "source": "OpenStreetMap way/124697523"
+  },
+  {
+    "id": "namangan-viloyat-yuqumli-kasalliklari-shifoxonasi-namangan",
+    "name": "Наманган вилоят юқумли касалликлари шифохонаси",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "namangan",
+    "phone": "+998 91 137 51 10",
+    "secondaryPhone": "",
+    "lat": 40.990524,
+    "lng": 71.70925,
+    "openingHours": "",
+    "address": "Қодир Отамирзаев кўчаси 90, Namangan",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5490149978"
+  },
+  {
+    "id": "namangan-tibbiy-diagnostika-namangan",
+    "name": "Namangan Tibbiy Diagnostika",
+    "category": "medical",
+    "subCategory": "Klinika",
+    "region": "namangan",
+    "phone": "+998 69 227 77 03",
+    "secondaryPhone": "",
+    "lat": 41.002249,
+    "lng": 71.661314,
+    "openingHours": "24/7",
+    "address": "N. Namongoniy ko'chasi 12, Obi Hayot mahallasi, Namangan",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5297311928"
+  },
+  {
+    "id": "dehqon-bozori-termiz-termiz",
+    "name": "Dehqon bozori (Termiz)",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "surxondaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 37.211533,
+    "lng": 67.275291,
+    "openingHours": "Mo-Su 09:00-16:00",
+    "address": "Iso at-Termiziy ko'chasi, Termiz",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/4198283190"
+  },
+  {
+    "id": "premium-avto-servis-andijon",
+    "name": "Премиум авто сервис",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "andijan",
+    "phone": "+998 95 200 77 70",
+    "secondaryPhone": "",
+    "lat": 40.799476,
+    "lng": 72.345413,
+    "openingHours": "Mo-Su 08:00-19:00",
+    "address": "Pirmuhamedov ko'chasi 1 A, Andijon",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/4791090976"
+  },
+  {
+    "id": "kraevedcheskiy-muzey-andizhanskoy-oblasti-andijon",
+    "name": "Краеведческий музей Андижанской области",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "andijan",
+    "phone": "+998 90 211 73 99",
+    "secondaryPhone": "",
+    "lat": 40.788956,
+    "lng": 72.346628,
+    "openingHours": "",
+    "address": "Gʻayrat koʻchasi, Gʻayrat mahallasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/4221374102"
+  },
+  {
+    "id": "a-s-pushkin-nomli-bolalar-bog-i-andijon",
+    "name": "A. S. Pushkin nomli bolalar bog'i",
+    "category": "parks",
+    "subCategory": "Park",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.765117,
+    "lng": 72.35815,
+    "openingHours": "",
+    "address": "Milliy Tiklanish ko'chasi, Mustaqillik mahallasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/124552417"
+  },
+  {
+    "id": "davlatobod-tumani-hokimligi-namangan",
+    "name": "Davlatobod tumani hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "namangan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.001935,
+    "lng": 71.607382,
+    "openingHours": "",
+    "address": "Islom Karimov kochasi 3, Namangan",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/171349456"
+  },
+  {
+    "id": "yangibozor-namangan",
+    "name": "Yangibozor",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "namangan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.007799,
+    "lng": 71.638197,
+    "openingHours": "",
+    "address": "Oromgox ko‘chasi 97, Mingchinor mahallasi, Namangan",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/168103283"
+  },
+  {
+    "id": "zelyoniy-bazar-namangan",
+    "name": "Зелёный базар",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "namangan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.998056,
+    "lng": 71.598771,
+    "openingHours": "",
+    "address": "Islom Karimov koʻchasi, Umid mahallasi, Namangan",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/171349418"
+  },
+  {
+    "id": "melograna-urganch",
+    "name": "Melograna",
+    "category": "food",
+    "subCategory": "Restoran · tovuq taomlari, osiyo oshxonasi, italyan oshxonasi, grill, turk oshxonasi",
+    "region": "xorazm",
+    "phone": "+998 95 621 41 11",
+    "secondaryPhone": "",
+    "lat": 41.571048,
+    "lng": 60.598291,
+    "openingHours": "Mo-Su 09:00-23:00",
+    "address": "Fidokorlar ko'chasi, \"БАЙНАЛМИНАЛЧИ\" Mahalla № 29, Urganch",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "https://instagram.com/melagrana_restaurant",
+    "source": "OpenStreetMap node/6388619085"
+  },
+  {
+    "id": "turon-stadioni-nukus-nukus",
+    "name": "Turon stadioni (Nukus)",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "karakalpak",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 42.461652,
+    "lng": 59.597123,
+    "openingHours": "",
+    "address": "Turan oypatı kóshesi 37, Nukus",
+    "features": [
+      "Sig'imi: 9 300 o'rin"
+    ],
+    "website": "",
+    "source": "OpenStreetMap way/1095470589",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/eb/Turan_Stadium_2026.webp/960px-Turan_Stadium_2026.webp",
+    "imageCredit": "NOC of Uzbekistan · CC BY 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Turan_Stadium_2026.webp"
+  },
+  {
+    "id": "o3-iib-nukus",
+    "name": "№3 IIB",
+    "category": "police",
+    "subCategory": "Ichki ishlar organi",
+    "region": "karakalpak",
+    "phone": "+998 61 223 53 09",
+    "secondaryPhone": "",
+    "lat": 42.449321,
+    "lng": 59.633758,
+    "openingHours": "",
+    "address": "Beruniy kóshesi, Nukus",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/5919779499"
+  },
+  {
+    "id": "urologiya-markazi-urganch",
+    "name": "Urologiya markazi",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "xorazm",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.561607,
+    "lng": 60.623952,
+    "openingHours": "24/7",
+    "address": "Tinchlik ko'chasi 29, Urganch",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/4361575309"
+  },
+  {
+    "id": "life-fitness-farg-ona",
+    "name": "Life Fitness",
+    "category": "sport",
+    "subCategory": "Fitnes markazi",
+    "region": "fergana",
+    "phone": "+998 95 400 61 00",
+    "secondaryPhone": "",
+    "lat": 40.381559,
+    "lng": 71.782375,
+    "openingHours": "Mo-Sa 08:00-23:00",
+    "address": "B. Margiloniy 21, Farg'ona",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/5639436323"
+  },
+  {
+    "id": "samarkandskoe-oblastnoe-upravlenie-po-chrezvichaynim-sit-samarqand",
+    "name": "Самаркандское областное Управление по Чрезвычайным Ситуациям",
+    "category": "gov",
+    "subCategory": "Favqulodda vaziyatlar boshqarmasi",
+    "region": "samarkand",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.666907,
+    "lng": 66.93768,
+    "openingHours": "",
+    "address": "Gagarin ko'chasi 73, Samarqand",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/168992345"
+  },
+  {
+    "id": "remont-avtokonditsionerov-urganch",
+    "name": "Ремонт \"Автокондиционеров\"",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "xorazm",
+    "phone": "+998 94 315 10 32",
+    "secondaryPhone": "",
+    "lat": 41.549277,
+    "lng": 60.646818,
+    "openingHours": "Mo-Su 09:00-12:00, 13:30-22:00",
+    "address": "J.Manguberdi kochasi 1 yulak 71, Urganch",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "http://www.avto-clima.uz",
+    "source": "OpenStreetMap node/4514710093"
+  },
+  {
+    "id": "surxondaryo-viloyat-hokimligi-termiz",
+    "name": "Surxondaryo Viloyat Hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "surxondaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 37.229414,
+    "lng": 67.275663,
+    "openingHours": "",
+    "address": "площадь Ат-Термизий 1, Termiz",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/351273150"
+  },
+  {
+    "id": "shirin-fayz-guliston",
+    "name": "Shirin Fayz",
+    "category": "food",
+    "subCategory": "Restoran · osiyo oshxonasi",
+    "region": "sirdaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.506439,
+    "lng": 68.773714,
+    "openingHours": "11:00-23:00",
+    "address": "I. Karimov ko'cha, 2 mavze, Guliston",
+    "features": [
+      "Ochiq havoda o'tirish joylari",
+      "Olib ketish"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/4436526492"
+  },
+  {
+    "id": "sirdaryo-viloyati-hokimligi-guliston",
+    "name": "Sirdaryo viloyati hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "sirdaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.498376,
+    "lng": 68.777066,
+    "openingHours": "",
+    "address": "I. Karimov shox ko'chasi 60, Guliston",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/325211366"
+  },
+  {
+    "id": "viloyat-perinatal-markazi-termiz",
+    "name": "Viloyat perinatal markazi",
+    "category": "medical",
+    "subCategory": "Shifoxona",
+    "region": "surxondaryo",
+    "phone": "+998 76 221 87 46",
+    "secondaryPhone": "",
+    "lat": 37.237989,
+    "lng": 67.308017,
+    "openingHours": "",
+    "address": "Islom Karimov ko'chasi 288, Termiz",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/498974803"
+  },
+  {
+    "id": "jizzax-shahar-hokimligi-jizzax",
+    "name": "Jizzax shahar hokimligi",
+    "category": "gov",
+    "subCategory": "Hokimlik",
+    "region": "jizzax",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.106034,
+    "lng": 67.826798,
+    "openingHours": "",
+    "address": "O'zbekiston ko'chasi 13, Jizzax",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/228934509"
+  },
+  {
+    "id": "olimpiya-urganch",
+    "name": "\"Олимпия\"",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "xorazm",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.566439,
+    "lng": 60.603905,
+    "openingHours": "",
+    "address": "улица Гурленская 18, \"OLIMPIYA\" Mahalla №30, Urganch",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/413824163"
+  },
+  {
+    "id": "urganch-davlat-universiteti-urganch",
+    "name": "Urganch davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "xorazm",
+    "phone": "+998 62 224 67 00",
+    "secondaryPhone": "",
+    "lat": 41.556091,
+    "lng": 60.606533,
+    "openingHours": "",
+    "address": "Hamid Olimjon ko'chasi 14, Urganch",
+    "features": [],
+    "website": "https://urdu.uz/",
+    "source": "OpenStreetMap way/458331866",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Urgench_State_University_2.jpg/960px-Urgench_State_University_2.jpg",
+    "imageCredit": "Anvarovnaa · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Urgench_State_University_2.jpg"
+  },
+  {
+    "id": "to-maris-nur-gipermarket-urganch",
+    "name": "\"To'maris Nur\" gipermarket",
+    "category": "market",
+    "subCategory": "Savdo markazi",
+    "region": "xorazm",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.552421,
+    "lng": 60.625397,
+    "openingHours": "Mo-Su 08:00-22:00",
+    "address": "Islom Karimov ko'chasi 57, Urganch",
+    "features": [],
+    "website": "https://youtu.be/X4I7ibDy7Lo",
+    "source": "OpenStreetMap way/345533810"
+  },
+  {
+    "id": "farxod-qarshi",
+    "name": "Фарход",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "qashqadaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 38.894323,
+    "lng": 65.807705,
+    "openingHours": "",
+    "address": "Samarqand-Qarshi avtotrassasi, Qarshi",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/10570240942"
+  },
+  {
+    "id": "stag-service-centre-gulistan-sirdaryo",
+    "name": "STAG SERVICE CENTRE GULISTAN SIRDARYO",
+    "category": "auto",
+    "subCategory": "Avtoservis",
+    "region": "sirdaryo",
+    "phone": "+998 97 277 99 09",
+    "secondaryPhone": "",
+    "lat": 40.488472,
+    "lng": 68.756669,
+    "openingHours": "Mo-Sa 09:00-17:00",
+    "address": "А. Темуров 53Б, Guliston",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap node/6895340586"
+  },
+  {
+    "id": "berdaq-nomidagi-qoraqalpoq-davlat-universiteti-nukus",
+    "name": "Berdaq nomidagi Qoraqalpoq davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "karakalpak",
+    "phone": "+998 61 223 60 47",
+    "secondaryPhone": "",
+    "lat": 42.452872,
+    "lng": 59.62706,
+    "openingHours": "Mo-Sa 08:30-13:00, 14:00-18:00",
+    "address": "Sh. Abdirov kóshesi 1, Nukus",
+    "features": [],
+    "website": "https://karsu.uz/",
+    "source": "OpenStreetMap node/6974150800",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1d/Qaraqalpaqstan_Mamleketlik_Universiteti_imarati.jpg/960px-Qaraqalpaqstan_Mamleketlik_Universiteti_imarati.jpg",
+    "imageCredit": "Kuwanishbek · CC0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Qaraqalpaqstan_Mamleketlik_Universiteti_imarati.jpg"
+  },
+  {
+    "id": "qarshi-markaziy-stadioni-qarshi",
+    "name": "Qarshi markaziy stadioni",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "qashqadaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 38.837757,
+    "lng": 65.81368,
+    "openingHours": "",
+    "address": "Mustaqillik shox ko'chasi, Neftchi mahallasi, Qarshi",
+    "features": [
+      "Sig'imi: 33 000 o'rin"
+    ],
+    "website": "",
+    "source": "OpenStreetMap way/335384821",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/75/Nasaf_stadium.jpg/960px-Nasaf_stadium.jpg",
+    "imageCredit": "Mrjavokh1r · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Nasaf_stadium.jpg"
+  },
+  {
+    "id": "rasul-market-jizzax",
+    "name": "Расул МАРКЕТ",
+    "category": "market",
+    "subCategory": "Supermarket",
+    "region": "jizzax",
+    "phone": "+998 97 777 77 77",
+    "secondaryPhone": "",
+    "lat": 40.110788,
+    "lng": 67.822097,
+    "openingHours": "24/7",
+    "address": "O'zbekiston ko'chasi 3, Bog'ishamol, Jizzax",
+    "features": [
+      "Wi-Fi"
+    ],
+    "website": "",
+    "source": "OpenStreetMap node/5688337123"
+  },
+  {
+    "id": "eski-shahar-dehqon-bozori-jizzax",
+    "name": "Eski Shahar Dehqon Bozori",
+    "category": "market",
+    "subCategory": "Bozor",
+    "region": "jizzax",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.156404,
+    "lng": 67.830708,
+    "openingHours": "",
+    "address": "Rasul Isayev ko'chasi, Jizzax",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/208204666"
+  },
+  {
+    "id": "farg-ona-davlat-texnika-universiteti-farg-ona",
+    "name": "Farg'ona Davlat texnika universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "fergana",
+    "phone": "+998 73 241 12 06",
+    "secondaryPhone": "",
+    "lat": 40.422333,
+    "lng": 71.771201,
+    "openingHours": "",
+    "address": "Fargʻona koʻchasi 86, Farg'ona",
+    "features": [],
+    "website": "https://www.ferpi.uz/",
+    "source": "OpenStreetMap way/171911386"
+  },
+  {
+    "id": "muhammad-al-xorazmiy-nomidagi-toshkent-axborot-texnologi-farg-ona",
+    "name": "Muhammad al-Xorazmiy nomidagi Toshkent axborot texnologiyalari universiteti Farg'ona filiali",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "fergana",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.365574,
+    "lng": 71.774381,
+    "openingHours": "",
+    "address": "Mustaqillik ko'chasi 185, Farg'ona",
+    "features": [],
+    "website": "https://tatuff.uz/",
+    "source": "OpenStreetMap way/206712443"
+  },
+  {
+    "id": "namangan-davlat-pedagogika-instituti-namangan",
+    "name": "Namangan davlat pedagogika instituti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "namangan",
+    "phone": "+998 69 211 10 97",
+    "secondaryPhone": "",
+    "lat": 41.002485,
+    "lng": 71.674154,
+    "openingHours": "",
+    "address": "Uychi ko’chasi 316, Namangan",
+    "features": [],
+    "website": "https://namspi.uz/",
+    "source": "OpenStreetMap way/168103279"
+  },
+  {
+    "id": "namangan-davlat-universiteti-namangan",
+    "name": "Namangan davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "namangan",
+    "phone": "+998 69 210 01 35",
+    "secondaryPhone": "",
+    "lat": 40.981705,
+    "lng": 71.700175,
+    "openingHours": "",
+    "address": "Boburshoh koʻchasi 161, Namangan",
+    "features": [],
+    "website": "https://namdu.uz/",
+    "source": "OpenStreetMap way/1108094830"
+  },
+  {
+    "id": "navbahor-markaziy-stadioni-namangan",
+    "name": "Navbahor markaziy stadioni",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "namangan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.999731,
+    "lng": 71.593755,
+    "openingHours": "",
+    "address": "Islom Karimov koʻchasi, Navbahor mahallasi, Namangan",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/263306904",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Navbahor_Stadium.webp/960px-Navbahor_Stadium.webp",
+    "imageCredit": "NOC of Uzbekistan · CC BY 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Navbahor_Stadium.webp"
+  },
+  {
+    "id": "spartak-stadium-samarqand",
+    "name": "Spartak Stadium",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "samarkand",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 39.658837,
+    "lng": 66.961221,
+    "openingHours": "",
+    "address": "Bo'stonsaroy ko'chasi, Samarqand",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/615454768"
+  },
+  {
+    "id": "xalqlar-do-stligi-andijon",
+    "name": "Xalqlar do'stligi",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "andijan",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.745902,
+    "lng": 72.350635,
+    "openingHours": "",
+    "address": "Mashrab ko'chasi, Oʻrikzor mahallasi, Andijon",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/124318689"
+  },
+  {
+    "id": "samarqand-davlat-tibbiyot-universiteti-samarqand",
+    "name": "Samarqand davlat tibbiyot universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "samarkand",
+    "phone": "+998 66 233 07 66",
+    "secondaryPhone": "",
+    "lat": 39.654067,
+    "lng": 66.959405,
+    "openingHours": "Mo-Sa 08:00-18:00",
+    "address": "Amir Temur ko'chasi 18, Samarqand",
+    "features": [
+      "Wi-Fi (bepul)"
+    ],
+    "website": "https://www.sammi.uz/",
+    "source": "OpenStreetMap way/1295739977",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Fuqarolik_inshooti_%28Samarqand_Tibbiyot_instituti_bosh_o%CA%BBquv_binosi%292.jpg/960px-Fuqarolik_inshooti_%28Samarqand_Tibbiyot_instituti_bosh_o%CA%BBquv_binosi%292.jpg",
+    "imageCredit": "Hasan Tohirov · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Fuqarolik_inshooti_(Samarqand_Tibbiyot_instituti_bosh_o%CA%BBquv_binosi)2.jpg"
+  },
+  {
+    "id": "ipak-yoli-turizm-va-madaniy-meros-xalqaro-universiteti-samarqand",
+    "name": "\"Ipak yo‘li\" turizm va madaniy meros xalqaro universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "samarkand",
+    "phone": "+998 66 240 67 68",
+    "secondaryPhone": "",
+    "lat": 39.64431,
+    "lng": 66.957562,
+    "openingHours": "",
+    "address": "Universitet bulvari 17, Samarqand",
+    "features": [],
+    "website": "https://www.univ-silkroad.uz/",
+    "source": "OpenStreetMap way/203545472"
+  },
+  {
+    "id": "alpomish-stadioni-termiz",
+    "name": "“Alpomish” stadioni",
+    "category": "sport",
+    "subCategory": "Stadion",
+    "region": "surxondaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 37.216528,
+    "lng": 67.271387,
+    "openingHours": "",
+    "address": "Istiqlol ko'chasi, Termiz",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/244273033"
+  },
+  {
+    "id": "qarshi-davlat-universiteti-qarshi",
+    "name": "Qarshi davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "qashqadaryo",
+    "phone": "+998 75 221 00 56",
+    "secondaryPhone": "",
+    "lat": 38.857357,
+    "lng": 65.808998,
+    "openingHours": "Mo-Sa 08:00-22:00",
+    "address": "Ko‘chabog‘ ko‘chasi 17, Qarshi",
+    "features": [],
+    "website": "https://qarshidu.uz/",
+    "source": "OpenStreetMap way/435281118"
+  },
+  {
+    "id": "termiz-davlat-muhandislik-va-agrotexnalogiyalar-universi-termiz",
+    "name": "Termiz davlat muhandislik va agrotexnalogiyalar universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "surxondaryo",
+    "phone": "+998 76 221 87 20",
+    "secondaryPhone": "",
+    "lat": 37.239234,
+    "lng": 67.311242,
+    "openingHours": "",
+    "address": "Islom Karimov ko'chasi 288a, Termiz",
+    "features": [],
+    "website": "https://tdmau.uz/",
+    "source": "OpenStreetMap way/498974804"
+  },
+  {
+    "id": "avesto-bog-i-urganch",
+    "name": "Avesto Bog'i",
+    "category": "parks",
+    "subCategory": "Park",
+    "region": "xorazm",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 41.547666,
+    "lng": 60.62752,
+    "openingHours": "",
+    "address": "Avesto ko'chasi, Urganch",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/327668758"
+  },
+  {
+    "id": "kraevedcheskiy-muzey-farg-ona",
+    "name": "Краеведческий музей",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "fergana",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.391058,
+    "lng": 71.78327,
+    "openingHours": "Tu-Su 08:00-15:00; Sa 08:00-12:00",
+    "address": "Vatan Ravnaqi ko'chasi, Al-Fargʻoniy mahallasi, Farg'ona",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/163579871"
+  },
+  {
+    "id": "termiz-arxeologiya-muzeyi-termiz",
+    "name": "Termiz Arxeologiya Muzeyi",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "surxondaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 37.244264,
+    "lng": 67.282616,
+    "openingHours": "08:00-18:00",
+    "address": "улица Ат-Термизий 29A, Termiz",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/351273157"
+  },
+  {
+    "id": "jizzax-politexnika-instituti-jizzax",
+    "name": "Jizzax politexnika instituti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "jizzax",
+    "phone": "+998 72 226 45 57",
+    "secondaryPhone": "",
+    "lat": 40.129378,
+    "lng": 67.838675,
+    "openingHours": "",
+    "address": "Islom Karimov shox ko'chasi 4, Jizzax",
+    "features": [],
+    "website": "https://jizpi.uz/",
+    "source": "OpenStreetMap way/180387173",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/09/Jizzax_politexnika_instituti.jpg/960px-Jizzax_politexnika_instituti.jpg",
+    "imageCredit": "Solijon Solayev · CC BY-SA 3.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:Jizzax_politexnika_instituti.jpg"
+  },
+  {
+    "id": "abdulla-qodiriy-nomidagi-jizzax-davlat-pedagogika-univer-jizzax",
+    "name": "Abdulla Qodiriy nomidagi Jizzax davlat pedagogika universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "jizzax",
+    "phone": "+998 72 226 13 57",
+    "secondaryPhone": "",
+    "lat": 40.131343,
+    "lng": 67.827814,
+    "openingHours": "",
+    "address": "Sharof Rashidov ko'chasi 4, Jizzax",
+    "features": [],
+    "website": "https://jdpu.uz/",
+    "source": "OpenStreetMap way/180387171"
+  },
+  {
+    "id": "guliston-davlat-universiteti-guliston",
+    "name": "Guliston davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "sirdaryo",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.50638,
+    "lng": 68.783764,
+    "openingHours": "",
+    "address": "4-mavze, Guliston",
+    "features": [],
+    "website": "https://www.guldu.uz/",
+    "source": "OpenStreetMap way/362811771"
+  },
+  {
+    "id": "navoiy-viloyati-tarixi-va-madaniyati-davlat-muzeyi-navoiy",
+    "name": "Navoiy viloyati tarixi va madaniyati davlat muzeyi",
+    "category": "parks",
+    "subCategory": "Muzey",
+    "region": "navoiy",
+    "phone": "",
+    "secondaryPhone": "",
+    "lat": 40.129521,
+    "lng": 65.366747,
+    "openingHours": "",
+    "address": "G'allaba shoh ko'chasi 17, Navoiy",
+    "features": [],
+    "website": "",
+    "source": "OpenStreetMap way/454347657",
+    "image": "https://upload.wikimedia.org/wikipedia/commons/0/09/%D0%9D%D0%B0%D0%B2%D0%BE%D0%B81.jpg",
+    "imageCredit": "Azimjon1978 · CC BY-SA 4.0 · Wikimedia Commons",
+    "imageSource": "https://commons.wikimedia.org/wiki/File:%D0%9D%D0%B0%D0%B2%D0%BE%D0%B81.jpg"
+  },
+  {
+    "id": "navoiy-davlat-universiteti-navoiy",
+    "name": "Navoiy davlat universiteti",
+    "category": "edu",
+    "subCategory": "Oliy ta'lim muassasasi",
+    "region": "navoiy",
+    "phone": "+998 76 222 10 00",
+    "secondaryPhone": "",
+    "lat": 40.120604,
+    "lng": 65.378167,
+    "openingHours": "",
+    "address": "Ibn Sino ko'chasi 45, Navoiy",
+    "features": [],
+    "website": "https://nsuni.uz/",
+    "source": "OpenStreetMap way/396397272"
   }
 ]

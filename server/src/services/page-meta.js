@@ -35,3 +35,19 @@ export function renderPlacePage(html, place) {
   }
   return out;
 }
+
+/** Title and description for one of the standalone site pages (or the 404 page). */
+export function renderSitePage(html, { title, description, noindex = false }) {
+  const fullTitle = `${title} — ${SITE}`;
+  let out = html.replace(/<title>[^<]*<\/title>/, `<title>${escapeAttr(fullTitle)}</title>`);
+  if (description) {
+    out = out.replace(
+      /(<meta\s+name="description"\s+content=")[^"]*(")/,
+      `$1${escapeAttr(description)}$2`,
+    );
+    out = setMeta(out, 'property', 'og:description', description);
+  }
+  out = setMeta(out, 'property', 'og:title', fullTitle);
+  if (noindex) out = setMeta(out, 'name', 'robots', 'noindex, nofollow');
+  return out;
+}

@@ -48,7 +48,7 @@ describe('reviews repository', () => {
 
   it('applies migrations only once', () => {
     const db = openDatabase(':memory:');
-    expect(migrate(db)).toEqual(['001_init.sql', '002_reports.sql']);
+    expect(migrate(db)).toEqual(['001_init.sql', '002_reports.sql', '003_place_sources.sql']);
     expect(migrate(db)).toEqual([]);
   });
 });

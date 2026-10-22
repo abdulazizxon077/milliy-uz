@@ -14,7 +14,8 @@ import adminRoutes from './routes/admin.js';
 import authRoutes from './routes/auth.js';
 import publicRoutes from './routes/public.js';
 import { createChatService } from './services/chat.js';
-import { renderPlacePage } from './services/page-meta.js';
+import { SITE_PAGES } from '../../shared/site.js';
+import { renderPlacePage, renderSitePage } from './services/page-meta.js';
 
 const CSP_DIRECTIVES = {
   defaultSrc: ["'self'"],
@@ -118,6 +119,7 @@ export async function buildApp({ config, db, chat, logger = true }) {
   }
 
   const indexFile = config.staticDir && path.join(config.staticDir, 'index.html');
+  let notFoundHtml = null;
   if (indexFile && fs.existsSync(indexFile)) {
     const indexHtml = fs.readFileSync(indexFile, 'utf8');
     // Shareable place pages: the SPA opens the place, the server fills in preview tags.
@@ -127,6 +129,18 @@ export async function buildApp({ config, db, chat, logger = true }) {
       if (!place) return reply.code(404).send(indexHtml);
       return renderPlacePage(indexHtml, place);
     });
+
+    for (const [pagePath, page] of Object.entries(SITE_PAGES)) {
+      const pageHtml = renderSitePage(indexHtml, page);
+      app.get(pagePath, async (_request, reply) =>
+        reply.header('cache-control', 'no-cache').type('text/html; charset=utf-8').send(pageHtml),
+      );
+    }
+    notFoundHtml = renderSitePage(indexHtml, {
+      title: 'Sahifa topilmadi',
+      description: "So'ralgan sahifa mavjud emas.",
+      noindex: true,
+    });
   }
 
   app.setNotFoundHandler((request, reply) => {
@@ -134,8 +148,13 @@ export async function buildApp({ config, db, chat, logger = true }) {
     // Missing files (/assets/x.js, /favicon.ico) get a real 404 instead of the page.
     const wantsPage =
       request.method === 'GET' && !pathname.startsWith('/api/') && !/\.[a-z0-9]+$/i.test(pathname);
-    if (wantsPage && config.staticDir && reply.sendFile) {
-      return reply.header('cache-control', 'no-cache').sendFile('index.html');
+    // Unknown pages still load the app (it shows its own 404 view), but with a 404 status.
+    if (wantsPage && notFoundHtml) {
+      return reply
+        .code(404)
+        .header('cache-control', 'no-cache')
+        .type('text/html; charset=utf-8')
+        .send(notFoundHtml);
     }
     return reply.code(404).send({ error: 'not_found', message: 'Topilmadi' });
   });

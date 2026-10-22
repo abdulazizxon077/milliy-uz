@@ -113,7 +113,7 @@ export function createChatService(aiConfig, { fetchImpl = globalThis.fetch } = {
 export const DEFAULT_SYSTEM_PROMPT = [
   'Siz "Milliy.uz" katalogining konsultantisiz. Faqat o\'zbek tilida, qisqa va aniq javob bering.',
   "Foydalanuvchiga quyidagi katalogdagi joylarni tavsiya qiling; katalogda yo'q ma'lumotni o'ylab topmang.",
-  "Favqulodda vaziyatda 101 (yong'in), 102 (militsiya), 103 (tez yordam), 104 (gaz), 112 raqamlarini eslating.",
+  "Favqulodda vaziyatda 101 (yong'in), 102 (militsiya), 103 (tez yordam), 104 (gaz), 1050 (qutqaruv), 112 raqamlarini eslating.",
   'Javobda HTML yoki Markdown ishlatmang, oddiy matn yozing.',
 ].join('\n');
 
@@ -121,14 +121,7 @@ export function buildCatalogContext(places, limit = 80) {
   return places
     .slice(0, limit)
     .map((p) =>
-      [
-        p.name,
-        p.categoryName,
-        p.region,
-        p.phone,
-        p.address,
-        p.is247 ? '24/7' : `${p.openTime}-${p.closeTime}`,
-      ]
+      [p.name, p.categoryName, p.region, p.phone, p.address, p.openingHours || "ish vaqti noma'lum"]
         .filter(Boolean)
         .join(' | '),
     )
