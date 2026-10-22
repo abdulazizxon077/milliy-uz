@@ -7,14 +7,22 @@ import 'leaflet/dist/leaflet.css';
 import 'leaflet.markercluster/dist/MarkerCluster.css';
 import './styles.css';
 
-import { adminAction, closeAdmin, initAdmin } from './admin/admin.js';
+import {
+  adminAction,
+  closeAdmin,
+  exitAdmin,
+  initAdmin,
+  isLoginOpen,
+  openAdmin,
+} from './admin/admin.js';
 import { api } from './api.js';
-import { debounce, PLACEHOLDER_IMAGE } from './lib/format.js';
+import { DEFAULT_FILTERS } from './lib/catalog.js';
+import { debounce, getOpenStatus } from './lib/format.js';
 import { loadSnapshot, saveSnapshot } from './lib/offline-catalog.js';
 import { parsePlaceRoute, placePath } from './lib/routes.js';
 import { findPlace, notify, onChange, state } from './state.js';
 import { toggleBookmark, updateBookmarkUi } from './ui/bookmarks-view.js';
-import { renderCategories, renderPlaces } from './ui/catalog-view.js';
+import { PAGE_SIZE, renderCategories, renderPlaces } from './ui/catalog-view.js';
 import { initVoice, sendMessage } from './ui/chat-view.js';
 import {
   closeDetail,
@@ -27,14 +35,37 @@ import {
   syncDetailBookmark,
 } from './ui/detail-view.js';
 import { refreshIcons } from './ui/icons.js';
-import { flyTo, flyToRegion, initMap, renderMarkers, updateUserMarker } from './ui/map-view.js';
+import {
+  fitToPlaces,
+  flyTo,
+  flyToRegion,
+  initMap,
+  invalidateMap,
+  mapStyle,
+  renderMarkers,
+  setMapStyle,
+  updateUserMarker,
+} from './ui/map-view.js';
 import { closeModal, isOpen, openModal, trapFocus } from './ui/modal.js';
+import { renderPage } from './ui/pages-view.js';
 import { showToast } from './ui/toast.js';
+
+const HOME_TITLE = document.title;
 
 const $ = (id) => document.getElementById(id);
 
 function scrollToSection(id) {
+  if (!$('page-view')?.classList.contains('hidden')) {
+    history.pushState(null, '', `/#${id}`);
+    showHome();
+  }
   document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+/** Changes filters from code; the list starts again from the first page. */
+function filtersChanged() {
+  state.visibleCount = PAGE_SIZE;
+  notify();
 }
 
 const NAV_SECTIONS = [
@@ -70,11 +101,49 @@ function bindScrollSpy() {
   }
 }
 
+function renderHeroStats() {
+  const set = (id, value) => {
+    const el = $(id);
+    if (el) el.textContent = value;
+  };
+  if (!state.places.length) return;
+  const now = new Date();
+  set('hero-stat-places', String(state.places.length));
+  set('hero-stat-regions', String(new Set(state.places.map((p) => p.region)).size));
+  set('hero-stat-open', String(state.places.filter((p) => getOpenStatus(p, now).isOpen).length));
+}
+
 function render() {
   renderCategories();
   const visible = renderPlaces();
   renderMarkers(visible);
+  const count = $('map-count');
+  if (count) count.textContent = `Xaritada ${visible.length} ta joy`;
+  renderHeroStats();
   updateBookmarkUi();
+  refreshIcons();
+}
+
+function syncFilterInputs() {
+  const f = state.filters;
+  const set = (id, prop, value) => {
+    const el = $(id);
+    if (el) el[prop] = value;
+  };
+  set('catalog-search-input', 'value', f.query);
+  set('hero-search-input', 'value', f.query);
+  set('catalog-region-select', 'value', f.region);
+  set('catalog-sort-select', 'value', f.sortBy);
+  set('filter-open-now', 'checked', f.onlyOpenNow);
+  set('filter-with-phone', 'checked', f.onlyWithPhone);
+}
+
+function syncMapStyleButton() {
+  const btn = $('btn-map-style');
+  if (!btn) return;
+  const dark = mapStyle() === 'dark';
+  btn.setAttribute('aria-pressed', String(dark));
+  btn.innerHTML = `<i data-lucide="${dark ? 'sun' : 'moon'}" class="w-4 h-4"></i><span>${dark ? 'Kunduzgi' : 'Tungi'}</span>`;
   refreshIcons();
 }
 
@@ -82,7 +151,7 @@ const actions = {
   'scroll-to': (el) => scrollToSection(el.dataset.target),
   'select-category': (el) => {
     state.filters.category = el.dataset.category || 'all';
-    notify();
+    filtersChanged();
     scrollToSection('catalog-section');
   },
   ask: (el) => {
@@ -100,10 +169,42 @@ const actions = {
   'share-place': (el) => sharePlace(el.dataset.id),
   'toggle-report': () => toggleReportForm(),
   'close-bookmarks': () => closeModal('bookmarks-drawer'),
+  'reset-filters': () => {
+    state.filters = { ...DEFAULT_FILTERS };
+    syncFilterInputs();
+    filtersChanged();
+    fitToPlaces(state.places);
+  },
+  'show-more': () => {
+    state.visibleCount += PAGE_SIZE;
+    notify();
+  },
 };
 
 function bindDelegation() {
   document.addEventListener('click', (event) => {
+    if (
+      event.defaultPrevented ||
+      event.button !== 0 ||
+      event.metaKey ||
+      event.ctrlKey ||
+      event.shiftKey
+    ) {
+      return;
+    }
+    const pageLink = event.target.closest('[data-nav-page]');
+    if (pageLink) {
+      event.preventDefault();
+      navigate(`/${pageLink.dataset.navPage}`);
+      return;
+    }
+    const homeLink = event.target.closest('[data-nav-home]');
+    if (homeLink) {
+      event.preventDefault();
+      if (location.pathname !== '/') navigate('/');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
+    }
     const scrollLink = event.target.closest('[data-scroll-to]');
     if (scrollLink) {
       event.preventDefault();
@@ -123,7 +224,16 @@ function bindDelegation() {
   });
 
   document.addEventListener('submit', (event) => {
-    if (event.target.id === 'detail-review-form') {
+    if (event.target.id === 'ai-chat-form') {
+      event.preventDefault();
+      sendMessage();
+    } else if (event.target.id === 'hero-search-form') {
+      event.preventDefault();
+      state.filters.query = $('hero-search-input')?.value.trim() ?? '';
+      syncFilterInputs();
+      filtersChanged();
+      scrollToSection('catalog-section');
+    } else if (event.target.id === 'detail-review-form') {
       event.preventDefault();
       submitReview(event.target);
     } else if (event.target.id === 'detail-report-form') {
@@ -142,7 +252,7 @@ function bindDelegation() {
     if (isOpen('admin-edit-modal')) closeModal('admin-edit-modal');
     else if (isOpen('place-detail-modal')) closeDetail();
     else if (isOpen('bookmarks-drawer')) closeModal('bookmarks-drawer');
-    else if (isOpen('admin-login-modal')) closeModal('admin-login-modal');
+    else if (isLoginOpen()) exitAdmin();
     else if (isOpen('admin-dashboard-modal')) closeAdmin();
   });
 }
@@ -153,26 +263,37 @@ function bindFilters() {
     'input',
     debounce(() => {
       state.filters.query = search.value;
-      notify();
+      filtersChanged();
     }, 200),
   );
   $('catalog-region-select')?.addEventListener('change', (e) => {
     state.filters.region = e.target.value;
-    notify();
+    filtersChanged();
     flyToRegion(e.target.value);
   });
   $('catalog-sort-select')?.addEventListener('change', (e) => {
     state.filters.sortBy = e.target.value;
-    notify();
+    filtersChanged();
   });
   $('filter-open-now')?.addEventListener('change', (e) => {
     state.filters.onlyOpenNow = e.target.checked;
-    notify();
+    filtersChanged();
   });
-  $('filter-guaranteed')?.addEventListener('change', (e) => {
-    state.filters.onlyGuaranteed = e.target.checked;
-    notify();
+  $('filter-with-phone')?.addEventListener('change', (e) => {
+    state.filters.onlyWithPhone = e.target.checked;
+    filtersChanged();
   });
+}
+
+function bindMapControls() {
+  $('btn-map-fit')?.addEventListener('click', () => {
+    fitToPlaces(renderPlaces());
+  });
+  $('btn-map-style')?.addEventListener('click', () => {
+    setMapStyle(mapStyle() === 'dark' ? 'light' : 'dark');
+    syncMapStyleButton();
+  });
+  syncMapStyleButton();
 }
 
 function bindLocate() {
@@ -190,8 +311,13 @@ function bindLocate() {
           address: "GPS bo'yicha joriy nuqta",
         };
         updateUserMarker();
-        notify();
-        flyTo(coords.latitude, coords.longitude, 14);
+        $('user-location-dot')?.classList.add('is-on');
+        const label = $('user-location-label');
+        if (label) label.textContent = "Joylashuvingiz bo'yicha saralangan";
+        state.filters.sortBy = 'distance';
+        syncFilterInputs();
+        filtersChanged();
+        flyTo(coords.latitude, coords.longitude, 13);
         showToast('Joylashuv aniqlandi');
       },
       () => showToast("Joylashuvni aniqlab bo'lmadi"),
@@ -201,13 +327,6 @@ function bindLocate() {
 }
 
 function bindChat() {
-  $('ai-send-btn')?.addEventListener('click', () => sendMessage());
-  $('ai-user-input')?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
-  });
   initVoice((transcript) => sendMessage(transcript));
 }
 
@@ -226,16 +345,14 @@ function bindModals() {
   });
 }
 
-/** Swaps broken place photos (dead links, offline) for a local placeholder. */
+/** A photo that fails to load is removed, uncovering the category placeholder under it. */
 function bindImageFallback() {
   document.addEventListener(
     'error',
     (event) => {
       const img = event.target;
-      if (!(img instanceof HTMLImageElement) || img.closest('.leaflet-container')) return;
-      if (img.dataset.fallback) return;
-      img.dataset.fallback = 'true';
-      img.src = PLACEHOLDER_IMAGE;
+      if (img instanceof HTMLImageElement && img.matches('.place-photo, .place-thumb'))
+        img.remove();
     },
     true,
   );
@@ -249,9 +366,49 @@ function bindConnectivity() {
   update();
 }
 
-/** Opens or closes the place dialog to match the address bar. */
+function showHome() {
+  $('page-view')?.classList.add('hidden');
+  $('home-view')?.classList.remove('hidden');
+  document.title = HOME_TITLE;
+  invalidateMap();
+}
+
+function showPage(id) {
+  if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
+  $('home-view')?.classList.add('hidden');
+  const view = $('page-view');
+  view?.classList.remove('hidden');
+  document.title = renderPage(id);
+  document.querySelectorAll('[data-nav-page]').forEach((a) => {
+    if (a.dataset.navPage === id) a.setAttribute('aria-current', 'page');
+    else a.removeAttribute('aria-current');
+  });
+  window.scrollTo({ top: 0 });
+  view?.querySelector('h1')?.focus?.();
+}
+
+function navigate(path) {
+  if (path !== location.pathname) history.pushState(null, '', path);
+  applyRoute();
+}
+
+/** Shows the view that matches the address bar. */
 function applyRoute({ initial = false } = {}) {
   const route = parsePlaceRoute(location);
+  if (route.kind === 'admin') {
+    showHome();
+    openAdmin();
+    return;
+  }
+  if (route.kind === 'page' || route.kind === 'missing') {
+    showPage(route.kind === 'page' ? route.id : null);
+    return;
+  }
+  const wasPage = !$('page-view')?.classList.contains('hidden');
+  showHome();
+  if (wasPage && location.hash) {
+    document.getElementById(location.hash.slice(1))?.scrollIntoView({ block: 'start' });
+  }
   if (route.kind === 'home') {
     if (isOpen('place-detail-modal')) closeDetail({ fromHistory: true });
     return;
@@ -298,17 +455,20 @@ function init() {
   bindDelegation();
   bindFilters();
   bindLocate();
+  bindMapControls();
   bindChat();
   bindModals();
   bindConnectivity();
   bindImageFallback();
   bindScrollSpy();
-  initAdmin();
+  initAdmin({ onLeave: () => location.pathname === '/admin' && navigate('/') });
   initMap($('leaflet-map-container'), { openDetail });
   onChange(render);
   render();
   window.addEventListener('popstate', () => applyRoute());
   window.addEventListener('hashchange', () => applyRoute());
+  const route = parsePlaceRoute(location);
+  if (route.kind === 'page' || route.kind === 'missing') applyRoute();
   loadPlaces();
   registerServiceWorker();
 }

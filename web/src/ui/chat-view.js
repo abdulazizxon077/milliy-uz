@@ -1,5 +1,12 @@
 import { answerLocally } from '../lib/assistant.js';
-import { clockTime, directionsUrl, distanceKm, escapeHtml, formatDistance } from '../lib/format.js';
+import {
+  clockTime,
+  directionsUrl,
+  distanceKm,
+  escapeHtml,
+  formatDistance,
+  getOpenStatus,
+} from '../lib/format.js';
 import { api } from '../api.js';
 import { state } from '../state.js';
 import { refreshIcons } from './icons.js';
@@ -41,10 +48,10 @@ function placeSuggestion(place) {
   const dist = formatDistance(distanceKm(state.userLocation, place));
   return `
   <div class="rounded-2xl bg-[#071510] border border-[#183a2d] p-3 space-y-1.5 text-xs">
-    <div class="flex justify-between gap-2"><p class="font-extrabold text-white">${escapeHtml(place.name)}</p><span class="text-[#b4f73a] font-bold shrink-0">${escapeHtml(dist)}</span></div>
+    <div class="flex justify-between gap-2"><p class="font-extrabold text-white">${escapeHtml(place.name)}</p>${dist ? `<span class="text-[#b4f73a] font-bold shrink-0">${escapeHtml(dist)}</span>` : ''}</div>
     <p class="text-[#94a3b8]">${escapeHtml(place.subCategory)}</p>
-    <p class="text-[#94a3b8]">Mutaxassis: <span class="text-white">${escapeHtml(place.experienceText || `${place.experienceYears} yil`)}</span></p>
-    <p class="text-[#94a3b8]">Narxlar: <span class="text-white">${escapeHtml(place.priceRange)}</span></p>
+    ${place.address ? `<p class="text-[#94a3b8]">${escapeHtml(place.address)}</p>` : ''}
+    <p class="text-[#94a3b8]">${escapeHtml(getOpenStatus(place).label)}</p>
     <div class="flex gap-2 pt-1">
       <button type="button" class="neon-btn rounded-xl px-3 py-1.5 text-[11px] font-bold" data-action="open-detail" data-id="${escapeHtml(place.id)}">Batafsil</button>
       <a href="${escapeHtml(directionsUrl(place))}" target="_blank" rel="noopener noreferrer" class="neon-btn-secondary rounded-xl px-3 py-1.5 text-[11px] font-bold">Google Maps</a>

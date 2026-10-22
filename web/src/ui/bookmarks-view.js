@@ -1,5 +1,6 @@
 import { saveBookmarks, toggleId } from '../lib/bookmarks.js';
-import { distanceKm, escapeHtml, formatDistance, safeImageUrl } from '../lib/format.js';
+import { distanceKm, escapeHtml, formatDistance } from '../lib/format.js';
+import { placeThumbHtml } from './place-media.js';
 import { findPlace, state } from '../state.js';
 import { refreshIcons } from './icons.js';
 import { showToast } from './toast.js';
@@ -40,7 +41,7 @@ function renderBookmarkList() {
     .map(
       (p) => `
     <div class="flex items-center gap-3 rounded-2xl bg-[#0d221a] border border-[#183a2d] p-3">
-      <img src="${escapeHtml(safeImageUrl(p.image))}" alt="" loading="lazy" decoding="async" width="56" height="56" class="w-14 h-14 rounded-xl object-cover" />
+      ${placeThumbHtml(p, 56)}
       <div class="flex-1 min-w-0">
         <p class="text-sm font-bold text-white truncate">${escapeHtml(p.name)}</p>
         <p class="text-[11px] text-[#b4f73a]">${escapeHtml(formatDistance(distanceKm(state.userLocation, p)))}</p>
