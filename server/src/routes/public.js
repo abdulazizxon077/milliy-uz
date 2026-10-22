@@ -8,7 +8,8 @@ export default async function publicRoutes(app, { repos, chat, db }) {
   });
 
   app.get('/places', async (_request, reply) => {
-    reply.header('cache-control', 'public, max-age=60');
+    // Admins edit this list live, so clients must revalidate every time.
+    reply.header('cache-control', 'no-cache');
     return repos.places.list();
   });
 
@@ -32,7 +33,9 @@ export default async function publicRoutes(app, { repos, chat, db }) {
       };
       const review = repos.reviews.create(request.params.id, body);
       if (!review) return reply.code(404).send({ error: 'not_found', message: 'Joy topilmadi' });
-      return reply.code(201).send({ review, place: repos.places.get(request.params.id) });
+      return reply
+        .code(201)
+        .send({ review, place: repos.places.getWithReviews(request.params.id) });
     },
   );
 
