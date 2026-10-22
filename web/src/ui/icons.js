@@ -60,6 +60,7 @@ import {
   Utensils,
   Wrench,
   X,
+  ChevronDown,
 } from 'lucide';
 
 // Only the icons the interface uses are bundled.
@@ -124,6 +125,7 @@ const icons = {
   Utensils,
   Wrench,
   X,
+  ChevronDown,
 };
 
 /** Replaces pending `<i data-lucide>` placeholders with inline SVG icons. */
