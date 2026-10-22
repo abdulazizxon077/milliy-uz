@@ -368,6 +368,17 @@ body {
   border-radius: 9999px;
 }
 
+.badge-closing {
+  background: rgba(120, 53, 15, 0.85);
+  backdrop-filter: blur(10px);
+  color: #fcd34d;
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 9999px;
+}
+
 .glow-ring {
   box-shadow:
     0 0 60px rgba(180, 247, 58, 0.2),
