@@ -17,13 +17,15 @@ export class ChatProviderError extends Error {
 
 /** Strips control characters (except newlines/tabs) and caps the length of model output. */
 export function sanitizeReply(text) {
-  return String(text ?? '')
-    // eslint-disable-next-line no-control-regex
-    .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
-    .replace(/\r\n?/g, '\n')
-    .replace(/\n{3,}/g, '\n\n')
-    .trim()
-    .slice(0, MAX_REPLY_LENGTH);
+  return (
+    String(text ?? '')
+      // eslint-disable-next-line no-control-regex
+      .replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F\u007F]/g, '')
+      .replace(/\r\n?/g, '\n')
+      .replace(/\n{3,}/g, '\n\n')
+      .trim()
+      .slice(0, MAX_REPLY_LENGTH)
+  );
 }
 
 function openAiCompatible(baseUrl) {
@@ -61,10 +63,7 @@ const ADAPTERS = {
         },
       };
     },
-    parse: (data) =>
-      data?.candidates?.[0]?.content?.parts
-        ?.map((p) => p.text ?? '')
-        .join(''),
+    parse: (data) => data?.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join(''),
   },
   openai: openAiCompatible('https://api.openai.com/v1'),
   deepseek: openAiCompatible('https://api.deepseek.com/v1'),
@@ -112,17 +111,24 @@ export function createChatService(aiConfig, { fetchImpl = globalThis.fetch } = {
 }
 
 export const DEFAULT_SYSTEM_PROMPT = [
-  "Siz \"Milliy.uz\" katalogining konsultantisiz. Faqat o'zbek tilida, qisqa va aniq javob bering.",
+  'Siz "Milliy.uz" katalogining konsultantisiz. Faqat o\'zbek tilida, qisqa va aniq javob bering.',
   "Foydalanuvchiga quyidagi katalogdagi joylarni tavsiya qiling; katalogda yo'q ma'lumotni o'ylab topmang.",
   "Favqulodda vaziyatda 101 (yong'in), 102 (militsiya), 103 (tez yordam), 104 (gaz), 112 raqamlarini eslating.",
-  "Javobda HTML yoki Markdown ishlatmang, oddiy matn yozing.",
+  'Javobda HTML yoki Markdown ishlatmang, oddiy matn yozing.',
 ].join('\n');
 
 export function buildCatalogContext(places, limit = 80) {
   return places
     .slice(0, limit)
     .map((p) =>
-      [p.name, p.categoryName, p.region, p.phone, p.address, p.is247 ? '24/7' : `${p.openTime}-${p.closeTime}`]
+      [
+        p.name,
+        p.categoryName,
+        p.region,
+        p.phone,
+        p.address,
+        p.is247 ? '24/7' : `${p.openTime}-${p.closeTime}`,
+      ]
         .filter(Boolean)
         .join(' | '),
     )

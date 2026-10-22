@@ -51,7 +51,9 @@ export default async function publicRoutes(app, { repos, chat, db }) {
     },
     async (request, reply) => {
       if (!chat.configured) {
-        return reply.code(503).send({ error: 'chat_unavailable', message: 'AI xizmati sozlanmagan' });
+        return reply
+          .code(503)
+          .send({ error: 'chat_unavailable', message: 'AI xizmati sozlanmagan' });
       }
       const prompt = repos.settings.get('chat.systemPrompt', DEFAULT_SYSTEM_PROMPT);
       const system = `${prompt}\n\nKatalog:\n${buildCatalogContext(repos.places.list())}`;

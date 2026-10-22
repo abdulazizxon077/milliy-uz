@@ -19,7 +19,9 @@ export default async function authRoutes(app) {
       const { username, password } = request.body;
       if (!(await app.verifyAdminCredentials(username, password))) {
         request.log.warn({ username }, 'failed admin login');
-        return reply.code(401).send({ error: 'invalid_credentials', message: "Login yoki parol noto'g'ri" });
+        return reply
+          .code(401)
+          .send({ error: 'invalid_credentials', message: "Login yoki parol noto'g'ri" });
       }
       const token = await reply.jwtSign({ sub: username, role: 'admin' });
       reply.setSession(token);

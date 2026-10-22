@@ -31,7 +31,9 @@ describe('chat service', () => {
   });
 
   it('uses bearer auth for OpenAI-compatible providers', async () => {
-    const fetchImpl = vi.fn(async () => jsonResponse({ choices: [{ message: { content: 'ok' } }] }));
+    const fetchImpl = vi.fn(async () =>
+      jsonResponse({ choices: [{ message: { content: 'ok' } }] }),
+    );
     const chat = createChatService(aiConfig('deepseek', { deepseek: 'k' }), { fetchImpl });
     await chat.complete({ system: 's', message: 'm' });
     const [url, init] = fetchImpl.mock.calls[0];
@@ -57,14 +59,24 @@ describe('POST /api/chat', () => {
 
   it('returns 503 when no provider is configured', async () => {
     app = await createTestApp();
-    const res = await app.inject({ method: 'POST', url: '/api/chat', payload: { message: 'salom' } });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/chat',
+      payload: { message: 'salom' },
+    });
     expect(res.statusCode).toBe(503);
   });
 
   it('proxies to the configured provider with catalog context', async () => {
     const complete = vi.fn(async () => 'Chilonzordagi AvtoPro servisiga murojaat qiling.');
-    app = await createTestApp({ chat: { provider: 'gemini', model: 'x', configured: true, complete } });
-    const res = await app.inject({ method: 'POST', url: '/api/chat', payload: { message: 'usta kerak' } });
+    app = await createTestApp({
+      chat: { provider: 'gemini', model: 'x', configured: true, complete },
+    });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/chat',
+      payload: { message: 'usta kerak' },
+    });
     expect(res.statusCode).toBe(200);
     expect(res.json().reply).toContain('AvtoPro');
     expect(complete.mock.calls[0][0].system).toContain('AvtoPro Yunusobod');
@@ -74,8 +86,14 @@ describe('POST /api/chat', () => {
     const complete = vi.fn(async () => {
       throw new Error('boom');
     });
-    app = await createTestApp({ chat: { provider: 'gemini', model: 'x', configured: true, complete } });
-    const res = await app.inject({ method: 'POST', url: '/api/chat', payload: { message: 'salom' } });
+    app = await createTestApp({
+      chat: { provider: 'gemini', model: 'x', configured: true, complete },
+    });
+    const res = await app.inject({
+      method: 'POST',
+      url: '/api/chat',
+      payload: { message: 'salom' },
+    });
     expect(res.statusCode).toBe(502);
   });
 

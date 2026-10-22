@@ -38,7 +38,12 @@ const placeProperties = {
   },
   features: { type: 'array', maxItems: 30, items: text(160, 1) },
   workDays: text(160),
-  image: { anyOf: [{ type: 'string', maxLength: 0 }, { type: 'string', maxLength: 500, pattern: '^https://' }] },
+  image: {
+    anyOf: [
+      { type: 'string', maxLength: 0 },
+      { type: 'string', maxLength: 500, pattern: '^https://' },
+    ],
+  },
 };
 
 const placeId = { type: 'string', pattern: '^[a-z0-9][a-z0-9-]{0,79}$' };

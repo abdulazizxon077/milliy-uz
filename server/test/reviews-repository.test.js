@@ -26,7 +26,7 @@ describe('reviews repository', () => {
   });
 
   it('keeps a running average as reviews are added', () => {
-    reviews.create('p1', { author: 'A', rating: 5, comment: 'zo\'r' });
+    reviews.create('p1', { author: 'A', rating: 5, comment: "zo'r" });
     expect(places.get('p1')).toMatchObject({ rating: 4.5, reviewsCount: 2 });
   });
 

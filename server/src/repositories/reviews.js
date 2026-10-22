@@ -4,9 +4,7 @@ import { rowToReview } from './places.js';
 export function createReviewsRepository(db) {
   const getRow = db.prepare('SELECT * FROM reviews WHERE id = ?');
   const getPlace = db.prepare('SELECT rating, reviews_count FROM places WHERE id = ?');
-  const setPlaceRating = db.prepare(
-    'UPDATE places SET rating = ?, reviews_count = ? WHERE id = ?',
-  );
+  const setPlaceRating = db.prepare('UPDATE places SET rating = ?, reviews_count = ? WHERE id = ?');
 
   /** Adds (+1) or removes (-1) one review's contribution to the place's running average. */
   function applyToRating(placeId, rating, direction) {

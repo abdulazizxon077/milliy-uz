@@ -52,7 +52,7 @@ describe('public places API', () => {
   });
 
   it('stores review text verbatim and never as markup', async () => {
-    const comment = '<img src=x onerror=alert(1)> zo\'r';
+    const comment = "<img src=x onerror=alert(1)> zo'r";
     await app.inject({
       method: 'POST',
       url: '/api/places/auto-pro-chilonzor/reviews',

@@ -14,7 +14,9 @@ describe('loadConfig', () => {
   });
 
   it('rejects a plaintext admin password', () => {
-    expect(() => loadConfig({ ADMIN_USERNAME: 'a', ADMIN_PASSWORD_HASH: 'hunter2' })).toThrow(/bcrypt/);
+    expect(() => loadConfig({ ADMIN_USERNAME: 'a', ADMIN_PASSWORD_HASH: 'hunter2' })).toThrow(
+      /bcrypt/,
+    );
   });
 
   it('rejects unknown AI providers', () => {

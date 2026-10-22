@@ -35,7 +35,9 @@ async function authPlugin(app, { auth }) {
       const payload = await request.jwtVerify();
       if (payload.role !== 'admin') throw new Error('forbidden');
     } catch {
-      return reply.code(401).send({ error: 'unauthorized', message: 'Avtorizatsiya talab qilinadi' });
+      return reply
+        .code(401)
+        .send({ error: 'unauthorized', message: 'Avtorizatsiya talab qilinadi' });
     }
   });
 

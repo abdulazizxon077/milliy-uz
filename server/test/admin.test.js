@@ -8,7 +8,7 @@ const newPlace = {
   phone: '+998 90 000 00 00',
   lat: 41.3,
   lng: 69.2,
-  features: ['Karta orqali to\'lov'],
+  features: ["Karta orqali to'lov"],
   pricingDetails: [{ service: 'Diagnostika', price: '50 000 UZS' }],
 };
 
@@ -88,7 +88,11 @@ describe('admin API', () => {
     expect(id).toMatch(/^test-ustaxona-/);
     expect(categoryName).toBe('Avto Ustaxona');
 
-    const updated = await req({ method: 'PUT', url: `/api/admin/places/${id}`, payload: { rating: 4.2 } });
+    const updated = await req({
+      method: 'PUT',
+      url: `/api/admin/places/${id}`,
+      payload: { rating: 4.2 },
+    });
     expect(updated.json().rating).toBe(4.2);
 
     expect((await req({ method: 'DELETE', url: `/api/admin/places/${id}` })).statusCode).toBe(204);
@@ -126,7 +130,10 @@ describe('admin API', () => {
     const res = await req({
       method: 'POST',
       url: '/api/admin/places/import',
-      payload: [{ ...newPlace, id: 'ok-one' }, { ...newPlace, id: 'bad', lat: 'x' }],
+      payload: [
+        { ...newPlace, id: 'ok-one' },
+        { ...newPlace, id: 'bad', lat: 'x' },
+      ],
     });
     expect(res.statusCode).toBe(400);
     expect((await app.inject('/api/places')).json()).toHaveLength(seedPlaces.length);
@@ -158,7 +165,9 @@ describe('admin API', () => {
     const hiddenList = (await req({ url: '/api/admin/reviews?status=hidden' })).json();
     expect(hiddenList.map((r) => r.id)).toContain(review.id);
 
-    expect((await req({ method: 'DELETE', url: `/api/admin/reviews/${review.id}` })).statusCode).toBe(204);
+    expect(
+      (await req({ method: 'DELETE', url: `/api/admin/reviews/${review.id}` })).statusCode,
+    ).toBe(204);
   });
 
   it('reports stats', async () => {

@@ -1,9 +1,4 @@
-import {
-  idParams,
-  placeCreateSchema,
-  placesImportSchema,
-  placeUpdateSchema,
-} from '../schemas.js';
+import { idParams, placeCreateSchema, placesImportSchema, placeUpdateSchema } from '../schemas.js';
 import { DEFAULT_SYSTEM_PROMPT } from '../services/chat.js';
 
 const notFound = (reply) => reply.code(404).send({ error: 'not_found', message: 'Topilmadi' });
@@ -34,7 +29,8 @@ export default async function adminRoutes(app, { repos, chat }) {
   app.put(
     '/places/:id',
     { schema: { params: idParams, body: placeUpdateSchema } },
-    async (request, reply) => repos.places.update(request.params.id, request.body) ?? notFound(reply),
+    async (request, reply) =>
+      repos.places.update(request.params.id, request.body) ?? notFound(reply),
   );
 
   app.delete('/places/:id', { schema: { params: idParams } }, async (request, reply) => {
