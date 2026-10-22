@@ -1,19 +1,5 @@
-import { expect, test } from '@playwright/test';
 import { E2E_ADMIN } from '../playwright.config.js';
-
-test.beforeEach(async ({ page }) => {
-  const problems = [];
-  page.on('pageerror', (err) => problems.push(err.message));
-  page.on('console', (msg) => {
-    if (msg.type() === 'error' && /Content Security Policy|Refused/i.test(msg.text()))
-      problems.push(msg.text());
-  });
-  page.problems = problems;
-});
-
-test.afterEach(async ({ page }) => {
-  expect(page.problems, 'page errors / CSP violations').toEqual([]);
-});
+import { expect, test } from './fixtures.js';
 
 test('API health and security headers', async ({ request }) => {
   const res = await request.get('/api/health');

@@ -14,6 +14,9 @@ export default defineConfig({
     baseURL: `http://127.0.0.1:${PORT}`,
     trace: 'retain-on-failure',
     serviceWorkers: 'block',
+    // Opening hours in the catalog are local to Uzbekistan.
+    timezoneId: 'Asia/Tashkent',
+    locale: 'uz-UZ',
   },
   projects: [
     {
