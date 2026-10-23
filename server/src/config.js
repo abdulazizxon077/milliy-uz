@@ -33,8 +33,12 @@ export function loadConfig(env = process.env) {
     else jwtSecret = 'development-only-secret-change-me-0000000000';
   }
 
-  const adminUsername = env.ADMIN_USERNAME ?? '';
-  const adminPasswordHash = env.ADMIN_PASSWORD_HASH ?? '';
+  let adminUsername = env.ADMIN_USERNAME ?? '';
+  let adminPasswordHash = env.ADMIN_PASSWORD_HASH ?? '';
+  if (!isProduction) {
+    if (!adminUsername) adminUsername = 'admin';
+    if (!adminPasswordHash) adminPasswordHash = '$2b$10$FhPuKRYDkgaZxFMpNSK0xuNWgDrqwUCMExW2WlOyhdlPu6NGnid/6';
+  }
   if (isProduction && (!adminUsername || !adminPasswordHash)) {
     errors.push('ADMIN_USERNAME and ADMIN_PASSWORD_HASH must be set');
   }

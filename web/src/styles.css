@@ -72,15 +72,17 @@ html {
 }
 
 body {
-  background-color: var(--bg-dark);
+  background-color: #06140e;
   color: var(--text-primary);
   min-height: 100vh;
   overflow-x: hidden;
   background-image:
-    radial-gradient(circle at 85% 12%, rgba(180, 247, 58, 0.07) 0%, transparent 40%),
-    radial-gradient(circle at 10% 50%, rgba(20, 60, 45, 0.35) 0%, transparent 45%),
-    radial-gradient(circle at 60% 85%, rgba(180, 247, 58, 0.05) 0%, transparent 40%),
-    radial-gradient(circle at 50% 0%, rgba(15, 39, 30, 0.6) 0%, transparent 55%);
+    radial-gradient(circle at 50% 0%, rgba(20, 75, 50, 0.45) 0%, transparent 60%),
+    radial-gradient(circle at 85% 15%, rgba(180, 247, 58, 0.08) 0%, transparent 45%),
+    radial-gradient(circle at 15% 65%, rgba(20, 60, 45, 0.35) 0%, transparent 50%),
+    linear-gradient(to right, rgba(24, 58, 45, 0.12) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(24, 58, 45, 0.12) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 100%, 100% 100%, 40px 40px, 40px 40px;
   background-attachment: fixed;
   line-height: 1.5;
 }
@@ -649,11 +651,10 @@ body {
 
 .hero-tile {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: 10px;
-  padding: 14px;
-  border-radius: 16px;
+  padding: 10px 12px;
+  border-radius: 14px;
   background: #071510;
   border: 1px solid #183a2d;
   color: #ffffff;
@@ -664,7 +665,8 @@ body {
   transition:
     border-color 0.2s ease,
     transform 0.2s var(--ease-smooth),
-    background 0.2s ease;
+    background 0.2s ease,
+    box-shadow 0.2s ease;
 }
 
 .hero-tile i {
@@ -672,9 +674,10 @@ body {
 }
 
 .hero-tile:hover {
-  border-color: #265945;
-  background: #0f271e;
-  transform: translateY(-3px);
+  border-color: #b4f73a;
+  background: #0f2b1e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(180, 247, 58, 0.15);
 }
 
 .typing-dot {
