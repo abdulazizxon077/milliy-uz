@@ -75,7 +75,8 @@ function drawGuide(place) {
   map.fitBounds(routeLine.getBounds(), { padding: [60, 60], maxZoom: 15 });
 }
 
-export function initMap(container, { openDetail }) {
+export function initMap(container, { openDetail } = {}) {
+  if (!container) return;
   onOpenDetail = openDetail;
   map = L.map(container, { zoomControl: false, attributionControl: true }).setView(
     [state.userLocation.lat, state.userLocation.lng],

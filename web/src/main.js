@@ -355,12 +355,16 @@ function init() {
   bindImageFallback();
   bindScrollSpy();
   initAdmin();
-  initMap($('leaflet-map-container'), { openDetail });
+  const leafletContainer = $('leaflet-map-container');
+  if (leafletContainer) {
+    initMap(leafletContainer, { openDetail });
+  }
   
   // Real Geographic Vector Map of Uzbekistan (Replacing broken tile map in 3-rasm)
   renderUzbekistanMap($('uz-geographic-map-container'), {
     onSelectRegion: (regId) => {
       state.filters.region = regId;
+      state.filters.category = 'all';
       const select = $('catalog-region-select');
       if (select) select.value = regId;
       const mapPill = $('map-active-region-pill');
