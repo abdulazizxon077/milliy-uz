@@ -19,8 +19,8 @@
     <link rel="icon" href="./icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-192.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <script type="module" crossorigin src="./assets/index-B4GPxquc.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-BJEgdj5U.css">
+    <script type="module" crossorigin src="./assets/index-ByCrlXf_.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-B6Rp2g80.css">
   </head>
   <body class="selection:bg-[#b4f73a] selection:text-[#071510]">
     <!-- ========================================================
@@ -102,17 +102,58 @@
             <i data-lucide="messages-square" class="w-4 h-4"></i>
           </button>
 
-          <!-- 3-Language Selector Integrated inside the Globe Pill on the right -->
-          <div
-            id="lang-selector-pill"
-            class="flex items-center bg-[#091b14] border border-[#183a2d] p-1 rounded-full shadow-inner"
-            role="group"
-            aria-label="Tilni tanlash / Выбор языка / Select Language"
-          >
-            <i data-lucide="globe" class="w-3.5 h-3.5 text-emerald-400 ml-2 mr-1"></i>
-            <button type="button" data-action="set-lang" data-lang="uz" class="lang-btn active" title="O'zbekcha">O'Z</button>
-            <button type="button" data-action="set-lang" data-lang="ru" class="lang-btn" title="Русский">РУ</button>
-            <button type="button" data-action="set-lang" data-lang="en" class="lang-btn" title="English">EN</button>
+          <!-- Vertical Language Selector Dropdown (tepadan pastga ochiladi, faqat tanlangan til ko'rinadi) -->
+          <div class="relative" id="lang-dropdown-wrapper">
+            <button
+              id="lang-dropdown-trigger"
+              type="button"
+              class="h-10 px-3.5 rounded-full bg-[#091b14] hover:bg-[#0f271e] border border-[#183a2d] hover:border-[#b4f73a]/50 text-white flex items-center gap-2 text-xs font-bold transition-all shadow-inner"
+              aria-haspopup="true"
+              aria-expanded="false"
+              title="Tilni tanlash / Выбор языка / Select Language"
+            >
+              <i data-lucide="globe" class="w-4 h-4 text-emerald-400"></i>
+              <span id="current-lang-label" class="tracking-wider text-[#b4f73a] font-black">O'Z</span>
+              <i data-lucide="chevron-down" id="lang-dropdown-arrow" class="w-3.5 h-3.5 text-[#94a3b8] transition-transform duration-200"></i>
+            </button>
+
+            <!-- Dropdown Menu (tepadan pastga qarab ochiladi) -->
+            <div
+              id="lang-dropdown-menu"
+              class="hidden absolute right-0 mt-2 w-40 py-1.5 bg-[#071912] border border-[#183a2d] rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.85)] backdrop-blur-xl z-50 animate-fade-in"
+              role="menu"
+            >
+              <button
+                type="button"
+                data-action="set-lang-and-close"
+                data-lang="uz"
+                class="lang-dropdown-item w-full px-3.5 py-2.5 text-left text-xs font-bold flex items-center justify-between text-white hover:bg-[#102d20] transition-colors"
+                role="menuitem"
+              >
+                <span>O'zbekcha</span>
+                <span class="text-[10px] text-[#b4f73a] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">O'Z</span>
+              </button>
+              <button
+                type="button"
+                data-action="set-lang-and-close"
+                data-lang="ru"
+                class="lang-dropdown-item w-full px-3.5 py-2.5 text-left text-xs font-bold flex items-center justify-between text-[#cbd5e1] hover:text-white hover:bg-[#102d20] transition-colors"
+                role="menuitem"
+              >
+                <span>Русский</span>
+                <span class="text-[10px] text-[#94a3b8] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">РУ</span>
+              </button>
+              <button
+                type="button"
+                data-action="set-lang-and-close"
+                data-lang="en"
+                class="lang-dropdown-item w-full px-3.5 py-2.5 text-left text-xs font-bold flex items-center justify-between text-[#cbd5e1] hover:text-white hover:bg-[#102d20] transition-colors"
+                role="menuitem"
+              >
+                <span>English</span>
+                <span class="text-[10px] text-[#94a3b8] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">EN</span>
+              </button>
+            </div>
           </div>
         </div>
       </div>
@@ -395,6 +436,7 @@
               >
                 <option value="all_uz">Butun O'zbekiston (14 ta hudud)</option>
                 <option value="tashkent" selected>Toshkent shahri</option>
+                <option value="tashkent_region">Toshkent viloyati</option>
                 <option value="samarkand">Samarqand viloyati</option>
                 <option value="fergana">Farg'ona viloyati</option>
                 <option value="andijan">Andijon viloyati</option>
@@ -579,6 +621,18 @@
               <i data-lucide="stethoscope" class="w-3 h-3 text-[#e2b170]"></i>
               24/7 Dorixona
             </button>
+          </div>
+
+          <!-- Voice recording live status bar -->
+          <div
+            id="ai-voice-status"
+            class="hidden px-5 py-2 bg-red-950/70 border-t border-red-500/40 text-red-200 text-xs font-bold flex items-center justify-between shrink-0 animate-pulse"
+          >
+            <span class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-red-500 animate-ping"></span>
+              <span id="ai-voice-status-text">Ovoz yozilmoqda... Gapiring...</span>
+            </span>
+            <span class="text-[10px] text-red-300 font-medium">To'xtatish uchun mikrofonni bosing</span>
           </div>
 
           <div class="p-4 bg-[#0c231a] border-t border-[#183a2d] flex items-center gap-3 shrink-0">
