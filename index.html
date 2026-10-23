@@ -19,15 +19,15 @@
     <link rel="icon" href="./icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="./icon-192.png" />
     <link rel="manifest" href="./manifest.webmanifest" />
-    <script type="module" crossorigin src="./assets/index-ByCrlXf_.js"></script>
-    <link rel="stylesheet" crossorigin href="./assets/index-B6Rp2g80.css">
+    <script type="module" crossorigin src="./assets/index-BNuQRus0.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-BcTLaIal.css">
   </head>
   <body class="selection:bg-[#b4f73a] selection:text-[#071510]">
     <!-- ========================================================
        1. PUBLIC HEADER / NAVIGATION
        ======================================================== -->
     <header class="sticky top-0 z-40 glass-nav px-4 lg:px-12 py-3.5 transition-all">
-      <div class="max-w-7xl mx-auto flex items-center justify-between">
+      <div class="max-w-7xl 2xl:max-w-[1440px] mx-auto flex items-center justify-between">
         <!-- Brand Logo -->
         <a href="#hero-section" class="flex items-center gap-3 cursor-pointer text-decoration-none">
           <div
@@ -100,6 +100,16 @@
             aria-label="Konsultant"
           >
             <i data-lucide="messages-square" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Admin Portal Quick Trigger -->
+          <button
+            id="header-admin-trigger"
+            class="w-10 h-10 rounded-full bg-[#0f271e] border border-[#183a2d] flex items-center justify-center text-[#94a3b8] hover:text-[#b4f73a] hover:border-[#b4f73a] transition-all"
+            title="Admin Portal (Login: admin / admin123)"
+            aria-label="Admin Portal"
+          >
+            <i data-lucide="shield" class="w-4 h-4"></i>
           </button>
 
           <!-- Vertical Language Selector Dropdown (tepadan pastga ochiladi, faqat tanlangan til ko'rinadi) -->
@@ -186,7 +196,7 @@
     <!-- ========================================================
        2. ASOSIY KONTENT SOHASI (UZLUKSIZ OQIM)
        ======================================================== -->
-    <main class="max-w-7xl mx-auto px-4 lg:px-8 py-6 space-y-16">
+    <main class="max-w-7xl 2xl:max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-8 pt-3 pb-12 space-y-6 sm:space-y-8">
       <div
         id="offline-banner"
         class="hidden rounded-2xl p-3 border border-amber-500/40 bg-amber-950/40 text-amber-200 text-xs font-semibold"
@@ -247,7 +257,7 @@
       <!-- ==================== 1. HERO SECTION ==================== -->
       <section id="hero-section" class="scroll-mt-24">
         <div
-          class="relative rounded-[32px] overflow-hidden glass-panel border border-[#183a2d] p-8 lg:p-14 bg-gradient-to-br from-[#0d261c] via-[#071510] to-[#040e0a]"
+          class="relative rounded-[32px] overflow-hidden glass-panel border border-[#183a2d] p-6 sm:p-8 lg:p-10 bg-gradient-to-br from-[#0d261c] via-[#071510] to-[#040e0a]"
         >
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
             <div class="lg:col-span-7 space-y-6">
@@ -300,65 +310,85 @@
 
             <!-- O'ng tomon: Kasb egalari jamoasi vitrinasi -->
             <div class="lg:col-span-5 relative flex items-center justify-center">
-              <div class="relative z-10 w-full max-w-sm glass-panel p-6 border border-[#183a2d]">
-                <div class="flex items-center justify-between mb-4">
-                  <span
-                    class="text-[11px] font-bold uppercase tracking-wider text-[#b4f73a] bg-[#102d20] px-3 py-1 rounded-full border border-[#1b3b2f]"
-                  >
-                    10 soha
-                  </span>
-                  <span class="text-xs font-semibold text-[#94a3b8]">14 ta hudud</span>
+              <div class="relative z-10 w-full glass-panel p-5 sm:p-6 border border-[#183a2d] bg-[#0a2318]/90 shadow-2xl">
+                <div class="flex items-center justify-between mb-3.5 pb-2.5 border-b border-[#183a2d]">
+                  <div class="flex items-center gap-2">
+                    <span class="w-2.5 h-2.5 rounded-full bg-[#b4f73a] animate-pulse"></span>
+                    <span class="text-xs font-black uppercase tracking-wider text-white">Tezkor Yo'nalishlar</span>
+                  </div>
+                  <span class="text-[11px] font-bold text-[#b4f73a] bg-[#102d20] px-2.5 py-0.5 rounded-full border border-[#1b3b2f]">14 ta hudud</span>
                 </div>
 
-                <div class="hero-mosaic mb-4">
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="auto"
-                  >
-                    <i data-lucide="wrench" class="w-5 h-5"></i>
-                    <span>Ustalar</span>
+                <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 mb-3.5">
+                  <button type="button" class="hero-tile group" data-action="select-category" data-category="auto">
+                    <div class="w-7 h-7 rounded-lg bg-[#102d20] border border-[#1b3b2f] flex items-center justify-center shrink-0 group-hover:bg-[#b4f73a] transition-colors">
+                      <i data-lucide="wrench" class="w-3.5 h-3.5 group-hover:text-[#071510]"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <span class="block text-xs font-bold text-white group-hover:text-[#b4f73a] truncate">Ustalar</span>
+                      <span class="block text-[10px] text-[#94a3b8] font-normal truncate">Avto & Maishiy</span>
+                    </div>
                   </button>
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="medical"
-                  >
-                    <i data-lucide="stethoscope" class="w-5 h-5"></i>
-                    <span>Tibbiyot</span>
+                  <button type="button" class="hero-tile group" data-action="select-category" data-category="medical">
+                    <div class="w-7 h-7 rounded-lg bg-[#102d20] border border-[#1b3b2f] flex items-center justify-center shrink-0 group-hover:bg-[#b4f73a] transition-colors">
+                      <i data-lucide="stethoscope" class="w-3.5 h-3.5 group-hover:text-[#071510]"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <span class="block text-xs font-bold text-white group-hover:text-[#b4f73a] truncate">Tibbiyot</span>
+                      <span class="block text-[10px] text-[#94a3b8] font-normal truncate">Shifoxona</span>
+                    </div>
                   </button>
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="gov"
-                  >
-                    <i data-lucide="landmark" class="w-5 h-5"></i>
-                    <span>DXM</span>
+                  <button type="button" class="hero-tile group" data-action="select-category" data-category="gov">
+                    <div class="w-7 h-7 rounded-lg bg-[#102d20] border border-[#1b3b2f] flex items-center justify-center shrink-0 group-hover:bg-[#b4f73a] transition-colors">
+                      <i data-lucide="landmark" class="w-3.5 h-3.5 group-hover:text-[#071510]"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <span class="block text-xs font-bold text-white group-hover:text-[#b4f73a] truncate">DXM</span>
+                      <span class="block text-[10px] text-[#94a3b8] font-normal truncate">Davlat xizmati</span>
+                    </div>
                   </button>
-                  <button
-                    type="button"
-                    class="hero-tile"
-                    data-action="select-category"
-                    data-category="gas"
-                  >
-                    <i data-lucide="fuel" class="w-5 h-5"></i>
-                    <span>Zapravka</span>
+                  <button type="button" class="hero-tile group" data-action="select-category" data-category="gas">
+                    <div class="w-7 h-7 rounded-lg bg-[#102d20] border border-[#1b3b2f] flex items-center justify-center shrink-0 group-hover:bg-[#b4f73a] transition-colors">
+                      <i data-lucide="fuel" class="w-3.5 h-3.5 group-hover:text-[#071510]"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <span class="block text-xs font-bold text-white group-hover:text-[#b4f73a] truncate">Zapravka</span>
+                      <span class="block text-[10px] text-[#94a3b8] font-normal truncate">Metan, AI</span>
+                    </div>
+                  </button>
+                  <button type="button" class="hero-tile group" data-action="select-category" data-category="education">
+                    <div class="w-7 h-7 rounded-lg bg-[#102d20] border border-[#1b3b2f] flex items-center justify-center shrink-0 group-hover:bg-[#b4f73a] transition-colors">
+                      <i data-lucide="graduation-cap" class="w-3.5 h-3.5 group-hover:text-[#071510]"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <span class="block text-xs font-bold text-white group-hover:text-[#b4f73a] truncate">Ta'lim</span>
+                      <span class="block text-[10px] text-[#94a3b8] font-normal truncate">Kurslar & IT</span>
+                    </div>
+                  </button>
+                  <button type="button" class="hero-tile group" data-action="select-category" data-category="shops">
+                    <div class="w-7 h-7 rounded-lg bg-[#102d20] border border-[#1b3b2f] flex items-center justify-center shrink-0 group-hover:bg-[#b4f73a] transition-colors">
+                      <i data-lucide="shopping-bag" class="w-3.5 h-3.5 group-hover:text-[#071510]"></i>
+                    </div>
+                    <div class="min-w-0">
+                      <span class="block text-xs font-bold text-white group-hover:text-[#b4f73a] truncate">Savdo</span>
+                      <span class="block text-[10px] text-[#94a3b8] font-normal truncate">Bozor & Do'kon</span>
+                    </div>
                   </button>
                 </div>
 
-                <h3 class="font-extrabold text-lg text-white mb-1">Mutaxassis va tashkilotlar</h3>
-                <p class="text-xs text-[#94a3b8] mb-4 leading-relaxed">
-                  Tajriba, telefon, ish vaqti va marshrut bir kartochkada.
-                </p>
+                <div class="p-2.5 rounded-xl bg-[#071510] border border-[#183a2d] flex items-center justify-between text-xs text-[#94a3b8] mb-3">
+                  <div class="flex items-center gap-1.5">
+                    <i data-lucide="shield-check" class="w-4 h-4 text-emerald-400"></i>
+                    <span class="text-white text-[11px] font-medium">Barcha ma'lumotlar tasdiqlangan</span>
+                  </div>
+                  <span class="text-[#b4f73a] font-bold text-[11px]">100% ishonchli</span>
+                </div>
 
                 <div class="grid grid-cols-2 gap-2">
                   <button
                     data-action="scroll-to"
                     data-target="categories-section"
-                    class="py-2.5 bg-[#0f271e] hover:bg-[#183a2d] border border-[#183a2d] rounded-xl text-xs font-bold text-center text-white flex items-center justify-center gap-1.5 transition-all"
+                    class="py-2.5 px-3 bg-[#0f271e] hover:bg-[#183a2d] border border-[#183a2d] rounded-xl text-xs font-bold text-center text-white flex items-center justify-center gap-1.5 transition-all"
                   >
                     <i data-lucide="grid" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
                     Sohalar
@@ -366,10 +396,10 @@
                   <button
                     data-action="scroll-to"
                     data-target="catalog-section"
-                    class="py-2.5 bg-[#b4f73a] hover:bg-[#c4fa58] rounded-xl text-xs font-black text-[#071510] text-center flex items-center justify-center gap-1.5 transition-all"
+                    class="py-2.5 px-3 bg-[#b4f73a] hover:bg-[#c4fa58] rounded-xl text-xs font-black text-[#071510] text-center flex items-center justify-center gap-1.5 transition-all shadow-md shadow-[#b4f73a]/20"
                   >
                     <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
-                    Ro'yxat
+                    Katalog
                   </button>
                 </div>
               </div>
@@ -665,7 +695,7 @@
        ======================================================== -->
     <footer class="border-t border-[#183a2d] py-10 px-4 mt-20 bg-[#040c09]">
       <div
-        class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748b]"
+        class="max-w-7xl 2xl:max-w-[1440px] mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#64748b]"
       >
         <div class="flex items-center gap-3">
           <span class="font-extrabold text-white uppercase font-['Plus_Jakarta_Sans']">
@@ -723,6 +753,13 @@
           <p class="text-xs text-[#94a3b8] mt-1">
             Admin panelga kirish uchun maxsus ruxsat talab qilinadi
           </p>
+          <div class="mt-3 p-2.5 rounded-xl bg-[#091f16] border border-[#1b4332] text-xs flex items-center justify-between text-[#cbd5e1]">
+            <span class="flex items-center gap-1.5 text-emerald-400 font-semibold">
+              <i data-lucide="key" class="w-3.5 h-3.5 text-[#b4f73a]"></i>
+              <span>Standart login:</span>
+            </span>
+            <span class="font-mono text-[#b4f73a] font-bold">admin / admin123</span>
+          </div>
         </div>
 
         <form id="admin-login-form" class="space-y-4 text-xs">
