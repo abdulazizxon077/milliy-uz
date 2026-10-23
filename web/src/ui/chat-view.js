@@ -9,6 +9,27 @@ import { showToast } from './toast.js';
 const messages = () => document.getElementById('ai-chat-messages');
 const input = () => document.getElementById('ai-user-input');
 let busy = false;
+let voiceRec = null;
+let voiceListening = false;
+let voiceFinalTranscript = '';
+
+export function stopVoiceSession() {
+  if (voiceRec && voiceListening) {
+    try {
+      voiceRec.stop();
+    } catch {
+      // ignore
+    }
+  }
+  voiceListening = false;
+  voiceFinalTranscript = '';
+  const btn = document.getElementById('ai-mic-btn');
+  if (btn) btn.classList.remove('mic-active');
+  const statusEl = document.getElementById('ai-voice-status');
+  if (statusEl) statusEl.classList.add('hidden');
+  const inputEl = document.getElementById('ai-user-input');
+  if (inputEl) inputEl.placeholder = t('assistantInputPlaceholder', state.lang || 'uz');
+}
 
 function append(html) {
   const box = messages();
@@ -103,12 +124,15 @@ Foydalanuvchi qaysi tilda murojaat qilsa (${lang === 'ru' ? 'русский' : l
 }
 
 export async function sendMessage(raw) {
-  const text = String(raw ?? input()?.value ?? '')
+  stopVoiceSession();
+  const inputEl = input();
+  const text = String(raw ?? inputEl?.value ?? '')
     .trim()
     .slice(0, 500);
   if (!text || busy) return;
   busy = true;
-  if (input()) input().value = '';
+  if (inputEl) inputEl.value = '';
+  voiceFinalTranscript = '';
   userBubble(text);
   showTyping();
   try {
@@ -160,15 +184,13 @@ export function initVoice() {
     btn.style.display = 'none';
     return;
   }
-  const rec = new SpeechRec();
-  rec.continuous = true;
-  rec.interimResults = true;
-  let listening = false;
+  voiceRec = new SpeechRec();
+  voiceRec.continuous = true;
+  voiceRec.interimResults = true;
   let originalPlaceholder = inputEl?.placeholder || '';
-  let finalTranscript = '';
 
   function stopUi() {
-    listening = false;
+    voiceListening = false;
     btn.classList.remove('mic-active');
     if (statusEl) statusEl.classList.add('hidden');
     if (inputEl && originalPlaceholder) inputEl.placeholder = originalPlaceholder;
@@ -179,8 +201,9 @@ export function initVoice() {
   }
 
   function startUi() {
-    listening = true;
-    finalTranscript = inputEl?.value ? inputEl.value + ' ' : '';
+    voiceListening = true;
+    voiceFinalTranscript = '';
+    if (inputEl) inputEl.value = '';
     btn.classList.add('mic-active');
     if (statusEl) statusEl.classList.remove('hidden');
     const lang = state.lang || 'uz';
@@ -197,27 +220,28 @@ export function initVoice() {
     }
   }
 
-  rec.onresult = (e) => {
+  voiceRec.onresult = (e) => {
+    if (!voiceListening) return;
     let interim = '';
     for (let i = e.resultIndex; i < e.results.length; i++) {
       const part = e.results[i][0].transcript;
       if (e.results[i].isFinal) {
-        finalTranscript += part + ' ';
+        voiceFinalTranscript += part + ' ';
       } else {
         interim += part;
       }
     }
-    const fullText = (finalTranscript + interim).trim();
-    if (inputEl && fullText) {
+    const fullText = (voiceFinalTranscript + interim).trim();
+    if (inputEl && voiceListening) {
       inputEl.value = fullText;
     }
   };
 
-  rec.onend = () => {
+  voiceRec.onend = () => {
     stopUi();
   };
 
-  rec.onerror = (e) => {
+  voiceRec.onerror = (e) => {
     stopUi();
     const lang = state.lang || 'uz';
     if (e.error === 'not-allowed') {
@@ -228,18 +252,24 @@ export function initVoice() {
   };
 
   btn.addEventListener('click', () => {
-    if (listening) {
-      rec.stop();
+    if (voiceListening) {
+      voiceRec.stop();
       stopUi();
       return;
     }
     try {
-      rec.lang = state.lang === 'ru' ? 'ru-RU' : state.lang === 'en' ? 'en-US' : 'uz-UZ';
-      rec.start();
+      voiceRec.lang = state.lang === 'ru' ? 'ru-RU' : state.lang === 'en' ? 'en-US' : 'uz-UZ';
+      voiceRec.start();
       startUi();
     } catch {
       stopUi();
       showToast(state.lang === 'ru' ? 'Не удалось запустить микрофон' : state.lang === 'en' ? 'Failed to start microphone' : "Mikrofonni ishga tushirib bo'lmadi");
+    }
+  });
+
+  inputEl?.addEventListener('input', () => {
+    if (!inputEl.value.trim()) {
+      voiceFinalTranscript = '';
     }
   });
 }

@@ -8,9 +8,6 @@ export function applyI18nToDom(lang = state.lang) {
   document.documentElement.lang = lang;
 
   // 1. Language Dropdown & Labels (Compact, sleek iOS/macOS picker)
-  const curLangFlag = document.getElementById('current-lang-flag');
-  if (curLangFlag) curLangFlag.textContent = lang === 'ru' ? '🇷🇺' : lang === 'en' ? '🇬🇧' : '🇺🇿';
-
   const curLangLabel = document.getElementById('current-lang-label');
   if (curLangLabel) curLangLabel.textContent = lang === 'ru' ? 'РУ' : lang === 'en' ? 'EN' : "O'Z";
 
@@ -212,8 +209,10 @@ export function applyI18nToDom(lang = state.lang) {
   const aiSub = document.querySelector('#ai-section .border-b p.text-xs');
   if (aiSub) aiSub.textContent = t('assistantSubtitle', lang);
 
-  const aiStatus = document.querySelector('#ai-section .border-b span.text-xs');
-  if (aiStatus) aiStatus.textContent = t('assistantStatus', lang);
+  const aiStatus = document.getElementById('ai-status-text');
+  if (aiStatus) {
+    aiStatus.textContent = lang === 'ru' ? 'Gemini AI 24/7 Онлайн' : lang === 'en' ? 'Gemini AI 24/7 Online' : 'Gemini AI 24/7 Onlayn';
+  }
 
   const aiInput = document.getElementById('ai-user-input');
   if (aiInput) aiInput.placeholder = t('assistantInputPlaceholder', lang);

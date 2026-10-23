@@ -665,4 +665,12 @@ export function initAdmin() {
       switchTab(item.dataset.adminTab);
     }),
   );
+
+  const checkAdminHash = () => {
+    if (window.location.hash === '#admin') {
+      openAdmin();
+    }
+  };
+  checkAdminHash();
+  window.addEventListener('hashchange', checkAdminHash);
 }
