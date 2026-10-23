@@ -4,7 +4,7 @@
  * without a network. API responses are never cached here; the app keeps its
  * own snapshot of the last catalog it received.
  */
-const CACHE = 'milliy-shell-v6';
+const CACHE = 'milliy-shell-v7';
 const STATIC = ['/manifest.webmanifest', '/icon.svg', '/icon-192.png', '/place-placeholder.svg'];
 const ASSET_RE = /\/assets\/[^"')\s]+/g;
 

@@ -1,4 +1,4 @@
-import { CATEGORIES, categoryName, REPORT_REASONS } from '../../../shared/catalog.js';
+import { CATEGORIES, categoryName, REGIONS_I18N, REPORT_REASONS } from '../../../shared/catalog.js';
 import { api } from '../api.js';
 import { escapeHtml, safeImageUrl, FALLBACK_IMAGE } from '../lib/format.js';
 import { notify, state } from '../state.js';
@@ -200,13 +200,15 @@ async function loadStats() {
 function renderPlacesTable() {
   const body = $('admin-places-table-body');
   if (!body) return;
-  const q = $('admin-search-input').value.trim().toLowerCase();
-  const cat = $('admin-category-filter').value;
+  const q = $('admin-search-input')?.value.trim().toLowerCase() || '';
+  const cat = $('admin-category-filter')?.value || 'all';
+  const reg = $('admin-region-filter')?.value || 'all';
   const rows = state.places.filter(
     (p) =>
       (cat === 'all' || p.category === cat) &&
+      (reg === 'all' || p.region === reg) &&
       (!q ||
-        [p.name, p.address, p.chiefSpecialist, p.phone].some((v) =>
+        [p.name, p.address, p.chiefSpecialist, p.phone, p.region].some((v) =>
           String(v ?? '')
             .toLowerCase()
             .includes(q),
@@ -219,7 +221,13 @@ function renderPlacesTable() {
     <tr>
       <td><div class="flex items-center gap-3">
         <img src="${escapeHtml(safeImageUrl(p.image))}" alt="" loading="lazy" decoding="async" width="40" height="40" class="w-10 h-10 rounded-lg object-cover" />
-        <div class="min-w-0"><p class="font-bold text-white truncate max-w-[220px]">${escapeHtml(p.name)}</p><p class="text-[10px] text-[#64748b] truncate max-w-[220px]">${escapeHtml(p.address)}</p></div>
+        <div class="min-w-0">
+          <p class="font-bold text-white truncate max-w-[220px]">${escapeHtml(p.name)}</p>
+          <div class="flex items-center gap-1.5 mt-0.5">
+            <span class="text-[9px] font-bold text-[#b4f73a] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">${escapeHtml(REGIONS_I18N[p.region]?.uz || p.region)}</span>
+            <p class="text-[10px] text-[#64748b] truncate max-w-[150px]">${escapeHtml(p.address)}</p>
+          </div>
+        </div>
       </div></td>
       <td><span class="text-[10px] font-bold px-2 py-1 rounded-full bg-[#183a2d] text-[#b4f73a]">${escapeHtml(categoryName(p.category))}</span></td>
       <td><p class="text-white">${escapeHtml(p.chiefSpecialist)}</p><p class="text-[10px] text-[#64748b]">${escapeHtml(p.experienceYears)} yil</p></td>
@@ -648,6 +656,7 @@ export function initAdmin() {
   $('admin-edit-place-form')?.addEventListener('submit', savePlace);
   $('admin-search-input')?.addEventListener('input', renderPlacesTable);
   catFilter?.addEventListener('change', renderPlacesTable);
+  $('admin-region-filter')?.addEventListener('change', renderPlacesTable);
   $('admin-reports-filter')?.addEventListener('change', loadReports);
   $('admin-import-json-file')?.addEventListener('change', (e) => importPlaces(e.target));
   document.querySelectorAll('[data-admin-tab]').forEach((item) =>
