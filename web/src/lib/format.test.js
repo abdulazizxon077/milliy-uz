@@ -106,4 +106,41 @@ describe('links', () => {
     expect(safeImageUrl('https://example.com/a.jpg')).toBe('https://example.com/a.jpg');
     expect(safeImageUrl('javascript:alert(1)')).toMatch(/^https:\/\/images\.unsplash\.com/);
   });
+  it('localizes features, pricing details, review dates, and prices for Russian and English', async () => {
+    const { getLocalizedPlace } = await import('./format.js');
+    const mockPlace = {
+      name: 'Test Usta',
+      name_ru: 'Тест Мастер',
+      name_en: 'Test Master',
+      priceRange: '50 000 UZS dan',
+      features: ['Kafolatli xizmat (12 oy)', 'Asl ehtiyot qismlar ombori', '24/7 Tunu-kun navbatchi'],
+      pricingDetails: [
+        { service: "To'liq kompyuter diagnostikasi", price: '50 000 UZS' },
+        { service: 'Mator moyi va filtrlarni almashtirish', price: '30 000 UZS dan' },
+      ],
+      reviews: [
+        { author: 'Alisher', date: 'Kecha', comment: 'Yaxshi' },
+        { author: 'Bobur', date: '3 kun oldin', comment: "A'lo" },
+      ],
+    };
+
+    const ruPlace = getLocalizedPlace(mockPlace, 'ru');
+    expect(ruPlace.name).toBe('Тест Мастер');
+    expect(ruPlace.priceRange).toBe('от 50 000 UZS');
+    expect(ruPlace.features).toContain('Гарантийное обслуживание (12 месяцев)');
+    expect(ruPlace.features).toContain('Склад оригинальных автозапчастей');
+    expect(ruPlace.features).toContain('Круглосуточное дежурство 24/7');
+    expect(ruPlace.pricingDetails[0].service).toBe('Полная компьютерная диагностика');
+    expect(ruPlace.pricingDetails[1].price).toBe('от 30 000 UZS');
+    expect(ruPlace.reviews[0].date).toBe('Вчера');
+    expect(ruPlace.reviews[1].date).toBe('3 дня назад');
+
+    const enPlace = getLocalizedPlace(mockPlace, 'en');
+    expect(enPlace.name).toBe('Test Master');
+    expect(enPlace.priceRange).toBe('from 50 000 UZS');
+    expect(enPlace.features).toContain('Guaranteed service (12 months)');
+    expect(enPlace.pricingDetails[0].service).toBe('Comprehensive computer diagnostics');
+    expect(enPlace.reviews[0].date).toBe('Yesterday');
+    expect(enPlace.reviews[1].date).toBe('3 days ago');
+  });
 });

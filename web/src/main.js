@@ -270,7 +270,27 @@ function bindChat() {
       sendMessage();
     }
   });
-  initVoice((transcript) => sendMessage(transcript));
+  initVoice();
+  $('ai-gemini-key-trigger')?.addEventListener('click', () => {
+    const current = localStorage.getItem('gemini_api_key') || '';
+    const lang = state.lang || 'uz';
+    const promptMsg =
+      lang === 'ru'
+        ? 'Введите ваш ключ Google Gemini API (для прямых ответов нейросети на любые вопросы):\n(Оставьте пустым для встроенной интеллектуальной базы)'
+        : lang === 'en'
+        ? 'Enter your Google Gemini API key (for direct AI responses to any question):\n(Leave empty to use built-in knowledge base)'
+        : "Google Gemini API kalitingizni kiriting (barcha savollarga cheksiz javob olish uchun):\n(Bo'sh qoldirsangiz, o'rnatilgan aqlli baza ishlaydi)";
+    const key = window.prompt(promptMsg, current);
+    if (key !== null) {
+      if (key.trim()) {
+        localStorage.setItem('gemini_api_key', key.trim());
+        showToast(lang === 'ru' ? 'Ключ Gemini AI успешно сохранен!' : lang === 'en' ? 'Gemini API key saved!' : 'Gemini AI kaliti muvaffaqiyatli saqlandi!');
+      } else {
+        localStorage.removeItem('gemini_api_key');
+        showToast(lang === 'ru' ? 'Ключ Gemini AI удален' : lang === 'en' ? 'Gemini key removed' : 'Gemini AI kaliti tozalandi');
+      }
+    }
+  });
 }
 
 function bindModals() {
@@ -354,7 +374,9 @@ async function loadPlaces() {
 function registerServiceWorker() {
   if (!('serviceWorker' in navigator) || !import.meta.env.PROD) return;
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js').catch(() => {});
+    navigator.serviceWorker.register('/sw.js').then((reg) => {
+      reg.update().catch(() => {});
+    }).catch(() => {});
   });
 }
 

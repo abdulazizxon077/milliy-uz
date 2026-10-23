@@ -10,6 +10,7 @@ import { state } from '../state.js';
 import { REAL_UZ_REGIONS_GEO } from './uzbekistan-geo-data.js';
 
 let currentHighlightFn = null;
+let currentContainer = null;
 
 export function highlightMapRegion(regionId) {
   if (currentHighlightFn) {
@@ -17,8 +18,23 @@ export function highlightMapRegion(regionId) {
   }
 }
 
+export function updateMapLanguage(lang = state.lang || 'uz') {
+  if (!currentContainer) return;
+  currentContainer.querySelectorAll('.uz-map-node').forEach((node) => {
+    const regId = node.dataset.region;
+    const geo = REAL_UZ_REGIONS_GEO.find((g) => g.id === regId);
+    const label = node.querySelector('text');
+    if (geo && label) {
+      label.textContent = geo.centerCity?.[lang] || geo.centerCity?.uz || geo.name;
+    }
+  });
+  const activeReg = state.filters.region && state.filters.region !== 'all_uz' ? state.filters.region : 'samarkand';
+  highlightMapRegion(activeReg);
+}
+
 export function renderUzbekistanMap(container, { onSelectRegion } = {}) {
   if (!container) return;
+  currentContainer = container;
 
   const activeRegion = state.filters.region && state.filters.region !== 'all_uz' ? state.filters.region : 'samarkand';
 
@@ -73,6 +89,8 @@ export function renderUzbekistanMap(container, { onSelectRegion } = {}) {
         <g id="uz-markers-group">
           ${REAL_UZ_REGIONS_GEO.map((r) => {
             const isActive = activeRegion === r.id;
+            const lang = state.lang || 'uz';
+            const cityName = r.centerCity?.[lang] || r.centerCity?.uz || r.name;
             return `
               <g
                 class="uz-map-node ${isActive ? 'active' : ''}"
@@ -101,6 +119,14 @@ export function renderUzbekistanMap(container, { onSelectRegion } = {}) {
                   r="${isActive ? '5.5' : '3.5'}"
                   fill="${isActive ? '#b4f73a' : '#73e27a'}"
                 />
+                <!-- Administrative center label directly on map -->
+                <text
+                  y="18"
+                  text-anchor="middle"
+                  class="text-[9px] font-extrabold fill-[#b4f73a] tracking-tight drop-shadow-[0_1px_3px_rgba(0,0,0,0.95)] pointer-events-none select-none opacity-90"
+                >
+                  ${cityName}
+                </text>
               </g>
             `;
           }).join('')}
@@ -114,7 +140,7 @@ export function renderUzbekistanMap(container, { onSelectRegion } = {}) {
         style="display: none; transform: translate(-50%, -100%);"
       >
         <div class="relative bg-[#0d261c] border border-[#255e47] text-white text-xs sm:text-sm font-extrabold px-3.5 py-1.5 rounded-xl shadow-[0_8px_24px_rgba(0,0,0,0.8)] flex items-center gap-1.5 whitespace-nowrap">
-          <span class="w-2 h-2 rounded-full bg-[#b4f73a] animate-pulse"></span>
+          <span class="w-2 h-2 rounded-full bg-[#b4f73a] animate-pulse shrink-0"></span>
           <span id="uz-map-tooltip-text">Samarqand</span>
           <!-- Downward speech bubble pointer (matches 1-rasm) -->
           <div class="absolute -bottom-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-[#0d261c] border-b border-r border-[#255e47] rotate-45"></div>
@@ -123,25 +149,26 @@ export function renderUzbekistanMap(container, { onSelectRegion } = {}) {
     </div>
   `;
 
-  const svg = container.querySelector('#uz-svg-map');
   const tooltip = container.querySelector('#uz-map-tooltip');
   const tooltipText = container.querySelector('#uz-map-tooltip-text');
 
   function updateTooltipPosition(regionId) {
     const geo = REAL_UZ_REGIONS_GEO.find((g) => g.id === regionId);
-    if (!geo || !svg || !tooltip) return;
+    const node = container.querySelector(`.uz-map-node[data-region="${regionId}"]`);
+    const wrapper = container.querySelector('.uz-map-wrapper');
+    if (!geo || !node || !wrapper || !tooltip) return;
 
-    const svgRect = svg.getBoundingClientRect();
-    const containerRect = container.getBoundingClientRect();
+    const nodeRect = node.getBoundingClientRect();
+    const wrapperRect = wrapper.getBoundingClientRect();
 
-    const scaleX = svgRect.width / 960;
-    const scaleY = svgRect.height / 540;
+    const pixelX = nodeRect.left - wrapperRect.left + nodeRect.width / 2;
+    const pixelY = nodeRect.top - wrapperRect.top - 14;
 
-    const pixelX = svgRect.left - containerRect.left + geo.center.x * scaleX;
-    const pixelY = svgRect.top - containerRect.top + geo.center.y * scaleY - (scaleY > 0.6 ? 24 : 14);
+    const lang = state.lang || 'uz';
+    const localizedName = REGIONS_I18N[geo.id]?.[lang] || geo.name;
+    const centerCity = geo.centerCity?.[lang] || geo.centerCity?.uz || geo.name;
 
-    const localizedName = REGIONS_I18N[geo.id]?.[state.lang || 'uz'] || geo.name;
-    tooltipText.textContent = localizedName;
+    tooltipText.innerHTML = `<span class="text-white">${localizedName}</span> <span class="text-[#b4f73a] text-[11px] font-mono font-medium">(${centerCity})</span>`;
 
     tooltip.style.left = `${pixelX}px`;
     tooltip.style.top = `${pixelY}px`;

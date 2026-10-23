@@ -2,24 +2,32 @@ import { REGIONS, REGIONS_I18N } from '../../../shared/catalog.js';
 import { t } from '../lib/i18n.js';
 import { state } from '../state.js';
 import { refreshIcons } from './icons.js';
+import { updateMapLanguage } from './uzbekistan-map.js';
 
 export function applyI18nToDom(lang = state.lang) {
   document.documentElement.lang = lang;
 
-  // 1. Language Dropdown & Labels
+  // 1. Language Dropdown & Labels (Compact, sleek iOS/macOS picker)
+  const curLangFlag = document.getElementById('current-lang-flag');
+  if (curLangFlag) curLangFlag.textContent = lang === 'ru' ? '🇷🇺' : lang === 'en' ? '🇬🇧' : '🇺🇿';
+
   const curLangLabel = document.getElementById('current-lang-label');
   if (curLangLabel) curLangLabel.textContent = lang === 'ru' ? 'РУ' : lang === 'en' ? 'EN' : "O'Z";
 
   document.querySelectorAll('.lang-dropdown-item').forEach((item) => {
     const active = item.dataset.lang === lang;
-    item.classList.toggle('bg-[#102d20]', active);
-    const pill = item.querySelector('span:last-child');
-    if (pill) {
-      pill.className = active
-        ? 'text-[10px] text-[#b4f73a] font-black px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]'
-        : 'text-[10px] text-[#94a3b8] font-bold px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]';
+    item.classList.toggle('bg-[#133827]', active);
+    item.classList.toggle('text-white', active);
+    item.classList.toggle('text-[#cbd5e1]', !active);
+
+    const check = item.querySelector('.lang-check');
+    if (check) {
+      check.classList.toggle('hidden', !active);
     }
   });
+
+  // Update map markers language
+  updateMapLanguage(lang);
 
   document.querySelectorAll('[data-action="set-lang"]').forEach((btn) => {
     const active = btn.dataset.lang === lang;

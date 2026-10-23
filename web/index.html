@@ -116,51 +116,60 @@
             <button
               id="lang-dropdown-trigger"
               type="button"
-              class="h-10 px-3.5 rounded-full bg-[#091b14] hover:bg-[#0f271e] border border-[#183a2d] hover:border-[#b4f73a]/50 text-white flex items-center gap-2 text-xs font-bold transition-all shadow-inner"
+              class="h-9 px-3 rounded-xl bg-[#091b14] hover:bg-[#0f271e] border border-[#183a2d] hover:border-[#b4f73a]/50 text-white flex items-center gap-1.5 text-xs font-bold transition-all shadow-inner"
               aria-haspopup="true"
               aria-expanded="false"
               title="Tilni tanlash / Выбор языка / Select Language"
             >
-              <i data-lucide="globe" class="w-4 h-4 text-emerald-400"></i>
-              <span id="current-lang-label" class="tracking-wider text-[#b4f73a] font-black">O'Z</span>
+              <span id="current-lang-flag" class="text-sm">🇺🇿</span>
+              <span id="current-lang-label" class="tracking-wide text-[#b4f73a] font-extrabold text-xs">O'Z</span>
               <i data-lucide="chevron-down" id="lang-dropdown-arrow" class="w-3.5 h-3.5 text-[#94a3b8] transition-transform duration-200"></i>
             </button>
 
-            <!-- Dropdown Menu (tepadan pastga qarab ochiladi) -->
+            <!-- Dropdown Menu (tepadan pastga qarab ochiladi, ixcham, bevosita) -->
             <div
               id="lang-dropdown-menu"
-              class="hidden absolute right-0 mt-2 w-40 py-1.5 bg-[#071912] border border-[#183a2d] rounded-2xl shadow-[0_12px_32px_rgba(0,0,0,0.85)] backdrop-blur-xl z-50 animate-fade-in"
+              class="hidden absolute right-0 mt-1.5 w-36 p-1 bg-[#091e16] border border-[#1d4d38] rounded-xl shadow-[0_12px_32px_rgba(0,0,0,0.9)] backdrop-blur-2xl z-50 animate-fade-in divide-y divide-[#133527]/70"
               role="menu"
             >
               <button
                 type="button"
                 data-action="set-lang-and-close"
                 data-lang="uz"
-                class="lang-dropdown-item w-full px-3.5 py-2.5 text-left text-xs font-bold flex items-center justify-between text-white hover:bg-[#102d20] transition-colors"
+                class="lang-dropdown-item w-full px-2.5 py-1.5 rounded-lg text-left text-xs font-semibold flex items-center justify-between text-white hover:bg-[#133827] transition-all"
                 role="menuitem"
               >
-                <span>O'zbekcha</span>
-                <span class="text-[10px] text-[#b4f73a] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">O'Z</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">🇺🇿</span>
+                  <span class="font-bold">O'zbek</span>
+                </div>
+                <span class="lang-check text-[#b4f73a] text-xs font-black">✓</span>
               </button>
               <button
                 type="button"
                 data-action="set-lang-and-close"
                 data-lang="ru"
-                class="lang-dropdown-item w-full px-3.5 py-2.5 text-left text-xs font-bold flex items-center justify-between text-[#cbd5e1] hover:text-white hover:bg-[#102d20] transition-colors"
+                class="lang-dropdown-item w-full px-2.5 py-1.5 rounded-lg text-left text-xs font-semibold flex items-center justify-between text-[#cbd5e1] hover:text-white hover:bg-[#133827] transition-all"
                 role="menuitem"
               >
-                <span>Русский</span>
-                <span class="text-[10px] text-[#94a3b8] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">РУ</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">🇷🇺</span>
+                  <span class="font-bold">Русский</span>
+                </div>
+                <span class="lang-check text-[#b4f73a] text-xs font-black hidden">✓</span>
               </button>
               <button
                 type="button"
                 data-action="set-lang-and-close"
                 data-lang="en"
-                class="lang-dropdown-item w-full px-3.5 py-2.5 text-left text-xs font-bold flex items-center justify-between text-[#cbd5e1] hover:text-white hover:bg-[#102d20] transition-colors"
+                class="lang-dropdown-item w-full px-2.5 py-1.5 rounded-lg text-left text-xs font-semibold flex items-center justify-between text-[#cbd5e1] hover:text-white hover:bg-[#133827] transition-all"
                 role="menuitem"
               >
-                <span>English</span>
-                <span class="text-[10px] text-[#94a3b8] px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]">EN</span>
+                <div class="flex items-center gap-2">
+                  <span class="text-sm">🇬🇧</span>
+                  <span class="font-bold">English</span>
+                </div>
+                <span class="lang-check text-[#b4f73a] text-xs font-black hidden">✓</span>
               </button>
             </div>
           </div>
@@ -589,11 +598,22 @@
                 <p class="text-xs text-[#94a3b8]">Usta, shifoxona, zapravka va DXM qidiruvi</p>
               </div>
             </div>
-            <span
-              class="text-xs bg-[#102d20] border border-[#183a2d] px-3 py-1 rounded-full text-[#94a3b8] font-semibold"
-            >
-              Qabul ochiq
-            </span>
+            <div class="flex items-center gap-2">
+              <button
+                id="ai-gemini-key-trigger"
+                type="button"
+                class="text-[11px] bg-[#102d20] hover:bg-[#153d2c] border border-[#183a2d] hover:border-[#b4f73a]/50 px-2.5 py-1 rounded-full text-[#b4f73a] font-bold flex items-center gap-1 transition-all"
+                title="Gemini AI Kalitini ulash / Подключить ключ Gemini AI"
+              >
+                <i data-lucide="sparkles" class="w-3 h-3 text-[#b4f73a]"></i>
+                <span>Gemini AI</span>
+              </button>
+              <span
+                class="text-xs bg-[#102d20] border border-[#183a2d] px-3 py-1 rounded-full text-[#94a3b8] font-semibold"
+              >
+                24/7 Onlayn
+              </span>
+            </div>
           </div>
 
           <div id="ai-chat-messages" class="flex-1 p-5 overflow-y-auto space-y-4 min-h-0">

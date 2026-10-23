@@ -110,7 +110,7 @@ export function placeCardHtml(rawPlace) {
           </div>
           <p class="text-[10px] text-emerald-400 font-semibold mt-1 flex items-center gap-1">
             <i data-lucide="clock" class="w-3 h-3"></i>
-            <span>${escapeHtml(place.is247 ? "24/7 Tunu-kun" : `${place.openTime} - ${place.closeTime}`)}</span>
+            <span>${escapeHtml(place.is247 ? (lang === 'ru' ? '24/7 Круглосуточно' : lang === 'en' ? '24/7 Open' : '24/7 Tunu-kun') : `${place.openTime} - ${place.closeTime}`)}</span>
           </p>
         </div>
       </div>

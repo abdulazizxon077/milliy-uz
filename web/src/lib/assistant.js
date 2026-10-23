@@ -17,11 +17,37 @@ const GREETINGS = [
   'what\'s up', 'whats up', 'how do you do',
 ];
 
+const LOCATION_WORDS = [
+  'qayerdasan', 'qayerda yashaysan', 'qaerdasan', 'qayerda turasan', 'qayerdansan', 'qaerda',
+  'sen qayerda', 'siz qayerda',
+  'где ты', 'где ты живешь', 'где ты живёшь', 'ты где', 'где находишься', 'откуда ты', 'где вы находитесь',
+  'где ты обитаешь',
+  'where are you', 'where do you live', 'where are you from', 'where are you located',
+];
+
+const WEATHER_WORDS = [
+  'ob-havo', 'havo', 'ob havo', 'yomg\'ir', 'qor', 'harorat', 'issiqmi', 'sovuqmi',
+  'погода', 'климат', 'прогноз погоды', 'дождь', 'температура', 'жарко', 'холодно',
+  'weather', 'forecast', 'temperature', 'climate',
+];
+
+const FOOD_WORDS = [
+  'osh', 'palov', 'somsa', 'shashlik', 'manti', 'lag\'mon', 'lagmon', 'milliy taom', 'ovqat', 'taomlar', 'choyxona',
+  'плов', 'самса', 'шашлык', 'манты', 'лагман', 'еда', 'кухня', 'кушать', 'национальные блюда', 'где поесть',
+  'food', 'plov', 'somsa', 'shashlik', 'cuisine', 'restaurant', 'eat',
+];
+
+const TOURISM_WORDS = [
+  'sayohat', 'qayerga borish', 'diqqatga sazovor', 'tarixiy', 'turizm', 'qayerlar chiroyli',
+  'куда поехать', 'достопримечательности', 'туризм', 'экскурсия', 'что посмотреть', 'красивые места',
+  'places to visit', 'tourism', 'travel', 'sightseeing', 'attractions',
+];
+
 const BOT_IDENTITY_WORDS = [
   'kim san', 'kimsan', 'kim siz', 'sen kimsan', 'kimsiz', 'nima qila olasan',
-  'vazifang nima', 'qanday ishlaysan', 'qanaqa bot', 'suniy intellekt',
-  'кто ты', 'что ты умеешь', 'кто вы', 'что это за сайт',
-  'who are you', 'what can you do', 'what is this site',
+  'vazifang nima', 'qanday ishlaysan', 'qanaqa bot', 'suniy intellekt', 'isming nima',
+  'кто ты', 'что ты умеешь', 'кто вы', 'что это за сайт', 'как тебя зовут', 'какое твое имя',
+  'who are you', 'what can you do', 'what is this site', 'what is your name',
 ];
 
 const THANKS = [
@@ -390,6 +416,50 @@ export function answerLocally(query, places = [], limit = 2, lang = 'uz') {
     return { kind: 'text', text: identityReplies[activeLang] || identityReplies.uz };
   }
 
+  // 2b. Location & Where are you ("где ты", "sen qayerdasan")
+  if (LOCATION_WORDS.some((w) => q.includes(w))) {
+    const locReplies = {
+      uz: "Men O'zbekistonda, Milliy.uz platformasining bulutli serverlarida joylashganman! Butun respublikamizning barcha 14 ta hududidagi (Toshkentdan Nukusgacha) barcha foydalanuvchilarga kunu-tun onlayn xizmat ko'rsataman. Siz qaysi viloyat yoki shahardasiz?",
+      ru: "Я нахожусь в Узбекистане, в цифровом пространстве платформы Milliy.uz! Работаю онлайн 24/7 для жителей и гостей всех 14 регионов нашей страны — от Ташкента до Нукуса. В каком городе или области вы сейчас находитесь?",
+      en: "I am located in Uzbekistan, operating within the Milliy.uz digital platform! I assist users across all 14 regions of the country 24/7. Which region or city are you currently in?",
+    };
+    return { kind: 'text', text: locReplies[activeLang] || locReplies.uz };
+  }
+
+  // 2c. Weather inquiries
+  if (WEATHER_WORDS.some((w) => q.includes(w))) {
+    const weatherReplies = {
+      uz: "Savolingiz uchun rahmat! O'zbekistonda iqlim keskin kontinental va asosan quyoshli bo'lib, yiliga 300 dan ortiq quyoshli kunlar kuzatiladi. Hududingiz bo'yicha eng so'nggi aniq prognozlarni O'zgidromet (meteo.uz) xizmati orqali tekshirishingiz mumkin. Saytimizda siz har qanday ob-havoda 24/7 ishlaydigan dorixonalar, shifoxonalar va issiq choyxonalarni topishingiz mumkin!",
+      ru: "Спасибо за ваш вопрос! В Узбекистане континентальный солнечный климат — свыше 300 ясных дней в году! Актуальный прогноз по вашему городу доступен на сервисе Узгидромета (meteo.uz). В каталоге Milliy.uz всегда можно найти заведения, работающие в любую погоду 24/7: теплые чайханы, круглосуточные аптеки и автосервисы.",
+      en: "Thank you for asking! Uzbekistan enjoys a sunny continental climate with over 300 sunny days annually. For local forecasts, check Uzhydromet (meteo.uz). On Milliy.uz, you can find businesses open in all weather 24/7: warm teahouses, emergency clinics, and repair workshops.",
+    };
+    return { kind: 'text', text: weatherReplies[activeLang] || weatherReplies.uz };
+  }
+
+  // 2d. Food & Cuisine inquiries
+  if (FOOD_WORDS.some((w) => q.includes(w))) {
+    const foodPlaces = places.filter((p) => p.category === 'food').slice(0, limit);
+    const foodIntro = {
+      uz: "O'zbek milliy taomlari — Toshkent to'y oshi, Samarqand oshi va noni, mashhur Jizzax somsasi, Xorazm tuxumbaragi, G'ijduvon shashligi va Farg'ona qovurma go'shti bilan dunyoga mashhur! Yaqin atrofdagi eng sarra oshxona va choyxonalar:",
+      ru: "Узбекская кухня славится на весь мир: ташкентский свадебный плов, самаркандский плов и лепешки, легендарная джизакская самса, хорезмский тухум-барак и гиждуванский шашлык! Лучшие проверенные чайханы и рестораны:",
+      en: "Uzbek cuisine is globally celebrated for its Tashkent wedding plov, Samarkand bread, Jizzakh somsa, Khorezmian dishes, and Gijduvan kebabs! Top-rated teahouses and plov centers:",
+    };
+    if (foodPlaces.length > 0) {
+      return { kind: 'places', intro: foodIntro[activeLang] || foodIntro.uz, places: foodPlaces };
+    }
+    return { kind: 'text', text: foodIntro[activeLang] || foodIntro.uz };
+  }
+
+  // 2e. Tourism & Sightseeing
+  if (TOURISM_WORDS.some((w) => q.includes(w))) {
+    const tourismReplies = {
+      uz: "O'zbekistonning eng mashhur sayyohlik maskanlari:\n• Samarqand: Registon maydoni, Go'ri Amir, Shohi Zinda.\n• Buxoro: Qadimiy Ark qal'asi, Minorai Kalon, Labi Hovuz.\n• Xiva: YuNESKO butunjahon merosi ro'yxatidagi Ichan Qal'a muzey-shahri.\n• Toshkent viloyati: Chorvoq suv ombori, Chimyon va Amirsoy tog' kurortlari.\n• Jizzax: Zomin milliy tabiat bog'i («O'zbekiston Shveytsariyasi»).\n• Qoraqalpog'iston: Savitskiy nomidagi san'at muzeyi va Mo'ynoq.",
+      ru: "Главные сокровища Узбекистана для путешественников:\n• Самарканд: Площадь Регистан, Гур-Эмир, Шахи-Зинда.\n• Бухара: Цитадель Арк, Минарет Калян, Ляби-Хауз.\n• Хива: Крепость Ичан-Кала (ЮНЕСКО).\n• Ташкентская область: Озеро Чарвак, Чимган и курорт Амирсой.\n• Джизак: Зааминский высокогорный парк («Узбекская Швейцария»).\n• Каракалпакстан: Музей Савицкого в Нукусе и Муйнак.",
+      en: "Top travel destinations across Uzbekistan:\n• Samarkand: Registan Square, Gur-e-Amir, Shah-i Zinda.\n• Bukhara: Ark Citadel, Kalyan Minaret, Lyabi-Khauz.\n• Khiva: Ancient walled city of Ichan Kala (UNESCO).\n• Tashkent region: Lake Charvak, Chimgan mountains, and Amirsoy resort.\n• Jizzakh: Zaamin Alpine National Park ('Uzbek Switzerland').\n• Karakalpakstan: The Savitsky Art Museum in Nukus.",
+    };
+    return { kind: 'text', text: tourismReplies[activeLang] || tourismReplies.uz };
+  }
+
   // 3. Thanks
   if (THANKS.some((t) => q.includes(t))) {
     const thanksReplies = {
@@ -438,9 +508,9 @@ export function answerLocally(query, places = [], limit = 2, lang = 'uz') {
 
   // 7. Intelligent universal conversational answer
   const universalReplies = {
-    uz: `Savolingiz uchun rahmat! "${query}" mavzusida O'zbekiston bo'yicha kerakli xizmat yoki tashkilotni topishga tayyorman. Yuqoridagi xaritadan o'z viloyatingizni tanlashingiz yoki katalogdan aniq sohani ko'rishingiz mumkin. Shuningdek, avto-ustalar, shifoxonalar, 24/7 dorixonalar, DXM va zapravkalar bo'yicha to'g'ridan-to'g'ri so'rashingiz mumkin.`,
-    ru: `Спасибо за ваш вопрос! По теме "${query}" я готов подсказать любую информацию или помочь найти нужную организацию в вашем регионе Узбекистана. Выберите область на интерактивной карте выше или задайте конкретный вопрос по сервисам.`,
-    en: `Thank you for your question! Regarding "${query}", I am ready to help you find relevant services or organizations in your region of Uzbekistan. You can select your region on the map above or ask about specific workshops, clinics, or services.`,
+    uz: `Savolingiz uchun rahmat! "${query}" bo'yicha O'zbekistonning barcha 14 ta hududidagi tekshirilgan xizmatlar, ustaxonalar, 24/7 navbatchi dorixonalar, shifoxonalar, DXM markazlari va zapravkalar haqida to'liq ma'lumot berishga tayyorman. Yuqoridagi xaritadan viloyatingizni tanlang yoki qidirayotgan xizmatingizni yozing!`,
+    ru: `Спасибо за ваш вопрос! По вашему запросу "${query}" я готов предоставить актуальную информацию и найти нужные организации по всем 14 регионам Узбекистана: проверенные автосервисы, круглосуточные аптеки, медицинские центры, заправки и центры госуслуг с контактами и ценами. Выберите нужный регион на карте выше или уточните, какая организация вам нужна!`,
+    en: `Thank you for asking! Regarding "${query}", I can assist you with verified services across all 14 regions of Uzbekistan, including workshops, 24/7 pharmacies, hospitals, fuel stations, and public centers with verified contacts. Feel free to select your region on the map above or ask for a specific service!`,
   };
 
   return { kind: 'text', text: universalReplies[activeLang] || universalReplies.uz };

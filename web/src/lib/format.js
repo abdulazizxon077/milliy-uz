@@ -1,3 +1,10 @@
+import {
+  translateDate,
+  translateFeature,
+  translatePrice,
+  translateService,
+} from './catalog-i18n.js';
+
 const HTML_ESCAPES = { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' };
 
 /** Escapes a value for safe interpolation into HTML text or quoted attributes. */
@@ -137,6 +144,26 @@ export function safeImageUrl(url) {
 export function getLocalizedPlace(place, lang = 'uz') {
   if (!place) return place;
   if (lang === 'uz') return place;
+
+  const features = (place[`features_${lang}`] || place.features || []).map((f) =>
+    translateFeature(f, lang)
+  );
+
+  const pricingDetails = (place[`pricingDetails_${lang}`] || place.pricingDetails || []).map(
+    (item) => ({
+      ...item,
+      service: translateService(item.service, lang),
+      price: translatePrice(item.price, lang),
+    })
+  );
+
+  const reviews = (place.reviews || []).map((rev) => ({
+    ...rev,
+    date: translateDate(rev.date, lang),
+  }));
+
+  const priceRange = translatePrice(place.priceRange, lang);
+
   return {
     ...place,
     name: place[`name_${lang}`] || place.name,
@@ -146,7 +173,9 @@ export function getLocalizedPlace(place, lang = 'uz') {
     workDays: place[`workDays_${lang}`] || place.workDays,
     experienceText: place[`experienceText_${lang}`] || place.experienceText,
     chiefSpecialist: place[`chiefSpecialist_${lang}`] || place.chiefSpecialist,
-    features: place[`features_${lang}`] || place.features,
-    pricingDetails: place[`pricingDetails_${lang}`] || place.pricingDetails,
+    features,
+    pricingDetails,
+    reviews,
+    priceRange,
   };
 }

@@ -81,6 +81,27 @@ function replyLocally(text) {
   }
 }
 
+async function callGeminiDirect(key, message, lang = 'uz') {
+  const systemPrompt = `Siz Milliy.uz milliy platformasining aqlli AI konsultantisiz.
+Foydalanuvchi qaysi tilda murojaat qilsa (${lang === 'ru' ? 'русский' : lang === 'en' ? 'English' : "o'zbek"}), xuddi shu tilda muloyim, to'liq, aniq va yordam beruvchi qilib javob bering. O'zbekistonning barcha 14 ta hududi (Toshkent shahri, Toshkent viloyati, Samarqand, Buxoro, Navoiy, Qashqadaryo, Surxondaryo, Jizzax, Sirdaryo, Xorazm, Qoraqalpog'iston, Farg'ona, Namangan, Andijon), ularning ma'muriy markazlari, ustaxonalari, tibbiy yordam, zapravkalar va boshqa barcha sohalar bo'yicha har qanday savolga aniq va to'g'ri javob bering.`;
+
+  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${encodeURIComponent(key)}`;
+  const res = await fetch(url, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({
+      systemInstruction: { parts: [{ text: systemPrompt }] },
+      contents: [{ role: 'user', parts: [{ text: message }] }],
+      generationConfig: { maxOutputTokens: 800, temperature: 0.3 },
+    }),
+  });
+  if (!res.ok) throw new Error(`Gemini status: ${res.status}`);
+  const data = await res.json();
+  const reply = data?.candidates?.[0]?.content?.parts?.map((p) => p.text ?? '').join('');
+  if (!reply) throw new Error('Empty Gemini reply');
+  return reply;
+}
+
 export async function sendMessage(raw) {
   const text = String(raw ?? input()?.value ?? '')
     .trim()
@@ -91,6 +112,20 @@ export async function sendMessage(raw) {
   userBubble(text);
   showTyping();
   try {
+    // 1. Direct browser Gemini AI if API key is saved
+    const geminiKey = localStorage.getItem('gemini_api_key');
+    if (geminiKey) {
+      try {
+        const reply = await callGeminiDirect(geminiKey, text, state.lang);
+        hideTyping();
+        botBubble(`<p class="whitespace-pre-wrap break-words">${escapeHtml(reply)}</p>`);
+        return;
+      } catch (geminiErr) {
+        console.warn('Direct Gemini call failed, falling back:', geminiErr);
+      }
+    }
+
+    // 2. Server chat (if backend is running with provider)
     if (state.serverChat) {
       try {
         const { reply } = await api.chat(text);
@@ -98,10 +133,12 @@ export async function sendMessage(raw) {
         botBubble(`<p class="whitespace-pre-wrap break-words">${escapeHtml(reply)}</p>`);
         return;
       } catch (err) {
-        if (err.status === 503) state.serverChat = false;
+        if (err.status === 503 || err.status === 404) state.serverChat = false;
         if (err.status === 429) showToast("Juda ko'p so'rov. Birozdan so'ng urinib ko'ring");
       }
     }
+
+    // 3. Multilingual local intelligent knowledge & conversational assistant
     hideTyping();
     replyLocally(text);
   } catch (err) {
@@ -112,7 +149,7 @@ export async function sendMessage(raw) {
   }
 }
 
-export function initVoice(onResult) {
+export function initVoice() {
   const btn = document.getElementById('ai-mic-btn');
   const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
   const statusEl = document.getElementById('ai-voice-status');
@@ -124,19 +161,26 @@ export function initVoice(onResult) {
     return;
   }
   const rec = new SpeechRec();
-  rec.continuous = false;
+  rec.continuous = true;
+  rec.interimResults = true;
   let listening = false;
   let originalPlaceholder = inputEl?.placeholder || '';
+  let finalTranscript = '';
 
   function stopUi() {
     listening = false;
     btn.classList.remove('mic-active');
     if (statusEl) statusEl.classList.add('hidden');
     if (inputEl && originalPlaceholder) inputEl.placeholder = originalPlaceholder;
+    if (inputEl && inputEl.value.trim()) {
+      inputEl.focus();
+      inputEl.selectionStart = inputEl.selectionEnd = inputEl.value.length;
+    }
   }
 
   function startUi() {
     listening = true;
+    finalTranscript = inputEl?.value ? inputEl.value + ' ' : '';
     btn.classList.add('mic-active');
     if (statusEl) statusEl.classList.remove('hidden');
     const lang = state.lang || 'uz';
@@ -154,22 +198,31 @@ export function initVoice(onResult) {
   }
 
   rec.onresult = (e) => {
-    const text = e.results[0]?.[0]?.transcript;
-    if (text) {
-      if (inputEl) inputEl.value = text;
-      onResult(text);
+    let interim = '';
+    for (let i = e.resultIndex; i < e.results.length; i++) {
+      const part = e.results[i][0].transcript;
+      if (e.results[i].isFinal) {
+        finalTranscript += part + ' ';
+      } else {
+        interim += part;
+      }
     }
-    stopUi();
+    const fullText = (finalTranscript + interim).trim();
+    if (inputEl && fullText) {
+      inputEl.value = fullText;
+    }
   };
+
   rec.onend = () => {
     stopUi();
   };
+
   rec.onerror = (e) => {
     stopUi();
     const lang = state.lang || 'uz';
     if (e.error === 'not-allowed') {
       showToast(lang === 'ru' ? 'Доступ к микрофону заблокирован' : lang === 'en' ? 'Microphone access denied' : 'Brauzerda mikrofonga ruxsat berilmadi');
-    } else {
+    } else if (e.error !== 'no-speech') {
       showToast(lang === 'ru' ? 'Голос не распознан' : lang === 'en' ? 'Could not recognize voice' : "Ovozni aniqlab bo'lmadi");
     }
   };
