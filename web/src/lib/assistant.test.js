@@ -76,6 +76,12 @@ describe('answerLocally', () => {
     expect(res.text).toContain('Savolingiz uchun rahmat');
   });
 
+  it('answers factual regional geographic queries like Jizzax viloyati qayerda', () => {
+    const res = answerLocally('jizzax viloyat qayerda jizzax viloyati', places);
+    expect(res.intro || res.text).toContain("Jizzax viloyati O'zbekistonning markaziy qismida");
+    expect(res.intro || res.text).toContain("Zomin");
+  });
+
   it('asks for clarification otherwise', () => {
     expect(answerLocally('nimadir', places).text).toMatch(/^Aniqroq yozing/);
     expect(answerLocally('что-то непонятное', places).text).toMatch(/^Уточните запрос/);

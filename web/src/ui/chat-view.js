@@ -115,42 +115,78 @@ export async function sendMessage(raw) {
 export function initVoice(onResult) {
   const btn = document.getElementById('ai-mic-btn');
   const SpeechRec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const statusEl = document.getElementById('ai-voice-status');
+  const statusText = document.getElementById('ai-voice-status-text');
+  const inputEl = document.getElementById('ai-user-input');
   if (!btn) return;
   if (!SpeechRec) {
     btn.style.display = 'none';
     return;
   }
   const rec = new SpeechRec();
-  rec.lang = state.lang === 'ru' ? 'ru-RU' : state.lang === 'en' ? 'en-US' : 'uz-UZ';
   rec.continuous = false;
   let listening = false;
+  let originalPlaceholder = inputEl?.placeholder || '';
+
+  function stopUi() {
+    listening = false;
+    btn.classList.remove('mic-active');
+    if (statusEl) statusEl.classList.add('hidden');
+    if (inputEl && originalPlaceholder) inputEl.placeholder = originalPlaceholder;
+  }
+
+  function startUi() {
+    listening = true;
+    btn.classList.add('mic-active');
+    if (statusEl) statusEl.classList.remove('hidden');
+    const lang = state.lang || 'uz';
+    const msg =
+      lang === 'ru'
+        ? 'Слушаю вас... Говорите...'
+        : lang === 'en'
+        ? 'Listening... Speak now...'
+        : 'Ovoz yozilmoqda... Gapiring...';
+    if (statusText) statusText.textContent = msg;
+    if (inputEl) {
+      originalPlaceholder = inputEl.placeholder;
+      inputEl.placeholder = msg;
+    }
+  }
 
   rec.onresult = (e) => {
     const text = e.results[0]?.[0]?.transcript;
-    if (text) onResult(text);
+    if (text) {
+      if (inputEl) inputEl.value = text;
+      onResult(text);
+    }
+    stopUi();
   };
   rec.onend = () => {
-    listening = false;
-    btn.classList.remove('mic-active');
+    stopUi();
   };
-  rec.onerror = () => {
-    listening = false;
-    btn.classList.remove('mic-active');
-    showToast("Ovozni aniqlab bo'lmadi");
+  rec.onerror = (e) => {
+    stopUi();
+    const lang = state.lang || 'uz';
+    if (e.error === 'not-allowed') {
+      showToast(lang === 'ru' ? 'Доступ к микрофону заблокирован' : lang === 'en' ? 'Microphone access denied' : 'Brauzerda mikrofonga ruxsat berilmadi');
+    } else {
+      showToast(lang === 'ru' ? 'Голос не распознан' : lang === 'en' ? 'Could not recognize voice' : "Ovozni aniqlab bo'lmadi");
+    }
   };
 
   btn.addEventListener('click', () => {
     if (listening) {
       rec.stop();
+      stopUi();
       return;
     }
     try {
       rec.lang = state.lang === 'ru' ? 'ru-RU' : state.lang === 'en' ? 'en-US' : 'uz-UZ';
       rec.start();
-      listening = true;
-      btn.classList.add('mic-active');
+      startUi();
     } catch {
-      showToast("Mikrofonni ishga tushirib bo'lmadi");
+      stopUi();
+      showToast(state.lang === 'ru' ? 'Не удалось запустить микрофон' : state.lang === 'en' ? 'Failed to start microphone' : "Mikrofonni ishga tushirib bo'lmadi");
     }
   });
 }

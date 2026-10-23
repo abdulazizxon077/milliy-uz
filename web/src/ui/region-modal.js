@@ -11,6 +11,7 @@ import { notify, state } from '../state.js';
 import { closeModal, openModal } from './modal.js';
 import { showToast } from './toast.js';
 import { highlightMapRegion } from './uzbekistan-map.js';
+import { refreshIcons } from './icons.js';
 
 export function openRegionPicker(categoryId) {
   state.selectedCategoryPending = categoryId;
@@ -52,6 +53,7 @@ export function renderRegionButtons() {
       </button>
     `;
   }).join('');
+  refreshIcons();
 }
 
 export function handleRegionPick(regionId) {

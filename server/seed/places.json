@@ -2629,5 +2629,181 @@
         "comment": "Shifokorlarga kattakon rahmat, juda mehribon va professional."
       }
     ]
+  },
+  {
+    "id": "tashkent-vil-hospital",
+    "name": "Toshkent Viloyat Ko'p Tarmoqli Markaziy Tibbiyot Markazi",
+    "name_ru": "Ташкентский областной многопрофильный медицинский центр",
+    "name_en": "Tashkent Regional Multidisciplinary Medical Center",
+    "category": "medical",
+    "categoryName": "Shifoxona & Dori",
+    "subCategory": "24/7 Shoshilinch tez tibbiy yordam, jarrohlik va kardiologiya",
+    "subCategory_ru": "24/7 Скорая неотложная медицинская помощь, хирургия и кардиология",
+    "subCategory_en": "24/7 Emergency medical care, surgery, and cardiology department",
+    "region": "tashkent_region",
+    "rating": 4.8,
+    "reviewsCount": 312,
+    "experienceYears": 28,
+    "experienceText": "28 yillik davlat tibbiyot markazi",
+    "experienceText_ru": "28 лет государственного медицинского центра",
+    "experienceText_en": "28 years of regional medical excellence",
+    "chiefSpecialist": "Dr. Baxtiyor Normatov (Bosh shifokor)",
+    "chiefSpecialist_ru": "Д-р Бахтиёр Норматов (Главврач)",
+    "chiefSpecialist_en": "Dr. Bakhtiyor Normatov (Chief Physician)",
+    "phone": "+998 70 762 10 03",
+    "secondaryPhone": "103",
+    "lat": 41.0425,
+    "lng": 69.3564,
+    "openTime": "00:00",
+    "closeTime": "23:59",
+    "is247": true,
+    "address": "Toshkent viloyati, Nurafshon sh., Toshkent yo'li ko'chasi, 12-uy",
+    "address_ru": "Ташкентская область, г. Нурафшон, ул. Тошкент йули, дом 12",
+    "address_en": "Tashkent region, Nurafshon city, Toshkent yoli street, bldg 12",
+    "landmark": "Nurafshon hokimligidan 600m",
+    "landmark_ru": "600 м от хокимията г. Нурафшон",
+    "landmark_en": "600m from Nurafshon City Administration",
+    "priceRange": "Davlat kafolati / 103 xizmati bepul",
+    "pricingDetails": [
+      {
+        "service": "Shoshilinch tibbiy yordam va 103 brigada",
+        "price": "Bepul (Davlat kafolati)"
+      },
+      {
+        "service": "Umumiy qon va biokimyoviy tahlillar",
+        "price": "25 000 – 60 000 UZS"
+      },
+      {
+        "service": "Rentgen va UTT (UZI) diagnostikasi",
+        "price": "40 000 – 90 000 UZS"
+      }
+    ],
+    "features": [
+      "24/7 Tunu-kun tez yordam",
+      "Reanimatsiya bo'limi",
+      "Davlat kafolati"
+    ],
+    "workDays": "Har kuni 24/7 tunu-kun",
+    "workDays_ru": "Ежедневно 24/7 круглосуточно",
+    "workDays_en": "Every day 24/7 open round the clock",
+    "image": "/images/places/tez-yordam.jpg",
+    "isFree": true
+  },
+  {
+    "id": "chirchiq-auto-servis",
+    "name": "Chirchiq Avto Diagnostika & Gaz-Ballon Servis",
+    "name_ru": "Автосервис Чирчик Диагностика & ГБО",
+    "name_en": "Chirchiq Auto Diagnostics & CNG Service",
+    "category": "auto",
+    "categoryName": "Avtomobil & Ustaxona",
+    "subCategory": "Mator kapital ta'miri, xodovoy va 4-avlod metan kalibratsiyasi",
+    "subCategory_ru": "Капремонт двигателя, ходовая и настройка 4-поколения ГБО",
+    "subCategory_en": "Engine overhaul, suspension, and 4th gen CNG tuning",
+    "region": "tashkent_region",
+    "rating": 4.8,
+    "reviewsCount": 194,
+    "experienceYears": 16,
+    "experienceText": "16 yillik usta jamoasi",
+    "experienceText_ru": "16 лет опыта мастеров",
+    "experienceText_en": "16 years of certified service",
+    "chiefSpecialist": "Ulug'bek Yusupov (Katta usta)",
+    "chiefSpecialist_ru": "Улугбек Юсупов (Старший мастер)",
+    "chiefSpecialist_en": "Ulugbek Yusupov (Lead Mechanic)",
+    "phone": "+998 70 715 22 44",
+    "secondaryPhone": "+998 93 500 11 22",
+    "lat": 41.4689,
+    "lng": 69.5822,
+    "openTime": "08:30",
+    "closeTime": "20:00",
+    "is247": false,
+    "address": "Toshkent vil., Chirchiq sh., A. Navoiy shoh ko'chasi, 45-uy",
+    "address_ru": "Ташкентская обл., г. Чирчик, ул. А. Навои, 45",
+    "address_en": "Tashkent region, Chirchiq city, A. Navoiy avenue, 45",
+    "landmark": "Chirchiq avtovokzalidan 300m",
+    "landmark_ru": "300 м от автовокзала Чирчик",
+    "landmark_en": "300m from Chirchiq bus terminal",
+    "priceRange": "35 000 – 450 000 UZS",
+    "pricingDetails": [
+      {
+        "service": "OBD kompyuter diagnostikasi",
+        "price": "40 000 UZS"
+      },
+      {
+        "service": "Xodovoy qismlarni sozlash",
+        "price": "80 000 UZS dan"
+      },
+      {
+        "service": "Metan forsunka yuvish va kalibrlash",
+        "price": "90 000 UZS"
+      }
+    ],
+    "features": [
+      "Kafolat beriladi",
+      "Ehtiyot qismlar do'koni",
+      "Payme / Click"
+    ],
+    "workDays": "Dushanba - Shanba (08:30 - 20:00)",
+    "workDays_ru": "Понедельник - Суббота (08:30 - 20:00)",
+    "workDays_en": "Monday - Saturday (08:30 - 20:00)",
+    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    "id": "chorvoq-dam-olish",
+    "name": "Chorvoq Dam Olish Maskani & Chimyon Kurorti",
+    "name_ru": "Зона отдыха Чарвак & Курорт Чимган",
+    "name_en": "Charvak Recreation Resort & Chimgan",
+    "category": "parks",
+    "categoryName": "Parklar & Hordiq",
+    "subCategory": "Tog' havosi, kemping, qayiq sayri va ekoturizm",
+    "subCategory_ru": "Горный отдых, кемпинг, прогулки на катерах и экотуризм",
+    "subCategory_en": "Mountain resort, camping, boat tours and ecotourism",
+    "region": "tashkent_region",
+    "rating": 4.9,
+    "reviewsCount": 840,
+    "experienceYears": 20,
+    "experienceText": "Toshkent viloyatining bosh tog' kurorti",
+    "experienceText_ru": "Главный горный курорт Ташкентской области",
+    "experienceText_en": "Main mountain resort of Tashkent region",
+    "chiefSpecialist": "Turizm boshqarmasi ma'muriyati",
+    "chiefSpecialist_ru": "Администрация управления туризмом",
+    "chiefSpecialist_en": "Tourism Management Board",
+    "phone": "+998 90 955 88 00",
+    "secondaryPhone": "+998 71 200 00 88",
+    "lat": 41.6253,
+    "lng": 70.0435,
+    "openTime": "07:00",
+    "closeTime": "23:00",
+    "is247": false,
+    "address": "Toshkent viloyati, Bo'stonliq tumani, Chorvoq suv ombori bo'yi",
+    "address_ru": "Ташкентская область, Бостанлыкский район, Чарвакское водохранилище",
+    "address_en": "Tashkent region, Bostonliq district, Charvak reservoir",
+    "landmark": "Chorvoq to'g'onidan 2 km",
+    "landmark_ru": "2 км от Чарвакской плотины",
+    "landmark_en": "2km from Charvak dam",
+    "priceRange": "Kirish bepul / Xizmatlar 40 000 UZS dan",
+    "pricingDetails": [
+      {
+        "service": "Qirg'oq bo'yiga kirish",
+        "price": "Bepul"
+      },
+      {
+        "service": "Kater va qayiqda 15 daqiqalik sayr",
+        "price": "60 000 UZS"
+      },
+      {
+        "service": "Kemping va tapchan ijarasi",
+        "price": "120 000 UZS kunlik"
+      }
+    ],
+    "features": [
+      "Toza tog' havosi",
+      "Oilaviy hordiq",
+      "Avtoturargoh"
+    ],
+    "workDays": "Har kuni (07:00 - 23:00)",
+    "workDays_ru": "Ежедневно (07:00 - 23:00)",
+    "workDays_en": "Every day (07:00 - 23:00)",
+    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "isFree": true
   }
 ]

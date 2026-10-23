@@ -81,6 +81,11 @@ export const REGIONS_I18N = {
     ru: 'г. Ташкент',
     en: 'Tashkent city',
   },
+  tashkent_region: {
+    uz: 'Toshkent viloyati',
+    ru: 'Ташкентская область',
+    en: 'Tashkent region',
+  },
   samarkand: {
     uz: 'Samarqand viloyati',
     ru: 'Самаркандская область',
@@ -144,19 +149,20 @@ export const REGIONS_I18N = {
 };
 
 export const REGIONS = [
-  { id: 'tashkent', name: 'Toshkent shahri', center: { lat: 41.3111, lng: 69.2406 } },
-  { id: 'samarkand', name: 'Samarqand', center: { lat: 39.6542, lng: 66.9597 } },
-  { id: 'fergana', name: "Farg'ona", center: { lat: 40.3842, lng: 71.7843 } },
-  { id: 'andijan', name: 'Andijon', center: { lat: 40.7821, lng: 72.3442 } },
-  { id: 'namangan', name: 'Namangan', center: { lat: 40.9983, lng: 71.6726 } },
-  { id: 'bukhara', name: 'Buxoro', center: { lat: 39.7747, lng: 64.4286 } },
-  { id: 'qashqadaryo', name: 'Qashqadaryo', center: { lat: 38.8606, lng: 65.7891 } },
-  { id: 'surxondaryo', name: 'Surxondaryo', center: { lat: 37.2242, lng: 67.2783 } },
-  { id: 'navoiy', name: 'Navoiy', center: { lat: 40.0844, lng: 65.3792 } },
-  { id: 'xorazm', name: 'Xorazm', center: { lat: 41.5562, lng: 60.6317 } },
-  { id: 'jizzax', name: 'Jizzax', center: { lat: 40.1158, lng: 67.8422 } },
-  { id: 'sirdaryo', name: 'Sirdaryo', center: { lat: 40.4983, lng: 68.7842 } },
-  { id: 'karakalpak', name: "Qoraqalpog'iston", center: { lat: 42.458, lng: 59.612 } },
+  { id: 'tashkent', name: 'Toshkent shahri', center: { lat: 41.3111, lng: 69.2797 } },
+  { id: 'tashkent_region', name: 'Toshkent viloyati', center: { lat: 41.0425, lng: 69.3564 } },
+  { id: 'samarkand', name: 'Samarqand viloyati', center: { lat: 39.6542, lng: 66.9597 } },
+  { id: 'fergana', name: "Farg'ona viloyati", center: { lat: 40.3842, lng: 71.7843 } },
+  { id: 'andijan', name: 'Andijon viloyati', center: { lat: 40.7821, lng: 72.3442 } },
+  { id: 'namangan', name: 'Namangan viloyati', center: { lat: 40.9983, lng: 71.6726 } },
+  { id: 'bukhara', name: 'Buxoro viloyati', center: { lat: 39.7747, lng: 64.4286 } },
+  { id: 'qashqadaryo', name: 'Qashqadaryo viloyati', center: { lat: 38.8606, lng: 65.7891 } },
+  { id: 'surxondaryo', name: 'Surxondaryo viloyati', center: { lat: 37.2242, lng: 67.2783 } },
+  { id: 'navoiy', name: 'Navoiy viloyati', center: { lat: 40.0844, lng: 65.3792 } },
+  { id: 'xorazm', name: 'Xorazm viloyati', center: { lat: 41.5562, lng: 60.6317 } },
+  { id: 'jizzax', name: 'Jizzax viloyati', center: { lat: 40.1158, lng: 67.8422 } },
+  { id: 'sirdaryo', name: 'Sirdaryo viloyati', center: { lat: 40.4983, lng: 68.7842 } },
+  { id: 'karakalpak', name: "Qoraqalpog'iston Resp.", center: { lat: 42.4602, lng: 59.6103 } },
 ];
 
 export const REGION_IDS = REGIONS.map((r) => r.id);

@@ -284,11 +284,27 @@ body {
     color 0.25s ease;
 }
 
-.category-card:hover .category-icon-wrapper {
-  background: var(--neon-lime);
-  color: var(--bg-dark);
+.category-card:hover .category-icon-wrapper,
+.category-card.active .category-icon-wrapper {
+  background: var(--neon-lime) !important;
+  color: #071510 !important;
   transform: scale(1.08);
   box-shadow: 0 4px 15px var(--neon-lime-glow);
+}
+
+.category-card:hover .category-icon-wrapper svg,
+.category-card:hover .category-icon-wrapper i,
+.category-card:hover .category-icon-wrapper [data-lucide],
+.category-card.active .category-icon-wrapper svg,
+.category-card.active .category-icon-wrapper i,
+.category-card.active .category-icon-wrapper [data-lucide] {
+  color: #071510 !important;
+  stroke: #071510 !important;
+}
+
+.category-card.active {
+  border-color: #b4f73a !important;
+  box-shadow: 0 0 25px rgba(180, 247, 58, 0.25);
 }
 
 /* Object Cards */
@@ -957,4 +973,18 @@ body {
   color: #071510;
   font-weight: 800;
   box-shadow: 0 0 10px rgba(180, 247, 58, 0.35);
+}
+
+
+/* Active Recording State for Voice Input */
+.mic-active {
+  background: #ef4444 !important;
+  color: #ffffff !important;
+  border-color: #f87171 !important;
+  box-shadow: 0 0 22px rgba(239, 68, 68, 0.75) !important;
+  animation: pulse 1.2s infinite;
+}
+.mic-active svg, .mic-active i {
+  color: #ffffff !important;
+  stroke: #ffffff !important;
 }

@@ -100,6 +100,11 @@ export const REGIONS_I18N = {
     ru: 'г. Ташкент',
     en: 'Tashkent city',
   },
+  tashkent_region: {
+    uz: 'Toshkent viloyati',
+    ru: 'Ташкентская область',
+    en: 'Tashkent region',
+  },
   samarkand: {
     uz: 'Samarqand viloyati',
     ru: 'Самаркандская область',
@@ -331,6 +336,25 @@ export const TRANSLATIONS = {
     noBookmarks: "Hozircha saqlangan joylar yo'q",
     closeBtn: 'Yopish',
 
+    // Region Selection Modal
+    regionModalTitle: "Viloyatni tanlang",
+    regionModalSubtitle: "Ekranda ortiqcha joylar to'lib ketmasligi uchun o'zingizga kerakli viloyatni tanlang:",
+    regionModalCategoryLabel: "Tanlangan soha:",
+    regionModalAllUzBtn: "Butun O'zbekiston bo'yicha ko'rish",
+    regionModalTrustBadge: "100% Real joylashuv va aniq kontaktlar",
+
+    // Map Section
+    mapHeading: "O'ZBEKISTON GEOGRAFIK XARITASI",
+    mapInstruction: "Viloyat ustiga boring yoki bosing",
+    mapSelectedRegionLabel: "Tanlangan viloyat:",
+    mapFooterInstruction: "Xaritadan istalgan viloyatni bosing — katalog darhol shu viloyatga saralanadi",
+    mapFooterBadge: "14 ta ma'muriy hudud · Aniq geografik chegaralar",
+    gpsActivateBtn: "GPS masofasini yoqish",
+
+    // Voice recording
+    voiceListening: "Ovoz tinglanmoqda... Gapiring...",
+    voiceStopHint: "To'xtatish uchun mikrofonni bosing",
+
     // Footer & Admin
     footerSubtitle: "O'zbekiston xizmatlar katalogi",
     copyright: '© 2026 Barcha huquqlar himoyalangan.',
@@ -478,6 +502,25 @@ export const TRANSLATIONS = {
     noBookmarks: 'У вас пока нет сохраненных мест',
     closeBtn: 'Закрыть',
 
+    // Region Selection Modal
+    regionModalTitle: "Выберите регион",
+    regionModalSubtitle: "Чтобы не перегружать экран, выберите интересующий вас регион:",
+    regionModalCategoryLabel: "Выбранная сфера:",
+    regionModalAllUzBtn: "Смотреть по всему Узбекистану",
+    regionModalTrustBadge: "100% Реальные адреса и точные контакты",
+
+    // Map Section
+    mapHeading: "ГЕОГРАФИЧЕСКАЯ КАРТА УЗБЕКИСТАНА",
+    mapInstruction: "Наведите курсор или нажмите на регион",
+    mapSelectedRegionLabel: "Выбранный регион:",
+    mapFooterInstruction: "Нажмите на любой регион — каталог мгновенно отфильтруется по нему",
+    mapFooterBadge: "14 административных регионов · Точные границы",
+    gpsActivateBtn: "Включить GPS расстояние",
+
+    // Voice recording
+    voiceListening: "Слушаю вас... Говорите...",
+    voiceStopHint: "Нажмите на микрофон для остановки",
+
     // Footer & Admin
     footerSubtitle: 'Каталог услуг Узбекистана',
     copyright: '© 2026 Все права защищены.',
@@ -624,6 +667,25 @@ export const TRANSLATIONS = {
     bookmarksHeading: 'Saved Places',
     noBookmarks: 'No saved places yet',
     closeBtn: 'Close',
+
+    // Region Selection Modal
+    regionModalTitle: "Select Region",
+    regionModalSubtitle: "Select your region to view tailored local places:",
+    regionModalCategoryLabel: "Selected category:",
+    regionModalAllUzBtn: "View for all Uzbekistan",
+    regionModalTrustBadge: "100% Real locations and verified contacts",
+
+    // Map Section
+    mapHeading: "GEOGRAPHIC MAP OF UZBEKISTAN",
+    mapInstruction: "Hover or click on any region",
+    mapSelectedRegionLabel: "Selected region:",
+    mapFooterInstruction: "Click any region on the map — catalog filters to that region immediately",
+    mapFooterBadge: "14 administrative regions · Exact geographic borders",
+    gpsActivateBtn: "Enable GPS distances",
+
+    // Voice recording
+    voiceListening: "Listening... Speak now...",
+    voiceStopHint: "Click mic to finish recording",
 
     // Footer & Admin
     footerSubtitle: 'Uzbekistan Services Directory',

@@ -26,12 +26,13 @@ export function renderCategories() {
     const count = counts[c.id] ?? 0;
     const name = categoryName(c.id, lang);
     const desc = categoryDesc(c.id, lang);
+    const isActive = state.filters.category === c.id;
     return `
     <button type="button" class="category-card glass-panel rounded-3xl p-5 text-left flex flex-col gap-3 ${
-      state.filters.category === c.id ? 'border-[#b4f73a]' : ''
+      isActive ? 'active border-[#b4f73a]' : ''
     }" data-action="select-category" data-category="${escapeHtml(c.id)}">
       <div class="category-icon-wrapper w-11 h-11 rounded-2xl flex items-center justify-center">
-        <i data-lucide="${escapeHtml(c.icon)}" class="w-5 h-5 text-[#b4f73a]"></i>
+        <i data-lucide="${escapeHtml(c.icon)}" class="w-5 h-5 ${isActive ? 'text-[#071510]' : 'text-[#b4f73a]'}"></i>
       </div>
       <div>
         <h3 class="text-sm font-extrabold text-white">${escapeHtml(name)}</h3>

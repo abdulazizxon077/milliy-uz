@@ -6,7 +6,21 @@ import { refreshIcons } from './icons.js';
 export function applyI18nToDom(lang = state.lang) {
   document.documentElement.lang = lang;
 
-  // 1. Language Buttons Active State
+  // 1. Language Dropdown & Labels
+  const curLangLabel = document.getElementById('current-lang-label');
+  if (curLangLabel) curLangLabel.textContent = lang === 'ru' ? 'РУ' : lang === 'en' ? 'EN' : "O'Z";
+
+  document.querySelectorAll('.lang-dropdown-item').forEach((item) => {
+    const active = item.dataset.lang === lang;
+    item.classList.toggle('bg-[#102d20]', active);
+    const pill = item.querySelector('span:last-child');
+    if (pill) {
+      pill.className = active
+        ? 'text-[10px] text-[#b4f73a] font-black px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]'
+        : 'text-[10px] text-[#94a3b8] font-bold px-1.5 py-0.5 rounded bg-[#102d20] border border-[#1b3b2f]';
+    }
+  });
+
   document.querySelectorAll('[data-action="set-lang"]').forEach((btn) => {
     const active = btn.dataset.lang === lang;
     btn.classList.toggle('active', active);
@@ -149,11 +163,39 @@ export function applyI18nToDom(lang = state.lang) {
   if (showAllCatBtn) showAllCatBtn.textContent = t('showAllCategories', lang);
 
   // 8. Map Section
-  const locLabel = document.querySelector('#map-section .glass-panel span.font-bold');
-  if (locLabel) locLabel.textContent = t('yourLocation', lang);
+  const mapHeading = document.querySelector('#map-section span.font-black');
+  if (mapHeading) mapHeading.textContent = t('mapHeading', lang);
 
-  const locateBtn = document.querySelector('#btn-locate-me span');
-  if (locateBtn) locateBtn.textContent = t('locateMeBtn', lang);
+  const mapSub = document.querySelector('#map-section span.hidden.sm\\:inline');
+  if (mapSub) mapSub.textContent = `· ${t('mapInstruction', lang)}`;
+
+  const mapLocLabel = document.querySelector('#map-section .glass-panel span.text-\\[\\#94a3b8\\]');
+  if (mapLocLabel) mapLocLabel.textContent = t('mapSelectedRegionLabel', lang);
+
+  const locateLabel = document.getElementById('user-location-label');
+  if (locateLabel && !state.hasGpsLocation) locateLabel.textContent = t('gpsActivateBtn', lang);
+
+  const mapFooterNote = document.querySelector('#map-section .border-t span.text-white span');
+  if (mapFooterNote) mapFooterNote.textContent = t('mapFooterInstruction', lang);
+
+  const mapFooterBadge = document.querySelector('#map-section .border-t span.text-\\[\\#b4f73a\\]');
+  if (mapFooterBadge) mapFooterBadge.textContent = t('mapFooterBadge', lang);
+
+  // 8.1 Region Modal
+  const regModalTitle = document.querySelector('#region-select-modal h3');
+  if (regModalTitle) regModalTitle.textContent = t('regionModalTitle', lang);
+
+  const regModalSub = document.querySelector('#region-select-modal p.text-xs');
+  if (regModalSub) regModalSub.textContent = t('regionModalSubtitle', lang);
+
+  const regModalCatLabel = document.getElementById('region-modal-cat-label');
+  if (regModalCatLabel) regModalCatLabel.textContent = t('regionModalCategoryLabel', lang);
+
+  const regModalAllBtn = document.querySelector('#region-select-modal button[data-region="all_uz"]');
+  if (regModalAllBtn) regModalAllBtn.textContent = t('regionModalAllUzBtn', lang);
+
+  const regModalTrust = document.querySelector('#region-select-modal .border-t span:last-child');
+  if (regModalTrust) regModalTrust.textContent = t('regionModalTrustBadge', lang);
 
   // 9. AI Assistant Section
   const aiTitle = document.querySelector('#ai-section h3');

@@ -108,6 +108,19 @@ const actions = {
   'close-region-modal': () => {
     closeModal('region-select-modal');
   },
+  'set-lang-and-close': (el) => {
+    const lang = el.dataset.lang;
+    const menu = $('lang-dropdown-menu');
+    const trigger = $('lang-dropdown-trigger');
+    const arrow = $('lang-dropdown-arrow');
+    if (menu) menu.classList.add('hidden');
+    if (trigger) trigger.setAttribute('aria-expanded', 'false');
+    if (arrow) arrow.style.transform = 'rotate(0deg)';
+    if (lang && lang !== state.lang) {
+      setLanguage(lang);
+      showToast(t('langSwitched', lang));
+    }
+  },
   'set-lang': (el) => {
     const lang = el.dataset.lang;
     if (lang && lang !== state.lang) {
@@ -345,8 +358,31 @@ function registerServiceWorker() {
   });
 }
 
+function bindLangDropdown() {
+  const trigger = $('lang-dropdown-trigger');
+  const menu = $('lang-dropdown-menu');
+  const arrow = $('lang-dropdown-arrow');
+  if (!trigger || !menu) return;
+
+  trigger.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const isHidden = menu.classList.toggle('hidden');
+    trigger.setAttribute('aria-expanded', String(!isHidden));
+    if (arrow) arrow.style.transform = isHidden ? 'rotate(0deg)' : 'rotate(180deg)';
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('#lang-dropdown-wrapper')) {
+      menu.classList.add('hidden');
+      trigger.setAttribute('aria-expanded', 'false');
+      if (arrow) arrow.style.transform = 'rotate(0deg)';
+    }
+  });
+}
+
 function init() {
   bindDelegation();
+  bindLangDropdown();
   bindFilters();
   bindLocate();
   bindChat();
