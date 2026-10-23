@@ -126,9 +126,11 @@ export const FALLBACK_IMAGE =
 
 export const PLACEHOLDER_IMAGE = '/place-placeholder.svg';
 
-/** Only https images are rendered; anything else falls back to a neutral photo. */
+/** Safe image URL renderer supporting HTTPS and local relative paths. */
 export function safeImageUrl(url) {
-  return typeof url === 'string' && url.startsWith('https://') ? url : FALLBACK_IMAGE;
+  if (typeof url !== 'string' || !url) return FALLBACK_IMAGE;
+  if (url.startsWith('https://') || url.startsWith('/') || url.startsWith('./')) return url;
+  return FALLBACK_IMAGE;
 }
 
 /** Returns a localized projection of the place object based on active language. */

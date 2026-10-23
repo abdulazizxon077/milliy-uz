@@ -65,12 +65,12 @@ export function handleRegionPick(regionId) {
   const select = document.getElementById('catalog-region-select');
   if (select) select.value = regionId;
 
-  // Sync hero map
+  // Sync map section
   highlightMapRegion(regionId);
-  const heroPill = document.getElementById('hero-active-region-pill');
-  if (heroPill) {
+  const mapPill = document.getElementById('map-active-region-pill');
+  if (mapPill) {
     const name = REGIONS_I18N[regionId]?.[lang] || regionId;
-    heroPill.textContent = name;
+    mapPill.textContent = name;
   }
 
   closeModal('region-select-modal');

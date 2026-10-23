@@ -85,11 +85,11 @@ function render() {
   updateBookmarkUi();
   refreshCurrentDetail();
 
-  // Sync active region pill on hero section
-  const heroPill = $('hero-active-region-pill');
-  if (heroPill) {
+  // Sync active region pill on map section
+  const mapPill = $('map-active-region-pill');
+  if (mapPill) {
     const regName = REGIONS_I18N[state.filters.region]?.[state.lang] || state.filters.region;
-    heroPill.textContent = regName;
+    mapPill.textContent = regName;
   }
   highlightMapRegion(state.filters.region);
 
@@ -189,9 +189,9 @@ function bindFilters() {
   $('catalog-region-select')?.addEventListener('change', (e) => {
     state.filters.region = e.target.value;
     highlightMapRegion(e.target.value);
-    const heroPill = $('hero-active-region-pill');
-    if (heroPill) {
-      heroPill.textContent = REGIONS_I18N[e.target.value]?.[state.lang] || e.target.value;
+    const mapPill = $('map-active-region-pill');
+    if (mapPill) {
+      mapPill.textContent = REGIONS_I18N[e.target.value]?.[state.lang] || e.target.value;
     }
     notify();
     flyToRegion(e.target.value);
@@ -357,18 +357,17 @@ function init() {
   initAdmin();
   initMap($('leaflet-map-container'), { openDetail });
   
-  // Interactive Uzbekistan SVG Vector Map (Image 1 requirement)
-  renderUzbekistanMap($('hero-uz-map-container'), {
+  // Real Geographic Vector Map of Uzbekistan (Replacing broken tile map in 3-rasm)
+  renderUzbekistanMap($('uz-geographic-map-container'), {
     onSelectRegion: (regId) => {
       state.filters.region = regId;
       const select = $('catalog-region-select');
       if (select) select.value = regId;
-      const heroPill = $('hero-active-region-pill');
-      if (heroPill) {
-        heroPill.textContent = REGIONS_I18N[regId]?.[state.lang] || regId;
+      const mapPill = $('map-active-region-pill');
+      if (mapPill) {
+        mapPill.textContent = REGIONS_I18N[regId]?.[state.lang] || regId;
       }
       notify();
-      flyToRegion(regId);
       scrollToSection('catalog-section');
       const regName = REGIONS_I18N[regId]?.[state.lang] || regId;
       showToast(`${regName}: ${t('catalogHeading', state.lang)}`);
