@@ -6,7 +6,6 @@
 
 import { REGIONS, REGIONS_I18N, categoryName } from '../../../shared/catalog.js';
 import { escapeHtml } from '../lib/format.js';
-import { t } from '../lib/i18n.js';
 import { notify, state } from '../state.js';
 import { closeModal, openModal } from './modal.js';
 import { showToast } from './toast.js';

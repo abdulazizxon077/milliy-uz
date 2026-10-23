@@ -5,11 +5,10 @@
  * and speech-bubble tooltip matching user requirements.
  */
 
-import { REGIONS, REGIONS_I18N } from '../../../shared/catalog.js';
+import { REGIONS_I18N } from '../../../shared/catalog.js';
 import { state } from '../state.js';
 import { REAL_UZ_REGIONS_GEO } from './uzbekistan-geo-data.js';
 
-let currentMapContainer = null;
 let currentHighlightFn = null;
 
 export function highlightMapRegion(regionId) {
@@ -20,9 +19,7 @@ export function highlightMapRegion(regionId) {
 
 export function renderUzbekistanMap(container, { onSelectRegion } = {}) {
   if (!container) return;
-  currentMapContainer = container;
 
-  const currentLang = state.lang || 'uz';
   const activeRegion = state.filters.region && state.filters.region !== 'all_uz' ? state.filters.region : 'samarkand';
 
   container.innerHTML = `

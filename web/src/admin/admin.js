@@ -50,7 +50,9 @@ export async function openAdmin() {
         showDashboard(parsed.username);
         return;
       }
-    } catch {}
+    } catch (_e) {
+      // ignore invalid json
+    }
   }
   try {
     const me = await api.me();
@@ -121,7 +123,9 @@ async function logout() {
   localStorage.removeItem('milliy_client_admin');
   try {
     await api.logout();
-  } catch {}
+  } catch (_e) {
+    // ignore network errors
+  }
   closeAdmin();
   showToast('Admin paneldan chiqildi');
 }
