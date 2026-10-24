@@ -41,7 +41,7 @@ const placeProperties = {
   image: {
     anyOf: [
       { type: 'string', maxLength: 0 },
-      { type: 'string', maxLength: 500, pattern: '^https://' },
+      { type: 'string', maxLength: 500, pattern: '^(https://|/|\\./)' },
     ],
   },
 };

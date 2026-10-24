@@ -1,8 +1,7 @@
 /**
- * Verified Real Places Directory in Uzbekistan
- * Covers all 14 administrative regions and 10 categories.
- * All organizations are 100% real, active entities with verified contacts,
- * authentic local images and exact GPS coordinates.
+ * Offline-first catalog snapshot for Milliy.uz.
+ * Bundled with the web client so the catalog renders instantly on first load
+ * and remains fully searchable offline without any network connectivity.
  */
 
 export const DEFAULT_PLACES = [
@@ -66,7 +65,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:30 - 22:00)",
     "workDays_ru": "Понедельник - Суббота (08:30 - 22:00)",
     "workDays_en": "Monday - Saturday (08:30 - 22:00)",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/auto-pro-chilonzor.jpg",
     "reviews": [
       {
         "id": "rev-1",
@@ -139,7 +138,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni 24 soat",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Every day 24/7",
-    "image": "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/auto-gas-metan-express.jpg",
     "reviews": [
       {
         "id": "rev-3",
@@ -210,7 +209,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 uzluksiz",
     "workDays_ru": "Круглосуточно без выходных",
     "workDays_en": "24/7 non-stop",
-    "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gas-ung-petro-tashkent.jpg",
     "reviews": [
       {
         "id": "rev-4",
@@ -272,7 +271,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni 24/7",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Every day 24/7",
-    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gas-avtogaz-metan-tokbor.jpg",
     "reviews": [
       {
         "id": "rev-5",
@@ -339,7 +338,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 uzluksiz navbatchilik",
     "workDays_ru": "Круглосуточно без выходных",
     "workDays_en": "24/7 continuous emergency duty",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-16-shoshilinch-tashkent.jpg",
     "reviews": [
       {
         "id": "rev-6",
@@ -406,7 +405,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "https://images.unsplash.com/photo-1586773860418-d37222d8fce3?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/med-oksimed-grand-tashkent.jpg",
     "reviews": [
       {
         "id": "rev-7",
@@ -469,7 +468,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 navbatchilik",
     "workDays_ru": "Круглосуточно без выходных",
     "workDays_en": "24/7 on duty",
-    "image": "https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/police-tashkent-iibb-102.jpg",
     "reviews": [
       {
         "id": "rev-8",
@@ -536,7 +535,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00), Shanba (09:00 - 15:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00), Суббота (09:00 - 15:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00), Saturday (09:00 - 15:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-dxm-chilonzor.jpg",
     "reviews": [
       {
         "id": "rev-9",
@@ -607,7 +606,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Yakshanba (09:00 - 23:00)",
     "workDays_ru": "Ежедневно (09:00 - 23:00)",
     "workDays_en": "Monday - Sunday (09:00 - 23:00)",
-    "image": "/images/places/besh-qozon.jpg",
+    "image": "./images/places/besh-qozon.jpg",
     "reviews": [
       {
         "id": "rev-10",
@@ -673,7 +672,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Seshanba - Yakshanba (06:00 - 20:00)",
     "workDays_ru": "Вторник - Воскресенье (06:00 - 20:00)",
     "workDays_en": "Tuesday - Sunday (06:00 - 20:00)",
-    "image": "/images/places/chorsu.jpg",
+    "image": "./images/places/chorsu.jpg",
     "reviews": [
       {
         "id": "rev-11",
@@ -736,7 +735,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:00 - 19:00)",
     "workDays_ru": "Понедельник - Суббота (08:00 - 19:00)",
     "workDays_en": "Monday - Saturday (08:00 - 19:00)",
-    "image": "https://images.unsplash.com/photo-1523050854058-8df90110c9f1?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/edu-ozmu-universitet.jpg",
     "reviews": [
       {
         "id": "rev-12",
@@ -802,7 +801,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (09:00 - 21:00)",
     "workDays_ru": "Понедельник - Суббота (09:00 - 21:00)",
     "workDays_en": "Monday - Saturday (09:00 - 21:00)",
-    "image": "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/edu-pdp-academy.jpg",
     "reviews": [
       {
         "id": "rev-13",
@@ -868,7 +867,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Yakshanba (06:30 - 23:00)",
     "workDays_ru": "Ежедневно (06:30 - 23:00)",
     "workDays_en": "Monday - Sunday (06:30 - 23:00)",
-    "image": "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/sport-befit-pro.jpg",
     "reviews": [
       {
         "id": "rev-14",
@@ -930,7 +929,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (06:00 - 23:30)",
     "workDays_ru": "Ежедневно (06:00 - 23:30)",
     "workDays_en": "Every day (06:00 - 23:30)",
-    "image": "https://images.unsplash.com/photo-1519331379826-f10be5486c6f?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/park-navoiy-milliy.jpg",
     "reviews": [
       {
         "id": "rev-15",
@@ -992,7 +991,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:00 - 21:00)",
     "workDays_ru": "Понедельник - Суббота (08:00 - 21:00)",
     "workDays_en": "Monday - Saturday (08:00 - 21:00)",
-    "image": "/images/places/registan.jpg",
+    "image": "./images/places/auto-samarkand-registon.jpg",
     "reviews": [
       {
         "id": "rev-16",
@@ -1058,7 +1057,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gas-samarkand-afrosiyob.jpg",
     "reviews": [
       {
         "id": "rev-17",
@@ -1121,7 +1120,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 navbatchilik",
     "workDays_ru": "Круглосуточно без выходных",
     "workDays_en": "24/7 continuous duty",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-samarkand-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-18",
@@ -1184,7 +1183,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-samarkand-dxm.jpg",
     "reviews": [
       {
         "id": "rev-19",
@@ -1250,7 +1249,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (10:00 - 22:00)",
     "workDays_ru": "Ежедневно (10:00 - 22:00)",
     "workDays_en": "Every day (10:00 - 22:00)",
-    "image": "/images/places/registan.jpg",
+    "image": "./images/places/food-samarkand-registon-osh.jpg",
     "reviews": [
       {
         "id": "rev-20",
@@ -1311,7 +1310,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:00 - 20:30)",
     "workDays_ru": "Понедельник - Суббота (08:00 - 20:30)",
     "workDays_en": "Monday - Saturday (08:00 - 20:30)",
-    "image": "https://images.unsplash.com/photo-1486006920555-c77dce18193b?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/auto-fergana-vodiy-mator.jpg",
     "reviews": [
       {
         "id": "rev-21",
@@ -1374,7 +1373,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni 24/7",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-fergana-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-22",
@@ -1436,7 +1435,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "https://images.unsplash.com/photo-1593941707882-a5bba14938c7?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gas-andijan-vodiy-metan.jpg",
     "reviews": [
       {
         "id": "rev-23",
@@ -1499,7 +1498,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-andijan-dxm.jpg",
     "reviews": [
       {
         "id": "rev-24",
@@ -1565,7 +1564,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (10:00 - 22:30)",
     "workDays_ru": "Ежедневно (10:00 - 22:30)",
     "workDays_en": "Every day (10:00 - 22:30)",
-    "image": "/images/places/besh-qozon.jpg",
+    "image": "./images/places/food-namangan-chustiy.jpg",
     "reviews": [
       {
         "id": "rev-25",
@@ -1626,7 +1625,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:30 - 20:00)",
     "workDays_ru": "Понедельник - Суббота (08:30 - 20:00)",
     "workDays_en": "Monday - Saturday (08:30 - 20:00)",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/auto-bukhara-karvon.jpg",
     "reviews": [
       {
         "id": "rev-26",
@@ -1687,7 +1686,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/med-bukhara-ibn-sino.jpg",
     "reviews": [
       {
         "id": "rev-27",
@@ -1753,7 +1752,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (09:00 - 23:30)",
     "workDays_ru": "Ежедневно (09:00 - 23:30)",
     "workDays_en": "Every day (09:00 - 23:30)",
-    "image": "/images/places/bukhara-ark.jpg",
+    "image": "./images/places/food-bukhara-labi-hovuz.jpg",
     "reviews": [
       {
         "id": "rev-28",
@@ -1815,7 +1814,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 navbatchilik",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "24/7 on duty",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-qarshi-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-29",
@@ -1878,7 +1877,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-qarshi-dxm.jpg",
     "reviews": [
       {
         "id": "rev-30",
@@ -1940,7 +1939,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-termiz-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-31",
@@ -2003,7 +2002,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-termiz-dxm.jpg",
     "reviews": [
       {
         "id": "rev-32",
@@ -2066,7 +2065,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-navoiy-dxm.jpg",
     "reviews": [
       {
         "id": "rev-33",
@@ -2127,7 +2126,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:30 - 20:00)",
     "workDays_ru": "Понедельник - Суббота (08:30 - 20:00)",
     "workDays_en": "Monday - Saturday (08:30 - 20:00)",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/auto-navoiy-servis.jpg",
     "reviews": [
       {
         "id": "rev-34",
@@ -2188,7 +2187,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (06:00 - 20:00)",
     "workDays_ru": "Ежедневно (06:00 - 20:00)",
     "workDays_en": "Every day (06:00 - 20:00)",
-    "image": "/images/places/ichan-kala.jpg",
+    "image": "./images/places/market-urganch-markaziy.jpg",
     "reviews": [
       {
         "id": "rev-35",
@@ -2250,7 +2249,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-xorazm-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-36",
@@ -2316,7 +2315,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (08:30 - 22:00)",
     "workDays_ru": "Ежедневно (08:30 - 22:00)",
     "workDays_en": "Every day (08:30 - 22:00)",
-    "image": "/images/places/jizzax-somsa.jpg",
+    "image": "./images/places/jizzax-somsa.jpg",
     "reviews": [
       {
         "id": "rev-37",
@@ -2378,7 +2377,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-jizzax-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-38",
@@ -2441,7 +2440,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Juma (09:00 - 18:00)",
     "workDays_ru": "Понедельник - Пятница (09:00 - 18:00)",
     "workDays_en": "Monday - Friday (09:00 - 18:00)",
-    "image": "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gov-guliston-dxm.jpg",
     "reviews": [
       {
         "id": "rev-39",
@@ -2503,7 +2502,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "https://images.unsplash.com/photo-1545454675-3531b543be5d?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/gas-sirdaryo-metan.jpg",
     "reviews": [
       {
         "id": "rev-40",
@@ -2564,7 +2563,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:30 - 19:00)",
     "workDays_ru": "Понедельник - Суббота (08:30 - 19:00)",
     "workDays_en": "Monday - Saturday (08:30 - 19:00)",
-    "image": "/images/places/savitsky.jpg",
+    "image": "./images/places/edu-berdaq-nukus.png",
     "reviews": [
       {
         "id": "rev-41",
@@ -2626,7 +2625,7 @@ export const DEFAULT_PLACES = [
     "workDays": "24/7 ishlaydi",
     "workDays_ru": "Круглосуточно 24/7",
     "workDays_en": "Open 24/7",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/med-nukus-shoshilinch.jpg",
     "reviews": [
       {
         "id": "rev-42",
@@ -2693,7 +2692,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni 24/7 tunu-kun",
     "workDays_ru": "Ежедневно 24/7 круглосуточно",
     "workDays_en": "Every day 24/7 open round the clock",
-    "image": "/images/places/tez-yordam.jpg",
+    "image": "./images/places/tashkent-vil-hospital.jpg",
     "isFree": true
   },
   {
@@ -2752,7 +2751,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Dushanba - Shanba (08:30 - 20:00)",
     "workDays_ru": "Понедельник - Суббота (08:30 - 20:00)",
     "workDays_en": "Monday - Saturday (08:30 - 20:00)",
-    "image": "https://images.unsplash.com/photo-1613214149922-f1809c99b414?auto=format&fit=crop&w=800&q=80"
+    "image": "./images/places/chirchiq-auto-servis.jpg"
   },
   {
     "id": "chorvoq-dam-olish",
@@ -2810,7 +2809,7 @@ export const DEFAULT_PLACES = [
     "workDays": "Har kuni (07:00 - 23:00)",
     "workDays_ru": "Ежедневно (07:00 - 23:00)",
     "workDays_en": "Every day (07:00 - 23:00)",
-    "image": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "image": "./images/places/chorvoq-dam-olish.jpg",
     "isFree": true
   }
 ];
